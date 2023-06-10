@@ -1,3 +1,4 @@
+import { Login } from './pages/Login/login';
 import { Main } from './pages/Main/main';
 import { NotFound } from './pages/NotFound/notFound';
 
@@ -8,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getPage() {
         switch (window.location.pathname) {
+            case '/login':
+                return Login();
             case '/':
                 return Main();
             default:
