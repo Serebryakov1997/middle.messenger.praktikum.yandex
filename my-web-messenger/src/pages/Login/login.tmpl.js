@@ -3,9 +3,9 @@ export const loginTmpl = `
         <div class={{textFormName}}>{{blockName}}</div>
         <div class={{textLoginName}}>
             {{loginName}}
-            <p class={{loginLineName}}></p>
         </div>
-        <div class={{textPasswordName}}>
+        {{{inputLoginComponent}}}
+        <div class="{{textPasswordName}} {{position}}">
             {{passwordName}}
         </div>
     </form>

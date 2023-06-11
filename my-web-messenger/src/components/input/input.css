@@ -1,0 +1,27 @@
+.input {
+    left: 50%;
+    width: 265px;
+    background-color: #d9d9d9;
+    border-style: hidden;
+    border-bottom: 1px solid;
+    /* padding: 0px; */
+    /* padding-top: 10px; */
+    margin-left: 56px;
+}
+
+.login-title {
+    padding-top: 10px;
+}
+
+.password-title {
+    padding-top: 50px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input::placeholder {
+    position: absolute;
+    left: 0px;
+}

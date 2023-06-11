@@ -11,24 +11,24 @@
     border-radius: 30px;
 }
 
-/* элементы */
-.login-form__text {
+/* Надпись "Вход" */
+.login-form__title {
     left: 50%;
     top: 50%;
     font-size: 36px;
     text-align: center;
     margin: 38px;
 }
-.login-form__login-title {
+
+/* Поля ввода */
+.login-form__font-color {
     margin-left: 56px;
     font-size: 16px;
     color: #000;
-    
 }
-.login-form__login-line {
-    width: 285px;
-    border-top: 1px solid;
-    margin-top: 48px;
+
+.login-form__password-title {
+    margin-top: 20px;
 }
 /* .login-form__buttons {
     width: 400px;
