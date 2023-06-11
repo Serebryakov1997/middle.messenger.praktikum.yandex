@@ -1,11 +1,28 @@
 /* блок */
 .login-form {
-
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 512px;
+    margin-left: -200px;
+    margin-top: -256px;
+    background-color: #d9d9d9;
+    position: absolute;
+    border-radius: 30px;
 }
 
 /* элементы */
-.login-form__buttons {}
-.login-form__submit {}
-.login-form__reset {}
-.login-form__username-input {}
-.login-form__password-input {}
+.login-form__buttons {
+    width: 400px;
+    background-color: red;
+}
+.login-form__submit {
+    background-color: yellowgreen;
+    width: 500px;
+
+} 
+ .login-form__reset {
+    width: 500px;
+ }
+/* .login-form__username-input {}
+.login-form__password-input {}  */

@@ -1,3 +1,4 @@
+import './login.css';
 import { loginTmpl } from './login.tmpl';
 import Handlebars from 'handlebars';
 

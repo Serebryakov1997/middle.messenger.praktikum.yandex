@@ -1,6 +1,7 @@
 import { Login } from './pages/Login/login';
 import { Main } from './pages/Main/main';
 import { NotFound } from './pages/NotFound/notFound';
+// import './pages/Login/login.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.querySelector('#app');
