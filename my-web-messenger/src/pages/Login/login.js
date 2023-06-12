@@ -9,4 +9,6 @@ export const Login = () => Handlebars.compile(loginTmpl)({
     textFormName: 'login-form__title',
     blockName: 'Вход',
     inputLoginComponent: Input('Логин', 'ivanivanov'),
+    inputPasswdComponent: Input('Пароль'),
+    inputOtherField: Input('Other')
 });
