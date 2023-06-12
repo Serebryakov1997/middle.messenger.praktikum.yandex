@@ -1,8 +1,9 @@
 export const inputTmpl = `
-    <form>
+    <div class={{inputBoxName}}>
+        <label class={{labelClass}}>{{labelName}}</label>
         <input type="text" 
-            class="{{input}} {{title}}"
+            class={{input}}
             placeholder="{{placeholder}}"
         />
-    </form>
+    </div>
 `;

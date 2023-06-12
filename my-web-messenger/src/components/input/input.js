@@ -2,8 +2,10 @@ import './input.css';
 import { inputTmpl } from './input.tmpl';
 import Handlebars from 'handlebars';
 
-export const Input = (isPassword) => Handlebars.compile(inputTmpl)({
+export const Input = (inputLabel, placeholder) => Handlebars.compile(inputTmpl)({
+    inputBoxName: 'input-box',
+    labelClass: 'label',
+    labelName: inputLabel,
     input: 'input',
-    title: isPassword ? 'password-title' : 'login-title',
-    placeholder: isPassword ? '' : 'ivanivanov'
+    placeholder: placeholder
 });

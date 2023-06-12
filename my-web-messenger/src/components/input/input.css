@@ -1,3 +1,7 @@
+.input-box {
+    position: absolute;
+}
+
 .input {
     left: 50%;
     width: 265px;
@@ -9,12 +13,12 @@
     margin-left: 56px;
 }
 
-.login-title {
-    padding-top: 10px;
-}
-
-.password-title {
-    padding-top: 50px;
+.label {
+    position: absolute;
+    margin-top: -30px;
+    margin-left: 55px;
+    /* top: 100px;
+    left: 5px; */
 }
 
 .input:focus {

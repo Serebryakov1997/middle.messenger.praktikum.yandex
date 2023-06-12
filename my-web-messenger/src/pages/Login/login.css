@@ -28,6 +28,7 @@
 }
 
 .login-form__password-title {
+    left: 50%;
     margin-top: 20px;
 }
 /* .login-form__buttons {
