@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*
+    $number - номер inputa (sign-in, sign-up)
+*/
+input {
+  left: 50%;
+  width: 265px;
+  background-color: #d9d9d9;
+  border-style: hidden;
+  border-bottom: 1px solid;
+  padding: 20px;
+  position: absolute;
+}
+
+label {
+  position: absolute;
+  margin-left: 55px;
+}
+
+offset {
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=input.css.map */

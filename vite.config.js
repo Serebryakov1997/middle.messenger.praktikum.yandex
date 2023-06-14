@@ -8,5 +8,4 @@ export default defineConfig({
         outDir: resolve(__dirname, 'build')
     },
     plugins: [handlebars()]
-});
-
+})
