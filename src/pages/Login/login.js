@@ -1,9 +1,12 @@
+import loginStyles from './login.css?inline';
 import { Input } from '../../components/Input/input';
-import './login.css';
 import { loginTmpl } from './login.tmpl';
 import Handlebars from 'handlebars';
+import { Label } from '../../components/Label/label';
 
+// console.log('loginStyles: ', loginStyles);
 export const Login = () => Handlebars.compile(loginTmpl)({
-    blockName: 'Вход',
-    inputLogin: Input('Логин')
+    styles: loginStyles,
+    labelLogin: Label(),
+    inputLogin: Input('Логин', 'ivanivanov')
 });

@@ -1,5 +1,3 @@
 export const inputTmpl = `
-    <div class={{offset}}>
-        <label>{{inputLabel}}</label>
-    </div>
+    <input type="text" name={{name}} placeholder={{placeholder}}>
 `;

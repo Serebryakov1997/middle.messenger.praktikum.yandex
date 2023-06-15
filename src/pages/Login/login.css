@@ -1,18 +1,14 @@
-form {
-  left: 50%;
-  top: 50%;
-  width: 400px;
-  height: 512px;
-  margin-left: -200px;
-  margin-top: -256px;
-  background-color: #d9d9d9;
-  position: absolute;
-  border-radius: 30px;
+.login-container {
+  padding: 30px;
 }
 
-p {
+.login-header {
+  font-size: 20px;
   text-align: center;
-  font-size: 36px;
+}
+
+.login-form {
+  margin: 40px 0 0 0;
 }
 
 /*# sourceMappingURL=login.css.map */
