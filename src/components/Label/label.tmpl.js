@@ -1,3 +1,3 @@
 export const labelTmpl = `
-    <div class="{{ class }}">{{ text }}</div>
+    <label for="{{inputName}}">{{ text }}</label>
 `;

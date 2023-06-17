@@ -1,14 +1,23 @@
 .login-container {
-  padding: 30px;
+  border: 1px solid black;
+  border-radius: 30px;
+  margin: 0px auto;
+  width: 400px;
+  height: 520px;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
 }
-
-.login-header {
-  font-size: 20px;
+.login-container .login-header {
+  padding-top: 30px;
+  font-size: 36px;
   text-align: center;
 }
-
-.login-form {
-  margin: 40px 0 0 0;
+.login-container .login-input__login {
+  margin-top: 20px;
+}
+.login-container .login-input__password {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=login.css.map */
