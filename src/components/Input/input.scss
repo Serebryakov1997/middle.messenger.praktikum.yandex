@@ -1,17 +1,30 @@
-input {
-   width: 285px;
-   height: 40px;
-   border: 1px solid black;
-   border-radius: 10px;
+input, label {
+   display: block;
+   position: relative;
+}
 
-   // margin-top: 50px;
+label {
+   top: 15px;
    margin-left: 50px;
 }
 
-input::placeholder {
-   padding-left: 10px;
+input {
+   width: 285px;
+   height: 40px;
+   border: none;
+   border-bottom: 1px solid;
+   margin-left: 50px;
+
+   &:focus {
+      outline: none;
+      padding-left: 10px;
+   }
 }
 
-input:focus {
-   padding-left: 10px;
+.input-top {
+   margin-top: 20px;
+}
+
+input {
+   background-color: #d9d9d9;
 }

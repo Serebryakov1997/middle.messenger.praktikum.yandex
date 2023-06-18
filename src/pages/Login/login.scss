@@ -1,12 +1,13 @@
 .login-container {
-    border: 1px solid black;
+    // border: 1px solid black;
     border-radius: 30px;
-    margin: 0px auto;
     width: 400px;
     height: 520px;
     position: relative;
+    display: block;
+    left: 50%;
     top: 50%;
-    transform: translateY(50%);
+    transform: translate(-50%, 50%);
 
     .login-header {
         padding-top: 30px;
@@ -14,11 +15,18 @@
         text-align: center;
     }
 
-    .login-input__login {
-        margin-top: 20px;
+    .login-button {
+        margin-top: 170px;
     }
 
-    .login-input__password {
+    .login-button__under-text {
+        // margin-top: 180px;
         margin-top: 10px;
+        font-size: 15px;
+        text-align: center;
     }
+}
+
+.login-container {
+    background-color: #d9d9d9;
 }
