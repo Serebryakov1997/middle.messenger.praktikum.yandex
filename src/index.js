@@ -1,4 +1,4 @@
-import { Main, Login, Register } from './pages';
+import { Main, Login, Register, Chats } from './pages';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return Login();
             case '/register':
                 return Register();
+            case '/chats':
+                return Chats();
         }
     }
 

@@ -1,4 +1,4 @@
-@use '../AuthBase/auth_base';
+@use '../_AuthBase/auth_base';
 
 .register-container {
     @include auth_base.main-container;
