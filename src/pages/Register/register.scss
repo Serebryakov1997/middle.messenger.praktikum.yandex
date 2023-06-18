@@ -1,22 +1,23 @@
 @use '../AuthBase/auth_base';
 
-.login-container {
+.register-container {
     @include auth_base.main-container;
-    height: 520px;
+    margin-top: -200px;
+    height: 732px;
 
-    .login-header {
+    .register-header {
         @include auth_base.header;
     }
 
-    .login-button {
-        margin-top: 170px;
+    .register-button {
+        margin-top: 50px;
     }
 
-    .login-button__under-text {
+    .register-button__under-text {
         @include auth_base.under-text;
     }
 }
 
-.login-container {
+.register-container {
     background-color: auth_base.$back-color;
 }

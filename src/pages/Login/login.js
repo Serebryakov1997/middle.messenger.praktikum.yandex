@@ -1,9 +1,7 @@
 import './login.css';
-import { Input } from '../../components/Input/input';
 import { loginTmpl } from './login.tmpl';
+import { Input, Button } from '../../components';
 import Handlebars from 'handlebars';
-import { Button } from '../../components/Button/button';
-
 
 export const Login = () => Handlebars.compile(loginTmpl)({
     containerClass: 'login-container',

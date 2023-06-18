@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
   display: block;
   border-radius: 30px;
   width: 400px;
@@ -6,24 +6,25 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, 50%);
-  height: 520px;
+  margin-top: -200px;
+  height: 732px;
 }
-.login-container .login-header {
+.register-container .register-header {
   padding-top: 30px;
   font-size: 36px;
   text-align: center;
 }
-.login-container .login-button {
-  margin-top: 170px;
+.register-container .register-button {
+  margin-top: 50px;
 }
-.login-container .login-button__under-text {
+.register-container .register-button__under-text {
   margin-top: 10px;
   font-size: 15px;
   text-align: center;
 }
 
-.login-container {
+.register-container {
   background-color: #d9d9d9;
 }
 
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=register.css.map */

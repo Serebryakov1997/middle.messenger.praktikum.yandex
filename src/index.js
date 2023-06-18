@@ -1,5 +1,4 @@
-import { Main } from './pages/Main/main';
-import { Login } from './pages/Login/login';
+import { Main, Login, Register } from './pages';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return Main();
             case '/login':
                 return Login();
+            case '/register':
+                return Register();
         }
     }
 
