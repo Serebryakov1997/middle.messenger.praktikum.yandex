@@ -1,3 +1,4 @@
+@use '../_MainBase/main_base';
 @use '../_AuthBase/auth_base';
 
 .login-container {
@@ -18,5 +19,5 @@
 }
 
 .login-container {
-    background-color: auth_base.$back-color;
+    background-color: main_base.$back-color;
 }

@@ -1,13 +1,13 @@
 @use '../_MainBase/main_base';
 
-.chats-container {
+.plug-container {
     display: block;
     position: relative;
     width: 500px;
     height: 500px;
     @include main_base.block-center-position;
 
-    .chats-header {
+    .plug-header {
         padding-top: 30px;
         font-size: 50px;
         text-align: center;

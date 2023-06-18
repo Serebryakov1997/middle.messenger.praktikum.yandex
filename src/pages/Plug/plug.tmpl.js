@@ -1,6 +1,6 @@
-export const chatsTmpl = `
+export const plugTmpl = `
     <div class="{{containerClass}}">
         <div class="{{headerClass}}">{{headerName}}</div>
-        <img src="../src/pages/Chats/img/plug.jpg">
+        <img src="../src/pages/Plug/img/plug.jpg">
     </div>
 `;

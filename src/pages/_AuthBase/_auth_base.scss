@@ -1,9 +1,8 @@
 @use '../_MainBase/main_base';
-$back-color: #d9d9d9;
 
 @mixin main-container {
     display: block;
-    border-radius: 30px;
+    border-radius: main_base.$border_radius;
     width: 400px;
     position: relative;
     @include main_base.block-center-position;

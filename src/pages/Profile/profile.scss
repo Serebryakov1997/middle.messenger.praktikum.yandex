@@ -1,0 +1,9 @@
+@use '../_ProfileBase/profile_base';
+
+.profile-container {
+    @include profile_base.profile-container;
+
+    .avatar {
+        @include profile_base.avatar;
+    }
+}
