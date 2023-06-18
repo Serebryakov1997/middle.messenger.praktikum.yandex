@@ -1,0 +1,17 @@
+.profile-field {
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 70px;
+  text-align: left;
+}
+
+.profile-value {
+  margin-top: -20px;
+  font-weight: normal;
+  text-align: right;
+  margin-right: 60px;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=profile_field.css.map */
