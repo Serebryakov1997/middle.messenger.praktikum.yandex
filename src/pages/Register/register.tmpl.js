@@ -9,6 +9,6 @@ export const registerTmpl = `
         {{{inputPasswd}}}
         {{{inputPasswdAgain}}}
         {{{registerButton}}}
-        <div class="{{underButtonClass}}">{{underButtonText}}</div>
+        <a class="{{underButtonClass}}" href="{{loginLink}}">{{underButtonText}}</a>
     </div>
 `;

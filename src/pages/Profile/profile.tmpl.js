@@ -10,8 +10,8 @@ export const profileTmpl = `
         {{{secondNameField}}}
         {{{displayNameField}}}
         {{{phoneField}}}
-        <p class="{{changeLineClass}}">{{changeDataName}}</p>
-        <p class="{{changeLineClass}}">{{changePasswdName}}</p>
-        <p class="{{changeLineClass}} {{logout}}">{{logoutName}}</p>
+        <a class="{{changeDataClass}}" href="{{changeDataLink}}">{{changeDataName}}</a>
+        <a class="{{changeDataClass}} {{changePasswordClass}}" href="{{changePasswordLink}}">{{changePasswdName}}</a>
+        <a class="{{changeDataClass}} {{logoutClass}}" href="{{toLoginLink}}">{{logoutName}}</a>
     </div>
 `;

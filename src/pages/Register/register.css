@@ -18,9 +18,12 @@
   margin-top: 50px;
 }
 .register-container .register-button__under-text {
+  display: block;
   margin-top: 10px;
   font-size: 15px;
   text-align: center;
+  text-decoration: none;
+  color: black;
 }
 
 .register-container {

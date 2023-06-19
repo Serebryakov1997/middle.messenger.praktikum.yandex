@@ -4,6 +4,6 @@ export const loginTmpl = `
         {{{inputLogin}}}
         {{{inputPasswd}}}
         {{{loginButton}}}
-        <div class="{{underButtonClass}}">{{underButtonText}}</div>
+        <a class="{{underButtonClass}}" href="{{registerLink}}">{{underButtonText}}</a>
     </div>
 `;

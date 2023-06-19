@@ -1,4 +1,4 @@
-import { Main, Login, Register, Plug, Profile } from './pages';
+import { Main, Login, Register, Plug, Profile, ProfileChangeData } from './pages';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return Plug();
             case '/profile':
                 return Profile();
+            case '/profile_change_data':
+                return ProfileChangeData();
         }
     }
 

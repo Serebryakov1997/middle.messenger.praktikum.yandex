@@ -9,6 +9,7 @@
 
     .plug-header {
         padding-top: 30px;
+        margin-left: 20px;
         font-size: 50px;
         text-align: center;
     }
@@ -16,6 +17,14 @@
     img {
         width: 400px;
         margin-left: 50px;
+    }
+
+    .link {
+        display: block;
+        font-size: 20px;
+        text-align: center;
+        text-decoration: none;
+        color: black;
     }
 
 }

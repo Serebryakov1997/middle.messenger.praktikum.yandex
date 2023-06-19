@@ -1,0 +1,1 @@
+export { DEV_LINK_ADDRESS } from './consts';

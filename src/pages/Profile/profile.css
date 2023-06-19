@@ -37,10 +37,13 @@
   margin-top: -20px;
   font-size: 20px;
 }
-.profile-container .change-line {
-  text-align: left;
+.profile-container .change-data {
+  display: block;
+  margin-top: 20px;
   margin-left: 70px;
   font-size: 20px;
+  text-decoration: none;
+  text-align: left;
   color: #242cdd;
 }
 .profile-container .logout {

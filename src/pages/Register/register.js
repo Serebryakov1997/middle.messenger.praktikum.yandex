@@ -2,6 +2,7 @@ import './register.css';
 import { registerTmpl } from './register.tmpl';
 import { Button, Input } from '../../components';
 import Handlebars from 'handlebars';
+import { DEV_LINK_ADDRESS } from '../../utils';
 
 
 export const Register = () => Handlebars.compile(registerTmpl)({
@@ -17,5 +18,6 @@ export const Register = () => Handlebars.compile(registerTmpl)({
     inputPasswdAgain: Input('Пароль (ещё раз)', 'password', ''),
     registerButton: Button('register-button', 'Зарегистрироваться'),
     underButtonClass: 'register-button__under-text',
-    underButtonText: 'Войти'
+    underButtonText: 'Войти',
+    loginLink: DEV_LINK_ADDRESS + 'login'
 });

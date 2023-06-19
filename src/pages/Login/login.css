@@ -17,9 +17,12 @@
   margin-top: 170px;
 }
 .login-container .login-button__under-text {
+  display: block;
   margin-top: 10px;
   font-size: 15px;
   text-align: center;
+  text-decoration: none;
+  color: black;
 }
 
 .login-container {

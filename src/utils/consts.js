@@ -1,0 +1,1 @@
+export const DEV_LINK_ADDRESS = 'http://localhost:5173/';
