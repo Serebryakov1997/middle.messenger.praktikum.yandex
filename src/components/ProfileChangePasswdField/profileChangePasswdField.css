@@ -1,0 +1,18 @@
+.profile-change-passwd-field {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: right;
+}
+.profile-change-passwd-field input {
+  position: relative;
+  left: 350px;
+  border: none;
+}
+.profile-change-passwd-field label {
+  top: 25px;
+  margin-left: 70px;
+  text-align: left;
+}
+
+/*# sourceMappingURL=profileChangePasswdField.css.map */

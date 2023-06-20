@@ -16,8 +16,8 @@ export const Register = () => Handlebars.compile(registerTmpl)({
     inputFhoneNumber: Input('Телефон', 'phone', '+7(909)9673030'),
     inputPasswd: Input('Пароль', 'password', ''),
     inputPasswdAgain: Input('Пароль (ещё раз)', 'password', ''),
-    registerButton: Button('register-button', 'Зарегистрироваться'),
+    registerButton: Button('register-button', DEV_LINK_ADDRESS, 'Зарегистрироваться'),
     underButtonClass: 'register-button__under-text',
     underButtonText: 'Войти',
-    loginLink: DEV_LINK_ADDRESS + 'login'
+    loginLink: DEV_LINK_ADDRESS
 });

@@ -27,6 +27,6 @@ export const Profile = () => Handlebars.compile(profileTmpl)({
     changePasswordLink: DEV_LINK_ADDRESS + 'profile_change_passwd',
     changePasswdName: 'Изменить пароль',
     logoutClass: 'logout',
-    toLoginLink: DEV_LINK_ADDRESS + 'login',
+    toLoginLink: DEV_LINK_ADDRESS,
     logoutName: 'Выйти'
 });

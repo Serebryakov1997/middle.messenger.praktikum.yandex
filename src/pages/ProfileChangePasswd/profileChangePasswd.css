@@ -1,0 +1,24 @@
+.profile-container {
+  display: block;
+  border-radius: 30px;
+  width: 702px;
+  height: 825px;
+  background-color: #d9d9d9;
+  margin: 0 auto;
+  margin-top: 100px;
+  position: relative;
+  text-align: center;
+}
+.profile-container .avatar {
+  margin-top: 50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #cec48d;
+  z-index: 1;
+}
+.profile-container .button-save-passwd {
+  margin-top: 220px;
+}
+
+/*# sourceMappingURL=profileChangePasswd.css.map */

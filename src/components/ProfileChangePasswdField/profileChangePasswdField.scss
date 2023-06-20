@@ -1,0 +1,21 @@
+$font-size: 20px;
+
+.profile-change-passwd-field {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: $font-size;
+    text-align: right;
+
+    input {
+        position: relative;
+        left: 350px;
+        border: none;
+    }
+
+    label {
+        top: 25px;
+        margin-left: 70px;
+        text-align: left;
+    }
+
+}

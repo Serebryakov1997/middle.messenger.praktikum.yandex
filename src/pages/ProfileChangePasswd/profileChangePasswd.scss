@@ -1,0 +1,14 @@
+@use '../_ProfileBase/profile_base';
+@use '../_MainBase/main_base';
+
+.profile-container {
+    @include profile_base.profile-container;
+
+    .avatar {
+        @include profile_base.avatar;
+    }
+
+    .button-save-passwd {
+        margin-top: 220px;
+    }
+}

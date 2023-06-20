@@ -1,4 +1,12 @@
-import { Main, Login, Register, Plug, Profile, ProfileChangeData } from './pages';
+import {
+    Main,
+    Login,
+    Register,
+    Plug,
+    Profile,
+    ProfileChangeData,
+    ProfileChangePasswd,
+} from './pages';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function getPage() {
         switch (window.location.pathname) {
             case '/':
-                return Main();
-            case '/login':
                 return Login();
             case '/register':
                 return Register();
@@ -18,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return Profile();
             case '/profile_change_data':
                 return ProfileChangeData();
+            case '/profile_change_passwd':
+                return ProfileChangePasswd();
         }
     }
 
