@@ -8,11 +8,12 @@ $font-size: 20px;
     text-align: left;
 }
 
-.profile-value {
+input {
     margin-top: -20px;
     font-weight: normal;
     text-align: right;
-    margin-right: 60px;
+    // margin-right: 60px;
     font-size: $font-size;
+    // border: none;
 }
 

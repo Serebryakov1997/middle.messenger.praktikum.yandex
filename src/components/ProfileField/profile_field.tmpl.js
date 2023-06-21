@@ -1,8 +1,8 @@
 export const profileFieldTmpl = `
-    <div class="{{profileFieldClass}}" name="{{profileFieldName}}">
+    <form class="{{profileFieldClass}}" name="{{profileFieldName}}">
         {{fieldName}}
-        <div class="{{profileValueClass}}">{{value}}</div>
-    </div>
+        <input type="{{inputType}}">{{value}}</input>
+    </form>
 `;
 
 //backup

@@ -3,6 +3,6 @@
 // `;
 export const buttonTmpl = `
     <form class={{buttonClass}} action={{buttonLink}}>
-        <button type="submit">{{buttonName}}</button>
+        <button onClick="{{changeValue}}" type="submit">{{buttonName}}</button>
     </form>
 `;

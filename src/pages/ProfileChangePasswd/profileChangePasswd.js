@@ -1,7 +1,7 @@
 import './profileChangePasswd.css';
 import { profileChangePasswdTmpl } from './profileChangePasswd.tmpl';
 import { ProfileChangePasswdField, Button } from '../../components';
-import { DEV_LINK_ADDRESS, PASSWD_PLACEHOLDER } from '../../utils';
+import { DEV_LINK_ADDRESS, PASSWD_PLACEHOLDER, getInputValue } from '../../utils';
 import Handlebars from 'handlebars';
 
 
@@ -12,7 +12,7 @@ export const ProfileChangePasswd = () => Handlebars.compile(profileChangePasswdT
         'oldPassword',
         'password-input',
         'Старый пароль',
-        PASSWD_PLACEHOLDER
+        PASSWD_PLACEHOLDER,
     ),
     newPasswd: ProfileChangePasswdField(
         'newPassword',
