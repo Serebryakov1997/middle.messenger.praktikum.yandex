@@ -9,8 +9,13 @@ const PORT = 3000;
 const currentDir = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(currentDir);
 
-app.use(express.static(__dirname + '/build'));
-console.log('dirname: ', __dirname + '/build');
+app.use(express.static('./build'));
+
+app.get('*', function (_, res) {
+    res.sendFile('./build/index.html', {
+        root: __dirname,
+    });
+});
 
 app.listen(PORT, function () {
     console.log(`My Web Messenger listening on port ${PORT}!`);
