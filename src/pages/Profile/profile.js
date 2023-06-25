@@ -1,7 +1,7 @@
 import './profile.css';
 import { profileTmpl } from './profile.tmpl';
 import { AvatarLoader, ProfileField } from '../../components';
-import { DEV_LINK_ADDRESS, viewAvatarBlock } from '../../utils';
+import { DEV_LINK_ADDRESS } from '../../utils';
 import Handlebars from 'handlebars';
 
 
@@ -24,13 +24,13 @@ export const Profile = () => Handlebars.compile(profileTmpl)({
     displayName: 'Иван',
     statusName: 'online',
     avatarBlock: AvatarLoader(),
-    onMouseDownAction: viewAvatarBlock('avatar-loader-id', 'display', 'block'),
-    emailField: ProfileField('email', 'email-input', 'Почта', '', 'readonly'),
-    loginField: ProfileField('login', 'login-input', 'Логин', '', 'readonly'),
-    firstNameField: ProfileField('first_name', 'first-name-input', 'Имя', '', 'readonly'),
-    secondNameField: ProfileField('second_name', 'second-name-input', 'Фамилия', '', 'readonly'),
-    displayNameField: ProfileField('display_name', 'display-name-input', 'Имя в чате', '', 'readonly'),
-    phoneField: ProfileField('phone', 'phone-input', 'Телефон', '', 'readonly'),
+    displayBlock: `document.getElementById('avatar-loader-id').style.display = 'block'`,
+    emailField: ProfileField('email', 'email-input', 'Почта', '', 'ivan.ivanov@yandex.ru', 'readonly'),
+    loginField: ProfileField('login', 'login-input', 'Логин', '', 'ivanivanov', 'readonly'),
+    firstNameField: ProfileField('first_name', 'first-name-input', 'Имя', '', 'Иван', 'readonly'),
+    secondNameField: ProfileField('second_name', 'second-name-input', 'Фамилия', '', 'Иванов', 'readonly'),
+    displayNameField: ProfileField('display_name', 'display-name-input', 'Имя в чате', '', 'Иван', 'readonly'),
+    phoneField: ProfileField('phone', 'phone-input', 'Телефон', '', '+7(909)39393939', 'readonly'),
     changeDataLink: DEV_LINK_ADDRESS + 'profile_change_data',
     changeDataName: 'Изменить данные',
     changePasswordLink: DEV_LINK_ADDRESS + 'profile_change_passwd',

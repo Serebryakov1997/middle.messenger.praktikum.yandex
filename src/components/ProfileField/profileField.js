@@ -13,6 +13,7 @@ export const ProfileField = (
     changeDataInputId,
     labelNameInput,
     changeDataInputPlaceholder,
+    profileFieldValue,
     readOnly
 ) => Handlebars.compile(profileFieldTmpl)({
     styles: styles,
@@ -20,5 +21,6 @@ export const ProfileField = (
     changeDataFieldName: changeDataFieldName,
     changeDataInputId: changeDataInputId,
     labelNameInput: labelNameInput,
+    profileFieldValue: profileFieldValue,
     changeDataInputPlaceholder: changeDataInputPlaceholder
 });
