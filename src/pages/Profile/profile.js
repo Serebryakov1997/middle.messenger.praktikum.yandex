@@ -7,6 +7,7 @@ import Handlebars from 'handlebars';
 
 const styles = {
     containerClass: 'profile-container',
+    darkScreen: 'dark-screen',
     imgType: 'submit',
     cameraClass: 'camera-button',
     displayNameClass: 'display-name',
@@ -17,6 +18,9 @@ const styles = {
 };
 
 
+const displayBlock = `document.getElementById('avatar-loader-id').style.display = 'block'`;
+const darkScreen = `document.getElementById('dark-screen').style.display = 'block'`;
+
 export const Profile = () => Handlebars.compile(profileTmpl)({
     styles: styles,
     name: 'avatar',
@@ -24,7 +28,7 @@ export const Profile = () => Handlebars.compile(profileTmpl)({
     displayName: 'Иван',
     statusName: 'online',
     avatarBlock: AvatarLoader(),
-    displayBlock: `document.getElementById('avatar-loader-id').style.display = 'block'`,
+    displayBlock: displayBlock,
     emailField: ProfileField('email', 'email-input', 'Почта', '', 'ivan.ivanov@yandex.ru', 'readonly'),
     loginField: ProfileField('login', 'login-input', 'Логин', '', 'ivanivanov', 'readonly'),
     firstNameField: ProfileField('first_name', 'first-name-input', 'Имя', '', 'Иван', 'readonly'),
