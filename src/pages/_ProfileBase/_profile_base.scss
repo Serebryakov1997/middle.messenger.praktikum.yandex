@@ -1,20 +1,15 @@
 @use '../_MainBase/main_base';
 
 @mixin profile-container {
-    display: block;
-    border-radius: main_base.$border_radius;
+    @include main_base.block-center-position;
     width: 702px;
     height: 825px;
-    background-color: main_base.$back_color;
-    margin: 0 auto;
-    margin-top: 100px;
-    position: relative;
     text-align: center;
+    border-radius: main_base.$border_radius;
+    background-color: main_base.$back_color;
 }
 
 @mixin avatar {
-    // padding-top: 30px;
-    // vertical-align: middle;
     margin-top: 50px;
     width: 150px;
     height: 150px;

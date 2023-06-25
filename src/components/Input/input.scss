@@ -9,6 +9,7 @@ label {
 }
 
 input {
+   width: 100%;
    width: 285px;
    height: 30px;
    border: none;
@@ -17,8 +18,14 @@ input {
 
    &:focus {
       outline: none;
-      padding-left: 10px;
+      text-align: left;
    }
+
+   &::placeholder {
+      text-align: left;
+      font-size: 15px;
+   }
+
 }
 
 .input-top {

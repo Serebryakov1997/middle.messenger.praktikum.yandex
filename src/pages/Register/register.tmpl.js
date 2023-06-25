@@ -1,6 +1,6 @@
 export const registerTmpl = `
-    <div class="{{containerClass}}">
-        <div class="{{headerClass}}">{{headerName}}</div>
+    <div class="{{styles.containerClass}}">
+        <div class="{{styles.headerClass}}">{{headerName}}</div>
         {{{inputEmail}}}
         {{{inputLogin}}}
         {{{inputFirstName}}}
@@ -9,6 +9,6 @@ export const registerTmpl = `
         {{{inputPasswd}}}
         {{{inputPasswdAgain}}}
         {{{registerButton}}}
-        <a class="{{underButtonClass}}" href="{{loginLink}}">{{underButtonText}}</a>
+        <a class="{{styles.underButtonClass}}" href="{{loginLink}}">{{underButtonText}}</a>
     </div>
 `;

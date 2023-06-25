@@ -5,28 +5,33 @@ import { DEV_LINK_ADDRESS } from '../../utils';
 import Handlebars from 'handlebars';
 
 
-export const Profile = () => Handlebars.compile(profileTmpl)({
+const styles = {
     containerClass: 'profile-container',
-    name: 'avatar',
     cameraClass: 'camera',
-    displayFieldName: 'display_name',
     displayNameClass: 'display-name',
-    displayName: 'Иван',
     statusClass: 'status',
-    statusName: 'online',
-    emailField: ProfileField('email', 'Почта', 'ivan.ivanov@yandex.ru'),
-    loginField: ProfileField('login', 'Логин', 'ivanivanov'),
-    firstNameField: ProfileField('first_name', 'Имя', 'Иван'),
-    secondNameField: ProfileField('second_name', 'Фамилия', 'Иванов'),
-    displayNameField: ProfileField('display_name', 'Имя в чате', 'Иван'),
-    phoneField: ProfileField('phone', 'Телефон', '+7(909)9673030'),
     changeDataClass: 'change-data',
+    changePasswordClass: 'change-passwd',
+    logoutClass: 'logout',
+};
+
+
+export const Profile = () => Handlebars.compile(profileTmpl)({
+    styles: styles,
+    name: 'avatar',
+    displayFieldName: 'display_name',
+    displayName: 'Иван',
+    statusName: 'online',
+    emailField: ProfileField('email', 'email-input', 'Почта', '', 'readonly'),
+    loginField: ProfileField('login', 'login-input', 'Логин', '', 'readonly'),
+    firstNameField: ProfileField('first_name', 'first-name-input', 'Имя', '', 'readonly'),
+    secondNameField: ProfileField('second_name', 'second-name-input', 'Фамилия', '', 'readonly'),
+    displayNameField: ProfileField('display_name', 'display-name-input', 'Имя в чате', '', 'readonly'),
+    phoneField: ProfileField('phone', 'phone-input', 'Телефон', '', 'readonly'),
     changeDataLink: DEV_LINK_ADDRESS + 'profile_change_data',
     changeDataName: 'Изменить данные',
-    changePasswordClass: 'change-passwd',
     changePasswordLink: DEV_LINK_ADDRESS + 'profile_change_passwd',
     changePasswdName: 'Изменить пароль',
-    logoutClass: 'logout',
     toLoginLink: DEV_LINK_ADDRESS,
     logoutName: 'Выйти'
 });

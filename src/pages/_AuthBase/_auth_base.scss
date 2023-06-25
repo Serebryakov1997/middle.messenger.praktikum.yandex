@@ -1,11 +1,6 @@
 @use '../_MainBase/main_base';
 
 @mixin main-container {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // margin-top: 252px;
-    // margin-left: 519px;
     border-radius: main_base.$border_radius;
     width: 401px;
     height: 519px;

@@ -1,5 +1,4 @@
 import {
-    Main,
     Login,
     Register,
     Plug,

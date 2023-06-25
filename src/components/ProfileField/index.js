@@ -1,1 +1,1 @@
-export { ProfileField } from './profile_field';
+export { ProfileField } from './profileField';

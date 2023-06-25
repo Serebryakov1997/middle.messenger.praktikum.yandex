@@ -1,13 +1,14 @@
 .profile-container {
-  display: block;
-  border-radius: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
   width: 702px;
   height: 825px;
-  background-color: #d9d9d9;
-  margin: 0 auto;
-  margin-top: 100px;
-  position: relative;
   text-align: center;
+  border-radius: 30px;
+  background-color: #d9d9d9;
 }
 .profile-container .avatar {
   margin-top: 50px;
