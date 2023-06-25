@@ -1,6 +1,6 @@
 @use '../../pages/_MainBase/main_base';
 
-button {
+.main-button {
     width: 298px;
     height: 58px;
     border: none;
@@ -9,12 +9,5 @@ button {
     text-align: center;
     margin: 0 auto;
     display: block;
-}
-
-button {
     background-color: main_base.$component_color;
 }
-
-// .button-top {
-//     margin-bottom: 20px;
-// }

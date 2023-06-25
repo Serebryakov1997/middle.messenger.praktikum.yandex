@@ -1,9 +1,12 @@
 export const profileTmpl = `
     <div class="{{styles.containerClass}}">
         <img name={{name}} class={{name}}>
-        <img src="../src/pages/Profile/img/camera.png" class="{{styles.cameraClass}}">
+        <button class="{{styles.cameraClass}}" onclick="{{omMouseDownAction}}">
+            <img src="../src/pages/Profile/img/camera.png" alt="Image">
+        </button>
         <p name={{displayFieldName}} class="{{styles.displayNameClass}}">{{displayName}}</p>
         <p class="{{styles.statusClass}}">{{statusName}}</p>
+        {{{avatarBlock}}}
         {{{emailField}}}
         {{{loginField}}}
         {{{firstNameField}}}
@@ -15,3 +18,5 @@ export const profileTmpl = `
         <a class="{{styles.changeDataClass}} {{styles.logoutClass}}" href="{{toLoginLink}}">{{logoutName}}</a>
     </div>
 `;
+
+{/* <img type="{{styles.imgType}}" src="../src/pages/Profile/img/camera.png" class="{{styles.cameraClass}}"></img> */ } 

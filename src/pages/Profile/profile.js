@@ -1,13 +1,14 @@
 import './profile.css';
 import { profileTmpl } from './profile.tmpl';
-import { ProfileField } from '../../components';
-import { DEV_LINK_ADDRESS } from '../../utils';
+import { AvatarLoader, ProfileField } from '../../components';
+import { DEV_LINK_ADDRESS, viewAvatarBlock } from '../../utils';
 import Handlebars from 'handlebars';
 
 
 const styles = {
     containerClass: 'profile-container',
-    cameraClass: 'camera',
+    imgType: 'submit',
+    cameraClass: 'camera-button',
     displayNameClass: 'display-name',
     statusClass: 'status',
     changeDataClass: 'change-data',
@@ -22,6 +23,8 @@ export const Profile = () => Handlebars.compile(profileTmpl)({
     displayFieldName: 'display_name',
     displayName: 'Иван',
     statusName: 'online',
+    avatarBlock: AvatarLoader(),
+    onMouseDownAction: viewAvatarBlock('avatar-loader-id', 'display', 'block'),
     emailField: ProfileField('email', 'email-input', 'Почта', '', 'readonly'),
     loginField: ProfileField('login', 'login-input', 'Логин', '', 'readonly'),
     firstNameField: ProfileField('first_name', 'first-name-input', 'Имя', '', 'readonly'),

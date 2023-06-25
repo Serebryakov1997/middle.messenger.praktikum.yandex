@@ -1,0 +1,13 @@
+@use '../../pages/_MainBase/main_base';
+
+
+.avatar-loader {
+    @include main_base.block-center-position;
+
+    display: none;
+    width: 423px;
+    height: 348px;
+    border-radius: 20px;
+    background: #fff;
+    z-index: 4;
+}

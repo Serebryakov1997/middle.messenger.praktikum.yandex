@@ -1,0 +1,15 @@
+.avatar-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  width: 423px;
+  height: 348px;
+  border-radius: 20px;
+  background: #fff;
+  z-index: 4;
+}
+
+/*# sourceMappingURL=avatarLoader.css.map */
