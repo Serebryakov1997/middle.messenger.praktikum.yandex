@@ -9,11 +9,11 @@ const PORT = 3000;
 const currentDir = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(currentDir);
 
-app.use(express.static('./build'));
+app.use(express.static(__dirname + '/build'));
 
 app.get('*', function (_, res) {
-    res.sendFile('./build/index.html', {
-        root: __dirname,
+    res.sendFile('/index.html', {
+        root: __dirname + '/build',
     });
 });
 
