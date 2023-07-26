@@ -18,5 +18,5 @@ export const AvatarLoader = () => Handlebars.compile(avatarLoaderTmpl)({
     styles: styles,
     text1Name: 'Перетащите файл сюда',
     textOrName: 'или',
-    avatarButton: Button('avatar-button', DEV_LINK_ADDRESS + 'profile', 'Выберите файл')
+    avatarButton: Button('', DEV_LINK_ADDRESS + 'profile', 'Выберите файл')
 });

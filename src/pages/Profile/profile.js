@@ -19,7 +19,6 @@ const styles = {
 
 
 const displayBlock = `document.getElementById('avatar-loader-id').style.display = 'block'`;
-const darkScreen = `document.getElementById('dark-screen').style.display = 'block'`;
 
 export const Profile = () => Handlebars.compile(profileTmpl)({
     styles: styles,
