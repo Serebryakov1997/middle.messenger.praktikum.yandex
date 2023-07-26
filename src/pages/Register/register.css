@@ -16,7 +16,7 @@
   text-align: center;
 }
 .register-container .register-button {
-  margin-top: 50px;
+  padding-top: 25px;
 }
 .register-container .register-button__under-text {
   display: block;

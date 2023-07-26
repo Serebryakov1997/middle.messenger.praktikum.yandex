@@ -21,9 +21,22 @@
     }
 
     .text-class {
+        display: block;
+        margin-top: 50px;
         font-size: 24px;
         font-weight: 700;
         line-height: 20px;
         color: rgba(0, 0, 0, 0.39);
     }
+
+    .text-or-class {
+        display: block;
+        margin-top: 40px;
+    }
+
+    button {
+        display: block;
+        margin-top: 40px;
+    }
+    
 }

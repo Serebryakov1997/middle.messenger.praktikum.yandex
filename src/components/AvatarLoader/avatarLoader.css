@@ -24,10 +24,20 @@
   border-radius: 20px;
 }
 .avatar-loader .text-class {
+  display: block;
+  margin-top: 50px;
   font-size: 24px;
   font-weight: 700;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.39);
+}
+.avatar-loader .text-or-class {
+  display: block;
+  margin-top: 40px;
+}
+.avatar-loader button {
+  display: block;
+  margin-top: 40px;
 }
 
 /*# sourceMappingURL=avatarLoader.css.map */
