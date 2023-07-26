@@ -1,3 +1,6 @@
 [[redirects]]
-from = "/*"
-to = "https://lustrous-concha-c998bf.netlify.app/*"
+from = "/"
+to = "https://lustrous-concha-c998bf.netlify.app/"
+
+from = "/chats"
+to = "https://lustrous-concha-c998bf.netlify.app/chats"
