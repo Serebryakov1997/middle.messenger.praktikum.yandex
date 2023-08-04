@@ -5,6 +5,7 @@ import {
     Profile,
     ProfileChangeData,
     ProfileChangePasswd,
+    NotFound
 } from './pages';
 
 
@@ -25,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return ProfileChangeData();
             case '/profile_change_passwd':
                 return ProfileChangePasswd();
+            default:
+                return NotFound();
         }
     }
 

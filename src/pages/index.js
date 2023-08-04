@@ -4,3 +4,4 @@ export { Plug } from './Plug';
 export { Profile } from './Profile';
 export { ProfileChangeData } from './ProfileChangeData';
 export { ProfileChangePasswd } from './ProfileChangePasswd';
+export { NotFound } from './NotFound';
