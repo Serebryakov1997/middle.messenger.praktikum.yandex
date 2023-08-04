@@ -1,5 +1,7 @@
+@use './colors/colors';
+
 .page-error {
-    color: #1e1e1e;
+    color: colors.$page-error-main-color;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
@@ -31,7 +33,7 @@
     .link-to-chats {
         display: block;
         padding-left: 50px;
-        color: #3369F3;
+        color: colors.$link-color;
         font-size: 11px;
         line-height: 11px;
         text-decoration: none;

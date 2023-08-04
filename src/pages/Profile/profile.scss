@@ -1,5 +1,6 @@
 @use '../_ProfileBase/profile_base';
 @use '../_MainBase/main_base';
+@use './colors/colors';
 
 .profile-container {
     @include profile_base.profile-container;
@@ -43,10 +44,10 @@
         font-size: 20px;
         text-decoration: none;
         text-align: left;
-        color: #242cdd;
+        color: colors.$change-data-color;
     }
 
     .logout {
-        color: red;
+        color: colors.$logout-color;
     }
 }
