@@ -1,6 +1,6 @@
+import './avatarLoader.css';
 import { DEV_LINK_ADDRESS } from '../../utils';
 import { Button } from '../Button';
-import './avatarLoader.css';
 import { avatarLoaderTmpl } from './avatarLoader.tmpl';
 import Handlebars from 'handlebars';
 
