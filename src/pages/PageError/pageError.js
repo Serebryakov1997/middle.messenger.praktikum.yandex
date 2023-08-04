@@ -1,19 +1,19 @@
-import './notFound.css';
-import { notFoundTmpl } from './notFound.tmpl';
+import './pageError.css';
+import { pageErrorTmpl } from './pageError.tmpl';
 import { DEV_LINK_ADDRESS } from '../../utils';
 import Handlebars from 'handlebars';
 
 const styles = {
-    notFoundClass: 'not-found',
+    pageErrorClass: 'page-error',
     codeErrorClass: 'code-error',
     codeErrorTextClass: 'code-error-text',
     linkToChatsClass: 'link-to-chats'
 }
 
-export const NotFound = () => Handlebars.compile(notFoundTmpl)({
+export const PageError = (code, errorText) => Handlebars.compile(pageErrorTmpl)({
     styles: styles,
-    codeError: '404',
-    codeErrorText: 'Не туда попали',
+    codeError: code,
+    codeErrorText: errorText,
     linkToChats: DEV_LINK_ADDRESS + 'chats',
     linkToChatsName: 'Назад к чатам'
-})
+});
