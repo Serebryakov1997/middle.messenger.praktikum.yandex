@@ -1,4 +1,5 @@
 @use '../_MainBase/main_base';
+$under-text-color: black;
 
 @mixin main-container {
     border-radius: main_base.$border_radius;
@@ -20,5 +21,5 @@
     font-size: 15px;
     text-align: center;
     text-decoration: none;
-    color: black;
+    color: $under-text-color;
 }

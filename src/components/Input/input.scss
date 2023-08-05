@@ -1,3 +1,5 @@
+@use './colors/colors';
+
 input, label {
    display: block;
    position: relative;
@@ -33,5 +35,5 @@ input {
 }
 
 input {
-   background-color: #d9d9d9;
+   background-color: colors.$input-back-color;
 }
