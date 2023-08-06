@@ -1,22 +1,14 @@
-$font-size: 20px;
-
-.profile-field {
-    margin-top: 0px;
-    font-weight: bold;
-    font-size: $font-size;
-    text-align: right;
-
-    input {
-        margin-top: 5px;
-        position: relative;
-        left: 350px;
-        border: none;
-    }
-
-    label {
-        top: 35px;
-        margin-left: 70px;
-        text-align: left;
-    }
-
+input {
+    margin-top: 5px;
+    position: relative;
+    left: 350px;
+    border: none;    
 }
+
+label {
+    top: 35px;
+    margin-left: 70px;
+    text-align: left;
+}
+
+
