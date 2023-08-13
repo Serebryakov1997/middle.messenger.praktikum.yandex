@@ -3,7 +3,8 @@ import { profileFieldTmpl } from './profileField.tmpl';
 import Handlebars from 'handlebars';
 
 const styles = {
-    changeDataFieldClass: 'profile-field',
+    inputClass: 'profile-input',
+    labelClass: 'profile-label',
     profileFieldType: 'text',
 }
 

@@ -1,5 +1,4 @@
 import './avatarLoader.css';
-import { DEV_LINK_ADDRESS } from '../../utils';
 import { Button } from '../Button';
 import { avatarLoaderTmpl } from './avatarLoader.tmpl';
 import Handlebars from 'handlebars';
@@ -18,5 +17,5 @@ export const AvatarLoader = () => Handlebars.compile(avatarLoaderTmpl)({
     styles: styles,
     text1Name: 'Перетащите файл сюда',
     textOrName: 'или',
-    avatarButton: Button('', DEV_LINK_ADDRESS + 'profile', 'Выберите файл')
+    avatarButton: Button('', 'Выберите файл')
 });

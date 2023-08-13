@@ -1,18 +1,14 @@
-.profile-field {
-  margin-top: 0px;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: right;
-}
-.profile-field input {
+.profile-input {
   margin-top: 5px;
   position: relative;
-  left: 350px;
+  top: 4px;
+  left: 400px;
   border: none;
 }
-.profile-field label {
+
+.profile-label {
   top: 35px;
-  margin-left: 70px;
+  margin-left: 60px;
   text-align: left;
 }
 

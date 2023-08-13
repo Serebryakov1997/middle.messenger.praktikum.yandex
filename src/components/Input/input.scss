@@ -7,7 +7,7 @@ input, label {
 
 label {
    top: 15px;
-   margin-left: 50px;
+   margin-left: 60px;
 }
 
 input {
@@ -16,7 +16,7 @@ input {
    height: 30px;
    border: none;
    border-bottom: 1px solid;
-   margin-left: 50px;
+   left: 60px;
 
    &:focus {
       outline: none;
@@ -31,7 +31,7 @@ input {
 }
 
 .input-top {
-   margin-top: 20px;
+   margin-top: 15px;
 }
 
 input {

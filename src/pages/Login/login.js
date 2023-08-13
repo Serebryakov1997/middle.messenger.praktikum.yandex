@@ -15,9 +15,10 @@ const styles = {
 export const Login = () => Handlebars.compile(loginTmpl)({
     styles: styles,
     headerName: 'Вход',
+    buttonLink: DEV_LINK_ADDRESS + 'chats',
     inputLogin: Input('Логин', 'login', 'ivanivanov'),
     inputPasswd: Input('Пароль', 'password', ''),
-    loginButton: Button('login-button', DEV_LINK_ADDRESS + 'chats', 'Войти'),
+    loginButton: Button('login-button', 'Войти'),
     registerLink: DEV_LINK_ADDRESS + 'register',
     underButtonText: 'Нет аккаунта?'
 });
