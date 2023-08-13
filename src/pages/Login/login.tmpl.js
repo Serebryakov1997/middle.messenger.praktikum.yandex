@@ -1,11 +1,11 @@
 export const loginTmpl = `
-    <div class="{{styles.containerClass}}">
-        <div class="{{styles.headerClass}}">{{headerName}}</div>
-        <form action={{buttonLink}}>
+    <form action={{buttonLink}}>
+        <div class="{{styles.containerClass}}">
+            <div class="{{styles.headerClass}}">{{headerName}}</div>
             {{{inputLogin}}}
             {{{inputPasswd}}}
             {{{loginButton}}}
-        </form>
-        <a class="{{styles.underButtonClass}}" href="{{registerLink}}">{{underButtonText}}</a>
-    </div>
+            <a class="{{styles.underButtonClass}}" href="{{registerLink}}">{{underButtonText}}</a>
+        </div>
+    </form>
 `;

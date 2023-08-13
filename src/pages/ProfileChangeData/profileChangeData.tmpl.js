@@ -1,7 +1,7 @@
 export const profileChangeDataTmpl = `
-    <div class="{{styles.containerClass}}">
-        <img name={{avatarName}} class={{avatarName}}>
-        <form action={{buttonLink}}>
+    <form action={{buttonLink}}>
+        <div class="{{styles.containerClass}}">
+            <img name={{avatarName}} class={{avatarName}}>
             {{{emailField}}}
             {{{loginField}}}
             {{{firstNameField}}}
@@ -9,6 +9,6 @@ export const profileChangeDataTmpl = `
             {{{displayNameField}}}
             {{{phoneField}}}
             {{{buttonSave}}}
-        </form>
-    </div>
+        </div>
+    </form>
 `;
