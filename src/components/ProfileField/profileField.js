@@ -4,8 +4,8 @@ import Handlebars from 'handlebars';
 
 const styles = {
     // changeDataFieldClass: 'profile-field',
-    inputClass: 'input-class',
-    labelClass: 'label-class',
+    inputClass: 'profile-input',
+    labelClass: 'profile-label',
     profileFieldType: 'text',
 }
 

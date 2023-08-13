@@ -1,11 +1,11 @@
 export const profileChangePasswdTmpl = `
-    <div class={{styles.containerClass}}>
-        <img name={{avatarName}} class={{avatarName}}>
-        <form>
+    <form action="{{buttonLink}}">
+        <div class={{styles.containerClass}}>
+            <img name={{avatarName}} class={{avatarName}}>
             {{{oldPasswd}}}
             {{{newPasswd}}}
             {{{repeatNewPasswd}}}
             {{{buttonSave}}}
-        </form>
-    </div>
+        </div>
+    </form>
 `;

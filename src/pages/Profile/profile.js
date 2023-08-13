@@ -10,6 +10,7 @@ const styles = {
     darkScreen: 'dark-screen',
     imgType: 'submit',
     cameraClass: 'camera-button',
+    buttonType: 'button',
     displayNameClass: 'display-name',
     statusClass: 'status',
     changeDataClass: 'change-data',
