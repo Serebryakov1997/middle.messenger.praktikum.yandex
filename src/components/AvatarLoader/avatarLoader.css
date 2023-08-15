@@ -1,0 +1,42 @@
+.avatar-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  width: 423px;
+  height: 348px;
+  border-radius: 20px;
+  background: #fff;
+  z-index: 4;
+}
+.avatar-loader .dash-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 267px;
+  border: 3px dashed rgba(0, 0, 0, 0.67);
+  border-radius: 20px;
+}
+.avatar-loader .text-class {
+  display: block;
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.39);
+}
+.avatar-loader .text-or-class {
+  display: block;
+  margin-top: 40px;
+}
+.avatar-loader button {
+  display: block;
+  margin-top: 40px;
+}
+
+/*# sourceMappingURL=avatarLoader.css.map */

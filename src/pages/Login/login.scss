@@ -1,0 +1,23 @@
+@use '../_MainBase/main_base';
+@use '../_AuthBase/auth_base';
+
+.login-container {
+    @include auth_base.main-container;
+    height: 520px;
+
+    .login-header {
+        @include auth_base.header;
+    }
+
+    .login-button {
+        margin-top: 170px;
+    }
+
+    .login-button__under-text {
+        @include auth_base.under-text;
+    }
+}
+
+.login-container {
+    background-color: main_base.$back-color;
+}

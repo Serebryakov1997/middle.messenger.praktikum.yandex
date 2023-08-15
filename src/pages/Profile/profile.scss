@@ -1,0 +1,53 @@
+@use '../_ProfileBase/profile_base';
+@use '../_MainBase/main_base';
+@use './colors/colors';
+
+.profile-container {
+    @include profile_base.profile-container;
+
+    .avatar {
+        @include profile_base.avatar;
+    }
+
+    .camera-button {
+        top: 10px;
+        left: 10px;
+        margin-left: -50px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid;
+        cursor: pointer;
+        z-index: 2;
+
+        & img {
+            width: 25px;
+            margin-top: 2px;
+        }
+    }
+
+    .display-name {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .status {
+        margin-top: -20px;
+        font-size: 20px;
+    }
+
+    .change-data {
+        display: block;
+        margin-top: 20px;
+        margin-left: 60px;
+        font-size: 20px;
+        text-decoration: none;
+        text-align: left;
+        color: colors.$change-data-color;
+    }
+
+    .logout {
+        color: colors.$logout-color;
+    }
+}

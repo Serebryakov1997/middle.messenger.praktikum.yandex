@@ -1,0 +1,34 @@
+.register-container {
+  border-radius: 30px;
+  width: 401px;
+  height: 519px;
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  height: 732px;
+}
+.register-container .register-header {
+  padding-top: 30px;
+  font-size: 36px;
+  text-align: center;
+}
+.register-container .register-button {
+  margin-top: 50px;
+}
+.register-container .register-button__under-text {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.register-container {
+  background-color: #d9d9d9;
+}
+
+/*# sourceMappingURL=register.css.map */

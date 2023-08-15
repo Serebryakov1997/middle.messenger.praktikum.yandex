@@ -1,0 +1,41 @@
+@use './colors/colors';
+
+.page-error {
+    color: colors.$page-error-main-color;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 60px;
+
+    .code-error {
+        display: block;
+        margin: 0 auto;
+        width: 80px;
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .code-error-text {
+        display: block;
+        padding-bottom: 80px;
+        margin: 0 auto;
+        padding-left: 30px;
+        width: 180px;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .link-to-chats {
+        display: block;
+        padding-left: 50px;
+        color: colors.$link-color;
+        font-size: 11px;
+        line-height: 11px;
+        text-decoration: none;
+    }
+}

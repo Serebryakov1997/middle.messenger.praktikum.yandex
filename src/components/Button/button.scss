@@ -1,0 +1,14 @@
+@use '../../pages/_MainBase/main_base';
+@use './colors/colors';
+
+.main-button {
+    width: 298px;
+    height: 58px;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    background-color: colors.$button-color;
+}

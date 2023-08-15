@@ -1,0 +1,11 @@
+$back-color: #d9d9d9;
+$component_color: #cec48d;
+$border_radius: 30px;
+
+@mixin block-center-position {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
