@@ -7,6 +7,8 @@
 ## Стек
 - node^16.20.0
 - vite^4.3.9
+- @types/node^20.5.0
+- typescript^5.1.6
 - express^4.18.2
 - handlebars^4.7.7
 - sass^1.63.4
