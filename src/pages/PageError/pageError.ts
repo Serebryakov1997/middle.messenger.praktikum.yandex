@@ -10,7 +10,10 @@ const styles = {
     linkToChatsClass: 'link-to-chats'
 }
 
-export const PageError = (code, errorText) => Handlebars.compile(pageErrorTmpl)({
+export const PageError = (
+    code: string,
+    errorText: string
+) => Handlebars.compile(pageErrorTmpl)({
     styles: styles,
     codeError: code,
     codeErrorText: errorText,

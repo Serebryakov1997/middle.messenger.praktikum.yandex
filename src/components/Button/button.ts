@@ -9,12 +9,10 @@ const styles = {
 
 
 export const Button = (
-    buttonClass,
-    buttonName,
-    changeValue
+    buttonClass: string,
+    buttonName: string
 ) => Handlebars.compile(buttonTmpl)({
     styles: styles,
     buttonClass: buttonClass,
-    buttonName: buttonName,
-    changeValue: changeValue
+    buttonName: buttonName
 });

@@ -6,7 +6,11 @@ const styles = {
     inputClass: 'input-top'
 }
 
-export const Input = (labelName, name, placeholder) => Handlebars.compile(inputTmpl)({
+export const Input = (
+    labelName: string,
+    name: string,
+    placeholder: string
+) => Handlebars.compile(inputTmpl)({
     styles: styles,
     labelName: labelName,
     name: name,

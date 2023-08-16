@@ -15,9 +15,9 @@ const styles = {
 export const ProfileChangePasswd = () => Handlebars.compile(profileChangePasswdTmpl)({
     styles: styles,
     avatarName: 'avatar',
-    oldPasswd: ProfileField('oldPassword', passwdInput, 'Старый пароль', PASSWD_PLACEHOLDER),
-    newPasswd: ProfileField('newPassword', passwdInput, 'Новый пароль', PASSWD_PLACEHOLDER),
-    repeatNewPasswd: ProfileField('newPassword', passwdInput, 'Повторите новый пароль', PASSWD_PLACEHOLDER),
+    oldPasswd: ProfileField('oldPassword', passwdInput, 'Старый пароль', PASSWD_PLACEHOLDER, '', ''),
+    newPasswd: ProfileField('newPassword', passwdInput, 'Новый пароль', PASSWD_PLACEHOLDER, '', ''),
+    repeatNewPasswd: ProfileField('newPassword', passwdInput, 'Повторите новый пароль', PASSWD_PLACEHOLDER, '', ''),
     buttonLink: DEV_LINK_ADDRESS + 'profile',
     buttonSave: Button('button-save-passwd', 'Сохранить')
 });

@@ -11,7 +11,7 @@ import {
 const page500 = PageError('500', 'Мы уже фиксим');
 
 document.addEventListener('DOMContentLoaded', () => {
-    const root = document.querySelector('#app');
+    const root = document.querySelector('#app')!;
 
     function getPage() {
         switch (window.location.pathname) {
