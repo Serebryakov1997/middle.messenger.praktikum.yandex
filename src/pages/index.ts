@@ -5,4 +5,4 @@ export { Profile } from './Profile';
 export { ProfileChangeData } from './ProfileChangeData';
 export { ProfileChangePasswd } from './ProfileChangePasswd';
 export { PageError } from './PageError';
-export { SelectChat } from './SelectChat';
+export { Chats } from './Chats';

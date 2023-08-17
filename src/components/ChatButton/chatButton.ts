@@ -1,21 +1,21 @@
-import './chat.css';
-import { chatTmpl } from './chat.tmpl';
+import './chatButton.css';
+import { chatButtonTmpl } from './chatButton.tmpl';
 import Handlebars from 'handlebars';
 
 
 export const styles = {
-    chatClass: 'chat',
+    chatClass: 'chat-button',
     chatImgClass: 'avatar',
     chatNameClass: 'chat-name',
     chatLastContentClass: 'chat-last-content',
     timeClass: 'time'
 }
 
-export const Chat = (
+export const ChatButton = (
     chatName: string,
     chatLastContent: string,
     time: string
-) => Handlebars.compile(chatTmpl)({
+) => Handlebars.compile(chatButtonTmpl)({
     styles: styles,
     chatName: chatName,
     chatLastContent: chatLastContent,

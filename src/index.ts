@@ -1,12 +1,11 @@
 import {
     Login,
     Register,
-    Plug,
     Profile,
     ProfileChangeData,
     ProfileChangePasswd,
     PageError,
-    SelectChat
+    Chats
 } from './pages';
 
 const page500 = PageError('500', 'Мы уже фиксим');
@@ -21,15 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
             case '/register':
                 return Register() || page500;
             case '/chats':
-                return Plug() || page500;
+                return Chats() || page500;
             case '/profile':
                 return Profile() || page500;
             case '/profile_change_data':
                 return ProfileChangeData() || page500;
             case '/profile_change_passwd':
                 return ProfileChangePasswd() || page500;
-            case '/select_chat':
-                return SelectChat() || page500;
             default:
                 return PageError('404', 'Не туда попали') || page500;
         }

@@ -1,1 +1,0 @@
-{"version":3,"sourceRoot":"","sources":["chat.scss","colors/_colors.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA;EACA,kBCLS;EDMT;;AAEA;EACI,kBCVW;EDWX;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA,kBClBO;;ADqBX;EACI;EACA;EACA;EACA;EACA,OC5BW;;AD+Bf;EACI;EACA;EACA;EACA,OCnCW;;ADsCf;EACI;EACA;EACA;EACA;EACA,OC3CW;ED4CX","file":"chat.css"}
