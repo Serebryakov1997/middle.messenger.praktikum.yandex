@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["chats.scss","../../components/ChatButton/colors/_colors.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA,OCNW;EDOX;;;AAGJ;EACI;EACA","file":"chats.css"}
+{"version":3,"sourceRoot":"","sources":["chats.scss","../../components/ChatButton/colors/_colors.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OCXO;EDYP;;AAGJ;EACI","file":"chats.css"}

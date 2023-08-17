@@ -1,14 +1,17 @@
-.select-default-msg {
-  margin-top: -498px;
+.form-chats {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+}
+.form-chats .select-default-msg {
+  text-align: center;
   margin-left: 733px;
   font-weight: bold;
   color: gray;
   font-size: 29px;
 }
-
-.chat-list {
-  margin-top: -440px;
-  margin-left: -40px;
+.form-chats .chat-list {
+  display: block;
 }
 
 /*# sourceMappingURL=chats.css.map */

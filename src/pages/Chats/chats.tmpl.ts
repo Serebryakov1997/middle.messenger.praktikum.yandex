@@ -1,17 +1,18 @@
-export const selectChatTmpl = `
-    <form>
+export const chatsTmpl = `
+    <form class="{{styles.formChatsClass}}">
         {{{searchComponent}}}
         <p class="{{styles.selectDefaultMsgClass}}">{{selectDefaultMsg}}</p>
         <ul class="{{styles.chatClass}}">
-            {{{chat1}}}
-            {{{chat2}}}
-            {{{chat3}}}
-            {{{chat4}}}
-            {{{chat5}}}
-            {{{chat6}}}
-            {{{chat7}}}
-            {{{chat8}}}
-            {{{chat9}}}
+            {{{chatButton1}}}
+            {{{chatButton2}}}
+            {{{chatButton3}}}
+            {{{chatButton4}}}
+            {{{chatButton5}}}
+            {{{chatButton6}}}
+            {{{chatButton7}}}
+            {{{chatButton8}}}
+            {{{chatButton9}}}
+            {{{selectionChat1}}}
         </ul>
     </form>
 `;

@@ -1,24 +1,26 @@
 import './chats.css';
-import { ChatButton, SearchChat } from '../../components';
-import { selectChatTmpl } from './chats.tmpl';
+import { ChatButton, SearchChat, SelectionChat } from '../../components';
+import { chatsTmpl } from './chats.tmpl';
 import Handlebars from 'handlebars';
 
 export const styles = {
+    formChatsClass: 'form-chats',
     selectDefaultMsgClass: 'select-default-msg',
     chatClass: 'chat-list'
 }
 
-export const Chats = () => Handlebars.compile(selectChatTmpl)({
+export const Chats = () => Handlebars.compile(chatsTmpl)({
     styles: styles,
     searchComponent: SearchChat(),
     selectDefaultMsg: 'Выберите чат, чтобы отправить сообщение',
-    chat1: ChatButton('Андрей', 'Изображение', '10:49'),
-    chat2: ChatButton('Киноклуб', 'Вы: стикер', '12:00'),
-    chat3: ChatButton('Илья', 'Друзья...', '15:12'),
-    chat4: ChatButton('Иван', ')', 'Пт'),
-    chat5: ChatButton('ДР', '16 мая собираемся...', 'Ср'),
-    chat6: ChatButton('Рома', '(', 'Пт'),
-    chat7: ChatButton('Надежда', 'Привет', 'Пн'),
-    chat8: ChatButton('Чат', 'Дорогие друзья!!!...', 'Вт'),
-    chat9: ChatButton('Практикум', ')', 'Пт')
+    chatButton1: ChatButton('Андрей', 'Изображение', '10:49'),
+    chatButton2: ChatButton('Киноклуб', 'Вы: стикер', '12:00'),
+    chatButton3: ChatButton('Илья', 'Друзья...', '15:12'),
+    chatButton4: ChatButton('Иван', ')', 'Пт'),
+    chatButton5: ChatButton('ДР', '16 мая собираемся...', 'Ср'),
+    chatButton6: ChatButton('Рома', '(', 'Пт'),
+    chatButton7: ChatButton('Надежда', 'Привет', 'Пн'),
+    chatButton8: ChatButton('Чат', 'Дорогие друзья!!!...', 'Вт'),
+    chatButton9: ChatButton('Практикум', ')', 'Пт'),
+    selectionChat1: SelectionChat(),
 })

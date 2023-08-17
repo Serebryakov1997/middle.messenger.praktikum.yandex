@@ -1,15 +1,22 @@
 @use '../../components/ChatButton/colors/colors';
 
-.select-default-msg {
-    margin-top: -498px;
-    margin-left: 733px;
-    font-weight: bold;
-    color: colors.$border-color;
-    font-size: 29px;
-}
+.form-chats {
+    position: absolute;
+    top: 0%;
+    left: 0%;
 
-.chat-list {
-    margin-top: -440px;
-    margin-left: -40px;
+    .select-default-msg {
+        text-align: center;
+        margin-left: 733px;
+        font-weight: bold;
+        color: colors.$border-color;
+        font-size: 29px;
+    }
+    
+    .chat-list {
+        display: block;
+        // margin-top: -440px;
+        // margin-left: -40px;
+    }
 }
 
