@@ -5,7 +5,8 @@ import {
     Profile,
     ProfileChangeData,
     ProfileChangePasswd,
-    PageError
+    PageError,
+    SelectChat
 } from './pages';
 
 const page500 = PageError('500', 'Мы уже фиксим');
@@ -27,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return ProfileChangeData() || page500;
             case '/profile_change_passwd':
                 return ProfileChangePasswd() || page500;
+            case '/select_chat':
+                return SelectChat() || page500;
             default:
                 return PageError('404', 'Не туда попали') || page500;
         }

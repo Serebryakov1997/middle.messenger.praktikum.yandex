@@ -1,0 +1,28 @@
+.search-chat {
+  display: block;
+  height: 1024px;
+  width: 535px;
+  background-color: #d9d9d9;
+}
+.search-chat .search-bar {
+  display: block;
+  background-color: #fff;
+  top: 67px;
+  left: 103px;
+  height: 64px;
+  width: 416px;
+  border-radius: 20px;
+  border-style: none;
+}
+.search-chat .search-bar::placeholder {
+  font-size: 24px;
+  padding-left: 50px;
+}
+.search-chat .profile-button {
+  display: block;
+  margin-top: 20px;
+  margin-left: 30px;
+  width: 41px;
+}
+
+/*# sourceMappingURL=searchChat.css.map */
