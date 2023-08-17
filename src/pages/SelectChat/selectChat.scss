@@ -1,7 +1,6 @@
 @use '../../components/SearchChat/colors/colors';
 
 .select-default-msg {
-    display: block;
     margin-top: -498px;
     margin-left: 733px;
     font-weight: bold;
@@ -9,4 +8,8 @@
     font-size: 29px;
 }
 
+.chat-list {
+    margin-top: -440px;
+    margin-left: -40px;
+}
 
