@@ -1,8 +1,46 @@
 .selection-chat {
-  height: 148px;
+  position: absolute;
+  top: 0%;
+  height: 140px;
   width: 905px;
   margin-left: 535px;
+  border: 1px solid gray;
   background-color: #d9d9d9;
+}
+.selection-chat .selection-chat-name {
+  margin-top: 52px;
+  margin-left: 30px;
+  font-size: 24px;
+  color: black;
+  font-weight: bold;
+}
+.selection-chat .selection-chat-time {
+  margin-top: -15px;
+  margin-left: 30px;
+  font-size: 20px;
+}
+.selection-chat .dot-options-button {
+  position: absolute;
+  top: 60px;
+  margin-left: 860px;
+  background-color: #d9d9d9;
+  border: none;
+}
+.selection-chat .dot-options-button .dot-options {
+  width: 6px;
+  height: 6px;
+  background: black;
+  border-radius: 5px;
+}
+.selection-chat .dot-options-button .dot-options-height {
+  margin-top: 3px;
+}
+.selection-chat .img-search {
+  position: absolute;
+  top: 60px;
+  margin-left: 800px;
+  width: 30px;
+  height: 30px;
 }
 
 /*# sourceMappingURL=selectionChat.css.map */

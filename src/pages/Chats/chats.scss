@@ -6,6 +6,9 @@
     left: 0%;
 
     .select-default-msg {
+        position: absolute;
+        top: 489px;
+        width: 580px;
         text-align: center;
         margin-left: 733px;
         font-weight: bold;
@@ -14,9 +17,9 @@
     }
     
     .chat-list {
-        display: block;
-        // margin-top: -440px;
-        // margin-left: -40px;
+        position: absolute;
+        top: 120px;
+        margin-left: -40px;
     }
 }
 

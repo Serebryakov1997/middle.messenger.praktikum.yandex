@@ -4,6 +4,9 @@
   left: 0%;
 }
 .form-chats .select-default-msg {
+  position: absolute;
+  top: 489px;
+  width: 580px;
   text-align: center;
   margin-left: 733px;
   font-weight: bold;
@@ -11,7 +14,9 @@
   font-size: 29px;
 }
 .form-chats .chat-list {
-  display: block;
+  position: absolute;
+  top: 120px;
+  margin-left: -40px;
 }
 
 /*# sourceMappingURL=chats.css.map */

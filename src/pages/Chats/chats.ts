@@ -16,11 +16,11 @@ export const Chats = () => Handlebars.compile(chatsTmpl)({
     chatButton1: ChatButton('Андрей', 'Изображение', '10:49'),
     chatButton2: ChatButton('Киноклуб', 'Вы: стикер', '12:00'),
     chatButton3: ChatButton('Илья', 'Друзья...', '15:12'),
-    chatButton4: ChatButton('Иван', ')', 'Пт'),
+    chatButton4: ChatButton('Иван', 'Иван присоединился к чату', 'Пт'),
     chatButton5: ChatButton('ДР', '16 мая собираемся...', 'Ср'),
     chatButton6: ChatButton('Рома', '(', 'Пт'),
     chatButton7: ChatButton('Надежда', 'Привет', 'Пн'),
     chatButton8: ChatButton('Чат', 'Дорогие друзья!!!...', 'Вт'),
     chatButton9: ChatButton('Практикум', ')', 'Пт'),
-    selectionChat1: SelectionChat(),
+    selectionChat4: SelectionChat('Иван', 'Был вчера в 16:54'),
 })

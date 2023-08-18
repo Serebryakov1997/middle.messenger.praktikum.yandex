@@ -12,7 +12,7 @@ export const chatsTmpl = `
             {{{chatButton7}}}
             {{{chatButton8}}}
             {{{chatButton9}}}
-            {{{selectionChat1}}}
         </ul>
+        {{{selectionChat4}}}
     </form>
 `;
