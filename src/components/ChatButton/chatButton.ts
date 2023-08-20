@@ -11,6 +11,9 @@ export const styles = {
     timeClass: 'time'
 }
 
+const displayBlock = `document.getElementById('selection-chat-id').style.display = 'block';`;
+const hideText = `document.getElementById('select-default-msg-id').style.display = 'none';`;
+
 export const ChatButton = (
     chatName: string,
     chatLastContent: string,
@@ -19,5 +22,7 @@ export const ChatButton = (
     styles: styles,
     chatName: chatName,
     chatLastContent: chatLastContent,
-    time: time
+    time: time,
+    displayBlock: displayBlock,
+    hideText: hideText
 });

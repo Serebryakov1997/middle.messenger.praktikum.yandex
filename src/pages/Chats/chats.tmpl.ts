@@ -1,7 +1,7 @@
 export const chatsTmpl = `
     <form class="{{styles.formChatsClass}}">
         {{{searchComponent}}}
-        <p class="{{styles.selectDefaultMsgClass}}">{{selectDefaultMsg}}</p>
+        <div id="{{selectDefaultMsgId}}" class="{{styles.selectDefaultMsgClass}}">{{selectDefaultMsg}}</div>
         <ul class="{{styles.chatClass}}">
             {{{chatButton1}}}
             {{{chatButton2}}}
@@ -14,5 +14,6 @@ export const chatsTmpl = `
             {{{chatButton9}}}
         </ul>
         {{{selectionChat4}}}
+        {{{message}}}
     </form>
 `;

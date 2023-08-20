@@ -1,5 +1,5 @@
 export const selectionChatTmpl = `
-    <div class="{{styles.selectionChatClass}}">
+    <div id="{{selectionChatId}}" class="{{styles.selectionChatClass}}">
         <p class="{{styles.selectionChatNameClass}}">{{selectionChatName}}</p>
         <p class="{{styles.selectionChatTimeClass}}">{{selectionChatTime}}</p>
         <button class="{{styles.dotOptionsButtonClass}}">

@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["searchChat.scss","colors/_colors.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA,kBCNS;;ADQT;EACI;EACA,kBCTW;EDUX;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;;AAIR;EACI;EACA;EACA;EACA","file":"searchChat.css"}
+{"version":3,"sourceRoot":"","sources":["searchChat.scss","colors/_colors.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA,kBCLS;;ADOT;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBCdW;EDeX;;AAEA;EACI;;AAIR;EACI;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA","file":"searchChat.css"}

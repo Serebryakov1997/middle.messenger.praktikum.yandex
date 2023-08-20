@@ -18,6 +18,7 @@ export const SelectionChat = (
     selectionChatTime: string
 ) => Handlebars.compile(selectionChatTmpl)({
     styles: styles,
+    selectionChatId: 'selection-chat-id',
     selectionChatName: selectionChatName,
     selectionChatTime: selectionChatTime
 });

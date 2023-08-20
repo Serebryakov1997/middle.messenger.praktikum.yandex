@@ -6,6 +6,7 @@ import Handlebars from 'handlebars';
 const styles = {
     searchChatClass: 'search-chat',
     searchBarClass: 'search-bar',
+    searchImgClass: 'search-img',
     profileButtonClass: 'profile-button'
 }
 

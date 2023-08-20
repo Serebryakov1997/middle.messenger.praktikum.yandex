@@ -1,10 +1,12 @@
 @use './colors/colors';
 
 .selection-chat {
+    display: none;
     position: absolute;
     top: 0%;
     height: 140px;
-    width: 905px;
+    // width: 905px;
+    width: 1365px;
     margin-left: 535px;
     border: 1px solid colors.$border-color;
     background-color: colors.$back-color;
@@ -26,7 +28,7 @@
     .dot-options-button {
         position: absolute;
         top: 60px;
-        margin-left: 860px;
+        margin-left: 1300px;
         background-color: colors.$back-color;
         border: none;
 
@@ -45,7 +47,7 @@
     .img-search {
         position: absolute;
         top: 60px;
-        margin-left: 800px;
+        margin-left: 1250px;
         width: 30px;
         height: 30px;
     }

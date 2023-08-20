@@ -1,0 +1,38 @@
+@use './colors/colors';
+
+.msg-input-class {
+    display: none;
+    padding-left: 60px;
+    margin-top: -50px;
+    left: 535px;
+    height: 64px;
+    width: 1365px;
+    border-bottom: none;
+    font-size: 24px;
+
+    &::placeholder {
+        font-size: 24px;
+    }
+}
+
+.img-clip-class {
+    display: none;
+    position: relative;
+    top: -60px;
+    margin-left: 545px;
+    height: 51px;
+    width: 51px;
+    z-index: 2;
+}
+
+.msg-send-button {
+    display: none;
+    position: relative;
+    top: -60px;
+    margin-left: 1240px;
+    width: 47px;
+    height: 47px;
+    border-radius: 47px;
+    border: none;
+    background-color: colors.$msg-send-button-color;
+}

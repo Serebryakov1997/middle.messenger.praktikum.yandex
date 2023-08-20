@@ -6,11 +6,12 @@
     left: 0%;
 
     .select-default-msg {
+        display: block;
         position: absolute;
         top: 489px;
         width: 580px;
         text-align: center;
-        margin-left: 733px;
+        margin-left: 940px;
         font-weight: bold;
         color: colors.$border-color;
         font-size: 29px;

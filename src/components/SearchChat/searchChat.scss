@@ -1,31 +1,38 @@
 @use './colors/colors';
 
 .search-chat {
-    display: block;
     height: 1024px;
     width: 535px;
     background-color: colors.$back-color;
 
     .search-bar {
-        display: block;
-        background-color: colors.$search-bar-color;
-        top: 67px;
+        top: 60px;
         left: 103px;
         height: 64px;
-        width: 416px;
+        width: 366px;
         border-radius: 20px;
+        padding-left: 50px;
         border-style: none;
+        background-color: colors.$search-bar-color;
+        font-size: 24px;
 
         &::placeholder {
             font-size: 24px;
-            padding-left: 50px;
         }
     }
 
+    .search-img {
+        position: relative;
+        margin-top: 10px;
+        padding-left: 115px;
+        height: 29px;
+        width: 29px;
+    }
+
     .profile-button {
-        display: block;
-        margin-top: 20px;
-        margin-left: 30px;
+        position: relative;
+        margin-top: 10px;
+        margin-left: -108px;
         width: 41px;
     }
 }

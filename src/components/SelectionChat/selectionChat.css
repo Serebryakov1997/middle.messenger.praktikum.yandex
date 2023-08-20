@@ -1,8 +1,9 @@
 .selection-chat {
+  display: none;
   position: absolute;
   top: 0%;
   height: 140px;
-  width: 905px;
+  width: 1365px;
   margin-left: 535px;
   border: 1px solid gray;
   background-color: #d9d9d9;
@@ -22,7 +23,7 @@
 .selection-chat .dot-options-button {
   position: absolute;
   top: 60px;
-  margin-left: 860px;
+  margin-left: 1300px;
   background-color: #d9d9d9;
   border: none;
 }
@@ -38,7 +39,7 @@
 .selection-chat .img-search {
   position: absolute;
   top: 60px;
-  margin-left: 800px;
+  margin-left: 1250px;
   width: 30px;
   height: 30px;
 }
