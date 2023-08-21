@@ -8,21 +8,34 @@ export const styles = {
     chatImgClass: 'avatar',
     chatNameClass: 'chat-name',
     chatLastContentClass: 'chat-last-content',
-    timeClass: 'time'
+    timeClass: 'time',
+    unreadMsgsNumberClass: 'unread-msgs-number'
 }
 
-const displayBlock = `document.getElementById('selection-chat-id').style.display = 'block';`;
-const hideText = `document.getElementById('select-default-msg-id').style.display = 'none';`;
+function displayOrHideDiv(elemId: string, display: string): string {
+    return `document.getElementById('${elemId}').style.display = '${display}';`
+}
+
+function funcShow(): string {
+    return `function showOrHideDiv() { ` +
+        `${displayOrHideDiv('selection-chat-id', 'block')};` +
+        `${displayOrHideDiv('select-default-msg-id', 'none')}` +
+        `${displayOrHideDiv('input-chat-msg-id', 'block')}` +
+        `${displayOrHideDiv('input-chat-img-id', 'block')}` +
+        `${displayOrHideDiv('msg-send-button-id', 'block')} }; showOrHideDiv();`;
+}
 
 export const ChatButton = (
     chatName: string,
     chatLastContent: string,
-    time: string
+    time: string,
+    unreadMsgsNumber: string
 ) => Handlebars.compile(chatButtonTmpl)({
     styles: styles,
+    displayBlock: funcShow(),
     chatName: chatName,
     chatLastContent: chatLastContent,
     time: time,
-    displayBlock: displayBlock,
-    hideText: hideText
+    unreadMsgsNumberId: 'unread-msgs-number-id',
+    unreadMsgsNumber: unreadMsgsNumber
 });

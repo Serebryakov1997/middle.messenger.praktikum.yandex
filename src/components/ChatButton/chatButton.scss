@@ -45,4 +45,13 @@
         color: colors.$chat-hover-color;
         opacity: .39;
     }
+
+    .unread-msgs-number {
+        display: none;
+        margin-left: 400px;
+        height: 41px;
+        width: 41px;
+        border-radius: 41px;
+        background-color: colors.$avatar-color;
+    }
 }

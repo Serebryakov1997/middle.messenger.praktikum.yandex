@@ -14,7 +14,7 @@ export const Chats = () => Handlebars.compile(chatsTmpl)({
     styles: styles,
     searchComponent: SearchChat(),
     selectDefaultMsg: 'Выберите чат, чтобы отправить сообщение',
-    selectDefautMsgId: 'select-default-msg-id',
+    selectDefaultMsgId: 'select-default-msg-id',
     chatButton1: ChatButton('Андрей', 'Изображение', '10:49'),
     chatButton2: ChatButton('Киноклуб', 'Вы: стикер', '12:00'),
     chatButton3: ChatButton('Илья', 'Друзья...', '15:12'),

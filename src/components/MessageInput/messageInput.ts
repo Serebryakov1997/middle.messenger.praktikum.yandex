@@ -10,5 +10,8 @@ const styles = {
 
 export const MessageInput = () => Handlebars.compile(messageInputTmpl)({
     styles: styles,
+    inputChatMsgId: 'input-chat-msg-id',
+    inputChatImgId: 'input-chat-img-id',
+    msgSendButtonId: 'msg-send-button-id',
     msgInputPlaceholder: 'Сообщение'
 });

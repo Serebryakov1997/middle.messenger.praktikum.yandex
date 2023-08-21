@@ -1,7 +1,7 @@
 export const messageInputTmpl = `
-    <input class="{{styles.msgInputClass}}" type="text" placeholder="{{msgInputPlaceholder}}">
-        <img class="{{styles.imgClipClass}}" src="/src/components/MessageInput/imgs/clip.png">
+    <input id="{{inputChatMsgId}}" class="{{styles.msgInputClass}}" type="text" placeholder="{{msgInputPlaceholder}}">
+        <img id="{{inputChatImgId}}" class="{{styles.imgClipClass}}" src="/src/components/MessageInput/imgs/clip.png">
         {{message}}
-        <button class="{{styles.msgSendButtonClass}}"></button>
+        <button id="{{msgSendButtonId}}" class="{{styles.msgSendButtonClass}}"></button>
     </input>
 `;
