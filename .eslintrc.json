@@ -6,6 +6,26 @@
         "max-len": [2, 100],
         "max-params": [2, 3],
         "@typescript-eslint/no-unused-vars": 2,
-        "no-console": "off"
+        "no-console": "off",
+        "no-undef": "off",
+        "no-underscore-dangle":  0,
+        "import/prefer-default-export": 0,
+        "default-param-last": 0,
+        "no-param-reassign": 0,
+        "no-shadow": 0,
+        "import/extensions": ["error", "ignorePackages", {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never",
+            "mjs": "never"
+          }]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+              "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
     }
 }

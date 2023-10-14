@@ -1,0 +1,33 @@
+.page-error {
+  color: #1e1e1e;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  padding-bottom: 60px;
+}
+.page-error .code-error {
+  display: block;
+  margin: 0 auto;
+  width: 80px;
+  font-size: 40px;
+  line-height: 40px;
+}
+.page-error .code-error-text {
+  display: block;
+  padding-bottom: 80px;
+  margin: 0 auto;
+  padding-left: 30px;
+  width: 180px;
+  font-size: 20px;
+  line-height: 20px;
+}
+.page-error .link-to-chats {
+  display: block;
+  padding-left: 50px;
+  color: #3369F3;
+  font-size: 11px;
+  line-height: 11px;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=error.css.map */

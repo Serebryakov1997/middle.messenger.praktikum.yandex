@@ -1,24 +1,24 @@
 import Handlebars from 'handlebars';
 
-export function handlebars() {
-    const fileRegexp = /\.hbs|\.handlebars$/;
+export default function handlebars() {
+  const fileRegexp = /\.hbs|\.handlebars$/;
 
-    return {
-        name: 'vite-plugin-handlebars-precompile',
-        transform(src, id) {
-            if (!fileRegexp.test(id)) {
-                return;
-            }
+  return {
+    name: 'vite-plugin-handlebars-precompile',
+    transform(src: unknown, id: string): Record<string, string> | undefined {
+      if (!fileRegexp.test(id)) {
+        return {};
+      }
 
-            const code = `
+      const code = `
                 import Handlebars from 'handlebars/runtime';
 
                 export default Handlebars.template(${Handlebars.precompile(src)});
             `;
 
-            return {
-                code
-            };
-        }
-    }
+      return {
+        code,
+      };
+    },
+  };
 }

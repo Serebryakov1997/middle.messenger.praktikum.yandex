@@ -7,26 +7,30 @@
     "node": "^16.20.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "URL_TYPE='vite' vite",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "dev:sass": "sass ./src:./src -w",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "npm run build && node ./server.js"
+    "start": "URL_TYPE='express' npm run build && node ./server.js"
   },
   "devDependencies": {
     "@types/node": "^20.5.0",
+    "@types/uuid": "^9.0.5",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "eslint": "^8.47.0",
     "eslint-config-airbnb": "^19.0.4",
     "stylelint": "^15.10.3",
-    "typescript": "^5.1.6",
-    "vite": "^4.3.9"
+    "typescript": "^5.1.6"
   },
   "dependencies": {
+    "vite": "^4.3.9",
     "express": "^4.18.2",
     "handlebars": "^4.7.7",
     "sass": "^1.63.4",
-    "tsc": "^2.0.4"
+    "tsc": "^2.0.4",
+    "uuid": "^9.0.1"
   }
 }

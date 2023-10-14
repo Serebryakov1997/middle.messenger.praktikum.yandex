@@ -1,0 +1,14 @@
+@use '../../base_styles/main/main';
+@use '../../base_styles/main/colors/main_colors';
+
+.main-button {
+    width: 298px;
+    height: 58px;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    background-color: main_colors.$component-color;
+}
