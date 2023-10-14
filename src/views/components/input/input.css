@@ -1,36 +1,17 @@
-input, label {
+/* Error: There is no module with the namespace "colors".
+ *    ,
+ * 27 |    background-color: colors.$input-back-color;
+ *    |                      ^^^^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   src/views/components/input/input.scss 27:22  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
   display: block;
-  position: relative;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: There is no module with the namespace "colors".\a    \2577 \a 27 \2502     background-color: colors.$input-back-color;\a    \2502                       ^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   src/views/components/input/input.scss 27:22  root stylesheet';
 }
-
-label {
-  top: 15px;
-  margin-left: 60px;
-}
-
-input {
-  width: 100%;
-  width: 285px;
-  height: 30px;
-  border: none;
-  border-bottom: 1px solid;
-  left: 60px;
-}
-input:focus {
-  outline: none;
-  text-align: left;
-}
-input::placeholder {
-  text-align: left;
-  font-size: 15px;
-}
-
-.input-top {
-  margin-top: 15px;
-}
-
-input {
-  background-color: #d9d9d9;
-}
-
-/*# sourceMappingURL=input.css.map */

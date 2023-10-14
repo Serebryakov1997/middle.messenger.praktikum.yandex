@@ -1,6 +1,8 @@
+import './login.css';
 import { Block, DEV_LINK_ADDRESS } from '../../../utils';
 import { Button, Input } from '../../components';
 import { loginTmpl } from './login.tmpl';
+import { Label } from '../../components/label';
 
 
 export class Login extends Block {
@@ -19,9 +21,12 @@ export class Login extends Block {
     }
 
     protected init(): void {
+        this.children.labelLogin = new Label({
+            name: 'login',
+            labelName: 'Логин'
+        });
         this.children.inputLogin = new Input({
-            name: 'Логин',
-            labelName: 'login',
+            name: 'login',
             placeholder: 'ivanivanov',
             styles: {
                 inputClass: 'input-top'
@@ -30,14 +35,13 @@ export class Login extends Block {
                 blur: (e: Event) => {
                     console.log('blur inputLogin: ', e);
                 },
-                click: (e: Event) => {
-                    console.log('click inputLogin: ', e);
+                focus: (e: Event) => {
+                    console.log('focus inputLogin: ', e);
                 }
             }
         });
         this.children.inputPasswd = new Input({
-            name: 'Пароль',
-            labelName: 'password',
+            name: 'password',
             styles: {
                 inputClass: 'input-top'
             },
@@ -45,8 +49,8 @@ export class Login extends Block {
                 blur: (e: Event) => {
                     console.log('blur inputPassword: ', e);
                 },
-                click: (e: Event) => {
-                    console.log('click inputPassword: ', e);
+                focus: (e: Event) => {
+                    console.log('focus inputPassword: ', e);
                 }
             }
         });
