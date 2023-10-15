@@ -1,8 +1,10 @@
 import './login.css';
-import { Block, DEV_LINK_ADDRESS } from '../../../utils';
+import { Block, DEV_LINK_ADDRESS, validationError } from '../../../utils';
 import { Button, Input } from '../../components';
 import { loginTmpl } from './login.tmpl';
 import { Label } from '../../components/label';
+import { loginValidator } from '../../../models/validators';
+import { ValidError } from '../../components/validError';
 
 
 export class Login extends Block {
@@ -31,14 +33,33 @@ export class Login extends Block {
             styles: {
                 inputClass: 'input-top'
             },
+            validErrorId: 'error',
             events: {
                 blur: (e: Event) => {
+                    const re = loginValidator.rule;
+                    const targetValue = (<HTMLInputElement>e.target).value;
+                    const isValid = re.test(targetValue);
+
+                    if (!isValid) {
+                        const msg = loginValidator.errorMsg;
+                        validationError(this.children, msg);
+
+                    } else {
+
+                    }
                     console.log('blur inputLogin: ', e);
+                    console.log('targetValue: ', targetValue);
                 },
                 focus: (e: Event) => {
                     console.log('focus inputLogin: ', e);
                 }
             }
+        });
+        this.children.validErrorLogin = new ValidError('div', {
+            styles: {
+                validErrClass: 'valid-err'
+            },
+            validErrorId: 'error',
         });
         this.children.labelPasswd = new Label({
             name: 'password',
@@ -49,6 +70,7 @@ export class Login extends Block {
             styles: {
                 inputClass: 'input-top'
             },
+            validErrorId: 'error',
             events: {
                 blur: (e: Event) => {
                     console.log('blur inputPassword: ', e);
@@ -61,11 +83,12 @@ export class Login extends Block {
         this.children.loginButton = new Button('login-button', {
             buttonName: 'Войти',
             styles: {
-                buttonClass: 'login-button'
+                buttonClass: 'login-button',
             },
             events: {
-                submit: (e: Event) => {
-                    console.log('submit loginButton: ', e.target);
+                click: (e: Event) => {
+                    // e.preventDefault();
+                    console.log('click loginButton: ', e);
                 }
             }
         });

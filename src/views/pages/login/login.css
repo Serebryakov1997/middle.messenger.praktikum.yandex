@@ -12,18 +12,9 @@
   font-size: 36px;
   text-align: center;
 }
-.login-container .login-button__under-text {
-  display: block;
-  position: relative;
-  margin-top: 255px;
-  font-size: 15px;
-  text-align: center;
-  text-decoration: none;
-  color: black;
-}
 
 .login-button {
-  margin-top: 180px;
+  margin-top: 80px;
   margin-left: 50px;
 }
 

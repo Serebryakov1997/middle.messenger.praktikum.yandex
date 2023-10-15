@@ -4,10 +4,12 @@ export const loginTmpl = `
         <div class="{{styles.headerClass}}">{{headerName}}</div>
         {{{labelLogin}}}
         {{{inputLogin}}}
+        {{{validErrorLogin}}}
         {{{labelPasswd}}}
         {{{inputPasswd}}}
+        {{{validErrorPasswd}}}
         {{{loginButton}}}
-        <a class="{{styles.underButtonClass}}" href="{{registerLink}}">{{underButtonText}}</a>
+        {{{underButtonLink}}}
     </div>
 </form>
 `;

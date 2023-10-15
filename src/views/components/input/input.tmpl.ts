@@ -1,6 +1,6 @@
 export const inputTmpl = `
 <input class="{{styles.inputClass}}" id="{{name}}" type="text" name="{{name}}" placeholder="{{placeholder}}">
-{{{validationErr}}}
+<div id="{{validErrorId}}"></div>
 `;
 
 // label вынести в отдельный компонент

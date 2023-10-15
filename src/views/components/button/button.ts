@@ -8,9 +8,9 @@ interface ButtonProps {
   buttonName: string,
   styles: {
     buttonClass: string;
-  }
+  },
   events: {
-    submit: (e: Event) => void;
+    click: (e: Event) => void;
   }
 }
 

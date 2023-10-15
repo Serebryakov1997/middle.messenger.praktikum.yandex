@@ -10,6 +10,7 @@ interface InputProps {
     styles: {
         inputClass: string;
     };
+    validErrorId: string;
     events: {
         blur: (e: Event) => void;
         focus: (e: Event) => void;

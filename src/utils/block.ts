@@ -236,4 +236,8 @@ export class Block {
   hide() {
     this.getContent().style.display = 'none';
   }
+
+  disable() {
+    this.getContent().setAttribute('disabled', '');
+  }
 }

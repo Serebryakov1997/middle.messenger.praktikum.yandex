@@ -1,0 +1,12 @@
+@use '../../base_styles/auth/colors/auth_colors';
+@use '../../base_styles/auth/auth';
+
+.under-text {
+    display: block;
+    position: relative;
+    margin-top: 150px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: auth_colors.$under-text-color;
+}

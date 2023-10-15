@@ -9,14 +9,14 @@
         @include auth.header;
     }
 
-    .login-button__under-text {
-        @include auth.under-text;
-    }
+    // .login-button__under-text {
+    //     @include auth.under-text;
+    // }
 
     background-color: main_colors.$back-color;
 }
 
 .login-button {
-    margin-top: 180px;
+    margin-top: 80px;
     margin-left: 50px;
 }
