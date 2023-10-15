@@ -1,7 +1,6 @@
 import './input.css';
 import { Block } from '../../../utils';
 import { inputTmpl } from './input.tmpl';
-import { Label } from '../label/label';
 
 
 interface InputProps {
@@ -20,14 +19,6 @@ interface InputProps {
 export class Input extends Block {
     constructor(props: InputProps) {
         super('input', props);
-    }
-
-
-    protected init(): void {
-        this.children.label = new Label({
-            name: 'Логин',
-            labelName: 'login',
-        });
     }
 
     render(): DocumentFragment {

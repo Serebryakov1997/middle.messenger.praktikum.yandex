@@ -1,5 +1,4 @@
 export const DEV_LINK_ADDRESS: string = 'http://127.0.0.1:5173/';
-console.log('DEV_LINK_ADDRESS: ', DEV_LINK_ADDRESS);
 
 // function getMainUrl(urlType: string) {
 //     if (!DEV_LINK_ADDRESS) {

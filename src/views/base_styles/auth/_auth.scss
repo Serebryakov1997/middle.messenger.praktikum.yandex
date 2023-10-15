@@ -6,19 +6,19 @@
     border-radius: main.$border_radius;
     width: 401px;
     height: 519px;
-    position: relative;
     @include main.block-center-position;
 }
 
 @mixin header {
-    padding-top: 30px;
+    padding-top: 35px;
     font-size: 36px;
     text-align: center;
 }
 
 @mixin under-text {
     display: block;
-    margin-top: 10px;
+    position: relative;
+    margin-top: 255px;
     font-size: 15px;
     text-align: center;
     text-decoration: none;

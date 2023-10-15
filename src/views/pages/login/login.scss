@@ -1,16 +1,12 @@
 @use '../../base_styles/main/colors/main_colors';
 @use '../../base_styles/auth/auth';
 
+
 .login-container {
     @include auth.main-container;
-    height: 520px;
 
     .login-header {
         @include auth.header;
-    }
-
-    .login-button {
-        margin-top: 170px;
     }
 
     .login-button__under-text {
@@ -18,4 +14,9 @@
     }
 
     background-color: main_colors.$back-color;
+}
+
+.login-button {
+    margin-top: 180px;
+    margin-left: 50px;
 }

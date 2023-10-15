@@ -8,15 +8,15 @@ import { Label } from '../../components/label';
 export class Login extends Block {
     constructor() {
         super('form', {
-            buttonLink: DEV_LINK_ADDRESS + 'chats',
             styles: {
                 containerClass: 'login-container',
                 headerClass: 'login-header',
-                headerName: 'Вход',
                 underButtonClass: 'login-button__under-text',
-                registerLink: DEV_LINK_ADDRESS + 'register',
-                underButtonText: 'Нет аккаунта?'
-            }
+            },
+            headerName: 'Вход',
+            buttonLink: DEV_LINK_ADDRESS + 'chats',
+            registerLink: DEV_LINK_ADDRESS + 'register',
+            underButtonText: 'Нет аккаунта?'
         });
     }
 
@@ -40,6 +40,10 @@ export class Login extends Block {
                 }
             }
         });
+        this.children.labelPasswd = new Label({
+            name: 'password',
+            labelName: 'Пароль'
+        });
         this.children.inputPasswd = new Input({
             name: 'password',
             styles: {
@@ -54,15 +58,14 @@ export class Login extends Block {
                 }
             }
         });
-        this.children.loginButton = new Button({
-            styles: {
-                authButtonClass: 'main-button',
-            },
-            buttonClass: 'login-button',
+        this.children.loginButton = new Button('login-button', {
             buttonName: 'Войти',
+            styles: {
+                buttonClass: 'login-button'
+            },
             events: {
                 submit: (e: Event) => {
-                    console.log('submit loginButton: ', e);
+                    console.log('submit loginButton: ', e.target);
                 }
             }
         });

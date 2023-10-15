@@ -1,3 +1,4 @@
+import './label.css';
 import { Block } from '../../../utils';
 import { labelTmpl } from './label.tmpl';
 

@@ -5,19 +5,18 @@ import { buttonTmpl } from './button.tmpl';
 
 interface ButtonProps {
   [key: string]: ({ [name: string]: string } | string | {})
-  styles: {
-    authButtonClass: string,
-  },
-  buttonClass: string,
   buttonName: string,
+  styles: {
+    buttonClass: string;
+  }
   events: {
     submit: (e: Event) => void;
   }
 }
 
 export class Button extends Block {
-  constructor(props: ButtonProps) {
-    super('button', props);
+  constructor(tagName: string, props: ButtonProps) {
+    super(tagName, props);
   }
 
   render(): DocumentFragment {
