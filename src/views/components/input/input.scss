@@ -1,19 +1,19 @@
 @use './colors/input_colors';
 
-.input-top {
-    margin-top: 15px;
-}
+// .input-top {
+//     margin-top: 15px;
+// }
 
 input {
    display: block;
    position: relative;
    width: 100%;
    width: 285px;
-   height: 50px;
+   height: 35px;
    border: none;
    border-bottom: 1px solid;
    left: 60px;
-   top: 30px;
+   top: 25px;
 
    &:focus {
       outline: none;

@@ -16,8 +16,8 @@ interface UnderButtonLinkProps {
 }
 
 export class UnderButtonLink extends Block {
-    constructor(props: UnderButtonLinkProps) {
-        super('a', props);
+    constructor(tagName: string, props: UnderButtonLinkProps) {
+        super(tagName, props);
     }
 
     render(): DocumentFragment {

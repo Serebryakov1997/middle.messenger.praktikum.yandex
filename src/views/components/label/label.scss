@@ -1,15 +1,17 @@
+@use './colors/label_colors';
+
 label {
     display: block;
     position: relative;
 
-    top: 20px;
+    top: 15px;
     margin-left: 30px;
 
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.59);
+    color: label_colors.$label_color;
 
     z-index: 2;
 }

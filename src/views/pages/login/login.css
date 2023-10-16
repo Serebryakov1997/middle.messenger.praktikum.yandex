@@ -14,8 +14,12 @@
 }
 
 .login-button {
-  margin-top: 80px;
-  margin-left: 50px;
+  top: 400px;
+}
+
+.under-text {
+  top: 470px;
+  left: 160px;
 }
 
 /*# sourceMappingURL=login.css.map */
