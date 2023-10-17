@@ -1,0 +1,41 @@
+@use './colors/chat';
+
+.chat {
+    display: block;
+    position: relative;
+    width: 500px;
+    height: 70px;
+    border-top: 1px solid chat.$chat-border-color;
+    border-bottom: 1px solid chat.$chat-border-color;
+    z-index: 2;
+
+    .mock-img {
+        top: 10px;
+        left: 10px;
+        position: relative;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: chat.$chat-mock-img-color;
+    }
+
+    .name {
+        top: -38px;
+        left: -130px;
+        position: relative;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .last-part-msg {
+
+    }
+
+    .number-of-unread-msgs {
+
+    }
+
+    .time-of-last-msg {
+
+    }
+}

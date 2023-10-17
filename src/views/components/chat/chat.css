@@ -1,0 +1,27 @@
+.chat {
+  display: block;
+  position: relative;
+  width: 500px;
+  height: 70px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  z-index: 2;
+}
+.chat .mock-img {
+  top: 10px;
+  left: 10px;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: peru;
+}
+.chat .name {
+  top: -38px;
+  left: -130px;
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=chat.css.map */

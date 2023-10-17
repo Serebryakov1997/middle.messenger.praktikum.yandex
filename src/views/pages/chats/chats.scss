@@ -1,0 +1,7 @@
+@use '../../base_styles/main/colors/main_colors';
+
+.chats-form {
+    width: 500px;
+    height: 1000px;
+    background-color: main_colors.$back-color;
+}

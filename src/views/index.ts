@@ -1,1 +1,5 @@
-export { Login } from './pages';
+export { 
+    Login, 
+    Chats,
+    Error
+} from './pages';
