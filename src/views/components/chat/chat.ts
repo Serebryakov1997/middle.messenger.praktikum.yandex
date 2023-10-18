@@ -2,14 +2,24 @@ import './chat.css';
 import { Block } from '../../../utils';
 import { chatTmpl } from './chat.tmpl';
 
-interface ChatProps {
-    [key: string]: string | {};
+export interface ChatProps {
+    [key: string]: string | {} | undefined;
     styles: {
         chatClass: string;
         mockImgClass: string;
         chatNameClass: string;
+        lastPartMsgClass: string;
+        numberOfUnreadMsgsClass?: string;
+        timeOfLastMsgClass: string;
     };
     chatName: string;
+    lastPartMsg: string;
+    numberOfUnreadMsgs?: string;
+    timeOfLastMsg: string;
+
+    events: {
+        click: (e: Event) => void;
+    }
 }
 
 export class Chat extends Block {

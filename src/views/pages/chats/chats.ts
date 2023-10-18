@@ -1,9 +1,8 @@
 import './chats.css';
-import { Block } from '../../../utils';
+import { Block, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
-import { Chat } from '../../components';
-import { creationChatList } from '../../../utils/creationChatList';
+import { SelectedChatArea } from '../../components';
 
 
 export class Chats extends Block {
@@ -13,29 +12,36 @@ export class Chats extends Block {
     constructor() {
         super('form', {
             styles: {
-                chatsFormClass: 'chats-form'
+                chatsFormClass: 'chats-form',
+                chatsSearchBarClass: 'chats-search-bar',
+                selectChatLegendClass: 'select-chat-legend',
             },
-            chatsForm: 'chats-form-id'
+            chatsForm: 'chats-form-id',
+            chatsSearchBar: 'Поиск',
+            selectChatLegend: 'Выберите чат, чтобы отправить сообщение',
+            selectChatLegendId: 'select-chat-legend-id'
         });
 
         this._formData = new FormData();
     }
 
     protected init(): void {
-        // Object.keys(mockChatsJSON).forEach(key => {
-        //     this.children.chat = new Chat({
-        //         styles: {
-        //             chatClass: 'chat',
-        //             mockImgClass: 'mock-img',
-        //             chatNameClass: 'name'
-        //         },
-        //         chatName: mockChatsJSON[Number(key)].chatName
-        //     });
-        // })
+        const chatsList = creationChatList(mockChatsJSON, this.children as Record<string, Block>);
+        this.children.chatsList = Array.from(chatsList);
+        this.children.selectedChatArea = new SelectedChatArea('header', {
+            styles: {
+                selectedChatNameClass: 'selected-chat-name',
+                selectedChatLastTimeClass: 'selected-chat-last-time',
+                selectedChatInputClass: 'selected-chat-input',
+                selectedChatMsgButtonClass: 'selected-chat-msg-button',
+            },
+            selectedChatName: '',
+            selectedChatLastTime: '',
+            selectedChatInputPlchlder: 'Сообщение',
+            inputName: 'message',
+        });
 
-        const chatsList = creationChatList(mockChatsJSON);
-        this.children.chatsList = Array.from(chatsList) as Block[];
-        console.log('this.children.chatsList: ', this.children.chatsList);
+        // this.children.messages = 
     }
 
     render(): DocumentFragment {

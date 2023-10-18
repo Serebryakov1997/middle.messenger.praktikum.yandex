@@ -2,8 +2,10 @@ export interface IMockChatsJSON {
     [key: number]: {
         chatName: string;
         lastPartMsg: string;
-        numberOfUnreadMsgs: number;
+        numberOfUnreadMsgs?: string;
         timeOfLastMsg: string;
+        selectedChatLastTime?: string;
+        msgs?: string[]
     }
 }
 
@@ -11,55 +13,63 @@ export const mockChatsJSON: IMockChatsJSON = {
     0: {
         chatName: 'Андрей',
         lastPartMsg: 'Изображение',
-        numberOfUnreadMsgs: 2,
-        timeOfLastMsg: '10:49'
+        numberOfUnreadMsgs: '2',
+        timeOfLastMsg: '10:49',
+        selectedChatLastTime: 'Был давно',
+        msgs: ['Привет', 'Изображение']
     },
     1: {
         chatName: 'Киноклуб',
         lastPartMsg: 'Вы: стикер',
-        numberOfUnreadMsgs: 0,
-        timeOfLastMsg: '12:00'
+        timeOfLastMsg: '12:00',
+        selectedChatLastTime: 'Был вчера в 11:00',
+        msgs: ['Кино завтра в 12:00', 'Вы: Ок']
     },
     2: {
         chatName: 'Илья',
         lastPartMsg: 'Друзья...',
-        numberOfUnreadMsgs: 4,
-        timeOfLastMsg: '15:12'
+        numberOfUnreadMsgs: '4',
+        timeOfLastMsg: '15:12',
+        selectedChatLastTime: 'Был сегодня в 15:15',
+        msgs: ['До завтра', 'Друзья ...']
     },
     3: {
         chatName: 'Иван',
         lastPartMsg: ')',
-        numberOfUnreadMsgs: 0,
-        timeOfLastMsg: 'Пт'
+        timeOfLastMsg: 'Пт',
+        selectedChatLastTime: 'Был вчера в 16:54',
+        msgs: [')']
     },
     4: {
         chatName: 'ДР',
         lastPartMsg: '16 мая собираемся...',
-        numberOfUnreadMsgs: 0,
-        timeOfLastMsg: 'Ср'
+        timeOfLastMsg: 'Ср',
+        msgs: ['Всем привет!', '16 мая собираемся у метро']
     },
     5: {
         chatName: 'Рома',
         lastPartMsg: '(',
-        numberOfUnreadMsgs: 0,
-        timeOfLastMsg: 'Пт'
+        timeOfLastMsg: 'Пт',
+        selectedChatLastTime: 'Был вчера в 17:54',
+        msgs: ['(']
     },
     6: {
         chatName: 'Надежда',
         lastPartMsg: 'Привет',
-        numberOfUnreadMsgs: 0,
-        timeOfLastMsg: 'Пн'
+        timeOfLastMsg: 'Пн',
+        selectedChatLastTime: 'Была сегодня в 13:00',
+        msgs: ['Привет']
     },
     7: {
         chatName: 'Чат',
         lastPartMsg: 'Дорогие друзья!!! ...',
-        numberOfUnreadMsgs: 0,
-        timeOfLastMsg: 'Вт'
+        timeOfLastMsg: 'Вт',
+        msgs: ['Дорогие друзья!!! ...']
     },
     8: {
         chatName: 'Практикум',
         lastPartMsg: ')',
-        numberOfUnreadMsgs: 0,
-        timeOfLastMsg: 'Пт'
+        timeOfLastMsg: 'Пт',
+        msgs: [')']
     }
 };

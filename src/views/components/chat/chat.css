@@ -1,27 +1,60 @@
 .chat {
   display: block;
   position: relative;
+  top: 90px;
   width: 500px;
-  height: 70px;
+  height: 86px;
   border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
   z-index: 2;
 }
 .chat .mock-img {
-  top: 10px;
-  left: 10px;
+  top: 15px;
+  left: 15px;
   position: relative;
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
   background-color: peru;
 }
 .chat .name {
   top: -38px;
-  left: -130px;
+  left: 110px;
+  text-align: left;
   position: relative;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
+}
+.chat .last-part-msg {
+  top: -38px;
+  left: 110px;
+  text-align: left;
+  position: relative;
+  font-size: 15px;
+}
+.chat .number-of-unread-msgs {
+  display: flex;
+  top: -67px;
+  left: 450px;
+  position: relative;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+  font-weight: bold;
+  color: white;
+  background-color: peru;
+}
+.chat .time-of-last-msg {
+  display: flex;
+  top: 13px;
+  padding-left: 4px;
+  left: 447px;
+  position: absolute;
+  font-size: 15px;
+  font-weight: bold;
+  color: gray;
 }
 
 /*# sourceMappingURL=chat.css.map */

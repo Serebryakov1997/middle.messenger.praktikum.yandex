@@ -4,6 +4,6 @@ export const chatTmpl = `
         <a class="{{styles.chatNameClass}}">{{chatName}}</a>
         <a class="{{styles.lastPartMsgClass}}">{{lastPartMsg}}</a>
         <a class="{{styles.numberOfUnreadMsgsClass}}">{{numberOfUnreadMsgs}}</a>
-        <a class="{{styles.timeOfLastMsg}}">{{timeOfLast}}</a>
+        <a class="{{styles.timeOfLastMsgClass}}">{{timeOfLastMsg}}</a>
     </div>
 `;

@@ -1,0 +1,53 @@
+header {
+  display: none;
+  position: absolute;
+  top: 0.8%;
+  left: 508px;
+  height: 150px;
+  width: 1390px;
+  border: 1px solid gray;
+  background-color: #d9d9d9;
+}
+header .selected-chat-name {
+  display: block;
+  position: relative;
+  top: 30px;
+  left: 30px;
+  text-align: left;
+  font-size: 25px;
+  font-weight: bold;
+}
+header .selected-chat-last-time {
+  display: block;
+  position: relative;
+  top: 40px;
+  left: 30px;
+  text-align: left;
+  font-size: 20px;
+}
+header .selected-chat-input {
+  display: block;
+  position: absolute;
+  top: 875px;
+  left: 0%;
+  height: 70px;
+  width: 1390px;
+  border: 1px solid gray;
+}
+header .selected-chat-input::placeholder {
+  font-size: 22px;
+  text-align: left;
+  padding-left: 40px;
+}
+header .selected-chat-msg-button {
+  display: block;
+  position: absolute;
+  top: 882px;
+  left: 1250px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: #948431;
+}
+
+/*# sourceMappingURL=selectedChatArea.css.map */

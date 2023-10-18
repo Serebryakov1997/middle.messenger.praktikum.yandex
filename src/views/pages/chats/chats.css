@@ -1,7 +1,36 @@
+html, body {
+  height: 100%;
+}
+
 .chats-form {
+  height: 950px;
   width: 500px;
-  height: 1000px;
   background-color: #d9d9d9;
+}
+.chats-form .chats-search-bar {
+  display: block;
+  position: relative;
+  top: 70px;
+  left: 100px;
+  height: 60px;
+  width: 370px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+}
+.chats-form .chats-search-bar::placeholder {
+  padding-left: 20px;
+  text-align: left;
+  font-size: 20px;
+}
+.chats-form .select-chat-legend {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 1050px;
+  font-size: 25px;
+  font-weight: bold;
+  color: gray;
 }
 
 /*# sourceMappingURL=chats.css.map */

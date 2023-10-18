@@ -1,0 +1,11 @@
+@use './colors/msg_colors';
+
+.msg-in-chat {
+    display: none;
+    position: absolute;
+    top: 700px;
+    height: 20px;
+    width: 70px;
+    border-radius: 20px;
+    background-color: msg_colors.$msg-color;
+}
