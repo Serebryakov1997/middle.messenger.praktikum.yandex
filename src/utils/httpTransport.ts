@@ -1,5 +1,3 @@
-import { CustomType } from './types';
-
 enum Method {
   GET = 'GET',
   POST = 'POST',
@@ -8,22 +6,25 @@ enum Method {
 }
 
 type Options = {
-  data?: CustomType['HeadersOrDataType'],
-  headers?: CustomType['HeadersOrDataType'];
+  data?: Record<string, unknown>,
+  headers?: Record<string, unknown>;
   method?: string;
 };
 
-function queryStringify(data: CustomType['HeadersOrDataType']): string {
+function queryStringify(data: Options['data']): string {
   let str = '?';
-  const lastEl = data[Object.keys(data)[Object.keys(data).length - 1]];
 
-  Object.entries(data).forEach(([key, value]) => {
-    if (value === lastEl) {
-      str += `${key}=${value}`;
-    } else {
-      str += `${key}=${value}&`;
-    }
-  });
+  if (data) {
+    const lastEl = data[Object.keys(data)[Object.keys(data).length - 1]];
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (value === lastEl) {
+        str += `${key}=${value}`;
+      } else {
+        str += `${key}=${value}&`;
+      }
+    });
+  }
 
   return str;
 }
@@ -38,29 +39,31 @@ export class HTTPTransport {
   }
 
   get = (url: string, options?: Options): Promise<XMLHttpRequestResponseType> => {
+    let handledUrl: string = url;
+    const handledOptions: Options = options!;
     if (options && options.data) {
-      url += `?${queryStringify(options.data)}`;
-      options.data = {};
+      handledUrl += `?${queryStringify(options.data)}`;
+      handledOptions.data = {};
     }
     return HTTPTransport.request(
-      this._mainLinkAddress + url,
-      { ...options, method: Method.GET },
+      this._mainLinkAddress + handledUrl,
       this.TIMEOUT,
+      { ...handledOptions, method: Method.GET },
     );
   };
 
   put = (url: string, options?: Options):
     Promise<XMLHttpRequestResponseType> => HTTPTransport.request(
     this._mainLinkAddress + url,
-    { ...options, method: Method.PUT },
     this.TIMEOUT,
+    { ...options, method: Method.PUT },
   );
 
   post = (url: string, options?: Options):
     Promise<XMLHttpRequestResponseType> => HTTPTransport.request(
     this._mainLinkAddress + url,
-    { ...options, method: Method.POST },
     this.TIMEOUT,
+    { ...options, method: Method.POST },
   );
 
   delete = (
@@ -69,14 +72,14 @@ export class HTTPTransport {
   ):
     Promise<XMLHttpRequestResponseType> => HTTPTransport.request(
     this._mainLinkAddress + url,
-    { ...options, method: Method.DELETE },
     this.TIMEOUT,
+    { ...options, method: Method.DELETE },
   );
 
   static request = (
     url: string,
-    options: Options = { method: Method.GET },
     timeout: number,
+    options: Options = { method: Method.GET },
   ): Promise<XMLHttpRequestResponseType> => {
     const { data, headers = { 'Content-type': 'application/json' }, method } = options;
 

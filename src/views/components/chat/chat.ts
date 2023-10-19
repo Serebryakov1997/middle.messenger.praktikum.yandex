@@ -23,11 +23,11 @@ export interface ChatProps {
 }
 
 export class Chat extends Block {
-    constructor(props: ChatProps) {
-        super('div', props);
-    }
+  constructor(props: ChatProps) {
+    super('div', props);
+  }
 
-    render(): DocumentFragment {
-        return this.compile(chatTmpl, this.props);
-    }
+  render(): DocumentFragment {
+    return this.compile(chatTmpl, this.props);
+  }
 }

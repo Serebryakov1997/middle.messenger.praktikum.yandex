@@ -4,5 +4,6 @@ export const chatsTmpl = `
         <a id="{{selectChatLegendId}}" class="{{styles.selectChatLegendClass}}">{{selectChatLegend}}</a>
         {{{selectedChatArea}}}
         {{{chatsList}}}
+        <div class="{{styles.messageClass}}">{{{msgsList}}}</div>
     </form>
 `;

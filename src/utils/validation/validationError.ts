@@ -1,7 +1,6 @@
-import { Block } from './block';
+import { Block } from '../block';
 
 export function validationError(targetChildrens: { [key: string]: Block }, msg: string) {
-
   const valErrorBlock = targetChildrens.validError;
   const valErrElem = valErrorBlock.getContent();
 
@@ -17,9 +16,6 @@ export function validationError(targetChildrens: { [key: string]: Block }, msg: 
   const inputEl = targetChildrens.input.getContent();
   inputEl.style.borderBlockColor = 'red';
 
-  const loginButtonEl = targetChildrens.loginButton.getContent();
-  loginButtonEl.style.pointerEvents = 'none';
-
-  const underButtonLinkEl = targetChildrens.underButtonLink.getContent();
-  underButtonLinkEl.style.pointerEvents = 'none';
+  const buttonEl = targetChildrens.button.getContent();
+  buttonEl.style.pointerEvents = 'none';
 }

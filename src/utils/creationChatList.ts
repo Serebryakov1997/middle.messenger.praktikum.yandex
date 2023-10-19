@@ -4,59 +4,63 @@ import { IMockChatsJSON } from '../views/pages/chats/mockChats';
 import { Block } from './block';
 
 export function creationChatList(
-    mockJSONData: IMockChatsJSON,
-    children: Record<string, Block>
+  mockJSONData: IMockChatsJSON,
+  children: Record<string, Block | Block[]>,
 ): Block[] {
+  const chatsList: Block[] = [];
+  // let needKey: number = -1;
 
-    let chatsList: Block[] = [];
-    let styles: ChatProps['styles'] = {
-        chatClass: 'chat',
-        mockImgClass: 'mock-img',
-        chatNameClass: 'name',
-        lastPartMsgClass: 'last-part-msg',
-        timeOfLastMsgClass: 'time-of-last-msg',
-    };
+  const styles: ChatProps['styles'] = {
+    chatClass: 'chat',
+    mockImgClass: 'mock-img',
+    chatNameClass: 'name',
+    lastPartMsgClass: 'last-part-msg',
+    timeOfLastMsgClass: 'time-of-last-msg',
+  };
 
-    Object.keys(mockJSONData).forEach(key => {
+  Object.keys(mockJSONData).forEach((key) => {
+    const hasNumberOfUnreadMsgs = Object.hasOwn(mockJSONData[Number(key)], 'numberOfUnreadMsgs');
 
-        Object.hasOwn(mockJSONData[Number(key)], 'numberOfUnreadMsgs') ?
-            styles.numberOfUnreadMsgsClass = 'number-of-unread-msgs' :
-            styles.numberOfUnreadMsgsClass = '';
+    if (hasNumberOfUnreadMsgs) {
+      styles.numberOfUnreadMsgsClass = 'number-of-unread-msgs';
+    } else {
+      styles.numberOfUnreadMsgsClass = '';
+    }
 
-        const chatName = mockJSONData[Number(key)].chatName;
-        const lastPartMsg = mockJSONData[Number(key)].lastPartMsg;
-        const numberOfUnreadMsgs = mockJSONData[Number(key)].numberOfUnreadMsgs;
-        const timeOfLastMsg = mockJSONData[Number(key)].timeOfLastMsg;
+    const { chatName } = mockJSONData[Number(key)];
+    const { lastPartMsg } = mockJSONData[Number(key)];
+    const { numberOfUnreadMsgs } = mockJSONData[Number(key)];
+    const { timeOfLastMsg } = mockJSONData[Number(key)];
 
-        let selectedChatLastTime = '';
-        Object.hasOwn(mockJSONData[Number(key)], 'selectedChatLastTime') ?
-            selectedChatLastTime = mockJSONData[Number(key)].selectedChatLastTime! :
-            selectedChatLastTime;
+    let selectedChatLastTime = '';
 
-        const chat = new Chat({
-            styles,
-            chatName,
-            lastPartMsg,
-            numberOfUnreadMsgs,
-            timeOfLastMsg,
-            events: {
-                click: (e: Event) => {
-                    const selectChatLegentEl = document.getElementById('select-chat-legend-id');
-                    if (selectChatLegentEl) {
-                        selectChatLegentEl.style.display = 'none';
-                    }
-                    const msgs = mockJSONData[Number(key)].msgs;
-                    console.log('msgs: ', msgs);
-                    children.selectedChatArea.setProps({
-                        selectedChatName: chatName,
-                        selectedChatLastTime: selectedChatLastTime,
-                        msgs: msgs
-                    });
-                    children.selectedChatArea.show();
-                }
-            }
-        });
-        chatsList.push(chat);
+    const hasSelectedChatLastTime = Object.hasOwn(mockJSONData[Number(key)], 'selectedChatLastTime');
+    if (hasSelectedChatLastTime) {
+      selectedChatLastTime = mockJSONData[Number(key)].selectedChatLastTime!;
+    }
+
+    const chat = new Chat({
+      styles,
+      chatName,
+      lastPartMsg,
+      numberOfUnreadMsgs,
+      timeOfLastMsg,
+      events: {
+        click: () => {
+          const selectChatLegentEl = document.getElementById('select-chat-legend-id');
+          if (selectChatLegentEl) {
+            selectChatLegentEl.style.display = 'none';
+          }
+          (children.selectedChatArea as Block).setProps({
+            selectedChatName: chatName,
+            selectedChatLastTime,
+            chatKey: Number(key),
+          });
+          (children.selectedChatArea as Block).show();
+        },
+      },
     });
-    return chatsList;
+    chatsList.push(chat);
+  });
+  return chatsList;
 }

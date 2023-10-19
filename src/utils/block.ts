@@ -1,16 +1,13 @@
 import Handlebars from 'handlebars';
 import { v4 as makeUUID } from 'uuid';
 import { EventBus } from './event-bus';
-import { validationError } from './validationError';
-import { backUpForValid } from './backupForValid';
-
 
 export class Block {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   };
 
   _element: HTMLElement | null = null;
@@ -21,7 +18,9 @@ export class Block {
 
   tagName: string;
 
+  /* eslint no-use-before-define: "off" */
   children: Record<string, Block | Block[]>;
+
   id: string;
 
   /** JSDoc
@@ -30,8 +29,7 @@ export class Block {
        *
        * @returns {void}
        */
-  constructor(tagName = "div", propsAndChildren: Record<string, unknown>) {
-
+  constructor(tagName: string, propsAndChildren: Record<string, unknown>) {
     this.tagName = tagName;
     const eventBus = new EventBus();
 
@@ -55,7 +53,7 @@ export class Block {
   }
 
   _createResources() {
-    this._element = this._createDocumentElement(this.tagName);
+    this._element = Block._createDocumentElement(this.tagName);
   }
 
   _init() {
@@ -66,7 +64,8 @@ export class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  protected init() { };
+  /* eslint class-methods-use-this: "off" */
+  protected init() { }
 
   _componentDidMount() {
     this.componentDidMount(this.props);
@@ -74,7 +73,7 @@ export class Block {
   }
 
   protected componentDidMount(oldProps: Record<string, unknown>) {
-    return;
+
   }
 
   dispatchComponentDidMount() {
@@ -91,7 +90,7 @@ export class Block {
 
   componentDidUpdate(
     oldProps: Record<string, unknown>,
-    newProps: Record<string, unknown>
+    newProps: Record<string, unknown>,
   ) {
     return true;
   }
@@ -121,16 +120,15 @@ export class Block {
     return { children, props };
   }
 
-
   compile(template: string, props: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
-    let fragmentsArr: string = ''; 
+    let fragmentsArr: string = '';
     Object.entries(this.children).forEach(([name, component]) => {
       if (component instanceof Block) {
         propsAndStubs[name] = `<div data-id="${component.id}"></div>`;
       } else {
-        Object.values(component).forEach(value => {
+        Object.values(component).forEach((value) => {
           fragmentsArr += `<div data-id="${value.id}"></div>`;
         });
         propsAndStubs[name] = fragmentsArr;
@@ -143,19 +141,18 @@ export class Block {
 
     temp.innerHTML = compiledHtml;
 
+    /* eslint no-unused-vars: "off" */
+    /* eslint @typescript-eslint/no-unused-vars: "off" */
     Object.entries(this.children).forEach(([_, component]) => {
-
       if (component instanceof Block) {
-
         const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
         if (!stub) {
           return;
         }
         component.getContent().append(...Array.from(stub.childNodes));
         stub.replaceWith(component.getContent());
-
       } else {
-        Object.values(component).forEach(value => {
+        Object.values(component).forEach((value) => {
           const stub = temp.content.querySelector(`[data-id="${value.id}"]`);
           if (!stub) {
             return;
@@ -169,12 +166,11 @@ export class Block {
     return temp.content;
   }
 
-
   _addEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>>this.props.events;
+      const events = <Record<string, (e: Event) => void>> this.props.events;
 
-      Object.keys(events).forEach(eventName => {
+      Object.keys(events).forEach((eventName) => {
         if (this._element) {
           this._element.addEventListener(eventName, events[eventName]);
         }
@@ -184,9 +180,9 @@ export class Block {
 
   _removeEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>>this.props.events;
+      const events = <Record<string, (e: Event) => void>> this.props.events;
 
-      Object.keys(events).forEach(eventName => {
+      Object.keys(events).forEach((eventName) => {
         if (this._element) {
           this._element.removeEventListener(eventName, events[eventName]);
         }
@@ -220,16 +216,16 @@ export class Block {
   }
 
   _makePropsProxy(props: Record<string, unknown>) {
-
     const self = this;
 
     return new Proxy(props, {
       get(target, prop: string) {
-        let value = target[prop]
+        const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop: string, value) {
         if (target[prop] !== value || typeof value === 'object') {
+          /* eslint no-param-reassign: "off" */
           target[prop] = value;
           self.eventBus().emit(Block.EVENTS.FLOW_CDU);
         }
@@ -241,22 +237,9 @@ export class Block {
     });
   }
 
-  _createDocumentElement(tagName: string /*| string[]*/) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков    
-    // if (tagName instanceof Array) {
-    //   let docBody: HTMLElement = document.createElement(tagName[0]);
-    //   Object.values(tagName).forEach(tagName => {
-    //     let el = document.createElement(tagName);
-    //     docBody = document.body.appendChild(el);
-    //   });
-    //   return docBody;
-    // } else {
+  static _createDocumentElement(tagName: string) {
     return document.createElement(tagName as string);
-    // }
-
-    // return document.createElement(tagName);
   }
-
 
   static createDocumentFragment() {
     const fragment = document.createDocumentFragment();
@@ -269,64 +252,5 @@ export class Block {
 
   hide() {
     this.getContent().style.display = 'none';
-  }
-
-  inputValidation(
-    e: Event,
-    validator: {
-      rule: RegExp;
-      errorMsg: string;
-    },
-    children: { [key: string]: Block }
-  ) {
-    const re = validator.rule;
-    const targetValue = (<HTMLInputElement>e.target).value;
-    const isValid = re.test(targetValue);
-
-    if (!isValid || !targetValue) {
-      const msg = validator.errorMsg;
-      validationError(children, msg);
-      e.preventDefault();
-    } else {
-      backUpForValid(children);
-    }
-  }
-
-  clickValidation(
-    keys: string[],
-    formData: FormData,
-    validators: {
-      [key: string]: {
-        rule: RegExp;
-        errorMsg: string;
-      }
-    },
-    children: { [key: string]: { [key: string]: Block } },
-    event: Event,
-  ) {
-
-    const isValidArr: { [key: string]: boolean } = {};
-
-    keys.forEach(key => {
-      const formValue = formData.get(key);
-      const re = validators[key].rule;
-
-      const isValid = formValue ? re.test(formValue as string) : false;
-      isValidArr[key] = isValid;
-    });
-
-    if (Object.values(isValidArr).includes(false)) {
-      Object.entries(isValidArr).forEach(([key, value]) => {
-        if (!value) {
-          const msg = validators[key].errorMsg;
-          validationError(children[key], msg);
-        }
-      });
-      event.preventDefault();
-    } else {
-      Object.keys(isValidArr).forEach(key => {
-        backUpForValid(children[key]);
-      });
-    }
   }
 }

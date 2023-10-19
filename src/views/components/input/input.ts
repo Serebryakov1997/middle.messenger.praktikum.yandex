@@ -2,7 +2,6 @@ import './input.css';
 import { Block } from '../../../utils';
 import { inputTmpl } from './input.tmpl';
 
-
 interface InputProps {
     [key: string]: string | {} | undefined;
     name: string;
@@ -17,11 +16,11 @@ interface InputProps {
 }
 
 export class Input extends Block {
-    constructor(props: InputProps) {
-        super('input', props);
-    }
+  constructor(props: InputProps) {
+    super('input', props);
+  }
 
-    render(): DocumentFragment {
-        return this.compile(inputTmpl, this.props);
-    }
+  render(): DocumentFragment {
+    return this.compile(inputTmpl, this.props);
+  }
 }

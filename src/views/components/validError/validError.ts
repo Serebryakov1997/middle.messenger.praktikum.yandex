@@ -11,11 +11,11 @@ interface ValidErrorProps {
 }
 
 export class ValidError extends Block {
-    constructor(validErrClass: string, props: ValidErrorProps) {
-        super(validErrClass, props);
-    }
+  constructor(validErrClass: string, props: ValidErrorProps) {
+    super(validErrClass, props);
+  }
 
-    render(): DocumentFragment {
-        return this.compile(validErrorTmpl, this.props);
-    }
+  render(): DocumentFragment {
+    return this.compile(validErrorTmpl, this.props);
+  }
 }

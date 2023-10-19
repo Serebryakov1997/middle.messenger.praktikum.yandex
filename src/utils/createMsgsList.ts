@@ -1,37 +1,26 @@
 import { Message } from '../views/components';
-import { IMockChatsJSON } from '../views/pages/chats/mockChats';
+import { mockChatsJSON } from '../views/pages/chats/mockChats';
 import { Block } from './block';
 
-// export function creationMsgsBlocksJSON(
-//     mockChatsJSON: IMockChatsJSON,
-//     // children: Record<string, Block>
-// ): { [key: string]: Block[] } {
+export function creationMsgsBlocksArr(key: number): Block[] {
+  const msgsArrForUser: Block[] = [];
 
-//     let msgsBlocksJSON: { [key: string]: Block[] } = {};
+  if (key) {
+    const msgsOfUser = mockChatsJSON[key].msgs!;
+    if (msgsOfUser) {
+      Object.values(msgsOfUser).forEach((msgKey) => {
+        const msg = new Message({
+          styles: {
+            messageClass: 'msg-in-chat',
+          },
+          message: msgKey,
+        });
+        msgsArrForUser.push(msg);
+      });
+    }
+  }
 
-//     Object.keys(mockChatsJSON).forEach(key => {
+  console.log('msgsArrForUser: ', msgsArrForUser);
 
-//         const msgsOfUser = mockChatsJSON[Number(key)].msgs!;
-
-//         if (msgsOfUser) {
-//             const msgsArrForUser: Block[] = [];
-//             Object.values(msgsOfUser).forEach(msgKey => {
-//                 const msg = new Message({
-//                     styles: {
-//                         messageClass: 'msg-in-chat'
-//                     },
-//                     message: msgKey
-//                 });
-//                 msgsArrForUser.push(msg);
-//             });
-
-//             msgsBlocksJSON[Number(key)] = msgsArrForUser;
-//         }
-//     });
-
-//     return msgsBlocksJSON;
-// }
-
-// export function creationMsgsBlocksArr(
-
-// )
+  return msgsArrForUser;
+}

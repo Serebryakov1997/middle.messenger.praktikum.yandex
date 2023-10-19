@@ -2,9 +2,8 @@ import './selectedChatArea.css';
 import { Block } from '../../../utils';
 import { selectedChatAreaTmpl } from './selectedChatArea.tmpl';
 
-
 interface SelectedChatAreaProps {
-    [key: string]: string | {};
+    [key: string]: string | {} | number | undefined;
     styles: {
         selectedChatNameClass: string;
         selectedChatLastTimeClass: string;
@@ -17,13 +16,12 @@ interface SelectedChatAreaProps {
     inputName: string;
 }
 
-
 export class SelectedChatArea extends Block {
-    constructor(tagName: string, props: SelectedChatAreaProps) {
-        super(tagName, props);
-    }
+  constructor(tagName: string, props: SelectedChatAreaProps) {
+    super(tagName, props);
+  }
 
-    render(): DocumentFragment {
-        return this.compile(selectedChatAreaTmpl, this.props);
-    }
+  render(): DocumentFragment {
+    return this.compile(selectedChatAreaTmpl, this.props);
+  }
 }

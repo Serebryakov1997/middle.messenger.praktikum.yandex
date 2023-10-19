@@ -9,11 +9,11 @@ interface LabelInterface {
 }
 
 export class Label extends Block {
-    constructor(props: LabelInterface) {
-        super('label', props);
-    }
+  constructor(props: LabelInterface) {
+    super('label', props);
+  }
 
-    render(): DocumentFragment {
-        return this.compile(labelTmpl, this.props);
-    }
+  render(): DocumentFragment {
+    return this.compile(labelTmpl, this.props);
+  }
 }

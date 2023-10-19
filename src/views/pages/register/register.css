@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
   border-radius: 30px;
   width: 401px;
   height: 519px;
@@ -7,21 +7,18 @@
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+  height: 732px;
+  overflow: hidden;
   background-color: #d9d9d9;
 }
-.login-container .login-header {
+.register-container .register-header {
   padding-top: 35px;
   font-size: 36px;
   text-align: center;
 }
 
-.login-button {
-  top: 400px;
+.register-button {
+  top: 600px;
 }
 
-.under-text {
-  top: 470px;
-  left: 160px;
-}
-
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=register.css.map */
