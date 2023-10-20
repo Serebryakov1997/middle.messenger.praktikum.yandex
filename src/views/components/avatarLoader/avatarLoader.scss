@@ -1,0 +1,44 @@
+@use '../../base_styles/main/main' as main_base;
+@use './colors/colors';
+
+
+.avatar-loader {
+    @include main_base.block-center-position;
+
+    display: none;
+    width: 423px;
+    height: 348px;
+    border-radius: 20px;
+    background: colors.$avatar-loader-back;
+    z-index: 4;
+
+    .dash-border {
+        @include main_base.block-center-position;
+        width: 350px;
+        height: 267px;
+        border: 3px dashed colors.$dash-border;
+        border-radius: 20px;
+    }
+
+    .text-class {
+        display: block;
+        top: 70px;
+        left: 50px;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 20px;
+        color: colors.$text-class;
+    }
+
+    .text-or-class {
+        display: block;
+        top: 140px;
+        left: 170px;
+    }
+
+    button {
+        display: none;
+        margin-top: 40px;
+    }
+    
+}

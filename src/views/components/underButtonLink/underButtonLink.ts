@@ -7,7 +7,7 @@ interface UnderButtonLinkProps {
   styles: {
     underButtonClass: string;
   };
-  registerLink: string;
+  link: string;
   underButtonText: string;
   // events: {
   //     click: (e: Event) => void;

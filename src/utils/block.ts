@@ -168,7 +168,7 @@ export class Block {
 
   _addEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>> this.props.events;
+      const events = <Record<string, (e: Event) => void>>this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {
@@ -180,7 +180,7 @@ export class Block {
 
   _removeEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>> this.props.events;
+      const events = <Record<string, (e: Event) => void>>this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {
@@ -252,5 +252,19 @@ export class Block {
 
   hide() {
     this.getContent().style.display = 'none';
+  }
+
+  changeStyles(styles: { [key: string]: string }) {
+    Object.entries(styles).forEach(([key, value]) => {
+      this.getContent().style.setProperty(key, value);
+    });
+    return this;
+  }
+
+  changeAttributes(attrs: { [key: string]: string }) {
+    Object.entries(attrs).forEach(([key, value]) => {
+      this.getContent().setAttribute(key, value);
+    });
+    return this;
   }
 }

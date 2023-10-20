@@ -3,4 +3,6 @@ export {
   Chats,
   Register,
   Error,
+  Profile,
+  ProfileChangeData
 } from './pages';

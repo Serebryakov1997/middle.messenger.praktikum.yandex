@@ -1,12 +1,20 @@
 import './register.css';
 import {
-    Block, DEV_LINK_ADDRESS, clickValidation, inputValidation,
+    Block, DEV_LINK_ADDRESS, clickValidation, inputValidation, validationError,
 } from '../../../utils';
 import { registerTmpl } from './register.tmpl';
 import {
-    Button, Input, Label, ValidError,
+    Button, Input, Label, UnderButtonLink, ValidError,
 } from '../../components';
-import { emailValidator, firstNameValidator, loginValidator, passwdValidator, phoneValidator, secondNameValidator } from '../../../models/validators';
+import {
+    emailValidator,
+    firstNameValidator,
+    loginValidator,
+    passwdValidator,
+    phoneValidator,
+    secondNameValidator
+} from '../../../models/validators';
+
 
 export class Register extends Block {
     _formData: FormData;
@@ -30,7 +38,7 @@ export class Register extends Block {
                 name: 'email',
                 labelName: 'Почта',
             }),
-            inputEmail: new Input({
+            inputEmail: new Input('input', {
                 name: 'email',
                 placeholder: 'ivanivanov@yandex.ru',
                 validErrorId: 'error',
@@ -57,7 +65,7 @@ export class Register extends Block {
                 name: 'login',
                 labelName: 'Логин'
             }),
-            inputLogin: new Input({
+            inputLogin: new Input('input', {
                 name: 'login',
                 placeholder: 'ivanivanov',
                 validErrorId: 'error',
@@ -86,7 +94,7 @@ export class Register extends Block {
                 labelName: 'Имя'
             }),
 
-            inputName: new Input({
+            inputName: new Input('input', {
                 name: 'first_name',
                 placeholder: 'Иван',
                 validErrorId: 'error',
@@ -115,7 +123,7 @@ export class Register extends Block {
                 labelName: 'Фамилия'
             }),
 
-            inputSurName: new Input({
+            inputSurName: new Input('input', {
                 name: 'second_name',
                 placeholder: 'Иванов',
                 validErrorId: 'error',
@@ -144,7 +152,7 @@ export class Register extends Block {
                 labelName: 'Телефон'
             }),
 
-            inputPhone: new Input({
+            inputPhone: new Input('input', {
                 name: 'phone',
                 placeholder: '+7 (909) 967 30 30',
                 validErrorId: 'error',
@@ -171,7 +179,7 @@ export class Register extends Block {
                 name: 'password',
                 labelName: 'Пароль'
             }),
-            inputPasswd: new Input({
+            inputPasswd: new Input('input', {
                 name: 'password',
                 validErrorId: 'error',
                 events: {
@@ -180,12 +188,87 @@ export class Register extends Block {
                         inputValidation(e, passwdValidator, {
                             validError: <Block>this.children.validErrorPasswd,
                             input: <Block>this.children.inputPasswd,
-
+                            button: <Block>this.children.registerButton
                         });
+
+                        const repeatPasswd = this._formData.get('repeat_password');
+                        if (repeatPasswd) {
+                            const password = this._formData.get('password');
+                            if (password !== repeatPasswd) {
+                                validationError({
+                                    validError: <Block>this.children.validErrorRepeatPasswd,
+                                    input: <Block>this.children.inputPasswd,
+                                    button: <Block>this.children.registerButton
+                                }, '');
+                                validationError({
+                                    validError: <Block>this.children.validErrorRepeatPasswd,
+                                    input: <Block>this.children.inputRepeatPasswd,
+                                    button: <Block>this.children.registerButton
+                                }, 'Пароли не совпадают');
+                            } else {
+                                inputValidation(e, passwdValidator, {
+                                    validError: <Block>this.children.validErrorRepeatPasswd,
+                                    input: <Block>this.children.inputPasswd,
+                                    button: <Block>this.children.registerButton
+                                });
+                                inputValidation(e, passwdValidator, {
+                                    validError: <Block>this.children.validErrorRepeatPasswd,
+                                    input: <Block>this.children.inputRepeatPasswd,
+                                    button: <Block>this.children.registerButton
+                                });
+                            }
+                        }
                     }
                 }
             }),
             validErrorPasswd: new ValidError('div', {
+                styles: {
+                    validErrClass: 'valid-err'
+                },
+                validErrorId: 'error'
+            }),
+
+            // repeat_password
+            labelRepeatPasswd: new Label({
+                name: 'repeat_password',
+                labelName: 'Пароль (ещё раз)'
+            }),
+            inputRepeatPasswd: new Input('input', {
+                name: 'repeat_password',
+                validErrorId: 'error',
+                events: {
+                    blur: (e: Event) => {
+                        this._formData.set('repeat_password', (<HTMLInputElement>e.target).value);
+
+                        const passwd = this._formData.get('password');
+                        const repeat_password = this._formData.get('repeat_password');
+                        if (passwd !== repeat_password) {
+                            validationError({
+                                validError: <Block>this.children.validErrorRepeatPasswd,
+                                input: <Block>this.children.inputPasswd,
+                                button: <Block>this.children.registerButton
+                            }, '');
+                            validationError({
+                                validError: <Block>this.children.validErrorRepeatPasswd,
+                                input: <Block>this.children.inputRepeatPasswd,
+                                button: <Block>this.children.registerButton
+                            }, 'Пароли не совпадают');
+                        } else {
+                            inputValidation(e, passwdValidator, {
+                                validError: <Block>this.children.validErrorRepeatPasswd,
+                                input: <Block>this.children.inputPasswd,
+                                button: <Block>this.children.registerButton
+                            });
+                            inputValidation(e, passwdValidator, {
+                                validError: <Block>this.children.validErrorRepeatPasswd,
+                                input: <Block>this.children.inputRepeatPasswd,
+                                button: <Block>this.children.registerButton
+                            });
+                        }
+                    }
+                }
+            }),
+            validErrorRepeatPasswd: new ValidError('div', {
                 styles: {
                     validErrClass: 'valid-err'
                 },
@@ -237,6 +320,14 @@ export class Register extends Block {
                     },
                 },
             }),
+
+            underButtonLink: new UnderButtonLink('register-under-text', {
+                styles: {
+                    underButtonClass: 'register-under-text'
+                },
+                link: DEV_LINK_ADDRESS,
+                underButtonText: 'Войти'
+            })
         };
     }
 

@@ -11,4 +11,13 @@ label {
   z-index: 2;
 }
 
+.profile-label {
+  top: 35px;
+  left: 40px;
+  font-size: 20px;
+  text-align: left;
+  font-weight: bold;
+  color: black;
+}
+
 /*# sourceMappingURL=label.css.map */

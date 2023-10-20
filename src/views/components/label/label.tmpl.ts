@@ -1,3 +1,3 @@
 export const labelTmpl = `
-<label for="{{name}}">{{labelName}}</label>
+<label class="{{styles.labelClass}}" for="{{name}}">{{labelName}}</label>
 `;

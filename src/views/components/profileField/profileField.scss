@@ -1,0 +1,28 @@
+@use './colors/profile_field_colors' as colors;
+
+.profile-field {
+    .profile-label {
+        top: 35px;
+        margin-left: 100px;
+        font-size: 20px;
+        font-weight: bold;
+        color: colors.$label-color;
+        text-align: left;
+    }    
+
+    .profile-input {
+        position: relative;
+        text-align: right;
+        top: 4px;
+        left: 330px;
+        border: none;    
+    }
+
+    .profile-valid-err {
+        position: relative;
+        display: block;
+        text-align: right;
+        top: 8px;
+        left: 330px;
+    }
+}

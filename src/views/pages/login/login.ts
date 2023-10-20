@@ -35,7 +35,7 @@ export class Login extends Block {
                 name: 'login',
                 labelName: 'Логин',
             }),
-            inputLogin: new Input({
+            inputLogin: new Input('input', {
                 name: 'login',
                 placeholder: 'ivanivanov',
                 validErrorId: 'error',
@@ -60,7 +60,7 @@ export class Login extends Block {
                 name: 'password',
                 labelName: 'Пароль',
             }),
-            inputPasswd: new Input({
+            inputPasswd: new Input('input', {
                 name: 'password',
                 validErrorId: 'error',
                 events: {
@@ -117,7 +117,7 @@ export class Login extends Block {
                 styles: {
                     underButtonClass: 'under-text',
                 },
-                registerLink: `${DEV_LINK_ADDRESS}register`,
+                link: `${DEV_LINK_ADDRESS}register`,
                 underButtonText: 'Нет аккаунта?',
             }),
         };

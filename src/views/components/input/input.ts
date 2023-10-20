@@ -3,21 +3,23 @@ import { Block } from '../../../utils';
 import { inputTmpl } from './input.tmpl';
 
 interface InputProps {
-    [key: string]: string | {} | undefined;
-    name: string;
-    placeholder?: string;
-    // styles: {
-    //     inputClass: string;
-    // };
-    validErrorId: string;
-    events: {
-        blur: (e: Event) => void;
-    }
+  [key: string]: string | {} | undefined;
+  name: string;
+  placeholder?: string;
+  styles?: {
+    // inputClass: string;
+    inputProfileClass: string;
+  };
+  validErrorId: string;
+  inputValue?: string;
+  events: {
+    blur: (e: Event) => void;
+  }
 }
 
 export class Input extends Block {
-  constructor(props: InputProps) {
-    super('input', props);
+  constructor(tagName: string = 'input', props: InputProps) {
+    super(tagName, props);
   }
 
   render(): DocumentFragment {

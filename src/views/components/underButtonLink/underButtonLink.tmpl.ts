@@ -1,3 +1,3 @@
 export const underButtonLinkTmpl = `
-<a class="{{styles.underButtonClass}}" href="{{registerLink}}">{{underButtonText}}</a>
+<a class="{{styles.underButtonClass}}" href="{{link}}">{{underButtonText}}</a>
 `;
