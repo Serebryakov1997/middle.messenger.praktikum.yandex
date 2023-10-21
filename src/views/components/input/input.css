@@ -1,3 +1,14 @@
+.profile-change-passwd-input {
+  top: 10px;
+  left: 330px;
+  font-size: large;
+  text-align: right;
+  border: none;
+}
+.profile-change-passwd-input:focus {
+  text-align: right;
+}
+
 input {
   display: block;
   position: relative;

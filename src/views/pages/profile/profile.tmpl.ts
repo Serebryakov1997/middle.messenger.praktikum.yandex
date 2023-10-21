@@ -4,7 +4,12 @@ export const profileTmpl = `
             <img name={{name}} class={{name}}>
             <p name={{displayFieldName}} class="{{styles.displayNameClass}}">{{displayName}}</p>
             <p class="{{styles.statusClass}}">{{statusName}}</p>
-            {{{emailField}}}
+            
+            {{{labelEmail}}}
+            {{{inputEmail}}}
+            {{{validErrorEmail}}}
+
+
             {{{loginField}}}
             {{{firstNameField}}}
             {{{secondNameField}}}

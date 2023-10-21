@@ -56,8 +56,13 @@ export class Block {
     this._element = Block._createDocumentElement(this.tagName);
   }
 
+  // addClassToElement(className: string) {
+  //   this._element?.classList.add(className);
+  //   return this;
+  // }
+
   _init() {
-    this._createResources();
+    // this._createResources();
 
     this.init();
 
@@ -123,6 +128,8 @@ export class Block {
   compile(template: string, props: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
+    this._createResources();
+
     let fragmentsArr: string = '';
     Object.entries(this.children).forEach(([name, component]) => {
       if (component instanceof Block) {
@@ -134,6 +141,7 @@ export class Block {
         propsAndStubs[name] = fragmentsArr;
       }
     });
+
 
     const compiledHtml = Handlebars.compile(template)(propsAndStubs);
 
@@ -197,11 +205,13 @@ export class Block {
   _render() {
     const fragment = this.render();
 
-    this._element!.innerHTML = '';
+    const newEl = fragment.firstElementChild as HTMLElement;
 
-    // this._removeEvents();
-
-    this._element!.append(fragment);
+    if (this._element) {
+      this._removeEvents();
+      this._element?.replaceWith(newEl);
+    }
+    this._element = newEl;
 
     this._addEvents();
   }

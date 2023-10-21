@@ -14,8 +14,8 @@ interface ButtonProps {
 }
 
 export class Button extends Block {
-  constructor(tagName: string, props: ButtonProps) {
-    super(tagName, props);
+  constructor(props: ButtonProps) {
+    super('button', props);
   }
 
   render(): DocumentFragment {

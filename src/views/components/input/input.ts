@@ -12,14 +12,16 @@ interface InputProps {
   };
   validErrorId: string;
   inputValue?: string;
+  inputType: string;
+  readonly?: string;
   events: {
     blur: (e: Event) => void;
   }
 }
 
 export class Input extends Block {
-  constructor(tagName: string = 'input', props: InputProps) {
-    super(tagName, props);
+  constructor(props: InputProps) {
+    super('input', props);
   }
 
   render(): DocumentFragment {
