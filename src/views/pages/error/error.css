@@ -1,6 +1,5 @@
 .page-error {
   color: #1e1e1e;
-  font-family: Inter;
   font-style: normal;
   font-weight: 500;
   padding-bottom: 60px;
@@ -24,7 +23,7 @@
 .page-error .link-to-chats {
   display: block;
   padding-left: 50px;
-  color: #3369F3;
+  color: #3369f3;
   font-size: 11px;
   line-height: 11px;
   text-decoration: none;

@@ -6,6 +6,7 @@
     border-radius: main.$border_radius;
     width: 401px;
     height: 519px;
+    
     @include main.block-center-position;
 }
 

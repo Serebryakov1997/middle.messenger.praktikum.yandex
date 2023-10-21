@@ -4,5 +4,6 @@ export {
   Register,
   Error,
   Profile,
-  ProfileChangeData
+  ProfileChangeData,
+  ProfileChangePasswd
 } from './pages';

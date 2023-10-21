@@ -6,6 +6,7 @@ import {
   Register,
   Profile,
   ProfileChangeData,
+  ProfileChangePasswd,
 } from './views';
 
 const page500 = new Error();
@@ -23,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Profile() || page500;
       case '/profile_change_data':
         return new ProfileChangeData() || page500;
+      case '/profile_change_passwd':
+        return new ProfileChangePasswd() || page500;
       default:
         return new Error();
     }

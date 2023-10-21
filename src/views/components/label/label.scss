@@ -3,16 +3,15 @@
 label {
     display: block;
     position: relative;
-
     top: 15px;
     margin-left: 30px;
 
-    font-family: Inter;
+    // font-family: Inter;
     font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    color: label_colors.$label_color;
 
+    // font-style: normal;
+    font-weight: 400;
+    color: label_colors.$label-color;
     z-index: 2;
 }
 
@@ -22,5 +21,5 @@ label {
     font-size: 20px;
     text-align: left;
     font-weight: bold;
-    color: label_colors.$profile_label_color;
+    color: label_colors.$profile-label-color;
 }

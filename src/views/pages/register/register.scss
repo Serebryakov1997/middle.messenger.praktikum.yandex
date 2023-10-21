@@ -4,6 +4,7 @@
 
 .register-container {
     @include auth.main-container;
+
     height: 732px;
 
     .register-header {
@@ -11,7 +12,6 @@
     }
 
     overflow: hidden;
-
     background-color: main_colors.$back-color;
 }
 

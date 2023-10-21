@@ -1,5 +1,18 @@
-import { emailValidator, firstNameValidator, loginValidator, passwdValidator, phoneValidator, secondNameValidator } from '../../../models/validators';
-import { Block, DEV_LINK_ADDRESS, clickValidation, inputValidation } from '../../../utils';
+import {
+    emailValidator,
+    firstNameValidator,
+    loginValidator,
+    phoneValidator,
+    secondNameValidator
+} from '../../../models/validators';
+
+import {
+    Block,
+    DEV_LINK_ADDRESS,
+    clickValidation,
+    inputValidation
+} from '../../../utils';
+
 import { Button, Input, Label, ValidError } from '../../components';
 import { profileChangeDataTmpl } from './profileChangeData.tmpl';
 
@@ -122,7 +135,7 @@ export class ProfileChangeData extends Block {
                         this._formData.set('first_name', (<HTMLInputElement>e.target).value);
                         inputValidation(e, firstNameValidator, {
                             validError: <Block>this.children.validErrorFirstName,
-                            inputFirstName: <Block>this.children.inputFirstName,
+                            input: <Block>this.children.inputFirstName,
                             button: <Block>this.children.buttonSave
                         });
                     }

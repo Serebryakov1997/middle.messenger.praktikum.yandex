@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["error.scss","colors/_error_page_colors.scss"],"names":[],"mappings":"AAGA;EACI,OCJoB;EDKpB;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA,OC9BK;ED+BL;EACA;EACA","file":"error.css"}
+{"version":3,"sourceRoot":"","sources":["error.scss","colors/_error_page_colors.scss"],"names":[],"mappings":"AAGA;EACI,OCJoB;EDOpB;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA,OC/BK;EDgCL;EACA;EACA","file":"error.css"}
