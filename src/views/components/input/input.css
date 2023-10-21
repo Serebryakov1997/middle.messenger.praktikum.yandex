@@ -1,11 +1,11 @@
-.profile-change-passwd-input {
-  top: 10px;
+.profile-input {
+  top: 7px;
   left: 330px;
-  font-size: large;
+  font-size: 18px;
   text-align: right;
   border: none;
 }
-.profile-change-passwd-input:focus {
+.profile-input:focus {
   text-align: right;
 }
 
