@@ -35,10 +35,11 @@ export class Login extends Block {
                 name: 'login',
                 labelName: 'Логин',
             }),
-            inputLogin: new Input('input', {
+            inputLogin: new Input({
                 name: 'login',
                 placeholder: 'ivanivanov',
                 validErrorId: 'error',
+                inputType: 'text',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('login', (<HTMLInputElement>e.target).value);
@@ -60,9 +61,10 @@ export class Login extends Block {
                 name: 'password',
                 labelName: 'Пароль',
             }),
-            inputPasswd: new Input('input', {
+            inputPasswd: new Input({
                 name: 'password',
                 validErrorId: 'error',
+                inputType: 'password',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('password', (<HTMLInputElement>e.target).value);
@@ -80,7 +82,7 @@ export class Login extends Block {
                 },
                 validErrorId: 'error',
             }),
-            loginButton: new Button('login-button', {
+            loginButton: new Button({
                 buttonName: 'Войти',
                 styles: {
                     buttonClass: 'login-button',

@@ -38,10 +38,11 @@ export class Register extends Block {
                 name: 'email',
                 labelName: 'Почта',
             }),
-            inputEmail: new Input('input', {
+            inputEmail: new Input({
                 name: 'email',
                 placeholder: 'ivanivanov@yandex.ru',
                 validErrorId: 'error',
+                inputType: 'text',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('email', (<HTMLInputElement>e.target).value);
@@ -65,10 +66,11 @@ export class Register extends Block {
                 name: 'login',
                 labelName: 'Логин'
             }),
-            inputLogin: new Input('input', {
+            inputLogin: new Input({
                 name: 'login',
                 placeholder: 'ivanivanov',
                 validErrorId: 'error',
+                inputType: 'text',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('login', (<HTMLInputElement>e.target).value);
@@ -94,10 +96,11 @@ export class Register extends Block {
                 labelName: 'Имя'
             }),
 
-            inputName: new Input('input', {
+            inputName: new Input({
                 name: 'first_name',
                 placeholder: 'Иван',
                 validErrorId: 'error',
+                inputType: 'text',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('first_name', (<HTMLInputElement>e.target).value);
@@ -123,10 +126,11 @@ export class Register extends Block {
                 labelName: 'Фамилия'
             }),
 
-            inputSurName: new Input('input', {
+            inputSurName: new Input({
                 name: 'second_name',
                 placeholder: 'Иванов',
                 validErrorId: 'error',
+                inputType: 'text',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('second_name', (<HTMLInputElement>e.target).value);
@@ -152,10 +156,11 @@ export class Register extends Block {
                 labelName: 'Телефон'
             }),
 
-            inputPhone: new Input('input', {
+            inputPhone: new Input({
                 name: 'phone',
-                placeholder: '+7 (909) 967 30 30',
+                placeholder: '+79099673030',
                 validErrorId: 'error',
+                inputType: 'text',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('phone', (<HTMLInputElement>e.target).value);
@@ -179,9 +184,10 @@ export class Register extends Block {
                 name: 'password',
                 labelName: 'Пароль'
             }),
-            inputPasswd: new Input('input', {
+            inputPasswd: new Input({
                 name: 'password',
                 validErrorId: 'error',
+                inputType: 'password',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('password', (<HTMLInputElement>e.target).value);
@@ -233,9 +239,10 @@ export class Register extends Block {
                 name: 'repeat_password',
                 labelName: 'Пароль (ещё раз)'
             }),
-            inputRepeatPasswd: new Input('input', {
+            inputRepeatPasswd: new Input({
                 name: 'repeat_password',
                 validErrorId: 'error',
+                inputType: 'password',
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('repeat_password', (<HTMLInputElement>e.target).value);
@@ -275,7 +282,7 @@ export class Register extends Block {
                 validErrorId: 'error'
             }),
 
-            registerButton: new Button('register-button', {
+            registerButton: new Button({
                 buttonName: 'Зарегистрироваться',
                 styles: {
                     buttonClass: 'register-button',
