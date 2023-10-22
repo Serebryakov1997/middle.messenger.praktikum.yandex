@@ -10,11 +10,11 @@ interface InputProps {
     // inputClass: string;
     inputProfileClass: string;
   };
-  validErrorId: string;
+  validErrorId?: string;
   inputValue?: string;
   inputType: string;
   readonly?: string;
-  events: {
+  events?: {
     blur: (e: Event) => void;
   }
 }

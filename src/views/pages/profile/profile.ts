@@ -58,29 +58,103 @@ export class Profile extends Block {
             }),
             inputEmail: new Input({
                 name: 'email',
-                validErrorId: 'error',
                 styles: {
                     inputProfileClass: 'profile-input'
                 },
                 inputType: 'text',
                 inputValue: mockData.email,
-                events: {
-                    blur: (e: Event) => {
-                        this._formData.set('email', (<HTMLInputElement>e.target).value);
-                        inputValidation(e, emailValidator, {
-                            validError: <Block>this.children.validErrorEmail,
-                            input: <Block>this.children.inputEmail,
-                            button: <Block>this.children.buttonSave
-                        });
-                    }
+                readonly: 'readonly'
+            }),
+
+            // login
+            labelLogin: new Label({
+                name: 'login',
+                labelName: 'Логин',
+                styles: {
+                    labelClass: 'profile-label'
                 }
             }),
-            validErrorEmail: new ValidError('div', {
+            inputLogin: new Input({
+                name: 'login',
                 styles: {
-                    validErrClass: 'valid-err'
+                    inputProfileClass: 'profile-input'
                 },
-                validErrorId: 'error'
+                inputType: 'text',
+                inputValue: mockData.login,
+                readonly: 'readonly'
             }),
+
+            // first_name
+            labelFirstName: new Label({
+                name: 'first_name',
+                labelName: 'Имя',
+                styles: {
+                    labelClass: 'profile-label'
+                }
+            }),
+            inputFirstName: new Input({
+                name: 'first_name',
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
+                inputType: 'text',
+                inputValue: mockData.first_name,
+                readonly: 'readonly'
+            }),
+
+            // second_name
+            labelSecondName: new Label({
+                name: 'second_name',
+                labelName: 'Фамилия',
+                styles: {
+                    labelClass: 'profile-label'
+                }
+            }),
+            inputSecondName: new Input({
+                name: 'second_name',
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
+                inputType: 'text',
+                inputValue: mockData.second_name,
+                readonly: 'readonly'
+            }),
+
+            // chat_name
+            labelChatName: new Label({
+                name: 'chat_name',
+                labelName: 'Имя в чате',
+                styles: {
+                    labelClass: 'profile-label'
+                }
+            }),
+            inputChatName: new Input({
+                name: 'chat_name',
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
+                inputType: 'text',
+                inputValue: mockData.chat_name,
+                readonly: 'readonly'
+            }),
+
+            // phone
+            labelPhone: new Label({
+                name: 'phone',
+                labelName: 'Телефон',
+                styles: {
+                    labelClass: 'profile-label'
+                }
+            }),
+            inputPhone: new Input({
+                name: 'phone',
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
+                inputType: 'text',
+                inputValue: mockData.phone,
+                readonly: 'readonly'
+            })
         }
     }
 

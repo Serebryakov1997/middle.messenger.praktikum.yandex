@@ -7,14 +7,22 @@ export const profileTmpl = `
             
             {{{labelEmail}}}
             {{{inputEmail}}}
-            {{{validErrorEmail}}}
 
+            {{{labelLogin}}}
+            {{{inputLogin}}}
 
-            {{{loginField}}}
-            {{{firstNameField}}}
-            {{{secondNameField}}}
-            {{{displayNameField}}}
-            {{{phoneField}}}
+            {{{labelFirstName}}}
+            {{{inputFirstName}}}
+
+            {{{labelSecondName}}}
+            {{{inputSecondName}}}
+
+            {{{labelChatName}}}
+            {{{inputChatName}}}
+
+            {{{labelPhone}}}
+            {{{inputPhone}}}
+
             <a class="{{styles.changeDataClass}}" href="{{changeDataLink}}">{{changeDataName}}</a>
             <a class="{{styles.changeDataClass}} {{styles.changePasswordClass}}" href="{{changePasswordLink}}">{{changePasswdName}}</a>
             <a class="{{styles.changeDataClass}} {{styles.logoutClass}}" href="{{toLoginLink}}">{{logoutName}}</a>
