@@ -1,0 +1,36 @@
+@use './colors/label_colors';
+
+label {
+    display: block;
+    position: relative;
+    top: 30px;
+    left: 60px;
+    font-size: 16px;
+    font-weight: 400;
+    color: label_colors.$label-color;
+    z-index: 2;
+}
+
+.profile-label {
+    top: 15px;
+    left: 80px;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+    color: label_colors.$profile-label-color;
+}
+
+.chat-label {
+    display: none;
+    top: 30px;
+    left: 30px;
+    height: 98px;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.error-code-label {
+    top: 50%;
+    left: 50%;
+}

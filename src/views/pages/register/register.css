@@ -1,0 +1,29 @@
+.register-container {
+  border-radius: 30px;
+  width: 401px;
+  height: 519px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  height: 732px;
+  overflow: hidden;
+  background-color: #d9d9d9;
+}
+.register-container .register-header {
+  padding-top: 35px;
+  font-size: 36px;
+  text-align: center;
+}
+
+.register-button {
+  top: 600px;
+}
+
+.register-under-text {
+  top: 670px;
+  left: 180px;
+}
+
+/*# sourceMappingURL=register.css.map */

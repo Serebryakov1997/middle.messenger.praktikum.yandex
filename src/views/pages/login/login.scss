@@ -1,0 +1,22 @@
+@use '../../base_styles/main/colors/main_colors';
+@use '../../base_styles/auth/auth';
+
+
+.login-container {
+    @include auth.main-container;
+
+    .login-header {
+        @include auth.header;
+    }
+
+    background-color: main_colors.$back-color;
+}
+
+.login-button {
+    top: 400px;
+}
+
+.under-text {
+    top: 470px;
+    left: 160px;
+}

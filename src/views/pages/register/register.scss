@@ -1,0 +1,25 @@
+@use '../../base_styles/main/colors/main_colors';
+@use '../../base_styles/auth/auth';
+
+
+.register-container {
+    @include auth.main-container;
+
+    height: 732px;
+
+    .register-header {
+        @include auth.header;
+    }
+
+    overflow: hidden;
+    background-color: main_colors.$back-color;
+}
+
+.register-button {
+    top: 600px;
+}
+
+.register-under-text {
+    top: 670px;
+    left: 180px;
+}

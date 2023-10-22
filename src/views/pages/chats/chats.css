@@ -1,0 +1,59 @@
+.chats-form {
+  height: 950px;
+  width: 500px;
+  background-color: #d9d9d9;
+}
+.chats-form .chats-search-bar {
+  display: block;
+  position: relative;
+  top: 70px;
+  left: 100px;
+  height: 60px;
+  width: 370px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+}
+.chats-form .chats-search-bar::placeholder {
+  padding-left: 20px;
+  text-align: left;
+  font-size: 20px;
+}
+.chats-form .select-chat-legend {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 1050px;
+  font-size: 25px;
+  font-weight: bold;
+  color: gray;
+}
+.chats-form .chat-area {
+  display: none;
+  position: absolute;
+  top: 8px;
+  left: 508px;
+  height: 151px;
+  width: 1400px;
+  border: 1px solid gray;
+  background-color: #d9d9d9;
+}
+.chats-form .chat-area .chat-area-name {
+  display: block;
+  position: relative;
+  top: 55px;
+  left: 30px;
+  text-align: left;
+  font-size: 23px;
+  font-weight: bold;
+}
+.chats-form .chat-area .chat-last-time {
+  display: block;
+  position: relative;
+  top: 65px;
+  left: 30px;
+  text-align: left;
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=chats.css.map */

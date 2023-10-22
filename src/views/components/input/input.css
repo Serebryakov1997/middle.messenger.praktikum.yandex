@@ -1,0 +1,50 @@
+.chat-input {
+  position: absolute;
+  top: 885px;
+  left: -1px;
+  height: 60px;
+  width: 1380px;
+  border: 1px solid gray;
+}
+.chat-input::placeholder {
+  padding-left: 30px;
+  font-size: 20px;
+}
+.chat-input:focus {
+  outline: none;
+  text-align: left;
+}
+
+.profile-input {
+  top: -20px;
+  left: 340px;
+  font-size: 18px;
+  text-align: right;
+  border: none;
+}
+.profile-input:focus {
+  text-align: right;
+}
+
+input {
+  display: block;
+  position: relative;
+  width: 100%;
+  width: 285px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid;
+  left: 60px;
+  top: 25px;
+  background-color: #d9d9d9;
+}
+input:focus {
+  outline: none;
+  text-align: left;
+}
+input::placeholder {
+  text-align: left;
+  font-size: 15px;
+}
+
+/*# sourceMappingURL=input.css.map */

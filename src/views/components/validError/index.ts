@@ -1,0 +1,1 @@
+export { ValidError } from './validError';

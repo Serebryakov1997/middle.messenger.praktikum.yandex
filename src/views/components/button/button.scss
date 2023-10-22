@@ -1,0 +1,31 @@
+@use '../../base_styles/main/colors/main_colors';
+@use './colors/button_colors';
+
+.button-chat {
+    display: block;
+    position: absolute;
+    top: 894px;
+    left: 1250px;
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    border: 1px solid button_colors.$button-border-color;
+}
+
+.button-save {
+    top: 650px;
+    left: 145px;
+}
+
+button {
+    display: block;
+    position: absolute;
+    width: 298px;
+    height: 58px;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 55px;
+    background-color: main_colors.$component-color;
+}
