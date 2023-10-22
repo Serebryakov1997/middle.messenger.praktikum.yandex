@@ -1,7 +1,6 @@
 import './avatarLoader.css';
 import { Block } from '../../../utils';
 import { avatarLoaderTmpl } from './avatarLoader.tmpl';
-import { Button } from '../button';
 
 
 interface AvatarLoaderProps {
@@ -21,18 +20,6 @@ export class AvatarLoader extends Block {
     constructor(props: AvatarLoaderProps) {
         super('div', props);
     }
-
-    // protected init(): void {
-    //     this.children.avatarButton = new Button('camera-button', {
-    //         buttonName: 'Выберите файл',
-    //         styles: {
-    //             buttonClass: 'camera-button',
-    //         },
-    //         events: {
-    //             click: () => { }
-    //         }
-    //     })
-    // }
 
     render(): DocumentFragment {
         return this.compile(avatarLoaderTmpl, this.props);

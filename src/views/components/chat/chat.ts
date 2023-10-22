@@ -28,17 +28,6 @@ export class Chat extends Block {
     super('div', props);
   }
 
-  // protected init(): void {
-  //   const { chatName } = this.props;
-  //   // console.log('chatName: ', chatName);
-  //   this.children.chatLabel = new Label({
-  //     name: 'chat_name',
-  //     labelName: chatName as string,
-  //     styles: {
-  //       labelClass: 'chat-label'
-  //     }
-  //   })
-  // }
 
   render(): DocumentFragment {
     return this.compile(chatTmpl, this.props);

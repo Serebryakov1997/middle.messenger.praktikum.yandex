@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       case '/profile_change_passwd':
         return new ProfileChangePasswd() || page500;
       default:
-        return new PageError('404', 'Не туда попали');
+        return new PageError('404', 'Не туда попали') || page500;
     }
   }
 

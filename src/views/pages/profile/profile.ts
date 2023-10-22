@@ -1,8 +1,7 @@
 import './profile.css';
-import { Block, DEV_LINK_ADDRESS, inputValidation } from '../../../utils';
+import { Block, DEV_LINK_ADDRESS } from '../../../utils';
 import { profileTmpl } from './profile.tmpl';
-import { Input, Label, ValidError } from '../../components';
-import { emailValidator } from '../../../models/validators';
+import { Input, Label } from '../../components';
 
 
 const mockData = {

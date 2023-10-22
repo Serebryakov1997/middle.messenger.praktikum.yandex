@@ -1,14 +1,12 @@
-import { Chat, Label } from '../views/components';
+import { Chat } from '../views/components';
 import { ChatProps } from '../views/components/chat/chat';
 import { IMockChatsJSON } from '../views/pages/chats/mockChats';
 import { Block } from './block';
 
 export function creationChatList(
   mockJSONData: IMockChatsJSON,
-  block: Block,
 ): Block[] {
   const chatsList: Block[] = [];
-  // let needKey: number = -1;
 
   const styles: ChatProps['styles'] = {
     chatClass: 'chat',
@@ -19,7 +17,10 @@ export function creationChatList(
   };
 
   Object.keys(mockJSONData).forEach((key) => {
-    const hasNumberOfUnreadMsgs = Object.hasOwn(mockJSONData[Number(key)], 'numberOfUnreadMsgs');
+    const hasNumberOfUnreadMsgs = Object.hasOwn(
+      mockJSONData[Number(key)],
+      'numberOfUnreadMsgs'
+    );
 
     if (hasNumberOfUnreadMsgs) {
       styles.numberOfUnreadMsgsClass = 'number-of-unread-msgs';
@@ -34,7 +35,10 @@ export function creationChatList(
 
     let selectedChatLastTime = '';
 
-    const hasSelectedChatLastTime = Object.hasOwn(mockJSONData[Number(key)], 'selectedChatLastTime');
+    const hasSelectedChatLastTime = Object.hasOwn(
+      mockJSONData[Number(key)],
+      'selectedChatLastTime'
+    );
     if (hasSelectedChatLastTime) {
       selectedChatLastTime = mockJSONData[Number(key)].selectedChatLastTime!;
     }
@@ -62,15 +66,9 @@ export function creationChatList(
           const chatAreaLastTime = document.getElementById('chat-area-time-id');
           const selectedChatLastTime = mockJSONData[Number(key)].selectedChatLastTime;
           chatAreaLastTime!.textContent = selectedChatLastTime as string;
-          // console.log('chatArea: ', chatArea);
-          // if (chatArea) {
-          //   chatArea.style.display = 'block';
-          // }
         },
       },
     });
-    // console.log('chats childrens: ', chat.children);
-    // chat.children
     chatsList.push(chat);
   });
   return chatsList;

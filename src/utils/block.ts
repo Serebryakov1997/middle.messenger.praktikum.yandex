@@ -56,14 +56,8 @@ export class Block {
     this._element = Block._createDocumentElement(this.tagName);
   }
 
-  // addClassToElement(className: string) {
-  //   this._element?.classList.add(className);
-  //   return this;
-  // }
 
   _init() {
-    // this._createResources();
-
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -74,7 +68,6 @@ export class Block {
 
   _componentDidMount() {
     this.componentDidMount(this.props);
-    // this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
   protected componentDidMount(oldProps: Record<string, unknown>) {
@@ -104,7 +97,6 @@ export class Block {
     if (!nextProps) {
       return;
     }
-    console.log('setProps: ', nextProps);
     Object.assign(this.props, nextProps);
   };
 
@@ -216,7 +208,6 @@ export class Block {
     this._addEvents();
   }
 
-  // Может переопределять пользователь, необязательно трогать
   render(): DocumentFragment {
     return new DocumentFragment();
   }

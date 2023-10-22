@@ -1,1 +1,0 @@
-export { SelectedChatArea } from './selectedChatArea';

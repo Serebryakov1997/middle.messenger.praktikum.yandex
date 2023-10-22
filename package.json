@@ -7,7 +7,7 @@
     "node": "^16.20.0"
   },
   "scripts": {
-    "dev": "URL_TYPE='vite' vite",
+    "dev": "vite",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "stylelint": "npx stylelint '**/*.scss'",
@@ -15,7 +15,7 @@
     "dev:sass": "sass ./src:./src -w",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "URL_TYPE='express' npm run build && node ./server.js"
+    "start": "npm run build && node ./server.js"
   },
   "devDependencies": {
     "@types/node": "^20.5.0",

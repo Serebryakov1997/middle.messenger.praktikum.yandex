@@ -1,52 +1,40 @@
 @use './colors/error_page_colors';
 @use '../../base_styles/main/main';
 
-.error-payload {
-    display: block;
-    top: 500px;
-}
-
-.code-error {
-    display: block;
-    position: absolute;
-    top: 300px;
-    // margin: 0 auto;
-    // width: 80px;
-    // font-size: 40px;
-    // line-height: 40px;
-}
 
 .page-error {
     display: block;
     position: absolute;
-    top: 50px;
     color: error_page_colors.$page-error-main-color;
 
-    // font-family: Inter;
     font-style: normal;
-    font-weight: 500;
-    // padding-bottom: 60px;
+    font-weight: 300;
 
     @include main.block-center-position;
 
-    
+    .code-error {
+        display: block;
+        position: relative;
+        text-align: center;
+        font-size: 25px;
+    }
 
-    // .code-error-text {
-    //     display: block;
-    //     padding-bottom: 80px;
-    //     margin: 0 auto;
-    //     padding-left: 30px;
-    //     width: 180px;
-    //     font-size: 20px;
-    //     line-height: 20px;
-    // }
+    .code-error-text {
+        display: block;
+        position: relative;
+        text-align: center;
+        width: 180px;
+        font-size: 25px;
+        line-height: 20px;
+    }
 
-    // .link-to-chats {
-    //     display: block;
-    //     padding-left: 50px;
-    //     color: error_page_colors.$link-color;
-    //     font-size: 11px;
-    //     line-height: 11px;
-    //     text-decoration: none;
-    // }
+    .link-to-chats {
+        display: block;
+        text-align: center;
+        left: 30px;
+        color: error_page_colors.$link-color;
+        font-size: 20px;
+        line-height: 11px;
+        text-decoration: none;
+    }
 }
