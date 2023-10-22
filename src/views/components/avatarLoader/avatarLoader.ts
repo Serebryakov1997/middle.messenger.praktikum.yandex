@@ -2,7 +2,6 @@ import './avatarLoader.css';
 import { Block } from '../../../utils';
 import { avatarLoaderTmpl } from './avatarLoader.tmpl';
 
-
 interface AvatarLoaderProps {
     [key: string]: string | {};
     styles: {
@@ -15,13 +14,12 @@ interface AvatarLoaderProps {
     textOrName: string;
 }
 
-
 export class AvatarLoader extends Block {
-    constructor(props: AvatarLoaderProps) {
-        super('div', props);
-    }
+  constructor(props: AvatarLoaderProps) {
+    super('div', props);
+  }
 
-    render(): DocumentFragment {
-        return this.compile(avatarLoaderTmpl, this.props);
-    }
+  render(): DocumentFragment {
+    return this.compile(avatarLoaderTmpl, this.props);
+  }
 }

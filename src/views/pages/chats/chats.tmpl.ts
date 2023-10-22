@@ -14,5 +14,3 @@ export const chatsTmpl = `
         </div>
     </form>
 `;
-
-
