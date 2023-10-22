@@ -56,7 +56,6 @@ export class Block {
     this._element = Block._createDocumentElement(this.tagName);
   }
 
-
   _init() {
     this.init();
 
@@ -134,7 +133,6 @@ export class Block {
       }
     });
 
-
     const compiledHtml = Handlebars.compile(template)(propsAndStubs);
 
     const temp = document.createElement('template');
@@ -168,7 +166,7 @@ export class Block {
 
   _addEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>>this.props.events;
+      const events = <Record<string, (e: Event) => void>> this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {
@@ -180,7 +178,7 @@ export class Block {
 
   _removeEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>>this.props.events;
+      const events = <Record<string, (e: Event) => void>> this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {

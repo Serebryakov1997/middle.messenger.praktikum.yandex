@@ -5,5 +5,5 @@ export {
   PageError,
   Profile,
   ProfileChangeData,
-  ProfileChangePasswd
+  ProfileChangePasswd,
 } from './pages';

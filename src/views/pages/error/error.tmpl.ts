@@ -7,4 +7,3 @@ export const errorTmpl = `
         </div>
     </form>
 `;
-

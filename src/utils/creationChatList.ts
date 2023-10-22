@@ -19,7 +19,7 @@ export function creationChatList(
   Object.keys(mockJSONData).forEach((key) => {
     const hasNumberOfUnreadMsgs = Object.hasOwn(
       mockJSONData[Number(key)],
-      'numberOfUnreadMsgs'
+      'numberOfUnreadMsgs',
     );
 
     if (hasNumberOfUnreadMsgs) {
@@ -32,16 +32,6 @@ export function creationChatList(
     const { lastPartMsg } = mockJSONData[Number(key)];
     const { numberOfUnreadMsgs } = mockJSONData[Number(key)];
     const { timeOfLastMsg } = mockJSONData[Number(key)];
-
-    let selectedChatLastTime = '';
-
-    const hasSelectedChatLastTime = Object.hasOwn(
-      mockJSONData[Number(key)],
-      'selectedChatLastTime'
-    );
-    if (hasSelectedChatLastTime) {
-      selectedChatLastTime = mockJSONData[Number(key)].selectedChatLastTime!;
-    }
 
     const chat = new Chat({
       styles,
@@ -64,7 +54,7 @@ export function creationChatList(
           chatAreaName!.textContent = chatName;
 
           const chatAreaLastTime = document.getElementById('chat-area-time-id');
-          const selectedChatLastTime = mockJSONData[Number(key)].selectedChatLastTime;
+          const { selectedChatLastTime } = mockJSONData[Number(key)];
           chatAreaLastTime!.textContent = selectedChatLastTime as string;
         },
       },
