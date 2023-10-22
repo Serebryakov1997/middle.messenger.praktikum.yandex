@@ -8,6 +8,13 @@
 - node^16.20.0
 - vite^4.3.9
 - @types/node^20.5.0
+- @types/uuid^9.0.5
+- @typescript-eslint/eslint-plugin^6.4.1
+- @typescript-eslint/parser^6.4.1
+- eslint^8.47.0
+- eslint-config-airbnb^19.0.4
+- stylelint^15.11.0
+- stylelint-config-standard-scss^11.0.0
 - typescript^5.1.6
 - express^4.18.2
 - handlebars^4.7.7
@@ -18,7 +25,7 @@
 ```
 npm run start
 ```
-(предварительно замените url ```DEV_LINK_ADDRESS``` в ```middle.messenger.praktikum.yandex/src/utils/consts.js``` на ```http://localhost:3000/```)
+(предварительно замените url ```DEV_LINK_ADDRESS``` в ```middle.messenger.praktikum.yandex/src/utils/urlSelection.ts``` на ```http://localhost:3000/```)
 
 ### Ссылка на приложение, опубликованное на Netlify
 https://lustrous-concha-c998bf.netlify.app/
