@@ -61,7 +61,7 @@ export class ProfileChangeData extends Block {
                 inputType: 'text',
                 inputValue: mockData.email,
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 events: {
                     blur: (e: Event) => {
@@ -95,7 +95,7 @@ export class ProfileChangeData extends Block {
                 inputType: 'text',
                 inputValue: mockData.login,
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 events: {
                     blur: (e: Event) => {
@@ -129,7 +129,7 @@ export class ProfileChangeData extends Block {
                 inputType: 'text',
                 inputValue: mockData.first_name,
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 events: {
                     blur: (e: Event) => {
@@ -163,7 +163,7 @@ export class ProfileChangeData extends Block {
                 inputType: 'text',
                 inputValue: mockData.second_name,
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 events: {
                     blur: (e: Event) => {
@@ -198,7 +198,7 @@ export class ProfileChangeData extends Block {
                 inputType: 'text',
                 inputValue: mockData.chat_name,
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 events: {
                     blur: (e: Event) => {
@@ -233,7 +233,7 @@ export class ProfileChangeData extends Block {
                 inputType: 'text',
                 inputValue: mockData.phone,
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 events: {
                     blur: (e: Event) => {

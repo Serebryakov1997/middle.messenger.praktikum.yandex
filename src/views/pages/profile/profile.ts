@@ -59,7 +59,7 @@ export class Profile extends Block {
             inputEmail: new Input({
                 name: 'email',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'text',
                 inputValue: mockData.email,
@@ -77,7 +77,7 @@ export class Profile extends Block {
             inputLogin: new Input({
                 name: 'login',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'text',
                 inputValue: mockData.login,
@@ -95,7 +95,7 @@ export class Profile extends Block {
             inputFirstName: new Input({
                 name: 'first_name',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'text',
                 inputValue: mockData.first_name,
@@ -113,7 +113,7 @@ export class Profile extends Block {
             inputSecondName: new Input({
                 name: 'second_name',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'text',
                 inputValue: mockData.second_name,
@@ -131,7 +131,7 @@ export class Profile extends Block {
             inputChatName: new Input({
                 name: 'chat_name',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'text',
                 inputValue: mockData.chat_name,
@@ -149,7 +149,7 @@ export class Profile extends Block {
             inputPhone: new Input({
                 name: 'phone',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'text',
                 inputValue: mockData.phone,

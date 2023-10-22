@@ -44,7 +44,7 @@ export class ProfileChangePasswd extends Block {
                 name: 'password',
                 validErrorId: 'error',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'password',
                 inputValue: mockPassword,
@@ -78,7 +78,7 @@ export class ProfileChangePasswd extends Block {
                 name: 'new_password',
                 validErrorId: 'error',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'password',
                 events: {
@@ -111,7 +111,7 @@ export class ProfileChangePasswd extends Block {
                 name: 'repeat_new_password',
                 validErrorId: 'error',
                 styles: {
-                    inputProfileClass: 'profile-input'
+                    inputClass: 'profile-input'
                 },
                 inputType: 'password',
                 events: {
