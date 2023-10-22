@@ -16,17 +16,8 @@ import {
 import { Button, Input, Label, ValidError } from '../../components';
 import { profileChangeDataTmpl } from './profileChangeData.tmpl';
 
-const inputStyles = {
-    top: '20px',
-    left: '350px',
-    'text-align': 'right',
-    border: 'none'
-}
-const validErrStyles = {
-    'text-align': 'right'
-}
 
-const mockFormDataValues = {
+const mockData = {
     email: 'ivanivanov@yandex.ru',
     login: 'ivanivanov',
     first_name: 'Иван',
@@ -49,7 +40,7 @@ export class ProfileChangeData extends Block {
             avatarName: 'avatar',
         });
         this._formData = new FormData();
-        Object.entries(mockFormDataValues).forEach(([key, value]) => {
+        Object.entries(mockData).forEach(([key, value]) => {
             this._formData.set(key, value);
         });
     }
@@ -64,10 +55,14 @@ export class ProfileChangeData extends Block {
                     labelClass: 'profile-label'
                 }
             }),
-            inputEmail: new Input('input', {
+            inputEmail: new Input({
                 name: 'email',
                 validErrorId: 'error',
-                // inputValue: 'ivanivanov',
+                inputType: 'text',
+                inputValue: mockData.email,
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('email', (<HTMLInputElement>e.target).value);
@@ -78,15 +73,13 @@ export class ProfileChangeData extends Block {
                         });
                     }
                 }
-            }).changeStyles(inputStyles).changeAttributes({
-                value: mockFormDataValues.email
             }),
             validErrorEmail: new ValidError('div', {
                 styles: {
                     validErrClass: 'valid-err',
                 },
                 validErrorId: 'error',
-            }).changeStyles(validErrStyles),
+            }),
 
             // login
             labelLogin: new Label({
@@ -96,9 +89,14 @@ export class ProfileChangeData extends Block {
                     labelClass: 'profile-label'
                 }
             }),
-            inputLogin: new Input('input', {
+            inputLogin: new Input({
                 name: 'login',
                 validErrorId: 'error',
+                inputType: 'text',
+                inputValue: mockData.login,
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('login', (<HTMLInputElement>e.target).value);
@@ -109,15 +107,13 @@ export class ProfileChangeData extends Block {
                         });
                     }
                 }
-            }).changeStyles(inputStyles).changeAttributes({
-                value: mockFormDataValues.login
             }),
             validErrorLogin: new ValidError('div', {
                 styles: {
                     validErrClass: 'valid-err',
                 },
                 validErrorId: 'error',
-            }).changeStyles(validErrStyles),
+            }),
 
             // first_name
             labelFirstName: new Label({
@@ -127,9 +123,14 @@ export class ProfileChangeData extends Block {
                     labelClass: 'profile-label'
                 }
             }),
-            inputFirstName: new Input('input', {
+            inputFirstName: new Input({
                 name: 'first_name',
                 validErrorId: 'error',
+                inputType: 'text',
+                inputValue: mockData.first_name,
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('first_name', (<HTMLInputElement>e.target).value);
@@ -140,15 +141,13 @@ export class ProfileChangeData extends Block {
                         });
                     }
                 }
-            }).changeStyles(inputStyles).changeAttributes({
-                value: mockFormDataValues.first_name
             }),
             validErrorFirstName: new ValidError('div', {
                 styles: {
                     validErrClass: 'valid-err',
                 },
                 validErrorId: 'error',
-            }).changeStyles(validErrStyles),
+            }),
 
             //second_name
             labelSecondName: new Label({
@@ -158,9 +157,14 @@ export class ProfileChangeData extends Block {
                     labelClass: 'profile-label'
                 }
             }),
-            inputSecondName: new Input('input', {
+            inputSecondName: new Input({
                 name: 'second_name',
                 validErrorId: 'error',
+                inputType: 'text',
+                inputValue: mockData.second_name,
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('second_name', (<HTMLInputElement>e.target).value);
@@ -171,15 +175,13 @@ export class ProfileChangeData extends Block {
                         });
                     }
                 }
-            }).changeStyles(inputStyles).changeAttributes({
-                value: mockFormDataValues.second_name
             }),
             validErrorSecondName: new ValidError('div', {
                 styles: {
                     validErrClass: 'valid-err',
                 },
                 validErrorId: 'error',
-            }).changeStyles(validErrStyles),
+            }),
 
 
             // chat_name
@@ -190,9 +192,14 @@ export class ProfileChangeData extends Block {
                     labelClass: 'profile-label'
                 }
             }),
-            inputChatName: new Input('input', {
+            inputChatName: new Input({
                 name: 'chat_name',
                 validErrorId: 'error',
+                inputType: 'text',
+                inputValue: mockData.chat_name,
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('chat_name', (<HTMLInputElement>e.target).value);
@@ -203,15 +210,13 @@ export class ProfileChangeData extends Block {
                         });
                     }
                 }
-            }).changeStyles(inputStyles).changeAttributes({
-                value: mockFormDataValues.chat_name
             }),
             validErrorChatName: new ValidError('div', {
                 styles: {
                     validErrClass: 'valid-err',
                 },
                 validErrorId: 'error'
-            }).changeStyles(validErrStyles),
+            }),
 
 
             // Phone
@@ -222,9 +227,14 @@ export class ProfileChangeData extends Block {
                     labelClass: 'profile-label'
                 }
             }),
-            inputPhone: new Input('input', {
+            inputPhone: new Input({
                 name: 'phone',
                 validErrorId: 'error',
+                inputType: 'text',
+                inputValue: mockData.phone,
+                styles: {
+                    inputProfileClass: 'profile-input'
+                },
                 events: {
                     blur: (e: Event) => {
                         this._formData.set('phone', (<HTMLInputElement>e.target).value);
@@ -235,18 +245,16 @@ export class ProfileChangeData extends Block {
                         });
                     }
                 }
-            }).changeStyles(inputStyles).changeAttributes({
-                value: mockFormDataValues.phone
             }),
             validErrorPhone: new ValidError('div', {
                 styles: {
                     validErrClass: 'valid-err',
                 },
                 validErrorId: 'error',
-            }).changeStyles(validErrStyles),
+            }),
 
 
-            buttonSave: new Button('button-save', {
+            buttonSave: new Button({
                 buttonName: 'Сохранить',
                 styles: {
                     buttonClass: 'button-save'

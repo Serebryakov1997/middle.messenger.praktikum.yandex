@@ -14,6 +14,7 @@ interface LabelInterface {
 export class Label extends Block {
   constructor(props: LabelInterface) {
     super('label', props);
+    console.log('label props: ', this.props);
   }
 
   render(): DocumentFragment {

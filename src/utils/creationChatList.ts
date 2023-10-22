@@ -1,4 +1,4 @@
-import { Chat } from '../views/components';
+import { Chat, Label } from '../views/components';
 import { ChatProps } from '../views/components/chat/chat';
 import { IMockChatsJSON } from '../views/pages/chats/mockChats';
 import { Block } from './block';
@@ -51,12 +51,14 @@ export function creationChatList(
           if (selectChatLegentEl) {
             selectChatLegentEl.style.display = 'none';
           }
-          (children.selectedChatArea as Block).setProps({
-            selectedChatName: chatName,
-            selectedChatLastTime,
-            chatKey: Number(key),
-          });
-          (children.selectedChatArea as Block).show();
+
+          children.chatLabel = new Label({
+            name: 'chat_name',
+            labelName: chatName,
+            styles: {
+              labelClass: ''
+            }
+          })
         },
       },
     });

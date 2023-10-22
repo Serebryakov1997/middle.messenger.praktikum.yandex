@@ -7,8 +7,7 @@ interface InputProps {
   name: string;
   placeholder?: string;
   styles?: {
-    // inputClass: string;
-    inputProfileClass: string;
+    inputClass: string;
   };
   validErrorId?: string;
   inputValue?: string;

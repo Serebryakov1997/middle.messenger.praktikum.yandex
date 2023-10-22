@@ -1,9 +1,9 @@
 @use '../../base_styles/main/colors/main_colors';
 @use './colors/chats_colors';
 
-html, body {
-    height: 100%;
-}
+// html, body {
+//     height: 100%;
+// }
 
 .chats-form {
     height: 950px;
@@ -37,6 +37,17 @@ html, body {
         font-size: 25px;
         font-weight: bold;
         color: chats_colors.$chats-legend-color;
+    }
+
+    .chat-area {
+        display: block;
+        position: absolute;
+        top: 8px;
+        left: 508px;
+        height: 151px;
+        width: 1400px;
+        border: 1px solid chats_colors.$chats-border-color;
+        background-color: main_colors.$back-color;
     }
 
     // .msg-in-chat {

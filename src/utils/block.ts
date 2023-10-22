@@ -104,7 +104,7 @@ export class Block {
     if (!nextProps) {
       return;
     }
-
+    console.log('setProps: ', nextProps);
     Object.assign(this.props, nextProps);
   };
 

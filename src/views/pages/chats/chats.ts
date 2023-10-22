@@ -1,8 +1,7 @@
 import './chats.css';
-import { Block, creationChatList /* creationMsgsBlocksArr */ } from '../../../utils';
+import { Block, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
-import { SelectedChatArea } from '../../components';
 
 export class Chats extends Block {
   _formData: FormData;
@@ -14,6 +13,7 @@ export class Chats extends Block {
         chatsSearchBarClass: 'chats-search-bar',
         selectChatLegendClass: 'select-chat-legend',
         messageClass: 'msg-in-chat',
+        chatAreaClass: 'chat-area'
       },
       chatsForm: 'chats-form-id',
       chatsSearchBar: 'Поиск',
@@ -27,22 +27,6 @@ export class Chats extends Block {
   protected init(): void {
     const chatsList = creationChatList(mockChatsJSON, this.children);
     this.children.chatsList = chatsList;
-    this.children.selectedChatArea = new SelectedChatArea(
-      'header',
-      {
-        styles: {
-          selectedChatNameClass: 'selected-chat-name',
-          selectedChatLastTimeClass: 'selected-chat-last-time',
-          selectedChatInputClass: 'selected-chat-input',
-          selectedChatMsgButtonClass: 'selected-chat-msg-button',
-        },
-        selectedChatName: '',
-        selectedChatLastTime: '',
-        selectedChatInputPlchlder: 'Сообщение',
-        inputName: 'message',
-      },
-    );
-    // this.children.msgsList = creationMsgsBlocksArr(0);
   }
 
   render(): DocumentFragment {

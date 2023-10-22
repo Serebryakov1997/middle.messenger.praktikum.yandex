@@ -1,3 +1,11 @@
+.chat-input {
+  top: 798px;
+  left: -1px;
+  height: 50px;
+  width: 1380px;
+  border: 1px solid gray;
+}
+
 .profile-input {
   top: -20px;
   left: 340px;
