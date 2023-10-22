@@ -1,5 +1,17 @@
 // @use '../../base_styles/main/main';
 @use '../../base_styles/main/colors/main_colors';
+@use './colors/button_colors';
+
+.button-chat {
+    display: block;
+    position: absolute;
+    top: 894px;
+    left: 1250px;
+    width: 47px;
+    height: 47px;
+    border-radius: 50%;
+    border: 1px solid button_colors.$button-border-color;
+}
 
 .button-save {
     top: 650px;

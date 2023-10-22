@@ -3,12 +3,12 @@ import { Block } from '../../../utils';
 import { buttonTmpl } from './button.tmpl';
 
 interface ButtonProps {
-  [key: string]: ({ [name: string]: string } | string | {})
-  buttonName: string,
+  [key: string]: ({ [name: string]: string } | string | {}) | undefined
+  buttonName?: string,
   styles: {
     buttonClass: string;
   },
-  events: {
+  events?: {
     click: (e: Event) => void;
   }
 }

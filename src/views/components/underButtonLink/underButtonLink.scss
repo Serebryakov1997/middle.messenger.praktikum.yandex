@@ -1,6 +1,15 @@
 @use '../../base_styles/auth/colors/auth_colors';
 @use '../../base_styles/auth/auth';
 
+.profile-link {
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
 a {
     display: block;
     position: absolute;

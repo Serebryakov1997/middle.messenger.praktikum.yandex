@@ -5,7 +5,7 @@ import { Block } from './block';
 
 export function creationChatList(
   mockJSONData: IMockChatsJSON,
-  children: Record<string, Block | Block[]>,
+  block: Block,
 ): Block[] {
   const chatsList: Block[] = [];
   // let needKey: number = -1;
@@ -45,6 +45,7 @@ export function creationChatList(
       lastPartMsg,
       numberOfUnreadMsgs,
       timeOfLastMsg,
+      chatAreaId: chatName,
       events: {
         click: () => {
           const selectChatLegentEl = document.getElementById('select-chat-legend-id');
@@ -52,16 +53,24 @@ export function creationChatList(
             selectChatLegentEl.style.display = 'none';
           }
 
-          children.chatLabel = new Label({
-            name: 'chat_name',
-            labelName: chatName,
-            styles: {
-              labelClass: ''
-            }
-          })
+          const chatArea = document.getElementById('chat-area-id');
+          chatArea!.style.display = 'block';
+
+          const chatAreaName = document.getElementById('chat-area-name-id');
+          chatAreaName!.textContent = chatName;
+
+          const chatAreaLastTime = document.getElementById('chat-area-time-id');
+          const selectedChatLastTime = mockJSONData[Number(key)].selectedChatLastTime;
+          chatAreaLastTime!.textContent = selectedChatLastTime as string;
+          // console.log('chatArea: ', chatArea);
+          // if (chatArea) {
+          //   chatArea.style.display = 'block';
+          // }
         },
       },
     });
+    // console.log('chats childrens: ', chat.children);
+    // chat.children
     chatsList.push(chat);
   });
   return chatsList;

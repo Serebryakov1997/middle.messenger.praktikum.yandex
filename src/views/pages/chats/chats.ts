@@ -1,10 +1,10 @@
 import './chats.css';
-import { Block, creationChatList } from '../../../utils';
+import { Block, DEV_LINK_ADDRESS, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
+import { Button, Input, UnderButtonLink } from '../../components';
 
 export class Chats extends Block {
-  _formData: FormData;
 
   constructor() {
     super('form', {
@@ -13,20 +13,50 @@ export class Chats extends Block {
         chatsSearchBarClass: 'chats-search-bar',
         selectChatLegendClass: 'select-chat-legend',
         messageClass: 'msg-in-chat',
-        chatAreaClass: 'chat-area'
+        chatAreaClass: 'chat-area',
+        chatAreaNameClass: 'chat-area-name',
+        chatLastTimeClass: 'chat-last-time'
       },
       chatsForm: 'chats-form-id',
       chatsSearchBar: 'Поиск',
       selectChatLegend: 'Выберите чат, чтобы отправить сообщение',
       selectChatLegendId: 'select-chat-legend-id',
+      chatAreaId: 'chat-area-id',
+      chatAreaNameId: 'chat-area-name-id',
+      chatAreaLastTimeId: 'chat-area-time-id'
     });
-
-    this._formData = new FormData();
   }
 
   protected init(): void {
-    const chatsList = creationChatList(mockChatsJSON, this.children);
-    this.children.chatsList = chatsList;
+    const chatsList = creationChatList(mockChatsJSON, this);
+    this.children = {
+      linkToProfile: new UnderButtonLink('a', {
+        styles: {
+          underButtonClass: 'profile-link'
+        },
+        link: `${DEV_LINK_ADDRESS}profile`,
+        underButtonText: 'В профиль'
+      }),
+      chatsList: chatsList,
+      chatInput: new Input({
+        name: 'message',
+        placeholder: 'Сообщение',
+        inputType: 'text',
+        styles: {
+          inputClass: 'chat-input'
+        }
+      }),
+      chatButton: new Button({
+        styles: {
+          buttonClass: 'button-chat'
+        },
+        events: {
+          click: (e: Event) => {
+            e.preventDefault();
+          }
+        }
+      })
+    }
   }
 
   render(): DocumentFragment {

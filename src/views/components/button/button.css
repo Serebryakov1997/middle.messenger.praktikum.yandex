@@ -1,3 +1,14 @@
+.button-chat {
+  display: block;
+  position: absolute;
+  top: 894px;
+  left: 1250px;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+
 .button-save {
   top: 650px;
   left: 145px;

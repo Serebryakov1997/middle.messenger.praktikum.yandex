@@ -1,11 +1,22 @@
 @use './colors/input_colors';
 
 .chat-input {
-   top: 798px;
+   position: absolute;
+   top: 885px;
    left: -1px;
-   height: 50px;
+   height: 60px;
    width: 1380px;
    border: 1px solid input_colors.$input-border-color;
+
+   &::placeholder {
+      padding-left: 30px;
+      font-size: 20px;
+   }
+
+   &:focus {
+      outline: none;
+      text-align: left;
+   }
 }
 
 

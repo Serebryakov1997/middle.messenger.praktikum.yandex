@@ -29,7 +29,7 @@
   color: gray;
 }
 .chats-form .chat-area {
-  display: block;
+  display: none;
   position: absolute;
   top: 8px;
   left: 508px;
@@ -37,6 +37,23 @@
   width: 1400px;
   border: 1px solid gray;
   background-color: #d9d9d9;
+}
+.chats-form .chat-area .chat-area-name {
+  display: block;
+  position: relative;
+  top: 55px;
+  left: 30px;
+  text-align: left;
+  font-size: 23px;
+  font-weight: bold;
+}
+.chats-form .chat-area .chat-last-time {
+  display: block;
+  position: relative;
+  top: 65px;
+  left: 30px;
+  text-align: left;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=chats.css.map */
