@@ -28,4 +28,9 @@ label {
   font-weight: bold;
 }
 
+.error-code-label {
+  top: 50%;
+  left: 50%;
+}
+
 /*# sourceMappingURL=label.css.map */

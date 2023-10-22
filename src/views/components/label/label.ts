@@ -7,7 +7,7 @@ interface LabelInterface {
   styles?: {
     labelClass: string;
   }
-  name: string;
+  name?: string;
   labelName: string;
 }
 

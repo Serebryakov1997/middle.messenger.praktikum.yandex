@@ -1,7 +1,7 @@
 import { Block, renderDOM } from './utils';
 import {
   Login,
-  Error,
+  PageError,
   Chats,
   Register,
   Profile,
@@ -9,7 +9,7 @@ import {
   ProfileChangePasswd,
 } from './views';
 
-const page500 = new Error();
+const page500 = new PageError('500', 'Мы уже фиксим');
 
 document.addEventListener('DOMContentLoaded', () => {
   function getPage(): Block {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       case '/profile_change_passwd':
         return new ProfileChangePasswd() || page500;
       default:
-        return new Error();
+        return new PageError('404', 'Не туда попали');
     }
   }
 

@@ -2,7 +2,7 @@ export {
   Login,
   Chats,
   Register,
-  Error,
+  PageError,
   Profile,
   ProfileChangeData,
   ProfileChangePasswd
