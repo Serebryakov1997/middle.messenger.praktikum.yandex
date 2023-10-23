@@ -8,13 +8,22 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
   height: 732px;
-  overflow: hidden;
   background-color: #d9d9d9;
 }
 .register-container .register-header {
   padding-top: 35px;
   font-size: 36px;
   text-align: center;
+}
+.register-container .register-payload {
+  position: absolute;
+  top: 100px;
+  height: 460px;
+  width: 400px;
+  overflow-y: scroll;
+}
+.register-container .register-payload::-webkit-scrollbar {
+  display: none;
 }
 
 .register-button {
