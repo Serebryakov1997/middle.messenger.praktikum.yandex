@@ -11,7 +11,18 @@
         @include auth.header;
     }
 
-    overflow: hidden;
+    .register-payload {
+        position: absolute;
+        top: 100px;
+        height: 460px;
+        width: 400px;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
     background-color: main_colors.$back-color;
 }
 
