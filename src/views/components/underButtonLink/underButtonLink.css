@@ -1,0 +1,19 @@
+.profile-link {
+  display: block;
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+a {
+  display: block;
+  position: absolute;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+/*# sourceMappingURL=underButtonLink.css.map */

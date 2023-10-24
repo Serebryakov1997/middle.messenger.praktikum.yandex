@@ -1,0 +1,27 @@
+@use '../main/main';
+@use './colors/auth_colors';
+
+
+@mixin main-container {
+    border-radius: main.$border_radius;
+    width: 401px;
+    height: 519px;
+    
+    @include main.block-center-position;
+}
+
+@mixin header {
+    padding-top: 35px;
+    font-size: 36px;
+    text-align: center;
+}
+
+// @mixin under-text {
+//     display: block;
+//     position: relative;
+//     margin-top: 150px;
+//     font-size: 15px;
+//     text-align: center;
+//     text-decoration: none;
+//     color: auth_colors.$under-text-color;
+// }

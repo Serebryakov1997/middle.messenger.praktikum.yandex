@@ -1,0 +1,37 @@
+.page-error {
+  display: block;
+  position: absolute;
+  color: #1e1e1e;
+  font-style: normal;
+  font-weight: 300;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.page-error .code-error {
+  display: block;
+  position: relative;
+  text-align: center;
+  font-size: 25px;
+}
+.page-error .code-error-text {
+  display: block;
+  position: relative;
+  text-align: center;
+  width: 180px;
+  font-size: 25px;
+  line-height: 20px;
+}
+.page-error .link-to-chats {
+  display: block;
+  text-align: center;
+  left: 30px;
+  color: #3369f3;
+  font-size: 20px;
+  line-height: 11px;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=error.css.map */

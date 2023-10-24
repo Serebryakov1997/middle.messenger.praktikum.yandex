@@ -1,0 +1,67 @@
+.profile-container {
+  width: 702px;
+  height: 825px;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 30px;
+  background-color: #d9d9d9;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.profile-container .avatar {
+  margin-top: 50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #cec48d;
+  z-index: 1;
+}
+.profile-container .camera-button {
+  position: absolute;
+  top: 165px;
+  left: 330px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid;
+  cursor: pointer;
+  z-index: 2;
+}
+.profile-container .camera-button img {
+  width: 25px;
+  margin-top: 2px;
+}
+.profile-container p {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 24px;
+}
+.profile-container .status {
+  font-weight: normal;
+  margin-top: -20px;
+  font-size: 20px;
+}
+.profile-container .change-data {
+  display: block;
+  top: 680px;
+  left: 80px;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: left;
+  color: #242cdd;
+}
+.profile-container .change-passwd {
+  display: block;
+  top: 720px;
+  color: #242cdd;
+}
+.profile-container .logout {
+  display: block;
+  top: 760px;
+  color: red;
+}
+
+/*# sourceMappingURL=profile.css.map */

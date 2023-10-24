@@ -1,0 +1,24 @@
+@use '../main/main' as main_base;
+@use '../main/colors/main_colors';
+
+@mixin profile-container {
+    width: 702px;
+    height: 825px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: main_base.$border-radius;
+    background-color: main_colors.$back-color;
+
+    @include main_base.block-center-position;
+
+}
+
+
+@mixin avatar {
+    margin-top: 50px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; 
+    background-color: main_colors.$component-color;
+    z-index: 1;
+}

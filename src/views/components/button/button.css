@@ -1,0 +1,30 @@
+.button-chat {
+  display: block;
+  position: absolute;
+  top: 894px;
+  left: 1250px;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+
+.button-save {
+  top: 650px;
+  left: 145px;
+}
+
+button {
+  display: block;
+  position: absolute;
+  width: 298px;
+  height: 58px;
+  border: none;
+  border-radius: 30px;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 55px;
+  background-color: #cec48d;
+}
+
+/*# sourceMappingURL=button.css.map */

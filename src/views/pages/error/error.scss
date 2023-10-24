@@ -1,0 +1,39 @@
+@use './colors/error_page_colors';
+@use '../../base_styles/main/main';
+
+
+.page-error {
+    display: block;
+    position: absolute;
+    color: error_page_colors.$page-error-main-color;
+    font-style: normal;
+    font-weight: 300;
+
+    @include main.block-center-position;
+
+    .code-error {
+        display: block;
+        position: relative;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .code-error-text {
+        display: block;
+        position: relative;
+        text-align: center;
+        width: 180px;
+        font-size: 25px;
+        line-height: 20px;
+    }
+
+    .link-to-chats {
+        display: block;
+        text-align: center;
+        left: 30px;
+        color: error_page_colors.$link-color;
+        font-size: 20px;
+        line-height: 11px;
+        text-decoration: none;
+    }
+}
