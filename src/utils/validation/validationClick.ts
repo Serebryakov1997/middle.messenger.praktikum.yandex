@@ -5,14 +5,14 @@ import { validationError } from './validationError';
 export function clickValidation(
   formData: FormData,
   validators: {
-        [key: string]: {
-            rule: RegExp;
-            errorMsg: string;
-        }
-    },
+    [key: string]: {
+      rule: RegExp;
+      errorMsg: string;
+    }
+  },
   children: { [key: string]: { [key: string]: Block } },
   event: Event,
-) {
+): boolean {
   const isValidArr: { [key: string]: boolean } = {};
 
   Object.entries(validators).forEach(([key, value]) => {
@@ -31,9 +31,11 @@ export function clickValidation(
       }
     });
     event.preventDefault();
+    return false;
   } else {
     Object.keys(isValidArr).forEach((key) => {
       backUpForValid(children[key]);
     });
+    return true;
   }
 }

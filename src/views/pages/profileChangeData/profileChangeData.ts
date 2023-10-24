@@ -8,7 +8,7 @@ import {
 
 import {
   Block,
-  DEV_LINK_ADDRESS,
+  Router,
   clickValidation,
   inputValidation,
 } from '../../../utils';
@@ -32,7 +32,6 @@ export class ProfileChangeData extends Block {
 
   constructor() {
     super('form', {
-      buttonLink: `${DEV_LINK_ADDRESS}profile`,
       styles: {
         containerClass: 'profile-container',
         avatarNameClass: 'avatar',
@@ -67,9 +66,9 @@ export class ProfileChangeData extends Block {
           blur: (e: Event) => {
             this._formData.set('email', (<HTMLInputElement>e.target).value);
             inputValidation(e, emailValidator, {
-              validError: <Block> this.children.validErrorEmail,
-              input: <Block> this.children.inputEmail,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorEmail,
+              input: <Block>this.children.inputEmail,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -101,9 +100,9 @@ export class ProfileChangeData extends Block {
           blur: (e: Event) => {
             this._formData.set('login', (<HTMLInputElement>e.target).value);
             inputValidation(e, loginValidator, {
-              validError: <Block> this.children.validErrorLogin,
-              input: <Block> this.children.inputLogin,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorLogin,
+              input: <Block>this.children.inputLogin,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -135,9 +134,9 @@ export class ProfileChangeData extends Block {
           blur: (e: Event) => {
             this._formData.set('first_name', (<HTMLInputElement>e.target).value);
             inputValidation(e, firstNameValidator, {
-              validError: <Block> this.children.validErrorFirstName,
-              input: <Block> this.children.inputFirstName,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorFirstName,
+              input: <Block>this.children.inputFirstName,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -169,9 +168,9 @@ export class ProfileChangeData extends Block {
           blur: (e: Event) => {
             this._formData.set('second_name', (<HTMLInputElement>e.target).value);
             inputValidation(e, secondNameValidator, {
-              validError: <Block> this.children.validErrorSecondName,
-              input: <Block> this.children.inputSecondName,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorSecondName,
+              input: <Block>this.children.inputSecondName,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -203,9 +202,9 @@ export class ProfileChangeData extends Block {
           blur: (e: Event) => {
             this._formData.set('chat_name', (<HTMLInputElement>e.target).value);
             inputValidation(e, firstNameValidator, {
-              validError: <Block> this.children.validErrorChatName,
-              input: <Block> this.children.inputChatName,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorChatName,
+              input: <Block>this.children.inputChatName,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -237,9 +236,9 @@ export class ProfileChangeData extends Block {
           blur: (e: Event) => {
             this._formData.set('phone', (<HTMLInputElement>e.target).value);
             inputValidation(e, phoneValidator, {
-              validError: <Block> this.children.validErrorPhone,
-              input: <Block> this.children.inputPhone,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorPhone,
+              input: <Block>this.children.inputPhone,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -258,7 +257,7 @@ export class ProfileChangeData extends Block {
         },
         events: {
           click: (e: Event) => {
-            clickValidation(
+            const isValid = clickValidation(
               this._formData,
               {
                 email: emailValidator,
@@ -270,34 +269,34 @@ export class ProfileChangeData extends Block {
               },
               {
                 email: {
-                  validError: <Block> this.children.validErrorEmail,
-                  input: <Block> this.children.inputEmail,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorEmail,
+                  input: <Block>this.children.inputEmail,
+                  button: <Block>this.children.buttonSave,
                 },
                 login: {
-                  validError: <Block> this.children.validErrorLogin,
-                  input: <Block> this.children.inputLogin,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorLogin,
+                  input: <Block>this.children.inputLogin,
+                  button: <Block>this.children.buttonSave,
                 },
                 first_name: {
-                  validError: <Block> this.children.validErrorFirstName,
-                  input: <Block> this.children.inputFirstName,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorFirstName,
+                  input: <Block>this.children.inputFirstName,
+                  button: <Block>this.children.buttonSave,
                 },
                 second_name: {
-                  validError: <Block> this.children.validErrorSecondName,
-                  input: <Block> this.children.inputSecondName,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorSecondName,
+                  input: <Block>this.children.inputSecondName,
+                  button: <Block>this.children.buttonSave,
                 },
                 chat_name: {
-                  validError: <Block> this.children.validErrorPhone,
-                  input: <Block> this.children.inputChatName,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorPhone,
+                  input: <Block>this.children.inputChatName,
+                  button: <Block>this.children.buttonSave,
                 },
                 phone: {
-                  validError: <Block> this.children.validErrorPhone,
-                  input: <Block> this.children.inputPhone,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorPhone,
+                  input: <Block>this.children.inputPhone,
+                  button: <Block>this.children.buttonSave,
                 },
               },
               e,
@@ -305,6 +304,10 @@ export class ProfileChangeData extends Block {
             this._formData.forEach((value, key) => {
               console.log(`${key}: ${value}`);
             });
+            if (isValid) {
+              const router = new Router();
+              router.go('/settings');
+            }
           },
         },
       }),

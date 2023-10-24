@@ -1,7 +1,7 @@
 import './profile.css';
-import { Block, DEV_LINK_ADDRESS } from '../../../utils';
+import { Block, DEV_LINK_ADDRESS, Router } from '../../../utils';
 import { profileTmpl } from './profile.tmpl';
-import { Input, Label } from '../../components';
+import { Input, Label, UnderButtonLink } from '../../components';
 
 const mockData = {
   email: 'ivanivanov@yandex.ru',
@@ -29,11 +29,8 @@ export class Profile extends Block {
       dislpayFieldName: 'display_name',
       displayName: 'Иван',
       statusName: 'online',
-      changeDataLink: `${DEV_LINK_ADDRESS}profile_change_data`,
       changeDataName: 'Изменить данные',
-      changePasswordLink: `${DEV_LINK_ADDRESS}profile_change_passwd`,
       changePasswdName: 'Изменить пароль',
-      toLoginLink: DEV_LINK_ADDRESS,
       logoutName: 'Выйти',
     });
     this._formData = new FormData();
@@ -150,6 +147,46 @@ export class Profile extends Block {
         inputValue: mockData.phone,
         readonly: 'readonly',
       }),
+
+      // changeDataLink
+      changeDataLink: new UnderButtonLink('a', {
+        styles: {
+          underButtonClass: 'change-data'
+        },
+        underButtonText: 'Изменить данные',
+        events: {
+          click: () => {
+            const router = new Router();
+            router.go('/settings_change_data')
+          }
+        }
+      }),
+      // changePasswdLink
+      changePasswdLink: new UnderButtonLink('a', {
+        styles: {
+          underButtonClass: 'change-data change-passwd'
+        },
+        underButtonText: 'Изменить пароль',
+        events: {
+          click: () => {
+            const router = new Router();
+            router.go('/settings_change_passwd');
+          }
+        }
+      }),
+      // logoutLink
+      logoutLink: new UnderButtonLink('a', {
+        styles: {
+          underButtonClass: 'change-data logout'
+        },
+        underButtonText: 'Выйти',
+        events: {
+          click: () => {
+            const router = new Router();
+            router.go('/')
+          }
+        }
+      })
     };
   }
 

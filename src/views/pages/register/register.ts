@@ -1,6 +1,6 @@
 import './register.css';
 import {
-  Block, DEV_LINK_ADDRESS, clickValidation, inputValidation, validationError,
+  Block, Router, clickValidation, inputValidation, validationError,
 } from '../../../utils';
 import { registerTmpl } from './register.tmpl';
 import {
@@ -26,7 +26,6 @@ export class Register extends Block {
         registerPayloadClass: 'register-payload'
       },
       registerHeaderName: 'Регистрация',
-      buttonLink: DEV_LINK_ADDRESS,
     });
     this._formData = new FormData();
   }
@@ -289,7 +288,7 @@ export class Register extends Block {
         },
         events: {
           click: (e: Event) => {
-            clickValidation(
+            const isValid = clickValidation(
               this._formData,
               {
                 email: emailValidator,
@@ -342,6 +341,10 @@ export class Register extends Block {
             this._formData.forEach((value, key) => {
               console.log(`${key}: ${value}`);
             });
+            if (isValid) {
+              const router = new Router();
+              router.go('/messenger');
+            }
           },
         },
       }),
@@ -350,8 +353,13 @@ export class Register extends Block {
         styles: {
           underButtonClass: 'register-under-text',
         },
-        link: DEV_LINK_ADDRESS,
         underButtonText: 'Войти',
+        events: {
+          click: () => {
+            const router = new Router();
+            router.go('/');
+          }
+        }
       }),
     };
   }

@@ -2,7 +2,7 @@ import './profileChangePasswd.css';
 import { passwdValidator } from '../../../models/validators';
 import {
   Block,
-  DEV_LINK_ADDRESS,
+  Router,
   clickValidation,
   inputValidation,
 } from '../../../utils';
@@ -18,7 +18,6 @@ export class ProfileChangePasswd extends Block {
 
   constructor() {
     super('form', {
-      buttonLink: `${DEV_LINK_ADDRESS}profile`,
       styles: {
         containerClass: 'profile-container',
         avatarNameClass: 'avatar',
@@ -51,9 +50,9 @@ export class ProfileChangePasswd extends Block {
           blur: (e: Event) => {
             this._formData.set('password', (<HTMLInputElement>e.target).value);
             inputValidation(e, passwdValidator, {
-              validError: <Block> this.children.validErrorPasswd,
-              input: <Block> this.children.inputPasswd,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorPasswd,
+              input: <Block>this.children.inputPasswd,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -84,9 +83,9 @@ export class ProfileChangePasswd extends Block {
           blur: (e: Event) => {
             this._formData.set('new_password', (<HTMLInputElement>e.target).value);
             inputValidation(e, passwdValidator, {
-              validError: <Block> this.children.validErrorNewPasswd,
-              input: <Block> this.children.inputNewPasswd,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorNewPasswd,
+              input: <Block>this.children.inputNewPasswd,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -117,9 +116,9 @@ export class ProfileChangePasswd extends Block {
           blur: (e: Event) => {
             this._formData.set('repeat_new_password', (<HTMLInputElement>e.target).value);
             inputValidation(e, passwdValidator, {
-              validError: <Block> this.children.validErrorRepeatNewPasswd,
-              input: <Block> this.children.inputRepeatNewPasswd,
-              button: <Block> this.children.buttonSave,
+              validError: <Block>this.children.validErrorRepeatNewPasswd,
+              input: <Block>this.children.inputRepeatNewPasswd,
+              button: <Block>this.children.buttonSave,
             });
           },
         },
@@ -138,7 +137,7 @@ export class ProfileChangePasswd extends Block {
         },
         events: {
           click: (e: Event) => {
-            clickValidation(
+            const isValid = clickValidation(
               this._formData,
               {
                 password: passwdValidator,
@@ -147,19 +146,19 @@ export class ProfileChangePasswd extends Block {
               },
               {
                 password: {
-                  validError: <Block> this.children.validErrorPasswd,
-                  input: <Block> this.children.inputPasswd,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorPasswd,
+                  input: <Block>this.children.inputPasswd,
+                  button: <Block>this.children.buttonSave,
                 },
                 new_password: {
-                  validError: <Block> this.children.validErrorNewPasswd,
-                  input: <Block> this.children.inputNewPasswd,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorNewPasswd,
+                  input: <Block>this.children.inputNewPasswd,
+                  button: <Block>this.children.buttonSave,
                 },
                 repeat_new_password: {
-                  validError: <Block> this.children.validErrorRepeatNewPasswd,
-                  input: <Block> this.children.inputRepeatNewPasswd,
-                  button: <Block> this.children.buttonSave,
+                  validError: <Block>this.children.validErrorRepeatNewPasswd,
+                  input: <Block>this.children.inputRepeatNewPasswd,
+                  button: <Block>this.children.buttonSave,
                 },
               },
               e,
@@ -167,6 +166,10 @@ export class ProfileChangePasswd extends Block {
             this._formData.forEach((value, key) => {
               console.log(`${key}: ${value}`);
             });
+            if (isValid) {
+              const router = new Router();
+              router.go('/settings');
+            }
           },
         },
       }),

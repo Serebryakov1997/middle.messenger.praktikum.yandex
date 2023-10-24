@@ -38,25 +38,9 @@
         font-size: 20px;
     }
 
-    .change-data {
-        display: block;
-        top: 680px;
-        left: 80px;
-        font-size: 20px;
-        text-decoration: none;
-        text-align: left;
-        color: colors.$change-data-color;
-    }
-
-    .change-passwd {
-        display: block;
-        top: 720px;
-        color: colors.$change-data-color;
-    }
-
-    .logout {
-        display: block;
-        top: 760px;
-        color: colors.$logout-color;
-    }
+    // .logout {
+    //     display: block;
+    //     top: 760px;
+    //     color: colors.$logout-color;
+    // }
 }

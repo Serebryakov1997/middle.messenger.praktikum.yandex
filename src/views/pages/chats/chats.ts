@@ -1,5 +1,5 @@
 import './chats.css';
-import { Block, DEV_LINK_ADDRESS, creationChatList } from '../../../utils';
+import { Block, Router, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
 import { Button, Input, UnderButtonLink } from '../../components';
@@ -27,14 +27,19 @@ export class Chats extends Block {
   }
 
   protected init(): void {
-    const chatsList = creationChatList(mockChatsJSON, this);
+    const chatsList = creationChatList(mockChatsJSON);
     this.children = {
       linkToProfile: new UnderButtonLink('a', {
         styles: {
           underButtonClass: 'profile-link',
         },
-        link: `${DEV_LINK_ADDRESS}profile`,
         underButtonText: 'В профиль',
+        events: {
+          click: () => {
+            const router = new Router();
+            router.go('/settings');
+          }
+        }
       }),
       chatsList,
       chatInput: new Input({

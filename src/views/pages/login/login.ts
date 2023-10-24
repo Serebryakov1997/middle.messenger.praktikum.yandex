@@ -2,6 +2,7 @@ import './login.css';
 import {
   Block,
   DEV_LINK_ADDRESS,
+  Router,
   clickValidation,
   inputValidation,
 } from '../../../utils';
@@ -22,8 +23,6 @@ export class Login extends Block {
         underButtonClass: 'login-button__under-text',
       },
       headerName: 'Вход',
-      buttonLink: `${DEV_LINK_ADDRESS}chats`,
-      registerLink: `${DEV_LINK_ADDRESS}register`,
       underButtonText: 'Нет аккаунта?',
     });
     this._formData = new FormData();
@@ -89,7 +88,7 @@ export class Login extends Block {
         },
         events: {
           click: (e: Event) => {
-            clickValidation(
+            const isValid = clickValidation(
               this._formData,
               {
                 login: loginValidator,
@@ -97,14 +96,14 @@ export class Login extends Block {
               },
               {
                 login: {
-                  validError: <Block> this.children.validErrorLogin,
-                  input: <Block> this.children.inputLogin,
-                  button: <Block> this.children.loginButton,
+                  validError: <Block>this.children.validErrorLogin,
+                  input: <Block>this.children.inputLogin,
+                  button: <Block>this.children.loginButton,
                 },
                 password: {
-                  validError: <Block> this.children.validErrorPasswd,
-                  input: <Block> this.children.inputPasswd,
-                  button: <Block> this.children.loginButton,
+                  validError: <Block>this.children.validErrorPasswd,
+                  input: <Block>this.children.inputPasswd,
+                  button: <Block>this.children.loginButton,
                 },
               },
               e,
@@ -112,6 +111,11 @@ export class Login extends Block {
             this._formData.forEach((value, key) => {
               console.log(`${key}: ${value}`);
             });
+
+            if (isValid) {
+              const router = new Router();
+              router.go('/messenger');
+            }
           },
         },
       }),
@@ -119,8 +123,13 @@ export class Login extends Block {
         styles: {
           underButtonClass: 'under-text',
         },
-        link: `${DEV_LINK_ADDRESS}register`,
         underButtonText: 'Нет аккаунта?',
+        events: {
+          click: () => {
+            const router = new Router();
+            router.go('/sign-up');
+          }
+        }
       }),
     };
   }

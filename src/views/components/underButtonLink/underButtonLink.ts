@@ -7,8 +7,10 @@ interface UnderButtonLinkProps {
   styles: {
     underButtonClass: string;
   };
-  link: string;
   underButtonText: string;
+  events: {
+    click: (e: Event) => void;
+  }
 }
 
 export class UnderButtonLink extends Block {

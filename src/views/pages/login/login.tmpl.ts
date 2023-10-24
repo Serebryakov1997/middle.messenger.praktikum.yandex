@@ -1,5 +1,5 @@
 export const loginTmpl = `
-<form action="{{buttonLink}}">
+<form>
     <div class="{{styles.containerClass}}">
         <div class="{{styles.headerClass}}">{{headerName}}</div>
         {{{labelLogin}}}

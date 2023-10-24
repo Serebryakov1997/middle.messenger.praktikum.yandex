@@ -23,9 +23,9 @@ export const profileTmpl = `
             {{{labelPhone}}}
             {{{inputPhone}}}
 
-            <a class="{{styles.changeDataClass}}" href="{{changeDataLink}}">{{changeDataName}}</a>
-            <a class="{{styles.changeDataClass}} {{styles.changePasswordClass}}" href="{{changePasswordLink}}">{{changePasswdName}}</a>
-            <a class="{{styles.changeDataClass}} {{styles.logoutClass}}" href="{{toLoginLink}}">{{logoutName}}</a>
+            {{{changeDataLink}}}
+            {{{changePasswdLink}}}
+            {{{logoutLink}}}
         </div>
     </form>
 `;

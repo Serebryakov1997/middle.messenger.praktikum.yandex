@@ -10,3 +10,4 @@ export {
   inputValidation,
   validationError,
 } from './validation';
+export { Router } from './router';

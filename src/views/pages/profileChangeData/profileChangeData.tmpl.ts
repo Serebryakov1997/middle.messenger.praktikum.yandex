@@ -1,5 +1,5 @@
 export const profileChangeDataTmpl = `
-    <form action="{{buttonLink}}">
+    <form>
         <div class="{{styles.containerClass}}">
             <img name="{{avatarName}}" class="{{styles.avatarNameClass}}">
             {{{labelEmail}}}
