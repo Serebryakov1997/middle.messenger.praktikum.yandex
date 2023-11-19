@@ -1,7 +1,10 @@
 import './profile.css';
-import { Block, DEV_LINK_ADDRESS, Router } from '../../../utils';
 import { profileTmpl } from './profile.tmpl';
 import { Input, Label, UnderButtonLink } from '../../components';
+import { AuthController } from '../../../controllers/auth-controller';
+import { Block, router } from '../../../core';
+import { IState } from '../../../models/interfaces/auth';
+import { withStore } from '../../../core/Store';
 
 const mockData = {
   email: 'ivanivanov@yandex.ru',
@@ -12,7 +15,7 @@ const mockData = {
   phone: '+79099673030',
 };
 
-export class Profile extends Block {
+export class BaseProfile extends Block {
   _formData: FormData;
 
   constructor() {
@@ -156,7 +159,6 @@ export class Profile extends Block {
         underButtonText: 'Изменить данные',
         events: {
           click: () => {
-            const router = new Router();
             router.go('/settings_change_data')
           }
         }
@@ -169,7 +171,6 @@ export class Profile extends Block {
         underButtonText: 'Изменить пароль',
         events: {
           click: () => {
-            const router = new Router();
             router.go('/settings_change_passwd');
           }
         }
@@ -182,15 +183,35 @@ export class Profile extends Block {
         underButtonText: 'Выйти',
         events: {
           click: () => {
-            const router = new Router();
-            router.go('/')
+            AuthController.logout();
+            // const router = new Router();
+            // router.go('/')
           }
         }
       })
     };
   }
 
+
+  protected componentDidMount(oldProps: Record<string, unknown>): void {
+    AuthController.fetchUser();
+  }
+
   render(): DocumentFragment {
     return this.compile(profileTmpl, this.props);
   }
 }
+
+
+const mapStateToProps = (state: IState) => ({
+  email: state.user?.email,
+  login: state.user?.login,
+  first_name: state.user?.first_name,
+  second_name: state.user?.second_name,
+  chat_name: state.user?.chat_name,
+  phone: state.user?.phone
+})
+
+export const Profile = withStore(mapStateToProps, new BaseProfile());
+
+

@@ -1,13 +1,13 @@
+import { Block } from '../../../core';
 import './message.css';
-import { Block } from '../../../utils';
 import { messageTmpl } from './message.tmpl';
 
 interface MessageProps {
-    [key: string]: string | {};
-    styles: {
-        messageClass: string;
-    },
-    message: string;
+  [key: string]: string | {};
+  styles: {
+    messageClass: string;
+  },
+  message: string;
 }
 
 export class Message extends Block {

@@ -1,4 +1,6 @@
-import { Router } from './utils';
+// import { AuthController } from './controllers/auth-controller';
+import { router } from './core';
+import { Auth, Users } from './utils';
 import {
   Login,
   Chats,
@@ -9,14 +11,39 @@ import {
 } from './views';
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const router = new Router();
+document.addEventListener('DOMContentLoaded', async () => {
   router
-    .use('/', new Login(), {})
-    .use('/messenger', new Chats(), {})
-    .use('/sign-up', new Register(), {})
-    .use('/settings', new Profile(), {})
-    .use('/settings_change_data', new ProfileChangeData(), {})
-    .use('/settings_change_passwd', new ProfileChangePasswd(), {})
+    .use(new Login(), Auth.SignIn)
+    .use(new Chats())
+    .use(new Register(), Auth.SignUp)
+    .use(Profile, Auth.User)
+    .use(new ProfileChangeData(), Users.Profile)
+    .use(new ProfileChangePasswd(), Users.Password)
     .start();
+
+  // let isProtectedRoute = true;
+
+  // switch (window.location.pathname) {
+  //   case Auth.SignIn:
+  //   case Auth.SignUp:
+  //     isProtectedRoute = false;
+  //     break;
+  // }
+
+  // try {
+  //   await AuthController.fetchUser();
+
+  //   router.start();
+
+  //   if (!isProtectedRoute) {
+  //     router.go(Users.Profile);
+  //   }
+  // } catch (e) {
+  //   console.log(e, 'Here');
+  //   router.start();
+
+  //   if (isProtectedRoute) {
+  //     router.go(Auth.SignIn);
+  //   }
+  // }
 });

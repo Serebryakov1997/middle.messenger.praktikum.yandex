@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars';
 import { v4 as makeUUID } from 'uuid';
-import { EventBus } from './event-bus';
+import { EventBus } from '../EventBus/event-bus';
 
 export class Block {
   static EVENTS = {
@@ -166,7 +166,7 @@ export class Block {
 
   _addEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>> this.props.events;
+      const events = <Record<string, (e: Event) => void>>this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {
@@ -178,7 +178,7 @@ export class Block {
 
   _removeEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>> this.props.events;
+      const events = <Record<string, (e: Event) => void>>this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {

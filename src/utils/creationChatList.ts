@@ -1,7 +1,7 @@
 import { Chat } from '../views/components';
 import { ChatProps } from '../views/components/chat/chat';
 import { IMockChatsJSON } from '../views/pages/chats/mockChats';
-import { Block } from './block';
+import { Block } from '../core/Block/block';
 
 export function creationChatList(
   mockJSONData: IMockChatsJSON,

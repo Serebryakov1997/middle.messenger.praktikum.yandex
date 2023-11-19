@@ -1,9 +1,9 @@
-import { PageError } from '../views';
-import { Block } from './block';
+import { PageError } from '../../views';
+import { Block } from '../Block/block';
 import { Route } from './route';
 
 
-export class Router {
+class Router {
 
     static __instance: Router;
     routes: Route[] = [];
@@ -20,8 +20,8 @@ export class Router {
         Router.__instance = this;
     }
 
-    use(pathname: string, block: Block, props: Record<string, unknown>) {
-        const route = new Route(pathname, block, props);
+    use(block: Block, pathname = '/',) {
+        const route = new Route(pathname, block);
         this.routes.push(route);
 
         return this;
@@ -39,8 +39,8 @@ export class Router {
     _onRoute(pathname: string) {
         let route = this.getRoute(pathname);
         if (!route) {
-            const route404 = new Route(pathname, new PageError('404', 'Не туда попали'), {});
-            const route500 = new Route(pathname, new PageError('500', 'Мы уже фиксим'), {});
+            const route404 = new Route(pathname, new PageError('404', 'Не туда попали'));
+            const route500 = new Route(pathname, new PageError('500', 'Мы уже фиксим'));
             route = route404 || route500;
         }
 
@@ -69,3 +69,6 @@ export class Router {
         return this.routes.find(route => route.match(pathname));
     }
 }
+
+
+export default new Router();

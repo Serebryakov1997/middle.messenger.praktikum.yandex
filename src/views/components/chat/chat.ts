@@ -1,5 +1,5 @@
+import { Block } from '../../../core';
 import './chat.css';
-import { Block } from '../../../utils';
 import { chatTmpl } from './chat.tmpl';
 
 export interface ChatProps {

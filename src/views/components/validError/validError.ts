@@ -1,5 +1,5 @@
+import { Block } from '../../../core';
 import './validError.css';
-import { Block } from '../../../utils';
 import { validErrorTmpl } from './validError.tmpl';
 
 interface ValidErrorProps {

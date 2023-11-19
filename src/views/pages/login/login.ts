@@ -1,8 +1,5 @@
 import './login.css';
 import {
-  Block,
-  DEV_LINK_ADDRESS,
-  Router,
   clickValidation,
   inputValidation,
 } from '../../../utils';
@@ -11,6 +8,8 @@ import {
 } from '../../components';
 import { loginTmpl } from './login.tmpl';
 import { loginValidator, passwdValidator } from '../../../models/validators';
+import { AuthController } from '../../../controllers/auth-controller';
+import { Block, router } from '../../../core';
 
 export class Login extends Block {
   _formData: FormData;
@@ -26,6 +25,12 @@ export class Login extends Block {
       underButtonText: 'Нет аккаунта?',
     });
     this._formData = new FormData();
+
+    // get data from LoginController
+    // LoginController.getLoginData();
+
+    // on to event
+
   }
 
   protected init(): void {
@@ -87,6 +92,7 @@ export class Login extends Block {
           buttonClass: 'login-button',
         },
         events: {
+
           click: (e: Event) => {
             const isValid = clickValidation(
               this._formData,
@@ -113,7 +119,10 @@ export class Login extends Block {
             });
 
             if (isValid) {
-              const router = new Router();
+              AuthController.signIn({
+                login: this._formData.get('login') as string,
+                password: this._formData.get('password') as string
+              })
               router.go('/messenger');
             }
           },
@@ -126,7 +135,6 @@ export class Login extends Block {
         underButtonText: 'Нет аккаунта?',
         events: {
           click: () => {
-            const router = new Router();
             router.go('/sign-up');
           }
         }

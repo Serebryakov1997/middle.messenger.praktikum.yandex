@@ -1,4 +1,4 @@
-import { Block } from '../block';
+import { Block } from '../../core/Block/block';
 
 export function backUpForValid(children: { [key: string]: Block }) {
     /* eslint no-param-reassign: "off" */

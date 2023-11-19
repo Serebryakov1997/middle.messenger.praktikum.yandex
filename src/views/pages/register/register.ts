@@ -1,6 +1,6 @@
 import './register.css';
 import {
-  Block, Router, clickValidation, inputValidation, validationError,
+  clickValidation, inputValidation, validationError,
 } from '../../../utils';
 import { registerTmpl } from './register.tmpl';
 import {
@@ -14,6 +14,8 @@ import {
   phoneValidator,
   secondNameValidator,
 } from '../../../models/validators';
+import { AuthController } from '../../../controllers/auth-controller';
+import { Block, router } from '../../../core';
 
 export class Register extends Block {
   _formData: FormData;
@@ -288,6 +290,7 @@ export class Register extends Block {
         },
         events: {
           click: (e: Event) => {
+            // code below put to AuthController, to signUp function
             const isValid = clickValidation(
               this._formData,
               {
@@ -342,7 +345,6 @@ export class Register extends Block {
               console.log(`${key}: ${value}`);
             });
             if (isValid) {
-              const router = new Router();
               router.go('/messenger');
             }
           },
@@ -356,7 +358,15 @@ export class Register extends Block {
         underButtonText: 'Войти',
         events: {
           click: () => {
-            const router = new Router();
+            AuthController.signUp({
+              first_name: this._formData.get('first_name') as string,
+              second_name: this._formData.get('second_name') as string,
+              email: this._formData.get('email') as string,
+              login: this._formData.get('login') as string,
+              phone: this._formData.get('phone') as string,
+              password: this._formData.get('password') as string,
+              repeat_password: this._formData.get('repeat_password') as string
+            });
             router.go('/');
           }
         }

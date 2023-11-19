@@ -1,5 +1,5 @@
+import { Block } from '../../../core';
 import './underButtonLink.css';
-import { Block } from '../../../utils';
 import { underButtonLinkTmpl } from './underButtonLink.tmpl';
 
 interface UnderButtonLinkProps {

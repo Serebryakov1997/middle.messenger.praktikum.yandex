@@ -1,4 +1,4 @@
-import { Block } from '../block';
+import { Block } from '../../core/Block/block';
 import { backUpForValid } from './backupForValid';
 import { validationError } from './validationError';
 

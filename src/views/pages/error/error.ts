@@ -1,7 +1,7 @@
 import './error.css';
-import { Block, Router } from '../../../utils';
 import { errorTmpl } from './error.tmpl';
 import { UnderButtonLink } from '../../components';
+import { Block, router } from '../../../core';
 
 export class PageError extends Block {
   constructor(codeError: string, codeErrorText: string) {
@@ -25,7 +25,6 @@ export class PageError extends Block {
       underButtonText: 'Назад к чатам',
       events: {
         click: () => {
-          const router = new Router();
           router.go('/messenger');
         }
       }

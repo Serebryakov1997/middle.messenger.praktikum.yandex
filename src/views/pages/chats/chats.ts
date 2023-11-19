@@ -1,8 +1,9 @@
 import './chats.css';
-import { Block, Router, creationChatList } from '../../../utils';
+import { creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
 import { Button, Input, UnderButtonLink } from '../../components';
+import { Block, router } from '../../../core';
 
 export class Chats extends Block {
   constructor() {
@@ -36,7 +37,6 @@ export class Chats extends Block {
         underButtonText: 'В профиль',
         events: {
           click: () => {
-            const router = new Router();
             router.go('/settings');
           }
         }

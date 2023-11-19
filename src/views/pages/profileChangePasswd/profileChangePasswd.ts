@@ -1,8 +1,6 @@
 import './profileChangePasswd.css';
 import { passwdValidator } from '../../../models/validators';
 import {
-  Block,
-  Router,
   clickValidation,
   inputValidation,
 } from '../../../utils';
@@ -10,6 +8,7 @@ import {
   Button, Input, Label, ValidError,
 } from '../../components';
 import { profileChangePasswdTmpl } from './profileChangePasswd.tmpl';
+import { Block, router } from '../../../core';
 
 const mockPassword = 'Password1';
 
@@ -167,7 +166,6 @@ export class ProfileChangePasswd extends Block {
               console.log(`${key}: ${value}`);
             });
             if (isValid) {
-              const router = new Router();
               router.go('/settings');
             }
           },

@@ -1,17 +1,17 @@
-import { Block } from './block';
-import { renderDOM } from './renderDOM';
+import { Block } from '../Block/block';
+import { renderDOM } from '../../utils/renderDOM';
 
 export class Route {
 
     _pathname: string;
     _blockClass: any;
     _block: Block | undefined;
-    _props: Record<string, unknown>;
+    // _props: Record<string, unknown>;
 
-    constructor(pathname: string, view: any, props: Record<string, unknown>) {
+    constructor(pathname: string, view: any) {
         this._pathname = pathname;
         this._blockClass = view;
-        this._props = props;
+        // this._props = props;
     }
 
     navigate(pathname: string) {

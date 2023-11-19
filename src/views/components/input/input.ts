@@ -1,5 +1,5 @@
+import { Block } from '../../../core';
 import './input.css';
-import { Block } from '../../../utils';
 import { inputTmpl } from './input.tmpl';
 
 interface InputProps {

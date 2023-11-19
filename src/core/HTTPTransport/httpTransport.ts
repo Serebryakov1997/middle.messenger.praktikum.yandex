@@ -1,3 +1,5 @@
+import { DEV_LINK_ADDRESS } from '../../utils/urlSelection';
+
 enum Method {
   GET = 'GET',
   POST = 'POST',
@@ -34,53 +36,53 @@ export class HTTPTransport {
 
   readonly TIMEOUT = 5000;
 
-  constructor(mainLinkAddress: string) {
-    this._mainLinkAddress = mainLinkAddress;
+  constructor(mainPath: string) {
+    this._mainLinkAddress = DEV_LINK_ADDRESS + mainPath;
   }
 
-  get = (url: string, options?: Options): Promise<XMLHttpRequestResponseType> => {
+  get<Response>(url: string, options?: Options): Promise<Response> {
     let handledUrl: string = url;
     const handledOptions: Options = options!;
     if (options && options.data) {
       handledUrl += `?${queryStringify(options.data)}`;
       handledOptions.data = {};
     }
-    return HTTPTransport.request(
+    return this.request<Response>(
       this._mainLinkAddress + handledUrl,
       this.TIMEOUT,
       { ...handledOptions, method: Method.GET },
     );
   };
 
-  put = (url: string, options?: Options):
-    Promise<XMLHttpRequestResponseType> => HTTPTransport.request(
-    this._mainLinkAddress + url,
-    this.TIMEOUT,
-    { ...options, method: Method.PUT },
-  );
+  put<Response>(url: string, options?: Options): Promise<Response> {
+    return this.request<Response>(
+      this._mainLinkAddress + url,
+      this.TIMEOUT,
+      { ...options, method: Method.PUT },
+    );
+  }
 
-  post = (url: string, options?: Options):
-    Promise<XMLHttpRequestResponseType> => HTTPTransport.request(
-    this._mainLinkAddress + url,
-    this.TIMEOUT,
-    { ...options, method: Method.POST },
-  );
+  post<Response>(url: string, options?: Options): Promise<Response> {
+    return this.request<Response>(
+      this._mainLinkAddress + url,
+      this.TIMEOUT,
+      { ...options, method: Method.POST },
+    );
+  }
 
-  delete = (
-    url: string,
-    options?: Options,
-  ):
-    Promise<XMLHttpRequestResponseType> => HTTPTransport.request(
-    this._mainLinkAddress + url,
-    this.TIMEOUT,
-    { ...options, method: Method.DELETE },
-  );
+  delete<Response>(url: string, options?: Options): Promise<Response> {
+    return this.request<Response>(
+      this._mainLinkAddress + url,
+      this.TIMEOUT,
+      { ...options, method: Method.DELETE },
+    );
+  }
 
-  static request = (
+  request<Response>(
     url: string,
     timeout: number,
     options: Options = { method: Method.GET },
-  ): Promise<XMLHttpRequestResponseType> => {
+  ): Promise<Response> {
     const { data, headers = { 'Content-type': 'application/json' }, method } = options;
 
     return new Promise((resolve, reject) => {

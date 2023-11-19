@@ -1,3 +1,4 @@
+import { Block, router } from '../../../core';
 import {
   emailValidator,
   firstNameValidator,
@@ -7,8 +8,6 @@ import {
 } from '../../../models/validators';
 
 import {
-  Block,
-  Router,
   clickValidation,
   inputValidation,
 } from '../../../utils';
@@ -305,7 +304,6 @@ export class ProfileChangeData extends Block {
               console.log(`${key}: ${value}`);
             });
             if (isValid) {
-              const router = new Router();
               router.go('/settings');
             }
           },
