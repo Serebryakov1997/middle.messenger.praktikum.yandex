@@ -45,7 +45,7 @@ export class AuthController {
 
             ChatController.getChats();
 
-            // await this.fetchUser();
+            await this.fetchUser();
 
             router.go('/chats');
         } catch (err) {
