@@ -12,11 +12,11 @@ export class AuthController {
         try {
             await authApi.signUp(data);
 
-            ChatController.getChats();
+            // ChatController.getChats();
 
             // await this.fetchUser();
 
-            // router.go('/chats');
+            router.go('/messenger');
         } catch (err) {
             console.log(err, 'signup error');
         }

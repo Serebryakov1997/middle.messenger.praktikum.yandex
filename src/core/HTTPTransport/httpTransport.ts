@@ -1,5 +1,3 @@
-import { DEV_LINK_ADDRESS } from '../../utils/urlSelection';
-
 enum Method {
   GET = 'GET',
   POST = 'POST',
@@ -7,10 +5,20 @@ enum Method {
   DELETE = 'DELETE',
 }
 
+const MESSAGE = {
+  0: 'abort',
+  100: 'Information',
+  200: 'Ok',
+  300: 'Redirect failed',
+  400: 'Access error',
+  500: 'Internal server error',
+}
+
 type Options = {
   data?: Record<string, unknown>,
   headers?: Record<string, unknown>;
   method?: string;
+  withCredentials?: boolean;
 };
 
 function queryStringify(data: Options['data']): string {
@@ -32,12 +40,12 @@ function queryStringify(data: Options['data']): string {
 }
 
 export class HTTPTransport {
-  _mainLinkAddress: string;
+  baseUrl: string;
 
   readonly TIMEOUT = 5000;
 
   constructor(mainPath: string) {
-    this._mainLinkAddress = DEV_LINK_ADDRESS + mainPath;
+    this.baseUrl = 'https://ya-praktikum.tech/api/v2' + mainPath;
   }
 
   get<Response>(url: string, options?: Options): Promise<Response> {
@@ -48,7 +56,7 @@ export class HTTPTransport {
       handledOptions.data = {};
     }
     return this.request<Response>(
-      this._mainLinkAddress + handledUrl,
+      this.baseUrl + handledUrl,
       this.TIMEOUT,
       { ...handledOptions, method: Method.GET },
     );
@@ -56,7 +64,7 @@ export class HTTPTransport {
 
   put<Response>(url: string, options?: Options): Promise<Response> {
     return this.request<Response>(
-      this._mainLinkAddress + url,
+      this.baseUrl + url,
       this.TIMEOUT,
       { ...options, method: Method.PUT },
     );
@@ -64,7 +72,7 @@ export class HTTPTransport {
 
   post<Response>(url: string, options?: Options): Promise<Response> {
     return this.request<Response>(
-      this._mainLinkAddress + url,
+      this.baseUrl + url,
       this.TIMEOUT,
       { ...options, method: Method.POST },
     );
@@ -72,7 +80,7 @@ export class HTTPTransport {
 
   delete<Response>(url: string, options?: Options): Promise<Response> {
     return this.request<Response>(
-      this._mainLinkAddress + url,
+      this.baseUrl + url,
       this.TIMEOUT,
       { ...options, method: Method.DELETE },
     );
@@ -83,7 +91,12 @@ export class HTTPTransport {
     timeout: number,
     options: Options = { method: Method.GET },
   ): Promise<Response> {
-    const { data, headers = { 'Content-type': 'application/json' }, method } = options;
+    const {
+      data,
+      headers = { 'Content-type': 'application/json' },
+      method,
+      withCredentials = true
+    } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -94,22 +107,25 @@ export class HTTPTransport {
       });
 
       xhr.timeout = timeout;
+      xhr.withCredentials = withCredentials;
 
       xhr.onload = () => {
-        if (xhr.status === 200) {
-          return resolve(xhr.response);
+        const status = xhr.status || 0;
+        if (status >= 200 && status < 300) {
+          resolve(xhr.response);
+        } else {
+          reject({ status, reason: xhr.response?.reason || MESSAGE });
         }
-        const error: any = new Error(xhr.statusText);
-        error.code = xhr.status;
-        return reject(error);
       };
 
-      xhr.onabort = reject;
-      xhr.onerror = reject;
-      xhr.ontimeout = reject;
+      xhr.onabort = () => reject({ reason: 'abort' });
+      xhr.onerror = () => reject({ reason: 'network error' });
+      xhr.ontimeout = () => reject({ reason: 'timeout' });
 
       if (method === Method.GET) {
         xhr.send();
+      } else if (data instanceof FormData) {
+        xhr.send(data);
       } else {
         xhr.send(JSON.stringify(data));
       }

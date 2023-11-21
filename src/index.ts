@@ -1,6 +1,5 @@
-// import { AuthController } from './controllers/auth-controller';
 import { router } from './core';
-import { Auth, Users } from './utils';
+import { AddressPaths } from './utils';
 import {
   Login,
   Chats,
@@ -13,12 +12,12 @@ import {
 
 document.addEventListener('DOMContentLoaded', async () => {
   router
-    .use(new Login(), Auth.SignIn)
-    .use(new Chats())
-    .use(new Register(), Auth.SignUp)
-    .use(Profile, Auth.User)
-    .use(new ProfileChangeData(), Users.Profile)
-    .use(new ProfileChangePasswd(), Users.Password)
+    .use(new Login(), AddressPaths.SignIn)
+    .use(new Chats(), AddressPaths.Chats)
+    .use(new Register(), AddressPaths.SignUp)
+    .use(Profile, AddressPaths.Profile)
+    .use(new ProfileChangeData(), AddressPaths.ProfileChangeData)
+    .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
     .start();
 
   // let isProtectedRoute = true;

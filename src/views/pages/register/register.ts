@@ -6,16 +6,17 @@ import { registerTmpl } from './register.tmpl';
 import {
   Button, Input, Label, UnderButtonLink, ValidError,
 } from '../../components';
-import {
-  emailValidator,
-  firstNameValidator,
-  loginValidator,
-  passwdValidator,
-  phoneValidator,
-  secondNameValidator,
-} from '../../../models/validators';
+// import {
+//   emailValidator,
+//   firstNameValidator,
+//   loginValidator,
+//   passwdValidator,
+//   phoneValidator,
+//   secondNameValidator,
+// } from '../../../models/validators';
 import { AuthController } from '../../../controllers/auth-controller';
 import { Block, router } from '../../../core';
+import { validators } from '../../../models/validators';
 
 export class Register extends Block {
   _formData: FormData;
@@ -47,11 +48,16 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('email', (<HTMLInputElement>e.target).value);
-            inputValidation(e, emailValidator, {
-              validError: this.children.validErrorEmail as Block,
-              input: this.children.inputEmail as Block,
-              button: this.children.registerButton as Block,
-            });
+            inputValidation(e,
+              {
+                rule: <RegExp>validators.email.rule,
+                errorMsg: <string>validators.email.errorMsg,
+              },
+              {
+                validError: this.children.validErrorEmail as Block,
+                input: this.children.inputEmail as Block,
+                button: this.children.registerButton as Block,
+              });
           },
         },
       }),
@@ -75,11 +81,16 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('login', (<HTMLInputElement>e.target).value);
-            inputValidation(e, loginValidator, {
-              validError: this.children.validErrorLogin as Block,
-              input: this.children.inputLogin as Block,
-              button: this.children.registerButton as Block,
-            });
+            inputValidation(e,
+              {
+                rule: <RegExp>validators.login.rule,
+                errorMsg: <string>validators.login.errorMsg
+              },
+              {
+                validError: this.children.validErrorLogin as Block,
+                input: this.children.inputLogin as Block,
+                button: this.children.registerButton as Block,
+              });
           },
         },
       }),
@@ -105,11 +116,16 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('first_name', (<HTMLInputElement>e.target).value);
-            inputValidation(e, firstNameValidator, {
-              validError: <Block>this.children.validErrorName,
-              input: <Block>this.children.inputName,
-              button: <Block>this.children.registerButton,
-            });
+            inputValidation(e,
+              {
+                rule: <RegExp>validators.first_name.rule,
+                errorMsg: <string>validators.first_name.errorMsg
+              },
+              {
+                validError: <Block>this.children.validErrorName,
+                input: <Block>this.children.inputName,
+                button: <Block>this.children.registerButton,
+              });
           },
         },
       }),
@@ -135,11 +151,16 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('second_name', (<HTMLInputElement>e.target).value);
-            inputValidation(e, secondNameValidator, {
-              validError: <Block>this.children.validErrorSurName,
-              input: <Block>this.children.inputSurName,
-              button: <Block>this.children.registerButton,
-            });
+            inputValidation(e,
+              {
+                rule: <RegExp>validators.second_name.rule,
+                errorMsg: <string>validators.second_name.errorMsg
+              },
+              {
+                validError: <Block>this.children.validErrorSurName,
+                input: <Block>this.children.inputSurName,
+                button: <Block>this.children.registerButton,
+              });
           },
         },
       }),
@@ -165,11 +186,16 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('phone', (<HTMLInputElement>e.target).value);
-            inputValidation(e, phoneValidator, {
-              validError: <Block>this.children.validErrorPhone,
-              input: <Block>this.children.inputPhone,
-              button: <Block>this.children.registerButton,
-            });
+            inputValidation(e,
+              {
+                rule: <RegExp>validators.phone.rule,
+                errorMsg: <string>validators.phone.errorMsg
+              },
+              {
+                validError: <Block>this.children.validErrorPhone,
+                input: <Block>this.children.inputPhone,
+                button: <Block>this.children.registerButton,
+              });
           },
         },
       }),
@@ -192,11 +218,16 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('password', (<HTMLInputElement>e.target).value);
-            inputValidation(e, passwdValidator, {
-              validError: <Block>this.children.validErrorPasswd,
-              input: <Block>this.children.inputPasswd,
-              button: <Block>this.children.registerButton,
-            });
+            inputValidation(e,
+              {
+                rule: <RegExp>validators.password.rule,
+                errorMsg: <string>validators.password.errorMsg
+              },
+              {
+                validError: <Block>this.children.validErrorPasswd,
+                input: <Block>this.children.inputPasswd,
+                button: <Block>this.children.registerButton,
+              });
 
             const repeatPasswd = this._formData.get('repeat_password');
             if (repeatPasswd) {
@@ -213,16 +244,26 @@ export class Register extends Block {
                   button: <Block>this.children.registerButton,
                 }, 'Пароли не совпадают');
               } else {
-                inputValidation(e, passwdValidator, {
-                  validError: <Block>this.children.validErrorRepeatPasswd,
-                  input: <Block>this.children.inputPasswd,
-                  button: <Block>this.children.registerButton,
-                });
-                inputValidation(e, passwdValidator, {
-                  validError: <Block>this.children.validErrorRepeatPasswd,
-                  input: <Block>this.children.inputRepeatPasswd,
-                  button: <Block>this.children.registerButton,
-                });
+                inputValidation(e,
+                  {
+                    rule: <RegExp>validators.password.rule,
+                    errorMsg: <string>validators.password.errorMsg
+                  },
+                  {
+                    validError: <Block>this.children.validErrorRepeatPasswd,
+                    input: <Block>this.children.inputPasswd,
+                    button: <Block>this.children.registerButton,
+                  });
+                inputValidation(e,
+                  {
+                    rule: <RegExp>validators.password.rule,
+                    errorMsg: <string>validators.password.errorMsg
+                  },
+                  {
+                    validError: <Block>this.children.validErrorRepeatPasswd,
+                    input: <Block>this.children.inputRepeatPasswd,
+                    button: <Block>this.children.registerButton,
+                  });
               }
             }
           },
