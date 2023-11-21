@@ -1,9 +1,10 @@
 import './chats.css';
-import { creationChatList } from '../../../utils';
+import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
 import { Button, Input, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
+// import { UserController } from '../../../controllers/user-controller';
 
 export class Chats extends Block {
   constructor() {
@@ -37,7 +38,8 @@ export class Chats extends Block {
         underButtonText: 'В профиль',
         events: {
           click: () => {
-            router.go('/settings');
+            // UserController.profileInfo()
+            router.go(AddressPaths.Profile);
           }
         }
       }),

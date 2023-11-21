@@ -93,7 +93,7 @@ export class HTTPTransport {
   ): Promise<Response> {
     const {
       data,
-      headers = { 'Content-type': 'application/json' },
+      headers = { 'Content-Type': 'application/json' },
       method,
       withCredentials = true
     } = options;
@@ -122,7 +122,7 @@ export class HTTPTransport {
       xhr.onerror = () => reject({ reason: 'network error' });
       xhr.ontimeout = () => reject({ reason: 'timeout' });
 
-      if (method === Method.GET) {
+      if (method === Method.GET || !data) {
         xhr.send();
       } else if (data instanceof FormData) {
         xhr.send(data);

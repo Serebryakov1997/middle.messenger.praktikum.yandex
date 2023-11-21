@@ -1,3 +1,4 @@
+import { AuthController } from './controllers/auth-controller';
 import { router } from './core';
 import { AddressPaths } from './utils';
 import {
@@ -18,31 +19,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     .use(Profile, AddressPaths.Profile)
     .use(new ProfileChangeData(), AddressPaths.ProfileChangeData)
     .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
-    .start();
+  // .start();
 
-  // let isProtectedRoute = true;
+  let isProtectedRoute = true;
 
-  // switch (window.location.pathname) {
-  //   case Auth.SignIn:
-  //   case Auth.SignUp:
-  //     isProtectedRoute = false;
-  //     break;
-  // }
+  switch (window.location.pathname) {
+    case AddressPaths.SignIn:
+    case AddressPaths.SignUp:
+      isProtectedRoute = false;
+      break;
+  }
 
-  // try {
-  //   await AuthController.fetchUser();
+  try {
+    await AuthController.fetchUser();
 
-  //   router.start();
+    router.start();
 
-  //   if (!isProtectedRoute) {
-  //     router.go(Users.Profile);
-  //   }
-  // } catch (e) {
-  //   console.log(e, 'Here');
-  //   router.start();
+    if (!isProtectedRoute) {
+      router.go(AddressPaths.Profile);
+    }
+  } catch (e) {
+    console.log(e, 'Here');
+    router.start();
 
-  //   if (isProtectedRoute) {
-  //     router.go(Auth.SignIn);
-  //   }
-  // }
+    if (isProtectedRoute) {
+      router.go(AddressPaths.SignIn);
+    }
+  }
 });

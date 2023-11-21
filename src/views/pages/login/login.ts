@@ -122,8 +122,9 @@ export class Login extends Block {
               AuthController.signIn({
                 login: this._formData.get('login') as string,
                 password: this._formData.get('password') as string
-              })
-              router.go('/messenger');
+              });
+              e.preventDefault();
+              // router.go('/messenger');
             }
           },
         },

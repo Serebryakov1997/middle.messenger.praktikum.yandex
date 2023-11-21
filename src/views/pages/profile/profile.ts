@@ -3,8 +3,8 @@ import { profileTmpl } from './profile.tmpl';
 import { Input, Label, UnderButtonLink } from '../../components';
 import { AuthController } from '../../../controllers/auth-controller';
 import { Block, router } from '../../../core';
-import { IState } from '../../../models/interfaces/auth';
-import { withStore } from '../../../core/Store';
+import { IState, IUser } from '../../../models/interfaces/auth';
+import { store, withStore } from '../../../core/Store';
 
 const mockData = {
   email: 'ivanivanov@yandex.ru',
@@ -40,6 +40,10 @@ export class BaseProfile extends Block {
     Object.entries(mockData).forEach(([key, value]) => {
       this._formData.set(key, value);
     });
+    console.log(store.state);
+    // for (const item in store.state) {
+    //   console.log('item: ', item);
+    // }
   }
 
   protected init(): void {
@@ -182,10 +186,9 @@ export class BaseProfile extends Block {
         },
         underButtonText: 'Выйти',
         events: {
-          click: () => {
+          click: (e: Event) => {
             AuthController.logout();
-            // const router = new Router();
-            // router.go('/')
+            e.preventDefault();
           }
         }
       })
