@@ -3,7 +3,7 @@ import { profileTmpl } from './profile.tmpl';
 import { Input, Label, UnderButtonLink } from '../../components';
 import { AuthController } from '../../../controllers/auth-controller';
 import { Block, router } from '../../../core';
-import { IState, IUser } from '../../../models/interfaces/auth';
+import { IState } from '../../../models/interfaces/auth';
 import { store, withStore } from '../../../core/Store';
 
 const mockData = {
@@ -40,13 +40,16 @@ export class BaseProfile extends Block {
     Object.entries(mockData).forEach(([key, value]) => {
       this._formData.set(key, value);
     });
-    console.log(store.state);
+    // const { user } = store.getState();
+    // console.log('store get state in profile: ', user);
     // for (const item in store.state) {
     //   console.log('item: ', item);
     // }
   }
 
   protected init(): void {
+    const curState = store.getState();
+    console.log('store get state in profile: ', curState.user);
     this.children = {
       labelEmail: new Label({
         name: 'email',
@@ -198,6 +201,7 @@ export class BaseProfile extends Block {
 
   protected componentDidMount(oldProps: Record<string, unknown>): void {
     AuthController.fetchUser();
+    // console.log(store.getState());
   }
 
   render(): DocumentFragment {
@@ -211,10 +215,9 @@ const mapStateToProps = (state: IState) => ({
   login: state.user?.login,
   first_name: state.user?.first_name,
   second_name: state.user?.second_name,
-  chat_name: state.user?.chat_name,
+  display_name: state.user?.display_name,
   phone: state.user?.phone
 })
 
+// console.log('typeof new BaseProfile(): ', typeof BaseProfile.);
 export const Profile = withStore(mapStateToProps, new BaseProfile());
-
-

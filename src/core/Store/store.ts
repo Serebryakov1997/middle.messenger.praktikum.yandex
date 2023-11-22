@@ -31,17 +31,25 @@ export const withStore = (
     mapStateToProps: (data: IState) => any,
     Component: Block): Block => {
 
-    // let newProps;
+    // let newState;
     store.on(StoreEvents.Update, () => {
-        const newProps = mapStateToProps(store.getState());
+        // console.log('component props: ', Component.props);
+        console.log('withStore state: ', store.getState());
+        const newState = mapStateToProps(store.getState());
+        // console.log('withStore newState: ', newState);
 
-        if (!isEqual(Component.props, newProps)) {
-            Component.setProps(newProps)
+        // console.log('current store.state: ', store.getState());
+        if (!isEqual(store.state, newState)) {
+            console.log('isEqual newState: ', newState);
+            Component.setProps({ ...newState })
         }
+
+        // store.state = newState;
     });
-    // if (newProps) {
+    // if (newState) {
 
     // }
+    console.log('component props: ', Component.props);
     return Component;
 };
 
@@ -52,9 +60,9 @@ export const withStore = (
 //                 super('div', { ...props, ...mapStateToProps(store.getState()) });
 
 //                 store.on(StoreEvents.Update, () => {
-//                     const newProps = mapStateToProps(store.getState());
+//                     const newState = mapStateToProps(store.getState());
 
-//                     this.setProps(newProps);
+//                     this.setProps(newState);
 //                 });
 //             }
 //         }

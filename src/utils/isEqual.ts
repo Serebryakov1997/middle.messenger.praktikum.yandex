@@ -3,7 +3,7 @@ type PlainObject<T = unknown> = {
 }
 
 export type Indexed<T = any> = {
-    [ke in string]: T;
+    [key in string]: T;
 }
 
 function isArray(value: unknown): value is [] {
