@@ -1,7 +1,7 @@
 import { ISigninData, ISignUpData } from '../models/interfaces';
 import authApi from '../api/auth-api';
 import { router, store } from '../core';
-import { AddressPaths, Auth } from '../utils';
+import { AddressPaths } from '../utils';
 // import { ChatController } from './chat-controller';
 
 
@@ -41,6 +41,7 @@ export class AuthController {
             const user = await authApi.getUser();
             console.log('user fetchUser: ', user);
             store.set('user', user);
+            console.log('store getState: ', store.getState());
         } catch (err) {
             throw err;
         }

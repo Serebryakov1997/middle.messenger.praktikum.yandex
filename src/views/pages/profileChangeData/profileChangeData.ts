@@ -1,4 +1,6 @@
 import { Block, router } from '../../../core';
+import { store, withStore } from '../../../core/Store';
+import { IState } from '../../../models/interfaces/auth';
 import {
   emailValidator,
   firstNameValidator,
@@ -8,6 +10,7 @@ import {
 } from '../../../models/validators';
 
 import {
+  AddressPaths,
   clickValidation,
   inputValidation,
 } from '../../../utils';
@@ -41,6 +44,8 @@ export class ProfileChangeData extends Block {
     Object.entries(mockData).forEach(([key, value]) => {
       this._formData.set(key, value);
     });
+
+    console.log('store getState: ', store.getState());
   }
 
   protected init(): void {
@@ -304,7 +309,7 @@ export class ProfileChangeData extends Block {
               console.log(`${key}: ${value}`);
             });
             if (isValid) {
-              router.go('/settings');
+              router.go(AddressPaths.Profile);
             }
           },
         },
@@ -316,3 +321,14 @@ export class ProfileChangeData extends Block {
     return this.compile(profileChangeDataTmpl, this.props);
   }
 }
+
+// const mapStateToProps = (state: IState) => ({
+//   email: state.user?.email,
+//   login: state.user?.login,
+//   first_name: state.user?.first_name,
+//   second_name: state.user?.second_name,
+//   display_name: state.user?.display_name,
+//   phone: state.user?.phone
+// })
+
+// export const ProfileChangeData = withStore(mapStateToProps)(BaseProfileChangeData);

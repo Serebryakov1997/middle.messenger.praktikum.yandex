@@ -18,5 +18,6 @@ export function merge(lhs: Indexed, rhs: Indexed): Indexed {
             lhs[p] = rhs[p]
         }
     }
-    return lhs;
+    // console.log('lhs: ', JSON.parse(lhs.user as string));
+    return JSON.parse(lhs.user as string);
 }

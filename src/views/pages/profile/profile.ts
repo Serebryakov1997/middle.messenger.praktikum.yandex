@@ -5,6 +5,7 @@ import { AuthController } from '../../../controllers/auth-controller';
 import { Block, router } from '../../../core';
 import { IState } from '../../../models/interfaces/auth';
 import { store, withStore } from '../../../core/Store';
+import { AddressPaths } from '../../../utils';
 
 const mockData = {
   email: 'ivanivanov@yandex.ru',
@@ -40,6 +41,8 @@ export class BaseProfile extends Block {
     Object.entries(mockData).forEach(([key, value]) => {
       this._formData.set(key, value);
     });
+    const curState = store.getState();
+    console.log('store get state in profile: ', curState);
     // const { user } = store.getState();
     // console.log('store get state in profile: ', user);
     // for (const item in store.state) {
@@ -48,8 +51,6 @@ export class BaseProfile extends Block {
   }
 
   protected init(): void {
-    const curState = store.getState();
-    console.log('store get state in profile: ', curState.user);
     this.children = {
       labelEmail: new Label({
         name: 'email',
@@ -166,7 +167,7 @@ export class BaseProfile extends Block {
         underButtonText: 'Изменить данные',
         events: {
           click: () => {
-            router.go('/settings_change_data')
+            router.go(AddressPaths.ProfileChangeData)
           }
         }
       }),
@@ -178,7 +179,7 @@ export class BaseProfile extends Block {
         underButtonText: 'Изменить пароль',
         events: {
           click: () => {
-            router.go('/settings_change_passwd');
+            router.go(AddressPaths.ProfileChangeData);
           }
         }
       }),
@@ -220,4 +221,4 @@ const mapStateToProps = (state: IState) => ({
 })
 
 // console.log('typeof new BaseProfile(): ', typeof BaseProfile.);
-export const Profile = withStore(mapStateToProps, new BaseProfile());
+export const Profile = withStore(mapStateToProps)(BaseProfile);

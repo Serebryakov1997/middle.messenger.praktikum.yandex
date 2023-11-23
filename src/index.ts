@@ -1,5 +1,5 @@
 import { AuthController } from './controllers/auth-controller';
-import { router } from './core';
+import { Block, router } from './core';
 import { AddressPaths } from './utils';
 import {
   Login,
@@ -10,15 +10,16 @@ import {
   ProfileChangePasswd,
 } from './views';
 
+console.log('typeof Block: ', typeof Block);
 
 document.addEventListener('DOMContentLoaded', async () => {
   router
-    .use(new Login(), AddressPaths.SignIn)
-    .use(new Chats(), AddressPaths.Chats)
-    .use(new Register(), AddressPaths.SignUp)
+    .use(Login, AddressPaths.SignIn)
+    .use(Chats, AddressPaths.Chats)
+    .use(Register, AddressPaths.SignUp)
     .use(Profile, AddressPaths.Profile)
-    .use(new ProfileChangeData(), AddressPaths.ProfileChangeData)
-    .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
+    .use(ProfileChangeData, AddressPaths.ProfileChangeData)
+    .use(ProfileChangePasswd, AddressPaths.ProfileChangePasswd)
   // .start();
 
   let isProtectedRoute = true;
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    await AuthController.fetchUser();
+    // await AuthController.fetchUser();
 
     router.start();
 
