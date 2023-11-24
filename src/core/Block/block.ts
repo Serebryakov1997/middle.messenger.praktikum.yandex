@@ -96,6 +96,8 @@ export class Block {
     if (!nextProps) {
       return;
     }
+    console.log('this.props: ', this.props);
+    console.log('nextProps: ', nextProps);
     Object.assign(this.props, nextProps);
   };
 
@@ -105,17 +107,11 @@ export class Block {
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
-        // console.log('+++++++children block key: ', key);
-        // console.log('+++++++children block value: ', value);
         children[key] = value;
       } else if (value instanceof Array) {
-        // console.log('----children array key: ', key);
-        // console.log('----children array value: ', value);
         children[key] = value;
       } else {
         props[key] = value;
-        // console.log('prop key: ', key);
-        // console.log('prop value: ', value);
       }
     });
 
