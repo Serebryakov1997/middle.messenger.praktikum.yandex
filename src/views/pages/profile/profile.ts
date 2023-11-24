@@ -197,6 +197,10 @@ export class BaseProfile extends Block {
         }
       })
     };
+    // const { props } = <Block>this.children.inputPhone;
+    // console.log('this.children.inputPhone profile: ',
+    //   props);
+
   }
 
 
@@ -211,14 +215,18 @@ export class BaseProfile extends Block {
 }
 
 
-const mapStateToProps = (state: IState) => ({
-  email: state.user?.email,
-  login: state.user?.login,
-  first_name: state.user?.first_name,
-  second_name: state.user?.second_name,
-  display_name: state.user?.display_name,
-  phone: state.user?.phone
-})
+const mapStateToProps = (state: IState) => (
+  // console.log('mapStateToProps state: ', state)
+  {
+    email: state.user?.email,
+    login: state.user?.login,
+    first_name: state.user?.first_name,
+    second_name: state.user?.second_name,
+    display_name: state.user?.first_name,
+    phone: state.user?.phone
+  }
+)
 
 // console.log('typeof new BaseProfile(): ', typeof BaseProfile.);
-export const Profile = withStore(mapStateToProps)(BaseProfile);
+// export const Profile = withStore(mapStateToProps)(BaseProfile);
+export const Profile = withStore(mapStateToProps, new BaseProfile());

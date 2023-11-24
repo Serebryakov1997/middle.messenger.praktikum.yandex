@@ -20,9 +20,9 @@ class Router {
         Router.__instance = this;
     }
 
-    use(block: typeof Block, pathname = '/',) {
+    use(block: Block, pathname = '/',) {
         const route = new Route(pathname, block);
-        console.log('route: ', route);
+        // console.log('route: ', route);
         this.routes.push(route);
 
         return this;

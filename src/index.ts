@@ -14,12 +14,12 @@ console.log('typeof Block: ', typeof Block);
 
 document.addEventListener('DOMContentLoaded', async () => {
   router
-    .use(Login, AddressPaths.SignIn)
-    .use(Chats, AddressPaths.Chats)
-    .use(Register, AddressPaths.SignUp)
+    .use(new Login(), AddressPaths.SignIn)
+    .use(new Chats(), AddressPaths.Chats)
+    .use(new Register(), AddressPaths.SignUp)
     .use(Profile, AddressPaths.Profile)
-    .use(ProfileChangeData, AddressPaths.ProfileChangeData)
-    .use(ProfileChangePasswd, AddressPaths.ProfileChangePasswd)
+    .use(new ProfileChangeData(), AddressPaths.ProfileChangeData)
+    .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
   // .start();
 
   let isProtectedRoute = true;
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    // await AuthController.fetchUser();
+    await AuthController.fetchUser();
 
     router.start();
 
