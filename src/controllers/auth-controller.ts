@@ -9,8 +9,8 @@ export class AuthController {
 
     static async signUp(data: ISignUpData) {
         try {
-            const response = await authApi.signUp(data);
-            console.log('response: ', response);
+            await authApi.signUp(data);
+            // console.log('response: ', response);
             // ChatController.getChats();
 
             await this.fetchUser();
@@ -23,8 +23,8 @@ export class AuthController {
 
     static async signIn(data: ISigninData) {
         try {
-            const response = await authApi.signIn(data);
-            console.log('login response: ', response);
+            await authApi.signIn(data);
+            // console.log('login response: ', response);
 
             // ChatController.getChats();
 
@@ -41,7 +41,7 @@ export class AuthController {
             const user = await authApi.getUser();
             console.log('user fetchUser: ', user);
             store.set('user', user);
-            console.log('store getState: ', store.getState());
+            // console.log('store getState: ', store.getState());
         } catch (err) {
             throw err;
         }
@@ -49,8 +49,8 @@ export class AuthController {
 
     static async logout() {
         try {
-            const response = await authApi.logout();
-            console.log('response: ', response);
+            await authApi.logout();
+            // console.log('response: ', response);
             store.set('user', undefined);
             router.go(AddressPaths.SignIn);
         } catch (err) {

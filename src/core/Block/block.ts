@@ -96,8 +96,10 @@ export class Block {
     if (!nextProps) {
       return;
     }
-    console.log('this.props: ', this.props);
-    console.log('nextProps: ', nextProps);
+
+    console.log('current props in Block: ', this.props);
+    console.log('nextProps in Block: ', nextProps);
+
     Object.assign(this.props, nextProps);
   };
 

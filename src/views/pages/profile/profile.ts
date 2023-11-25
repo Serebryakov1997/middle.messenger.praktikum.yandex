@@ -3,9 +3,10 @@ import { profileTmpl } from './profile.tmpl';
 import { Input, Label, UnderButtonLink } from '../../components';
 import { AuthController } from '../../../controllers/auth-controller';
 import { Block, router } from '../../../core';
-import { IState } from '../../../models/interfaces/auth';
+// import { IState } from '../../../models/interfaces/auth';
 import { store, withStore } from '../../../core/Store';
 import { AddressPaths } from '../../../utils';
+import { IState } from '../../../models/interfaces/auth';
 
 const mockData = {
   email: 'ivanivanov@yandex.ru',
@@ -42,7 +43,7 @@ export class BaseProfile extends Block {
       this._formData.set(key, value);
     });
     const curState = store.getState();
-    console.log('store get state in profile: ', curState);
+    // console.log('store get state in profile: ', curState);
     // const { user } = store.getState();
     // console.log('store get state in profile: ', user);
     // for (const item in store.state) {
@@ -51,6 +52,7 @@ export class BaseProfile extends Block {
   }
 
   protected init(): void {
+    console.log('props in baseProfile: ', this.props);
     this.children = {
       labelEmail: new Label({
         name: 'email',
@@ -210,5 +212,13 @@ export class BaseProfile extends Block {
   }
 }
 
+const mapStateToProps = (state: IState) => ({
+  first_name: state.user?.first_name,
+  second_name: state.user?.second_name,
+  chat_name: state.user?.first_name,
+  login: state.user?.login,
+  email: state.user?.email,
+  phone: state.user?.phone
+});
 
-export const Profile = withStore(new BaseProfile());
+export const Profile = withStore(mapStateToProps)(BaseProfile);

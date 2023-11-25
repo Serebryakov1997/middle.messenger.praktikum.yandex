@@ -8,9 +8,9 @@ import {
   Profile,
   ProfileChangeData,
   ProfileChangePasswd,
+  TestStorePage,
 } from './views';
 
-console.log('typeof Block: ', typeof Block);
 
 document.addEventListener('DOMContentLoaded', async () => {
   router
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     .use(Profile, AddressPaths.Profile)
     .use(new ProfileChangeData(), AddressPaths.ProfileChangeData)
     .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
+    .use(TestStorePage, '/test')
   // .start();
 
   let isProtectedRoute = true;
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    await AuthController.fetchUser();
+    // await AuthController.fetchUser();
 
     router.start();
 

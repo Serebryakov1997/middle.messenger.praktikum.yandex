@@ -19,5 +19,5 @@ export function merge(lhs: Indexed, rhs: Indexed): Indexed {
         }
     }
     // console.log('lhs: ', JSON.parse(lhs.user as string));
-    return JSON.parse(lhs.user as string);
+    return lhs;
 }

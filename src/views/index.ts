@@ -6,4 +6,5 @@ export {
   Profile,
   ProfileChangeData,
   ProfileChangePasswd,
+  TestStorePage
 } from './pages';

@@ -45,7 +45,7 @@ export class ProfileChangeData extends Block {
       this._formData.set(key, value);
     });
 
-    console.log('store getState: ', store.getState());
+    // console.log('store getState: ', store.getState());
   }
 
   protected init(): void {

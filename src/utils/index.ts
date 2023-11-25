@@ -10,3 +10,4 @@ export {
 export { Auth, Users, Chats } from './routes';
 export { isEqual } from './isEqual';
 export { AddressPaths } from './paths';
+export { cloneDeep } from './cloneDeep';
