@@ -103,6 +103,11 @@ export class Block {
     Object.assign(this.props, nextProps);
   };
 
+  setChildren = (nextChildren: {}, key: string) => {
+    console.log('this children key: ', this.children[key])
+    Object.assign(this.children[key], nextChildren);
+  }
+
   _getChildren(propsAndChildren: Record<string, unknown>) {
     const children: Record<string, Block | Block[]> = {};
     const props: Record<string, unknown> = {};

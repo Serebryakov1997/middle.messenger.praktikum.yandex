@@ -7,4 +7,4 @@ export { ProfileChangeData } from './profileChangeData';
 export { ProfileChangePasswd } from './profileChangePasswd';
 
 
-export { TestStorePage } from './testStorePage';
+// export { TestStorePage } from './testStorePage';

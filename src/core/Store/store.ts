@@ -1,4 +1,5 @@
 import { IState } from '../../models/interfaces/auth';
+import { cloneDeep, isEqual } from '../../utils';
 import { set } from '../../utils/set';
 import { Block } from '../Block';
 import { EventBus } from '../EventBus/event-bus';
@@ -26,19 +27,27 @@ class Store extends EventBus {
 
 const store = new Store();
 
-export const withStore = (mapStateToProps: (data: IState) => any) => {
-    return (Component: typeof Block) => {
-        return class extends Component {
-            constructor(props: any) {
-                super('form', { ...props, ...mapStateToProps(store.getState()) });
-                store.on(StoreEvents.Update, () => {
-                    const newProps = mapStateToProps(
-                        store.getState());
-                    this.setProps(newProps);
-                });
-            }
+
+export const withStore = (
+    Component: Block): Block => {
+
+    let componentChildrenDeepCopy = cloneDeep(Component.children);
+
+    store.on(StoreEvents.Update, () => {
+        let state = store.getState();
+        if (state) {
+            let stateUser = JSON.parse(String(state.user));
+            Object.keys(componentChildrenDeepCopy).forEach(key => {
+                if (key.includes('input')) {
+                    const { name } = componentChildrenDeepCopy[key].props;
+                    (<Block>componentChildrenDeepCopy[key]).props.inputValue = stateUser[name];
+                }
+            });
+            Component.setProps({ ...state });
         }
-    }
+    })
+
+    return Component;
 };
 
 export { store };
