@@ -39,9 +39,7 @@ export class AuthController {
     static async fetchUser() {
         try {
             const user = await authApi.getUser();
-            console.log('user fetchUser: ', user);
             store.set('user', user);
-            // console.log('store getState: ', store.getState());
         } catch (err) {
             throw err;
         }

@@ -97,16 +97,9 @@ export class Block {
       return;
     }
 
-    console.log('current props in Block: ', this.props);
-    console.log('nextProps in Block: ', nextProps);
-
     Object.assign(this.props, nextProps);
   };
 
-  setChildren = (nextChildren: {}, key: string) => {
-    console.log('this children key: ', this.children[key])
-    Object.assign(this.children[key], nextChildren);
-  }
 
   _getChildren(propsAndChildren: Record<string, unknown>) {
     const children: Record<string, Block | Block[]> = {};

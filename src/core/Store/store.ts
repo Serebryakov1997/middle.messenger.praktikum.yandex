@@ -36,11 +36,12 @@ export const withStore = (
     store.on(StoreEvents.Update, () => {
         let state = store.getState();
         if (state) {
-            let stateUser = JSON.parse(String(state.user));
+            let stateUser = state.user ? JSON.parse(String(state.user)) : {};
             Object.keys(componentChildrenDeepCopy).forEach(key => {
                 if (key.includes('input')) {
                     const { name } = componentChildrenDeepCopy[key].props;
-                    (<Block>componentChildrenDeepCopy[key]).props.inputValue = stateUser[name];
+                    if (stateUser)
+                        (<Block>componentChildrenDeepCopy[key]).props.inputValue = stateUser[name];
                 }
             });
             Component.setProps({ ...state });

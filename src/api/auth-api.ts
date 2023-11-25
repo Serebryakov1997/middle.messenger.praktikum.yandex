@@ -1,5 +1,4 @@
 import { ISigninData, ISignUpData, IUser } from '../models/interfaces';
-// import { IUser } from '../models/interfaces/auth';
 import { API } from './api';
 
 

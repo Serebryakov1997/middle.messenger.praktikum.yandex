@@ -1,15 +1,15 @@
-// import { IProfileData, IUser } from '../models/interfaces';
-// import { API } from './api';
+import { IChangeProfileData, IUser } from '../models/interfaces';
+import { API } from './api';
 
-// class UserAPI extends API {
+class UserAPI extends API {
 
-//     constructor() {
-//         super('/user');
-//     }
+    constructor() {
+        super('/user');
+    }
 
-//     async profileInfo(data: IProfileData) {
-//         return this.http.get<IUser>(`/user/${data}`);
-//     }
-// }
+    async changeUserProfile(data: IChangeProfileData) {
+        return this.http.put<IUser>('/profile', { data });
+    }
+}
 
-// export default new UserAPI();
+export default new UserAPI();

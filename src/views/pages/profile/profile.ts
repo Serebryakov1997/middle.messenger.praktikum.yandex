@@ -6,7 +6,6 @@ import { Block, router } from '../../../core';
 // import { IState } from '../../../models/interfaces/auth';
 import { store, withStore } from '../../../core/Store';
 import { AddressPaths } from '../../../utils';
-import { IState } from '../../../models/interfaces/auth';
 
 const mockData = {
   email: 'ivanivanov@yandex.ru',
@@ -42,17 +41,9 @@ export class BaseProfile extends Block {
     Object.entries(mockData).forEach(([key, value]) => {
       this._formData.set(key, value);
     });
-    const curState = store.getState();
-    // console.log('store get state in profile: ', curState);
-    // const { user } = store.getState();
-    // console.log('store get state in profile: ', user);
-    // for (const item in store.state) {
-    //   console.log('item: ', item);
-    // }
   }
 
   protected init(): void {
-    console.log('props in baseProfile: ', this.props);
     this.children = {
       labelEmail: new Label({
         name: 'email',
