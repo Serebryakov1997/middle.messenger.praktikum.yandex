@@ -11,3 +11,9 @@ export interface IChangeProfileData {
     email: string,
     phone: string
 }
+
+export interface IChangeProfilePasswd {
+    [key: string]: string;
+    oldPassword: string;
+    newPassword: string;
+}

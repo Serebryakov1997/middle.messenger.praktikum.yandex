@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     .use(new Login(), AddressPaths.SignIn)
     .use(new Chats(), AddressPaths.Chats)
     .use(new Register(), AddressPaths.SignUp)
-    .use(Profile, AddressPaths.Profile)
+    .use(new Profile(), AddressPaths.Profile)
     .use(new ProfileChangeData(), AddressPaths.ProfileChangeData)
     .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
   // .use(TestStorePage, '/test')

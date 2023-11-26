@@ -1,11 +1,13 @@
+import { HTTPTransport } from '../core';
 import { ISigninData, ISignUpData, IUser } from '../models/interfaces';
-import { API } from './api';
 
 
-class AuthAPI extends API {
+class AuthAPI {
+
+    http: HTTPTransport;
 
     constructor() {
-        super('/auth');
+        this.http = new HTTPTransport('/auth');
     }
 
     async signUp(data: ISignUpData) {

@@ -19,7 +19,7 @@ export class Block {
   tagName: string;
 
   /* eslint no-use-before-define: "off" */
-  children: Record<string, Block | Block[]>;
+  children: Record<string, Block | Block[] | typeof Block>;
 
   id: string;
 
@@ -98,6 +98,7 @@ export class Block {
     }
 
     Object.assign(this.props, nextProps);
+    // this._render();
   };
 
 

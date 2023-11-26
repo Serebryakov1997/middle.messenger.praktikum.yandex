@@ -22,8 +22,8 @@ export class Route {
     }
 
     leave() {
-        if (this._block) {
-            this._block.hide();
+        if (this._blockClass) {
+            this._blockClass.hide();
         }
     }
 
@@ -35,25 +35,12 @@ export class Route {
     }
 
     render() {
-        // if (!this._block && this._blockClass) {
-        //     // console.log('this._block: ', this._block);
-        //     // console.log('this._blockClass: ', this._blockClass);
-        //     this._block = this._blockClass;
-        //     renderDOM('#app', this._block!);
-        //     return;
-        // }
-
-        if (typeof this._blockClass === 'function') {
-            this._block = new this._blockClass();
-            renderDOM('#app', this._block!);
-            // return;
-            this._block!.show();
-        } else {
+        if (!this._block) {
             this._block = this._blockClass;
-            renderDOM('#app', this._block!);
-            // return;
-            this._block!.show();
+            renderDOM('#app', this._blockClass!);
+            return;
         }
 
+        this._block!.show();
     }
 }

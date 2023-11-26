@@ -1,31 +1,64 @@
 export const profileTmpl = `
-    <form>
-        <div class="{{styles.containerClass}}">
-            <img name={{name}} class={{name}}>
-            <p name={{displayFieldName}} class="{{styles.displayNameClass}}">{{displayName}}</p>
-            <p class="{{styles.statusClass}}">{{statusName}}</p>
-            
-            {{{labelEmail}}}
-            {{{inputEmail}}}
+    <form class="{{styles.containerClass}}">
+        <img name={{name}} class={{name}}>
+        <p name={{displayFieldName}} class="{{styles.displayNameClass}}">{{displayName}}</p>
+        <p class="{{styles.statusClass}}">{{statusName}}</p>
+        
+        {{{labelEmail}}}
+        {{{inputEmail}}}
 
-            {{{labelLogin}}}
-            {{{inputLogin}}}
+        {{{labelLogin}}}
+        {{{inputLogin}}}
 
-            {{{labelFirstName}}}
-            {{{inputFirstName}}}
+        {{{labelFirstName}}}
+        {{{inputFirstName}}}
 
-            {{{labelSecondName}}}
-            {{{inputSecondName}}}
+        {{{labelSecondName}}}
+        {{{inputSecondName}}}
 
-            {{{labelChatName}}}
-            {{{inputChatName}}}
+        {{{labelChatName}}}
+        {{{inputChatName}}}
 
-            {{{labelPhone}}}
-            {{{inputPhone}}}
+        {{{labelPhone}}}
+        {{{inputPhone}}}
 
-            {{{changeDataLink}}}
-            {{{changePasswdLink}}}
-            {{{logoutLink}}}
-        </div>
+        {{{changeDataLink}}}
+        {{{changePasswdLink}}}
+        {{{logoutLink}}}
     </form>
 `;
+
+
+// backup
+// export const profileTmpl = `
+//     <form>
+//         <div class="{{styles.containerClass}}">
+//             <img name={{name}} class={{name}}>
+//             <p name={{displayFieldName}} class="{{styles.displayNameClass}}">{{displayName}}</p>
+//             <p class="{{styles.statusClass}}">{{statusName}}</p>
+            
+//             {{{labelEmail}}}
+//             {{{inputEmail}}}
+
+//             {{{labelLogin}}}
+//             {{{inputLogin}}}
+
+//             {{{labelFirstName}}}
+//             {{{inputFirstName}}}
+
+//             {{{labelSecondName}}}
+//             {{{inputSecondName}}}
+
+//             {{{labelChatName}}}
+//             {{{inputChatName}}}
+
+//             {{{labelPhone}}}
+//             {{{inputPhone}}}
+
+//             {{{changeDataLink}}}
+//             {{{changePasswdLink}}}
+//             {{{logoutLink}}}
+//         </div>
+//     </form>
+// `;
+

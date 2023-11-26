@@ -9,6 +9,7 @@ import {
 } from '../../components';
 import { profileChangePasswdTmpl } from './profileChangePasswd.tmpl';
 import { Block, router } from '../../../core';
+import { UserController } from '../../../controllers/user-controller';
 
 const mockPassword = 'Password1';
 
@@ -44,7 +45,7 @@ export class ProfileChangePasswd extends Block {
           inputClass: 'profile-input',
         },
         inputType: 'password',
-        inputValue: mockPassword,
+        // inputValue: mockPassword,
         events: {
           blur: (e: Event) => {
             this._formData.set('password', (<HTMLInputElement>e.target).value);
@@ -166,7 +167,11 @@ export class ProfileChangePasswd extends Block {
               console.log(`${key}: ${value}`);
             });
             if (isValid) {
-              router.go('/settings');
+              UserController.changeUserPasswd({
+                oldPassword: <string>this._formData.get('password'),
+                newPassword: <string>this._formData.get('new_password')
+              })
+              e.preventDefault();
             }
           },
         },

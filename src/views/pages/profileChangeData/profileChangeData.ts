@@ -1,7 +1,6 @@
 import { UserController } from '../../../controllers/user-controller';
-import { Block, router } from '../../../core';
-import { store, withStore } from '../../../core/Store';
-import { IState } from '../../../models/interfaces/auth';
+import { Block } from '../../../core';
+import { withStore } from '../../../core/Store';
 import {
   emailValidator,
   firstNameValidator,
@@ -11,7 +10,6 @@ import {
 } from '../../../models/validators';
 
 import {
-  AddressPaths,
   clickValidation,
   inputValidation,
 } from '../../../utils';
@@ -32,6 +30,7 @@ const mockData = {
 
 export class ProfileChangeData extends Block {
   _formData: FormData;
+  userState: Record<string, unknown> = {};
 
   constructor() {
     super('form', {
@@ -41,12 +40,11 @@ export class ProfileChangeData extends Block {
       },
       avatarName: 'avatar',
     });
+
     this._formData = new FormData();
     Object.entries(mockData).forEach(([key, value]) => {
       this._formData.set(key, value);
     });
-
-    // console.log('store getState: ', store.getState());
   }
 
   protected init(): void {
@@ -63,7 +61,7 @@ export class ProfileChangeData extends Block {
         name: 'email',
         validErrorId: 'error',
         inputType: 'text',
-        inputValue: mockData.email,
+        inputValue: <string>this.userState?.email,
         styles: {
           inputClass: 'profile-input',
         },
@@ -330,3 +328,6 @@ export class ProfileChangeData extends Block {
     return this.compile(profileChangeDataTmpl, this.props);
   }
 }
+
+
+// export const ProfileChangeData = withStore(new BaseProfileChangeData());

@@ -1,7 +1,9 @@
-import userApi from '../api/user-api';
 import { router, store } from '../core';
-import { IChangeProfileData, IProfileData } from '../models/interfaces';
+import { IChangeProfileData } from '../models/interfaces';
 import { AddressPaths } from '../utils';
+import userApi from '../api/user-api';
+import { IChangeProfilePasswd } from '../models/interfaces/users';
+
 
 export class UserController {
 
@@ -9,9 +11,18 @@ export class UserController {
         try {
             const newUser = await userApi.changeUserProfile(data);
             store.set('user', newUser);
-            router.go(AddressPaths.ProfileChangeData);
+            router.go(AddressPaths.Profile);
         } catch (err) {
             console.log(err, 'change user profile error');
+        }
+    }
+
+    static async changeUserPasswd(data: IChangeProfilePasswd) {
+        try {
+            await userApi.changeUserPasswd(data);
+            router.go(AddressPaths.Profile);
+        } catch (err) {
+            console.log(err, 'change user passwd error');
         }
     }
 }

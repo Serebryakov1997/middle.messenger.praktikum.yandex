@@ -1,4 +1,7 @@
+import { AuthController } from '../../../controllers/auth-controller';
 import { Block } from '../../../core';
+import { withStore } from '../../../core/Store';
+import { IState } from '../../../models/interfaces/auth';
 import './input.css';
 import { inputTmpl } from './input.tmpl';
 
@@ -18,12 +21,30 @@ interface InputProps {
   }
 }
 
-export class Input extends Block {
-  constructor(props: InputProps) {
-    super('input', props);
+export class BaseInput extends Block {
+  constructor() {
+    super('input', {
+      name: 'email',
+      styles: {
+        inputClass: 'profile-input',
+      },
+      inputType: 'text',
+      // inputValue: mockData.email,
+      readonly: 'readonly',
+    });
+  }
+
+  protected componentDidMount(oldProps: Record<string, unknown>): void {
+    AuthController.fetchUser();
   }
 
   render(): DocumentFragment {
     return this.compile(inputTmpl, this.props);
   }
 }
+
+const mapStateToProps = (state: IState) => ({
+  inputValue: state.user?.email
+});
+
+export const Input = withStore('input', mapStateToProps)(BaseInput);

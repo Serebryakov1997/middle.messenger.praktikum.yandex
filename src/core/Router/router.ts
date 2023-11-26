@@ -20,9 +20,8 @@ class Router {
         Router.__instance = this;
     }
 
-    use(block: Block | typeof Block, pathname = '/',) {
+    use(block: Block, pathname = '/',) {
         const route = new Route(pathname, block);
-        // console.log('route: ', route);
         this.routes.push(route);
 
         return this;
@@ -44,6 +43,7 @@ class Router {
             const route500 = new Route(pathname, new PageError('500', 'Мы уже фиксим'));
             route = route404 || route500;
         }
+
 
         if (this._currentRoute) {
             this._currentRoute.leave();

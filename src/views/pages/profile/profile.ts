@@ -3,9 +3,10 @@ import { profileTmpl } from './profile.tmpl';
 import { Input, Label, UnderButtonLink } from '../../components';
 import { AuthController } from '../../../controllers/auth-controller';
 import { Block, router } from '../../../core';
-// import { IState } from '../../../models/interfaces/auth';
-import { store, withStore } from '../../../core/Store';
 import { AddressPaths } from '../../../utils';
+import { IState } from '../../../models/interfaces/auth';
+import { BaseInput } from '../../components/input/input';
+import { withStore } from '../../../core/Store';
 
 const mockData = {
   email: 'ivanivanov@yandex.ru',
@@ -16,7 +17,7 @@ const mockData = {
   phone: '+79099673030',
 };
 
-export class BaseProfile extends Block {
+export class Profile extends Block {
   _formData: FormData;
 
   constructor() {
@@ -44,6 +45,7 @@ export class BaseProfile extends Block {
   }
 
   protected init(): void {
+    const inputEmailWrapped = withStore('input', mapStateToProps)(BaseInput);
     this.children = {
       labelEmail: new Label({
         name: 'email',
@@ -52,26 +54,17 @@ export class BaseProfile extends Block {
           labelClass: 'profile-label',
         },
       }),
-      inputEmail: new Input({
-        name: 'email',
-        styles: {
-          inputClass: 'profile-input',
-        },
-        inputType: 'text',
-        inputValue: mockData.email,
-        readonly: 'readonly',
-      }),
-
+      inputEmail: inputEmailWrapped,
       // login
       labelLogin: new Label({
-        name: 'login',
+        name: 'profile-login',
         labelName: 'Логин',
         styles: {
           labelClass: 'profile-label',
         },
       }),
       inputLogin: new Input({
-        name: 'login',
+        name: 'profile-login',
         styles: {
           inputClass: 'profile-input',
         },
@@ -172,7 +165,7 @@ export class BaseProfile extends Block {
         underButtonText: 'Изменить пароль',
         events: {
           click: () => {
-            router.go(AddressPaths.ProfileChangeData);
+            router.go(AddressPaths.ProfileChangePasswd);
           }
         }
       }),
@@ -184,12 +177,14 @@ export class BaseProfile extends Block {
         underButtonText: 'Выйти',
         events: {
           click: (e: Event) => {
+            // e.preventDefault();
             AuthController.logout();
             e.preventDefault();
           }
         }
       })
     };
+
 
   }
 
@@ -204,4 +199,6 @@ export class BaseProfile extends Block {
 }
 
 
-export const Profile = withStore(new BaseProfile());
+const mapStateToProps = (state: IState) => ({
+
+});

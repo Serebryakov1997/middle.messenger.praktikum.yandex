@@ -1,14 +1,22 @@
+import { HTTPTransport } from '../core';
 import { IChangeProfileData, IUser } from '../models/interfaces';
-import { API } from './api';
+import { IChangeProfilePasswd } from '../models/interfaces/users';
+// import { API } from './api';
 
-class UserAPI extends API {
+class UserAPI {
+
+    http: HTTPTransport;
 
     constructor() {
-        super('/user');
+        this.http = new HTTPTransport('/user');
     }
 
     async changeUserProfile(data: IChangeProfileData) {
         return this.http.put<IUser>('/profile', { data });
+    }
+
+    async changeUserPasswd(data: IChangeProfilePasswd) {
+        return this.http.put('/password', { data });
     }
 }
 
