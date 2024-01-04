@@ -5,7 +5,7 @@ import {
   inputValidation,
 } from '../../../utils';
 import {
-  Button, InputBase, Label, ValidError,
+  ButtonBase, InputBase, Label, ValidError,
 } from '../../components';
 import { profileChangePasswdTmpl } from './profileChangePasswd.tmpl';
 import { Block, router } from '../../../core';
@@ -130,7 +130,7 @@ export class ProfileChangePasswd extends Block {
         validErrorId: 'error',
       }),
 
-      buttonSave: new Button({
+      buttonSave: new ButtonBase({
         buttonName: 'Сохранить',
         styles: {
           buttonClass: 'button-save',
@@ -138,7 +138,7 @@ export class ProfileChangePasswd extends Block {
         events: {
           click: (e: Event) => {
             const isValid = clickValidation(
-              this._formData,
+              {},
               {
                 password: passwdValidator,
                 new_password: passwdValidator,

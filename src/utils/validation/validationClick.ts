@@ -3,7 +3,7 @@ import { backUpForValid } from './backupForValid';
 import { validationError } from './validationError';
 
 export function clickValidation(
-  formData: FormData,
+  stateProps: Record<string, unknown>,
   validators: {
     [key: string]: {
       rule: RegExp;
@@ -16,10 +16,9 @@ export function clickValidation(
   const isValidArr: { [key: string]: boolean } = {};
 
   Object.entries(validators).forEach(([key, value]) => {
-    const formValue = formData.get(key);
     const re = value.rule;
 
-    const isValid = formValue ? re.test(formValue as string) : false;
+    const isValid = stateProps ? re.test(stateProps[key] as string) : false;
     isValidArr[key] = isValid;
   });
 

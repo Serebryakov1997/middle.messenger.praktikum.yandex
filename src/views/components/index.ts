@@ -1,4 +1,4 @@
-export { Button } from './button';
+export { ButtonBase } from './button';
 export { InputBase } from './input';
 export { Label } from './label';
 export { UnderButtonLink } from './underButtonLink';

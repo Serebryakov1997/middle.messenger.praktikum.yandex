@@ -4,7 +4,7 @@ import {
 } from '../../../utils';
 import { registerTmpl } from './register.tmpl';
 import {
-  Button, InputBase, Label, UnderButtonLink, ValidError,
+  ButtonBase, InputBase, Label, UnderButtonLink, ValidError,
 } from '../../components';
 import {
   emailValidator,
@@ -294,7 +294,7 @@ export class Register extends Block {
         validErrorId: 'error',
       }),
 
-      registerButton: new Button({
+      registerButton: new ButtonBase({
         buttonName: 'Зарегистрироваться',
         styles: {
           buttonClass: 'register-button',
@@ -303,7 +303,7 @@ export class Register extends Block {
           click: (e: Event) => {
             // code below put to AuthController, to signUp function
             const isValid = clickValidation(
-              this._formData,
+              {},
               {
                 email: emailValidator,
                 login: loginValidator,

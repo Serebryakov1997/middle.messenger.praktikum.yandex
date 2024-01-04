@@ -2,7 +2,7 @@ import './chats.css';
 import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
-import { Button, InputBase, UnderButtonLink } from '../../components';
+import { ButtonBase, InputBase, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
 
 export class Chats extends Block {
@@ -51,7 +51,7 @@ export class Chats extends Block {
           inputClass: 'chat-input',
         },
       }),
-      chatButton: new Button({
+      chatButton: new ButtonBase({
         styles: {
           buttonClass: 'button-chat',
         },

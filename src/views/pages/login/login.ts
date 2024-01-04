@@ -4,7 +4,7 @@ import {
   inputValidation,
 } from '../../../utils';
 import {
-  Button, InputBase, Label, UnderButtonLink, ValidError,
+  ButtonBase, InputBase, Label, UnderButtonLink, ValidError,
 } from '../../components';
 import { loginTmpl } from './login.tmpl';
 import { loginValidator, passwdValidator } from '../../../models/validators';
@@ -86,7 +86,7 @@ export class Login extends Block {
         },
         validErrorId: 'error',
       }),
-      loginButton: new Button({
+      loginButton: new ButtonBase({
         buttonName: 'Войти',
         styles: {
           buttonClass: 'login-button',
@@ -95,7 +95,7 @@ export class Login extends Block {
 
           click: (e: Event) => {
             const isValid = clickValidation(
-              this._formData,
+              {},
               {
                 login: loginValidator,
                 password: passwdValidator,

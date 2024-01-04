@@ -10,7 +10,8 @@ export class UserController {
     static async changeUserProfile(data: IChangeProfileData) {
         try {
             const newUser = await userApi.changeUserProfile(data);
-            store.set('user', newUser);
+            const jsonUser = JSON.parse(String(newUser));
+            store.set('user', jsonUser);
             router.go(AddressPaths.Profile);
         } catch (err) {
             console.log(err, 'change user profile error');

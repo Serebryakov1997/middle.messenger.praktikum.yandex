@@ -16,12 +16,14 @@ import {
 } from '../../../utils';
 
 import {
-  Button, InputBase, Label, ValidError,
+  ButtonBase, InputBase, Label, ValidError,
 } from '../../components';
 import { profileChangeDataTmpl } from './profileChangeData.tmpl';
 
 
 export class ProfileChangeData extends Block {
+
+  _formData: FormData;
 
   constructor() {
     super({
@@ -31,6 +33,7 @@ export class ProfileChangeData extends Block {
       },
       avatarName: 'avatar',
     });
+    this._formData = new FormData();
   }
 
   protected init(): void {
@@ -39,6 +42,7 @@ export class ProfileChangeData extends Block {
       inputValue: state.user?.email
     });
     const InputEmail = withStore(mapStateToPropsEmail)(InputBase);
+
     this.children.labelEmail = new Label({
       name: 'email',
       labelName: 'Почта',
@@ -55,7 +59,7 @@ export class ProfileChangeData extends Block {
       },
       events: {
         blur: (e: Event) => {
-          // this._formData.set('email', (<HTMLInputElement>e.target).value);
+          this._formData.set('email', (<HTMLInputElement>e.target).value);
           inputValidation(e, emailValidator, {
             validError: <Block>this.children.validErrorEmail,
             input: <Block>this.children.inputEmail,
@@ -64,6 +68,8 @@ export class ProfileChangeData extends Block {
         },
       },
     });
+    console.log('this.children.inputEmail: ',
+      JSON.parse(JSON.stringify(this.children.inputEmail)));
     this.children.validErrorEmail = new ValidError({
       styles: {
         validErrClass: 'valid-err',
@@ -93,7 +99,7 @@ export class ProfileChangeData extends Block {
       },
       events: {
         blur: (e: Event) => {
-          // this._formData.set('login', (<HTMLInputElement>e.target).value);
+          this._formData.set('login', (<HTMLInputElement>e.target).value);
           inputValidation(e, loginValidator, {
             validError: <Block>this.children.validErrorLogin,
             input: <Block>this.children.inputLogin,
@@ -131,7 +137,6 @@ export class ProfileChangeData extends Block {
       },
       events: {
         blur: (e: Event) => {
-          // this._formData.set('first_name', (<HTMLInputElement>e.target).value);
           inputValidation(e, firstNameValidator, {
             validError: <Block>this.children.validErrorFirstName,
             input: <Block>this.children.inputFirstName,
@@ -169,7 +174,6 @@ export class ProfileChangeData extends Block {
       },
       events: {
         blur: (e: Event) => {
-          // this._formData.set('second_name', (<HTMLInputElement>e.target).value);
           inputValidation(e, secondNameValidator, {
             validError: <Block>this.children.validErrorSecondName,
             input: <Block>this.children.inputSecondName,
@@ -190,142 +194,165 @@ export class ProfileChangeData extends Block {
     const mapStateToPropsChatName = (state: IState) => ({
       inputValue: state.user?.first_name
     });
-    //   labelChatName: new Label({
-    //     name: 'chat_name',
-    //     labelName: 'Имя в чате',
-    //     styles: {
-    //       labelClass: 'profile-label',
-    //     },
-    //   }),
-    //   inputChatName: new InputBase({
-    //     name: 'chat_name',
-    //     validErrorId: 'error',
-    //     inputType: 'text',
-    //     inputValue: mockData.chat_name,
-    //     styles: {
-    //       inputClass: 'profile-input',
-    //     },
-    //     events: {
-    //       blur: (e: Event) => {
-    //         this._formData.set('chat_name', (<HTMLInputElement>e.target).value);
-    //         inputValidation(e, firstNameValidator, {
-    //           validError: <Block>this.children.validErrorChatName,
-    //           input: <Block>this.children.inputChatName,
-    //           button: <Block>this.children.buttonSave,
-    //         });
-    //       },
-    //     },
-    //   }),
-    //   validErrorChatName: new ValidError({
-    //     styles: {
-    //       validErrClass: 'valid-err',
-    //     },
-    //     validErrorId: 'error',
-    //   }),
+    const InputChatName = withStore(mapStateToPropsChatName)(InputBase);
+    this.children.labelChatName = new Label({
+      name: 'chat_name',
+      labelName: 'Имя в чате',
+      styles: {
+        labelClass: 'profile-label',
+      },
+    });
+    this.children.inputChatName = new InputChatName({
+      name: 'chat_name',
+      validErrorId: 'error',
+      inputType: 'text',
+      styles: {
+        inputClass: 'profile-input',
+      },
+      events: {
+        blur: (e: Event) => {
+          inputValidation(e, firstNameValidator, {
+            validError: <Block>this.children.validErrorChatName,
+            input: <Block>this.children.inputChatName,
+            button: <Block>this.children.buttonSave,
+          });
+        },
+      },
+    });
 
-    //   // Phone
-    //   labelPhone: new Label({
-    //     name: 'phone',
-    //     labelName: 'Телефон',
-    //     styles: {
-    //       labelClass: 'profile-label',
-    //     },
-    //   }),
-    //   inputPhone: new InputBase({
-    //     name: 'phone',
-    //     validErrorId: 'error',
-    //     inputType: 'text',
-    //     inputValue: mockData.phone,
-    //     styles: {
-    //       inputClass: 'profile-input',
-    //     },
-    //     events: {
-    //       blur: (e: Event) => {
-    //         this._formData.set('phone', (<HTMLInputElement>e.target).value);
-    //         inputValidation(e, phoneValidator, {
-    //           validError: <Block>this.children.validErrorPhone,
-    //           input: <Block>this.children.inputPhone,
-    //           button: <Block>this.children.buttonSave,
-    //         });
-    //       },
-    //     },
-    //   }),
-    //   validErrorPhone: new ValidError({
-    //     styles: {
-    //       validErrClass: 'valid-err',
-    //     },
-    //     validErrorId: 'error',
-    //   }),
+    this.children.validErrorChatName = new ValidError({
+      styles: {
+        validErrClass: 'valid-err',
+      },
+      validErrorId: 'error',
+    });
 
-    //   buttonSave: new Button({
-    //     buttonName: 'Сохранить',
-    //     styles: {
-    //       buttonClass: 'button-save',
-    //     },
-    //     events: {
-    //       click: (e: Event) => {
-    //         const isValid = clickValidation(
-    //           this._formData,
-    //           {
-    //             email: emailValidator,
-    //             login: loginValidator,
-    //             first_name: firstNameValidator,
-    //             second_name: secondNameValidator,
-    //             chat_name: firstNameValidator,
-    //             phone: phoneValidator,
-    //           },
-    //           {
-    //             email: {
-    //               validError: <Block>this.children.validErrorEmail,
-    //               input: <Block>this.children.inputEmail,
-    //               button: <Block>this.children.buttonSave,
-    //             },
-    //             login: {
-    //               validError: <Block>this.children.validErrorLogin,
-    //               input: <Block>this.children.inputLogin,
-    //               button: <Block>this.children.buttonSave,
-    //             },
-    //             first_name: {
-    //               validError: <Block>this.children.validErrorFirstName,
-    //               input: <Block>this.children.inputFirstName,
-    //               button: <Block>this.children.buttonSave,
-    //             },
-    //             second_name: {
-    //               validError: <Block>this.children.validErrorSecondName,
-    //               input: <Block>this.children.inputSecondName,
-    //               button: <Block>this.children.buttonSave,
-    //             },
-    //             chat_name: {
-    //               validError: <Block>this.children.validErrorPhone,
-    //               input: <Block>this.children.inputChatName,
-    //               button: <Block>this.children.buttonSave,
-    //             },
-    //             phone: {
-    //               validError: <Block>this.children.validErrorPhone,
-    //               input: <Block>this.children.inputPhone,
-    //               button: <Block>this.children.buttonSave,
-    //             },
-    //           },
-    //           e,
-    //         );
-    //         this._formData.forEach((value, key) => {
-    //           console.log(`${key}: ${value}`);
-    //         });
-    //         if (isValid) {
-    //           UserController.changeUserProfile({
-    //             email: <string>this._formData.get('email'),
-    //             login: <string>this._formData.get('login'),
-    //             first_name: <string>this._formData.get('first_name'),
-    //             second_name: <string>this._formData.get('second_name'),
-    //             display_name: <string>this._formData.get('chat_name'),
-    //             phone: <string>this._formData.get('phone'),
-    //           });
-    //           e.preventDefault();
-    //         }
-    //       },
-    //     },
-    //   }),
-    // };
+
+    // Phone
+    const mapStateToPropsToPhone = (state: IState) => ({
+      inputValue: state.user?.phone
+    });
+    const InputPhone = withStore(mapStateToPropsToPhone)(InputBase);
+    this.children.labelPhone = new Label({
+      name: 'phone',
+      labelName: 'Телефон',
+      styles: {
+        labelClass: 'profile-label',
+      },
+    });
+    this.children.inputPhone = new InputPhone({
+      name: 'phone',
+      validErrorId: 'error',
+      inputType: 'text',
+      styles: {
+        inputClass: 'profile-input',
+      },
+      events: {
+        blur: (e: Event) => {
+          inputValidation(e, phoneValidator, {
+            validError: <Block>this.children.validErrorPhone,
+            input: <Block>this.children.inputPhone,
+            button: <Block>this.children.buttonSave,
+          });
+        },
+      },
+    })
+    this.children.validErrorPhone = new ValidError({
+      styles: {
+        validErrClass: 'valid-err',
+      },
+      validErrorId: 'error',
+    });
+
+
+    this.children.buttonSave = new ButtonBase({
+      buttonName: 'Сохранить',
+      styles: {
+        buttonClass: 'button-save',
+      },
+      events: {
+        click: (e: Event) => {
+          const email = this._formData.get('email') as string;
+          const login = this._formData.get('login') as string;
+          const first_name = JSON.parse(JSON.stringify(this.children.inputFirstName)).props.inputValue;
+          const second_name = JSON.parse(JSON.stringify(this.children.inputSecondName)).props.inputValue;
+          const chat_name = JSON.parse(JSON.stringify(this.children.inputChatName)).props.inputValue;
+          const display_name = chat_name;
+          const phone = JSON.parse(JSON.stringify(this.children.inputPhone)).props.inputValue;
+          const isValid = clickValidation(
+            {
+              email,
+              login,
+              first_name,
+              second_name,
+              chat_name,
+              phone,
+            },
+            {
+              email: emailValidator,
+              login: loginValidator,
+              first_name: firstNameValidator,
+              second_name: secondNameValidator,
+              chat_name: firstNameValidator,
+              phone: phoneValidator,
+            },
+            {
+              email: {
+                validError: <Block>this.children.validErrorEmail,
+                input: <Block>this.children.inputEmail,
+                button: <Block>this.children.buttonSave,
+              },
+              login: {
+                validError: <Block>this.children.validErrorLogin,
+                input: <Block>this.children.inputLogin,
+                button: <Block>this.children.buttonSave,
+              },
+              first_name: {
+                validError: <Block>this.children.validErrorFirstName,
+                input: <Block>this.children.inputFirstName,
+                button: <Block>this.children.buttonSave,
+              },
+              second_name: {
+                validError: <Block>this.children.validErrorSecondName,
+                input: <Block>this.children.inputSecondName,
+                button: <Block>this.children.buttonSave,
+              },
+              chat_name: {
+                validError: <Block>this.children.validErrorPhone,
+                input: <Block>this.children.inputChatName,
+                button: <Block>this.children.buttonSave,
+              },
+              phone: {
+                validError: <Block>this.children.validErrorPhone,
+                input: <Block>this.children.inputPhone,
+                button: <Block>this.children.buttonSave,
+              },
+            },
+            e,
+          );
+          console.log('email: ', email);
+          console.log('login: ', login);
+          console.log('first_name: ', first_name);
+          console.log('second_name: ', second_name);
+          console.log('display_name: ', display_name);
+          console.log('phone: ', phone);
+          console.log('isValid: ', isValid);
+
+
+          if (isValid) {
+            UserController.changeUserProfile({
+              email,
+              login,
+              first_name,
+              second_name,
+              display_name,
+              phone,
+            });
+            e.preventDefault();
+          }
+        },
+      },
+    });
   }
 
   render(): DocumentFragment {
