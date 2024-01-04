@@ -4,7 +4,7 @@ import {
   inputValidation,
 } from '../../../utils';
 import {
-  Button, Input, Label, UnderButtonLink, ValidError,
+  Button, InputBase, Label, UnderButtonLink, ValidError,
 } from '../../components';
 import { loginTmpl } from './login.tmpl';
 import { loginValidator, passwdValidator } from '../../../models/validators';
@@ -15,7 +15,7 @@ export class Login extends Block {
   _formData: FormData;
 
   constructor() {
-    super('form', {
+    super({
       styles: {
         containerClass: 'login-container',
         headerClass: 'login-header',
@@ -39,7 +39,7 @@ export class Login extends Block {
         name: 'login',
         labelName: 'Логин',
       }),
-      inputLogin: new Input({
+      inputLogin: new InputBase({
         name: 'login',
         placeholder: 'ivanivanov',
         validErrorId: 'error',
@@ -55,7 +55,7 @@ export class Login extends Block {
           },
         },
       }),
-      validErrorLogin: new ValidError('div', {
+      validErrorLogin: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -65,7 +65,7 @@ export class Login extends Block {
         name: 'password',
         labelName: 'Пароль',
       }),
-      inputPasswd: new Input({
+      inputPasswd: new InputBase({
         name: 'password',
         validErrorId: 'error',
         inputType: 'password',
@@ -80,7 +80,7 @@ export class Login extends Block {
           },
         },
       }),
-      validErrorPasswd: new ValidError('div', {
+      validErrorPasswd: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -129,7 +129,7 @@ export class Login extends Block {
           },
         },
       }),
-      underButtonLink: new UnderButtonLink('under-text', {
+      underButtonLink: new UnderButtonLink({
         styles: {
           underButtonClass: 'under-text',
         },

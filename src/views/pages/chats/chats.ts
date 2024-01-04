@@ -2,13 +2,12 @@ import './chats.css';
 import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
-import { Button, Input, UnderButtonLink } from '../../components';
+import { Button, InputBase, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
-// import { UserController } from '../../../controllers/user-controller';
 
 export class Chats extends Block {
   constructor() {
-    super('form', {
+    super({
       styles: {
         chatsFormClass: 'chats-form',
         chatsSearchBarClass: 'chats-search-bar',
@@ -31,7 +30,7 @@ export class Chats extends Block {
   protected init(): void {
     const chatsList = creationChatList(mockChatsJSON);
     this.children = {
-      linkToProfile: new UnderButtonLink('a', {
+      linkToProfile: new UnderButtonLink({
         styles: {
           underButtonClass: 'profile-link',
         },
@@ -44,7 +43,7 @@ export class Chats extends Block {
         }
       }),
       chatsList,
-      chatInput: new Input({
+      chatInput: new InputBase({
         name: 'message',
         placeholder: 'Сообщение',
         inputType: 'text',

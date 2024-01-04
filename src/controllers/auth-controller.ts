@@ -9,8 +9,6 @@ export class AuthController {
     static async signUp(data: ISignUpData) {
         try {
             await authApi.signUp(data);
-            // console.log('response: ', response);
-            // ChatController.getChats();
 
             await this.fetchUser();
 
@@ -23,22 +21,25 @@ export class AuthController {
     static async signIn(data: ISigninData) {
         try {
             await authApi.signIn(data);
-            // console.log('login response: ', response);
-
-            // ChatController.getChats();
-
-            await this.fetchUser();
-
             router.go(AddressPaths.Chats);
         } catch (err) {
             console.log(err, 'signin error');
         }
     }
 
+    // id: number;
+    // first_name: string;
+    // second_name: string;
+    // display_name: string;
+    // phone: string;
+    // login: string;
+    // avatar: string;
+    // email: string;
     static async fetchUser() {
         try {
             const user = await authApi.getUser();
-            store.set('user', user);
+            const jsonUser = JSON.parse(String(user));
+            store.set('user', jsonUser);
         } catch (err) {
             throw err;
         }
@@ -47,7 +48,6 @@ export class AuthController {
     static async logout() {
         try {
             await authApi.logout();
-            // console.log('response: ', response);
             store.set('user', undefined);
             router.go(AddressPaths.SignIn);
         } catch (err) {

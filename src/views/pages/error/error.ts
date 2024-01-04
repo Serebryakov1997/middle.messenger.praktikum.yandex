@@ -5,7 +5,7 @@ import { Block, router } from '../../../core';
 
 export class PageError extends Block {
   constructor(codeError: string, codeErrorText: string) {
-    super('form', {
+    super({
       styles: {
         errorFormClass: 'page-error',
         payloadClass: 'error-payload',
@@ -18,7 +18,7 @@ export class PageError extends Block {
   }
 
   protected init(): void {
-    this.children.linkToChats = new UnderButtonLink('a', {
+    this.children.linkToChats = new UnderButtonLink({
       styles: {
         underButtonClass: 'link-to-chats'
       },

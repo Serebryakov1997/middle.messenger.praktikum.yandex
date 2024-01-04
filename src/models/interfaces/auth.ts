@@ -29,15 +29,12 @@ export interface IUser {
     email: string;
 }
 
-export interface IInput {
-    name: string;
-    styles: {
-        inputClass: string;
-    };
-    inputValue: string;
+export interface IState {
+    // [key: string]: IUser | undefined;
+    user?: IUser;
 }
 
-export interface IState {
-    user?: IUser;
-    input?: IInput;
+export interface IInput {
+    name?: string;
+    inputValue?: string;
 }

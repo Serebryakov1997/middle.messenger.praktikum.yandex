@@ -12,8 +12,8 @@ interface ValidErrorProps {
 }
 
 export class ValidError extends Block {
-  constructor(validErrClass: string, props: ValidErrorProps) {
-    super(validErrClass, props);
+  constructor(props: ValidErrorProps) {
+    super(props);
   }
 
   render(): DocumentFragment {

@@ -4,7 +4,7 @@ import {
 } from '../../../utils';
 import { registerTmpl } from './register.tmpl';
 import {
-  Button, Input, Label, UnderButtonLink, ValidError,
+  Button, InputBase, Label, UnderButtonLink, ValidError,
 } from '../../components';
 import {
   emailValidator,
@@ -22,7 +22,7 @@ export class Register extends Block {
   _formData: FormData;
 
   constructor() {
-    super('form', {
+    super({
       styles: {
         registerContainerClass: 'register-container',
         registerHeaderClass: 'register-header',
@@ -40,7 +40,7 @@ export class Register extends Block {
         name: 'email',
         labelName: 'Почта',
       }),
-      inputEmail: new Input({
+      inputEmail: new InputBase({
         name: 'email',
         placeholder: 'ivanivanov@yandex.ru',
         validErrorId: 'error',
@@ -57,7 +57,7 @@ export class Register extends Block {
           },
         },
       }),
-      validErrorEmail: new ValidError('div', {
+      validErrorEmail: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -69,7 +69,7 @@ export class Register extends Block {
         name: 'login',
         labelName: 'Логин',
       }),
-      inputLogin: new Input({
+      inputLogin: new InputBase({
         name: 'login',
         placeholder: 'ivanivanov',
         validErrorId: 'error',
@@ -87,7 +87,7 @@ export class Register extends Block {
         },
       }),
 
-      validErrorLogin: new ValidError('div', {
+      validErrorLogin: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -100,7 +100,7 @@ export class Register extends Block {
         labelName: 'Имя',
       }),
 
-      inputName: new Input({
+      inputName: new InputBase({
         name: 'first_name',
         placeholder: 'Иван',
         validErrorId: 'error',
@@ -118,7 +118,7 @@ export class Register extends Block {
         },
       }),
 
-      validErrorName: new ValidError('div', {
+      validErrorName: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -131,7 +131,7 @@ export class Register extends Block {
         labelName: 'Фамилия',
       }),
 
-      inputSurName: new Input({
+      inputSurName: new InputBase({
         name: 'second_name',
         placeholder: 'Иванов',
         validErrorId: 'error',
@@ -149,7 +149,7 @@ export class Register extends Block {
         },
       }),
 
-      validErrorSurName: new ValidError('div', {
+      validErrorSurName: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -162,7 +162,7 @@ export class Register extends Block {
         labelName: 'Телефон',
       }),
 
-      inputPhone: new Input({
+      inputPhone: new InputBase({
         name: 'phone',
         placeholder: '+79099673030',
         validErrorId: 'error',
@@ -179,7 +179,7 @@ export class Register extends Block {
           },
         },
       }),
-      validErrorPhone: new ValidError('div', {
+      validErrorPhone: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -191,7 +191,7 @@ export class Register extends Block {
         name: 'password',
         labelName: 'Пароль',
       }),
-      inputPasswd: new Input({
+      inputPasswd: new InputBase({
         name: 'password',
         validErrorId: 'error',
         inputType: 'password',
@@ -237,7 +237,7 @@ export class Register extends Block {
           },
         },
       }),
-      validErrorPasswd: new ValidError('div', {
+      validErrorPasswd: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -249,7 +249,7 @@ export class Register extends Block {
         name: 'repeat_password',
         labelName: 'Пароль (ещё раз)',
       }),
-      inputRepeatPasswd: new Input({
+      inputRepeatPasswd: new InputBase({
         name: 'repeat_password',
         validErrorId: 'error',
         inputType: 'password',
@@ -287,7 +287,7 @@ export class Register extends Block {
           },
         },
       }),
-      validErrorRepeatPasswd: new ValidError('div', {
+      validErrorRepeatPasswd: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -372,7 +372,7 @@ export class Register extends Block {
         },
       }),
 
-      underButtonLink: new UnderButtonLink('register-under-text', {
+      underButtonLink: new UnderButtonLink({
         styles: {
           underButtonClass: 'register-under-text',
         },

@@ -16,8 +16,6 @@ export class Block {
 
   eventBus: (() => EventBus);
 
-  tagName: string;
-
   /* eslint no-use-before-define: "off" */
   children: Record<string, Block | Block[] | typeof Block>;
 
@@ -29,8 +27,7 @@ export class Block {
        *
        * @returns {void}
        */
-  constructor(tagName: string, propsAndChildren: Record<string, unknown>) {
-    this.tagName = tagName;
+  constructor(propsAndChildren: Record<string, unknown>) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildren(propsAndChildren);
@@ -52,9 +49,9 @@ export class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
-    this._element = Block._createDocumentElement(this.tagName);
-  }
+  // _createResources() {
+  //   this._element = Block._createDocumentElement(this.tagName);
+  // }
 
   _init() {
     this.init();
@@ -97,6 +94,8 @@ export class Block {
       return;
     }
 
+    console.log('nextProps: ', nextProps);
+
     Object.assign(this.props, nextProps);
     // this._render();
   };
@@ -105,6 +104,8 @@ export class Block {
   _getChildren(propsAndChildren: Record<string, unknown>) {
     const children: Record<string, Block | Block[]> = {};
     const props: Record<string, unknown> = {};
+
+    // console.log('propsAndChildren: ', propsAndChildren);
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -122,7 +123,7 @@ export class Block {
   compile(template: string, props: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
-    this._createResources();
+    // this._createResources();
 
     let fragmentsArr: string = '';
     Object.entries(this.children).forEach(([name, component]) => {

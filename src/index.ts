@@ -1,5 +1,5 @@
 import { AuthController } from './controllers/auth-controller';
-import { Block, router } from './core';
+import { router } from './core';
 import { AddressPaths } from './utils';
 import {
   Login,
@@ -8,7 +8,6 @@ import {
   Profile,
   ProfileChangeData,
   ProfileChangePasswd,
-  // TestStorePage,
 } from './views';
 
 
@@ -20,8 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     .use(new Profile(), AddressPaths.Profile)
     .use(new ProfileChangeData(), AddressPaths.ProfileChangeData)
     .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
-  // .use(TestStorePage, '/test')
-  // .start();
 
   let isProtectedRoute = true;
 

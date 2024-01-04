@@ -5,7 +5,7 @@ import {
   inputValidation,
 } from '../../../utils';
 import {
-  Button, Input, Label, ValidError,
+  Button, InputBase, Label, ValidError,
 } from '../../components';
 import { profileChangePasswdTmpl } from './profileChangePasswd.tmpl';
 import { Block, router } from '../../../core';
@@ -17,7 +17,7 @@ export class ProfileChangePasswd extends Block {
   _formData: FormData;
 
   constructor() {
-    super('form', {
+    super({
       styles: {
         containerClass: 'profile-container',
         avatarNameClass: 'avatar',
@@ -38,7 +38,7 @@ export class ProfileChangePasswd extends Block {
           labelClass: 'profile-label',
         },
       }),
-      inputPasswd: new Input({
+      inputPasswd: new InputBase({
         name: 'password',
         validErrorId: 'error',
         styles: {
@@ -57,7 +57,7 @@ export class ProfileChangePasswd extends Block {
           },
         },
       }),
-      validErrorPasswd: new ValidError('div', {
+      validErrorPasswd: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -72,7 +72,7 @@ export class ProfileChangePasswd extends Block {
           labelClass: 'profile-label',
         },
       }),
-      inputNewPasswd: new Input({
+      inputNewPasswd: new InputBase({
         name: 'new_password',
         validErrorId: 'error',
         styles: {
@@ -90,7 +90,7 @@ export class ProfileChangePasswd extends Block {
           },
         },
       }),
-      validErrorNewPasswd: new ValidError('div', {
+      validErrorNewPasswd: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -105,7 +105,7 @@ export class ProfileChangePasswd extends Block {
           labelClass: 'profile-label',
         },
       }),
-      inputRepeatNewPasswd: new Input({
+      inputRepeatNewPasswd: new InputBase({
         name: 'repeat_new_password',
         validErrorId: 'error',
         styles: {
@@ -123,7 +123,7 @@ export class ProfileChangePasswd extends Block {
           },
         },
       }),
-      validErrorRepeatNewPasswd: new ValidError('div', {
+      validErrorRepeatNewPasswd: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },

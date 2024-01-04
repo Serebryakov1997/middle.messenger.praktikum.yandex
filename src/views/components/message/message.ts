@@ -12,7 +12,7 @@ interface MessageProps {
 
 export class Message extends Block {
   constructor(props: MessageProps) {
-    super('p', props);
+    super(props);
   }
 
   render(): DocumentFragment {
