@@ -25,12 +25,6 @@ export class Login extends Block {
       underButtonText: 'Нет аккаунта?',
     });
     this._formData = new FormData();
-
-    // get data from LoginController
-    // LoginController.getLoginData();
-
-    // on to event
-
   }
 
   protected init(): void {
@@ -92,10 +86,14 @@ export class Login extends Block {
           buttonClass: 'login-button',
         },
         events: {
-
           click: (e: Event) => {
+            const login = this._formData.get('login') as string;
+            const password = this._formData.get('password') as string;
             const isValid = clickValidation(
-              {},
+              {
+                login,
+                password
+              },
               {
                 login: loginValidator,
                 password: passwdValidator,
@@ -119,12 +117,8 @@ export class Login extends Block {
             });
 
             if (isValid) {
-              AuthController.signIn({
-                login: this._formData.get('login') as string,
-                password: this._formData.get('password') as string
-              });
+              AuthController.signIn({ login, password });
               e.preventDefault();
-              // router.go('/messenger');
             }
           },
         },

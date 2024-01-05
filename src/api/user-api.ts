@@ -1,7 +1,6 @@
 import { HTTPTransport } from '../core';
 import { IChangeProfileData, IUser } from '../models/interfaces';
 import { IChangeProfilePasswd } from '../models/interfaces/users';
-// import { API } from './api';
 
 class UserAPI {
 

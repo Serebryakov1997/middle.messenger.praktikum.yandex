@@ -8,7 +8,7 @@ import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
 
 
-export class Profile extends Block {
+export class ProfileBase extends Block {
 
   constructor() {
     super({
@@ -22,7 +22,6 @@ export class Profile extends Block {
       },
       name: 'avatar',
       dislpayFieldName: 'display_name',
-      displayName: 'Иван',
       statusName: 'online',
       changeDataName: 'Изменить данные',
       changePasswdName: 'Изменить пароль',
@@ -195,7 +194,6 @@ export class Profile extends Block {
       underButtonText: 'Выйти',
       events: {
         click: (e: Event) => {
-          // e.preventDefault();
           AuthController.logout();
           e.preventDefault();
         }
@@ -207,3 +205,10 @@ export class Profile extends Block {
     return this.compile(profileTmpl, this.props);
   }
 }
+
+
+const mapStateToPropsProfile = (state: IState) => ({
+  displayName: state.user?.first_name
+});
+
+export const Profile = withStore(mapStateToPropsProfile)(ProfileBase);

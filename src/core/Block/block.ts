@@ -49,9 +49,6 @@ export class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  // _createResources() {
-  //   this._element = Block._createDocumentElement(this.tagName);
-  // }
 
   _init() {
     this.init();
@@ -94,10 +91,7 @@ export class Block {
       return;
     }
 
-    console.log('nextProps: ', nextProps);
-
     Object.assign(this.props, nextProps);
-    // this._render();
   };
 
 

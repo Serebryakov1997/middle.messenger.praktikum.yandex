@@ -68,8 +68,8 @@ export class ProfileChangeData extends Block {
         },
       },
     });
-    console.log('this.children.inputEmail: ',
-      JSON.parse(JSON.stringify(this.children.inputEmail)));
+
+
     this.children.validErrorEmail = new ValidError({
       styles: {
         validErrClass: 'valid-err',
@@ -137,6 +137,7 @@ export class ProfileChangeData extends Block {
       },
       events: {
         blur: (e: Event) => {
+          this._formData.set('first_name', (<HTMLInputElement>e.target).value);
           inputValidation(e, firstNameValidator, {
             validError: <Block>this.children.validErrorFirstName,
             input: <Block>this.children.inputFirstName,
@@ -174,6 +175,7 @@ export class ProfileChangeData extends Block {
       },
       events: {
         blur: (e: Event) => {
+          this._formData.set('second_name', (<HTMLInputElement>e.target).value);
           inputValidation(e, secondNameValidator, {
             validError: <Block>this.children.validErrorSecondName,
             input: <Block>this.children.inputSecondName,
@@ -211,6 +213,7 @@ export class ProfileChangeData extends Block {
       },
       events: {
         blur: (e: Event) => {
+          this._formData.set('chat_name', (<HTMLInputElement>e.target).value);
           inputValidation(e, firstNameValidator, {
             validError: <Block>this.children.validErrorChatName,
             input: <Block>this.children.inputChatName,
@@ -249,6 +252,7 @@ export class ProfileChangeData extends Block {
       },
       events: {
         blur: (e: Event) => {
+          this._formData.set('phone', (<HTMLInputElement>e.target).value);
           inputValidation(e, phoneValidator, {
             validError: <Block>this.children.validErrorPhone,
             input: <Block>this.children.inputPhone,
@@ -272,87 +276,107 @@ export class ProfileChangeData extends Block {
       },
       events: {
         click: (e: Event) => {
-          const email = this._formData.get('email') as string;
-          const login = this._formData.get('login') as string;
-          const first_name = JSON.parse(JSON.stringify(this.children.inputFirstName)).props.inputValue;
-          const second_name = JSON.parse(JSON.stringify(this.children.inputSecondName)).props.inputValue;
-          const chat_name = JSON.parse(JSON.stringify(this.children.inputChatName)).props.inputValue;
-          const display_name = chat_name;
-          const phone = JSON.parse(JSON.stringify(this.children.inputPhone)).props.inputValue;
-          const isValid = clickValidation(
-            {
-              email,
-              login,
-              first_name,
-              second_name,
-              chat_name,
-              phone,
-            },
-            {
-              email: emailValidator,
-              login: loginValidator,
-              first_name: firstNameValidator,
-              second_name: secondNameValidator,
-              chat_name: firstNameValidator,
-              phone: phoneValidator,
-            },
-            {
-              email: {
-                validError: <Block>this.children.validErrorEmail,
-                input: <Block>this.children.inputEmail,
-                button: <Block>this.children.buttonSave,
-              },
-              login: {
-                validError: <Block>this.children.validErrorLogin,
-                input: <Block>this.children.inputLogin,
-                button: <Block>this.children.buttonSave,
-              },
-              first_name: {
-                validError: <Block>this.children.validErrorFirstName,
-                input: <Block>this.children.inputFirstName,
-                button: <Block>this.children.buttonSave,
-              },
-              second_name: {
-                validError: <Block>this.children.validErrorSecondName,
-                input: <Block>this.children.inputSecondName,
-                button: <Block>this.children.buttonSave,
-              },
-              chat_name: {
-                validError: <Block>this.children.validErrorPhone,
-                input: <Block>this.children.inputChatName,
-                button: <Block>this.children.buttonSave,
-              },
-              phone: {
-                validError: <Block>this.children.validErrorPhone,
-                input: <Block>this.children.inputPhone,
-                button: <Block>this.children.buttonSave,
-              },
-            },
-            e,
-          );
-          console.log('email: ', email);
-          console.log('login: ', login);
-          console.log('first_name: ', first_name);
-          console.log('second_name: ', second_name);
-          console.log('display_name: ', display_name);
-          console.log('phone: ', phone);
-          console.log('isValid: ', isValid);
-
-
-          if (isValid) {
-            UserController.changeUserProfile({
-              email,
-              login,
-              first_name,
-              second_name,
-              display_name,
-              phone,
-            });
-            e.preventDefault();
-          }
+          this.onClick(e);
         },
       },
     });
+  }
+
+
+  onClick(e: Event) {
+    const emailForm = this._formData.get('email') as string;
+    const email = emailForm ?
+      emailForm :
+      JSON.parse(JSON.stringify(this.children.inputEmail)).props.inputValue;
+
+    const loginForm = this._formData.get('login') as string;
+    const login = loginForm ?
+      loginForm :
+      JSON.parse(JSON.stringify(this.children.inputLogin)).props.inputValue;
+
+    const firstNameForm = this._formData.get('first_name') as string;
+    const first_name = firstNameForm ?
+      firstNameForm :
+      JSON.parse(JSON.stringify(this.children.inputFirstName)).props.inputValue;
+
+    const secondNameForm = this._formData.get('second_name') as string;
+    const second_name = secondNameForm ?
+      secondNameForm :
+      JSON.parse(JSON.stringify(this.children.inputSecondName)).props.inputValue;
+
+    const chatNameForm = this._formData.get('chat_name') as string;
+    const chat_name = chatNameForm ?
+      chatNameForm :
+      JSON.parse(JSON.stringify(this.children.inputChatName)).props.inputValue;
+    const display_name = chat_name;
+
+    const phoneForm = this._formData.get('phone') as string;
+    const phone = phoneForm ?
+      phoneForm :
+      JSON.parse(JSON.stringify(this.children.inputPhone)).props.inputValue;
+    const isValid = clickValidation(
+      {
+        email,
+        login,
+        first_name,
+        second_name,
+        chat_name,
+        phone,
+      },
+      {
+        email: emailValidator,
+        login: loginValidator,
+        first_name: firstNameValidator,
+        second_name: secondNameValidator,
+        chat_name: firstNameValidator,
+        phone: phoneValidator,
+      },
+      {
+        email: {
+          validError: <Block>this.children.validErrorEmail,
+          input: <Block>this.children.inputEmail,
+          button: <Block>this.children.buttonSave,
+        },
+        login: {
+          validError: <Block>this.children.validErrorLogin,
+          input: <Block>this.children.inputLogin,
+          button: <Block>this.children.buttonSave,
+        },
+        first_name: {
+          validError: <Block>this.children.validErrorFirstName,
+          input: <Block>this.children.inputFirstName,
+          button: <Block>this.children.buttonSave,
+        },
+        second_name: {
+          validError: <Block>this.children.validErrorSecondName,
+          input: <Block>this.children.inputSecondName,
+          button: <Block>this.children.buttonSave,
+        },
+        chat_name: {
+          validError: <Block>this.children.validErrorPhone,
+          input: <Block>this.children.inputChatName,
+          button: <Block>this.children.buttonSave,
+        },
+        phone: {
+          validError: <Block>this.children.validErrorPhone,
+          input: <Block>this.children.inputPhone,
+          button: <Block>this.children.buttonSave,
+        },
+      },
+      e,
+    );
+
+    if (isValid) {
+      UserController.changeUserProfile({
+        email,
+        login,
+        first_name,
+        second_name,
+        display_name,
+        phone,
+      });
+      e.preventDefault();
+    }
   }
 
   render(): DocumentFragment {

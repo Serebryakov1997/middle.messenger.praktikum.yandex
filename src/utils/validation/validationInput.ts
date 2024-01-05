@@ -13,8 +13,6 @@ export function inputValidation(
   const re = validator.rule;
   const targetValue = (<HTMLInputElement>e.target).value;
   const isValid = re.test(targetValue);
-  console.log('inputValidation targetValue: ', targetValue);
-  console.log('inputValidation isValid: ', isValid);
 
   if (!isValid || !targetValue) {
     const msg = validator.errorMsg;

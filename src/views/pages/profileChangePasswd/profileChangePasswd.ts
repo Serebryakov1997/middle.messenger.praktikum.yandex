@@ -8,10 +8,9 @@ import {
   ButtonBase, InputBase, Label, ValidError,
 } from '../../components';
 import { profileChangePasswdTmpl } from './profileChangePasswd.tmpl';
-import { Block, router } from '../../../core';
+import { Block } from '../../../core';
 import { UserController } from '../../../controllers/user-controller';
 
-const mockPassword = 'Password1';
 
 export class ProfileChangePasswd extends Block {
   _formData: FormData;
@@ -25,7 +24,6 @@ export class ProfileChangePasswd extends Block {
       avatarName: 'avatar',
     });
     this._formData = new FormData();
-    this._formData.set('password', mockPassword);
   }
 
   protected init(): void {
@@ -45,7 +43,6 @@ export class ProfileChangePasswd extends Block {
           inputClass: 'profile-input',
         },
         inputType: 'password',
-        // inputValue: mockPassword,
         events: {
           blur: (e: Event) => {
             this._formData.set('password', (<HTMLInputElement>e.target).value);
@@ -87,6 +84,11 @@ export class ProfileChangePasswd extends Block {
               input: <Block>this.children.inputNewPasswd,
               button: <Block>this.children.buttonSave,
             });
+
+            const newRepeatPassword = this._formData.get('repeat_new_password');
+            if (newRepeatPassword) {
+              // const repeatPassword = 
+            }
           },
         },
       }),
@@ -137,8 +139,15 @@ export class ProfileChangePasswd extends Block {
         },
         events: {
           click: (e: Event) => {
+            const password = this._formData.get('password') as string;
+            const new_password = this._formData.get('new_password') as string;
+            const repeat_new_password = this._formData.get('repeat_new_password') as string;
             const isValid = clickValidation(
-              {},
+              {
+                password,
+                new_password,
+                repeat_new_password
+              },
               {
                 password: passwdValidator,
                 new_password: passwdValidator,
@@ -168,8 +177,8 @@ export class ProfileChangePasswd extends Block {
             });
             if (isValid) {
               UserController.changeUserPasswd({
-                oldPassword: <string>this._formData.get('password'),
-                newPassword: <string>this._formData.get('new_password')
+                oldPassword: password,
+                newPassword: new_password
               })
               e.preventDefault();
             }
