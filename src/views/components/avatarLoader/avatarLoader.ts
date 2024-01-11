@@ -3,20 +3,21 @@ import './avatarLoader.css';
 import { avatarLoaderTmpl } from './avatarLoader.tmpl';
 
 interface AvatarLoaderProps {
-  [key: string]: string | {};
-  styles: {
-    avatarLoaderClass: string;
-    dashedBorderClass: string;
-    textClass: string;
-    textOrClass: string;
-  }
-  text1Name: string;
-  textOrName: string;
+  [key: string]: {};
+  click: (e: Event) => void;
 }
 
 export class AvatarLoader extends Block {
   constructor(props: AvatarLoaderProps) {
-    super('div', props);
+    super({
+      avatarLoaderId: 'avatarLoaderId',
+      avatarLoaderClass: 'avatar-loader',
+      avatarId: 'avatar',
+      avatarInputType: 'file',
+      avatarInputName: 'avatar',
+      avatarInputAccept: 'image/*',
+      ...props
+    });
   }
 
   render(): DocumentFragment {

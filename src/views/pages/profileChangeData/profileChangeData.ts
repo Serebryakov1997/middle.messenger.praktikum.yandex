@@ -1,3 +1,4 @@
+import './profileChangeData.css';
 import { UserController } from '../../../controllers/user-controller';
 import { Block } from '../../../core';
 import { withStore } from '../../../core/Store';
@@ -16,7 +17,8 @@ import {
 } from '../../../utils';
 
 import {
-  ButtonBase, InputBase, Label, ValidError,
+  AvatarLoader,
+  ButtonBase, ClickableText, InputBase, Label, ValidError,
 } from '../../components';
 import { profileChangeDataTmpl } from './profileChangeData.tmpl';
 
@@ -30,13 +32,30 @@ export class ProfileChangeData extends Block {
       styles: {
         containerClass: 'profile-container',
         avatarNameClass: 'avatar',
+        loadFileTextClass: 'load-file-text'
       },
       avatarName: 'avatar',
+      loadFileText: 'Загрузить файл'
     });
     this._formData = new FormData();
   }
 
   protected init(): void {
+
+    this.children.clickableText = new ClickableText({
+      loadFileText: 'Загрузить файл',
+      events: {
+        click: (e: Event) => {
+
+        }
+      }
+    })
+
+    this.children.avatarLoader = new AvatarLoader({
+      click: (e: Event) => {
+
+      }
+    })
     // email
     const mapStateToPropsEmail = (state: IState) => ({
       inputValue: state.user?.email
