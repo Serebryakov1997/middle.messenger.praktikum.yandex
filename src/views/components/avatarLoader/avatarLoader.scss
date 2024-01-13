@@ -6,11 +6,25 @@
     @include main_base.block-center-position;
 
     display: none;
-    width: 423px;
-    height: 348px;
+    width: 323px;
+    height: 248px;
     border-radius: 20px;
     background: colors.$avatar-loader-back;
     z-index: 4;
+
+    .avatar-input-class {
+        background-color: colors.$avatar-loader-back;
+        border: none;
+        @include main_base.block-center-position;
+    }
+
+    .input-submit-class {
+        top: 150px;
+        left: 20px;
+        border: none;
+        cursor: pointer;
+        background-color: colors.$avatar-loader-back;
+    }
 
     .dash-border {
         @include main_base.block-center-position;
@@ -22,7 +36,7 @@
     }
 
     .text-class {
-        display: block;
+        // display: block;
         top: 70px;
         left: 50px;
         font-size: 24px;
@@ -32,7 +46,7 @@
     }
 
     .text-or-class {
-        display: block;
+        // display: block;
         top: 140px;
         left: 170px;
     }

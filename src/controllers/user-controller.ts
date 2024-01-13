@@ -14,7 +14,7 @@ export class UserController {
             store.set('user', jsonUser);
             router.go(AddressPaths.Profile);
         } catch (err) {
-            console.log(err, 'change user profile error');
+            throw err;
         }
     }
 
@@ -23,7 +23,17 @@ export class UserController {
             await userApi.changeUserPasswd(data);
             router.go(AddressPaths.Profile);
         } catch (err) {
-            console.log(err, 'change user passwd error');
+            throw err;
+        }
+    }
+
+    static async changeUserAvatar(data: File) {
+        try {
+            const newUser = await userApi.changeUserAvatar(data);
+            const jsonUser = JSON.parse(String(newUser));
+            store.set('user', jsonUser);
+        } catch (err) {
+            throw err;
         }
     }
 }

@@ -208,6 +208,7 @@ export class ProfileBase extends Block {
 
 
 const mapStateToPropsProfile = (state: IState) => ({
+  imgRef: state.user?.avatar,
   displayName: state.user?.first_name
 });
 

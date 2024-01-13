@@ -17,6 +17,13 @@ class UserAPI {
     async changeUserPasswd(data: IChangeProfilePasswd) {
         return this.http.put('/password', { data });
     }
+
+    async changeUserAvatar(file: File) {
+        console.log('file avatar: ', file);
+        const data = new FormData();
+        data.append('avatar', file);
+        return this.http.put<IUser>('/profile/avatar', { data })
+    }
 }
 
 export default new UserAPI();

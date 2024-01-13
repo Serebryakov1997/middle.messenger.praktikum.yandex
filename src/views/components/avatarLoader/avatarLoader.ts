@@ -4,18 +4,23 @@ import { avatarLoaderTmpl } from './avatarLoader.tmpl';
 
 interface AvatarLoaderProps {
   [key: string]: {};
-  click: (e: Event) => void;
+  submit: (e: Event) => void;
 }
 
 export class AvatarLoader extends Block {
   constructor(props: AvatarLoaderProps) {
     super({
+      styles: {
+        avatarLoaderClass: 'avatar-loader',
+        avatarInputClass: 'avatar-input-class',
+        inputSubmitClass: 'input-submit-class'
+      },
       avatarLoaderId: 'avatarLoaderId',
-      avatarLoaderClass: 'avatar-loader',
       avatarId: 'avatar',
       avatarInputType: 'file',
       avatarInputName: 'avatar',
       avatarInputAccept: 'image/*',
+      inputSubmitType: 'submit',
       ...props
     });
   }

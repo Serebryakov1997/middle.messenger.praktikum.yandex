@@ -15,13 +15,13 @@ const MESSAGE = {
 }
 
 type Options = {
-  data?: Record<string, unknown>,
+  data?: Record<string, unknown> | FormData,
   headers?: Record<string, unknown>;
   method?: string;
   withCredentials?: boolean;
 };
 
-function queryStringify(data: Options['data']): string {
+function queryStringify(data: Record<string, unknown>): string {
   let str = '?';
 
   if (data) {
@@ -52,7 +52,7 @@ export class HTTPTransport {
     let handledUrl: string = url;
     const handledOptions: Options = options!;
     if (options && options.data) {
-      handledUrl += `?${queryStringify(options.data)}`;
+      handledUrl += `?${queryStringify(<Record<string, unknown>>options.data)}`;
       handledOptions.data = {};
     }
     return this.request<Response>(
@@ -93,7 +93,7 @@ export class HTTPTransport {
   ): Promise<Response> {
     const {
       data,
-      headers = { 'Content-Type': 'application/json' },
+      headers,
       method,
       withCredentials = true
     } = options;
@@ -102,7 +102,7 @@ export class HTTPTransport {
       const xhr = new XMLHttpRequest();
       xhr.open(method as string, url);
 
-      Object.keys(headers!).forEach((key) => {
+      Object.keys(headers ?? {}).forEach((key) => {
         xhr.setRequestHeader(key, headers![key] as string);
       });
 
@@ -127,6 +127,7 @@ export class HTTPTransport {
       } else if (data instanceof FormData) {
         xhr.send(data);
       } else {
+        xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(data));
       }
     });

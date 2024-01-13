@@ -23,7 +23,7 @@ import {
 import { profileChangeDataTmpl } from './profileChangeData.tmpl';
 
 
-export class ProfileChangeData extends Block {
+export class ProfileChangeDataBase extends Block {
 
   _formData: FormData;
 
@@ -45,15 +45,19 @@ export class ProfileChangeData extends Block {
     this.children.clickableText = new ClickableText({
       loadFileText: 'Загрузить файл',
       events: {
-        click: (e: Event) => {
-
+        click: () => {
+          (<Block>this.children.avatarLoader).show();
         }
       }
-    })
+    });
 
     this.children.avatarLoader = new AvatarLoader({
-      click: (e: Event) => {
-
+      submit: (e: Event) => {
+        e.preventDefault();
+        const fileList = (e.target as HTMLInputElement).files;
+        console.log('avatar: ', fileList?.item(0));
+        // UserController.changeUserAvatar(fileList?.item(0)!);
+        // console.log(e);
       }
     })
     // email
@@ -402,3 +406,10 @@ export class ProfileChangeData extends Block {
     return this.compile(profileChangeDataTmpl, this.props);
   }
 }
+
+
+const mapStateToProps = (state: IState) => ({
+  imgRef: state.user?.avatar
+});
+
+export const ProfileChangeData = withStore(mapStateToProps)(ProfileChangeDataBase);
