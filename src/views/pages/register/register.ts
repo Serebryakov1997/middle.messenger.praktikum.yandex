@@ -301,9 +301,24 @@ export class Register extends Block {
         },
         events: {
           click: (e: Event) => {
-            // code below put to AuthController, to signUp function
+            const email = this._formData.get('email') as string;
+            const login = this._formData.get('login') as string;
+            const first_name = this._formData.get('first_name') as string;
+            const second_name = this._formData.get('second_name') as string;
+            const phone = this._formData.get('phone') as string;
+            const password = this._formData.get('password') as string;
+            const repeat_password = this._formData.get('repeat_password') as string;
+
             const isValid = clickValidation(
-              {},
+              {
+                email,
+                login,
+                first_name,
+                second_name,
+                phone,
+                password,
+                repeat_password
+              },
               {
                 email: emailValidator,
                 login: loginValidator,
@@ -358,13 +373,13 @@ export class Register extends Block {
 
             if (isValid) {
               AuthController.signUp({
-                first_name: this._formData.get('first_name') as string,
-                second_name: this._formData.get('second_name') as string,
-                email: this._formData.get('email') as string,
-                login: this._formData.get('login') as string,
-                phone: this._formData.get('phone') as string,
-                password: this._formData.get('password') as string,
-                repeat_password: this._formData.get('repeat_password') as string
+                first_name,
+                second_name,
+                email,
+                login,
+                phone,
+                password,
+                repeat_password
               });
               e.preventDefault();
             }
@@ -379,15 +394,6 @@ export class Register extends Block {
         underButtonText: 'Войти',
         events: {
           click: () => {
-            // AuthController.signUp({
-            //   first_name: this._formData.get('first_name') as string,
-            //   second_name: this._formData.get('second_name') as string,
-            //   email: this._formData.get('email') as string,
-            //   login: this._formData.get('login') as string,
-            //   phone: this._formData.get('phone') as string,
-            //   password: this._formData.get('password') as string,
-            //   repeat_password: this._formData.get('repeat_password') as string
-            // });
             router.go('/');
           }
         }

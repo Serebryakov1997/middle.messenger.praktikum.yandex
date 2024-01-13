@@ -1,5 +1,5 @@
-import { Block } from '../../../core';
 import './chat.css';
+import { Block } from '../../../core';
 import { chatTmpl } from './chat.tmpl';
 
 export interface ChatProps {
@@ -24,7 +24,7 @@ export interface ChatProps {
 
 export class Chat extends Block {
   constructor(props: ChatProps) {
-    super('div', props);
+    super(props);
   }
 
   render(): DocumentFragment {

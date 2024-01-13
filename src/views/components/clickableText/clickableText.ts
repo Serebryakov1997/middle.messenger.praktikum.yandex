@@ -4,7 +4,8 @@ import { clickableTextTmpl } from './clickableText.tmpl';
 
 interface IClickableTextProps {
     [key: string]: string | undefined | {};
-    loadFileText: string;
+    clickableText: string;
+    createChatsClass?: string;
     events: {
         click: (e: Event) => void;
     }
@@ -14,7 +15,7 @@ export class ClickableText extends Block {
     constructor(props: IClickableTextProps) {
         super({
             styles: {
-                loadFileTextClass: 'load-file-text',
+                clickableTextClass: 'clickable-text',
             },
             ...props
         });

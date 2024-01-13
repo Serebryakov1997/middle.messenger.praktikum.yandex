@@ -47,4 +47,9 @@ input::placeholder {
   font-size: 15px;
 }
 
+.chat-creation-input {
+  top: 25%;
+  width: 80%;
+}
+
 /*# sourceMappingURL=input.css.map */

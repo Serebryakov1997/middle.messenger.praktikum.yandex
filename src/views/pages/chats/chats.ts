@@ -2,8 +2,10 @@ import './chats.css';
 import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { mockChatsJSON } from './mockChats';
-import { ButtonBase, InputBase, UnderButtonLink } from '../../components';
+import { ButtonBase, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
+import { ChatController } from '../../../controllers/chat-controller';
+
 
 export class Chats extends Block {
   constructor() {
@@ -24,12 +26,27 @@ export class Chats extends Block {
       chatAreaId: 'chat-area-id',
       chatAreaNameId: 'chat-area-name-id',
       chatAreaLastTimeId: 'chat-area-time-id',
+      chatCreationWindowClass: 'chat-creation-window',
+      chatCreationWindowId: 'chat-creation-window-id'
     });
   }
 
   protected init(): void {
     const chatsList = creationChatList(mockChatsJSON);
     this.children = {
+      createChatText: new ClickableText({
+        clickableText: 'или Создайте чат',
+        createChatsClass: 'create-chat-text',
+        events: {
+          click: (e: Event) => {
+            e.preventDefault();
+            (<Block>this.children.chatCreationWindow).show();
+            // ChatController.createChat()
+          }
+        }
+      }),
+      chatCreationWindow: new ChatCreationWindow(),
+
       linkToProfile: new UnderButtonLink({
         styles: {
           underButtonClass: 'profile-link',

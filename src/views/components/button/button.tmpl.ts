@@ -1,3 +1,5 @@
 export const buttonTmpl = `
-<button class="{{styles.buttonClass}}">{{buttonName}}</button>
+<button class="{{styles.buttonClass}}">
+    <a class="{{styles.buttonNameClass}}">{{buttonName}}</a>
+</button>
 `;

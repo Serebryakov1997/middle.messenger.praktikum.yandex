@@ -12,3 +12,8 @@ export interface IChat {
         content: string;
     },
 }
+
+export interface ICreateChat {
+    [key: string]: string;
+    title: string;
+}

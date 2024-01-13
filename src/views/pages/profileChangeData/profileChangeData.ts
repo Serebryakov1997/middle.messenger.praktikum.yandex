@@ -43,7 +43,7 @@ export class ProfileChangeDataBase extends Block {
   protected init(): void {
 
     this.children.clickableText = new ClickableText({
-      loadFileText: 'Загрузить файл',
+      clickableText: 'Загрузить файл',
       events: {
         click: () => {
           (<Block>this.children.avatarLoader).show();

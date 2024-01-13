@@ -29,3 +29,19 @@ button {
     margin-left: 55px;
     background-color: main_colors.$component-color;
 }
+
+.button-creation-chat {
+    top: 70%;
+    left: 13%;
+    height: 20%;
+    width: 60%;
+    background-color: button_colors.$button-creation-chat-color;
+
+    .button-name {
+        top: 34%;
+        left: 38%;
+        font-size: large;
+        font-weight: 600;
+        color: button_colors.$button-creation-text-color;
+    }
+}

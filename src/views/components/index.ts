@@ -7,3 +7,4 @@ export { Chat } from './chat';
 export { Message } from './message';
 export { AvatarLoader } from './avatarLoader';
 export { ClickableText } from './clickableText';
+export { ChatCreationWindow } from './chatCreationWindow';

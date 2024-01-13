@@ -1,3 +1,3 @@
 export const clickableTextTmpl = `
-<a class="{{styles.loadFileTextClass}}">{{loadFileText}}</a>
+<a class="{{styles.clickableTextClass}} {{createChatsClass}}">{{clickableText}}</a>
 `;
