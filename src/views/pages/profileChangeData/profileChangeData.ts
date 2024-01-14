@@ -296,6 +296,7 @@ export class ProfileChangeDataBase extends Block {
       buttonName: 'Сохранить',
       styles: {
         buttonClass: 'button-save',
+        buttonNameClass: 'auth-button-name settings-button-name'
       },
       events: {
         click: (e: Event) => {

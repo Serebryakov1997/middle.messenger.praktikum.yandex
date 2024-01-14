@@ -1,12 +1,12 @@
 export interface IMockChatsJSON {
-    [key: number]: {
-        chatName: string;
-        lastPartMsg: string;
-        numberOfUnreadMsgs?: string;
-        timeOfLastMsg: string;
-        selectedChatLastTime?: string;
-        msgs?: string[]
-    }
+  [key: number]: {
+    chatName: string;
+    lastPartMsg: string;
+    numberOfUnreadMsgs?: string;
+    timeOfLastMsg: string;
+    selectedChatLastTime?: string;
+    msgs?: string[]
+  }
 }
 
 export const mockChatsJSON: IMockChatsJSON = {

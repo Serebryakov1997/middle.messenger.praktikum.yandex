@@ -4,9 +4,12 @@ import { Label } from '../label';
 import { chatCreationWindowTmpl } from './chatCreationWindow.tmpl';
 import { InputBase } from '../input';
 import { ButtonBase } from '../button';
+import { ChatController } from '../../../controllers/chat-controller';
 
 
 export class ChatCreationWindow extends Block {
+
+    _formData: FormData;
     constructor() {
         super({
             styles: {
@@ -16,6 +19,7 @@ export class ChatCreationWindow extends Block {
             chatCreationWindowId: 'chat-creation-window-id',
             chatCreationText: 'Создать чат'
         });
+        this._formData = new FormData();
     }
 
     protected init(): void {
@@ -30,6 +34,11 @@ export class ChatCreationWindow extends Block {
             chatCreationInput: new InputBase({
                 styles: {
                     inputClass: 'chat-creation-input'
+                },
+                events: {
+                    blur: (e: Event) => {
+                        this._formData.set('chat_title', (<HTMLInputElement>e.target).value);
+                    }
                 }
             }),
             chatCreationButton: new ButtonBase({
@@ -37,7 +46,20 @@ export class ChatCreationWindow extends Block {
                     buttonClass: 'button-creation-chat',
                     buttonNameClass: 'button-name'
                 },
-                buttonName: 'Создать'
+                buttonName: 'Создать',
+                events: {
+                    click: (e: Event) => {
+                        e.preventDefault();
+                        const title = this._formData.get('chat_title') as string;
+                        console.log('title: ', title);
+                        ChatController.createChat(
+                            { title }
+                        );
+                        this.setProps({
+                            display: 'none'
+                        });
+                    }
+                }
             })
         }
     }

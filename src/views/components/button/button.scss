@@ -30,6 +30,20 @@ button {
     background-color: main_colors.$component-color;
 }
 
+.auth-button-name {
+    top: 35%;
+    left: 40%;
+    font-size: 100%;
+}
+
+.register-button-name {
+    left: 18%;
+}
+
+.settings-button-name {
+    left: 32%;
+}
+
 .button-creation-chat {
     top: 70%;
     left: 13%;

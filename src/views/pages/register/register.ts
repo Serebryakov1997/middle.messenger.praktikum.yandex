@@ -298,6 +298,7 @@ export class Register extends Block {
         buttonName: 'Зарегистрироваться',
         styles: {
           buttonClass: 'register-button',
+          buttonNameClass: 'auth-button-name register-button-name'
         },
         events: {
           click: (e: Event) => {

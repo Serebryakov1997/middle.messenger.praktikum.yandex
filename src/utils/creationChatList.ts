@@ -50,6 +50,9 @@ export function creationChatList(
           const chatArea = document.getElementById('chat-area-id');
           chatArea!.style.display = 'block';
 
+          const createChatText = document.getElementById('create-chat-id');
+          createChatText!.style.display = 'none';
+
           const chatAreaName = document.getElementById('chat-area-name-id');
           chatAreaName!.textContent = chatName;
 

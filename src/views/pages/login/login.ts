@@ -84,6 +84,7 @@ export class Login extends Block {
         buttonName: 'Войти',
         styles: {
           buttonClass: 'login-button',
+          buttonNameClass: 'auth-button-name'
         },
         events: {
           click: (e: Event) => {

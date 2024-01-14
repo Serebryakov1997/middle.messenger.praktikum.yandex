@@ -37,6 +37,7 @@ export class Chats extends Block {
       createChatText: new ClickableText({
         clickableText: 'или Создайте чат',
         createChatsClass: 'create-chat-text',
+        clickableTextId: 'create-chat-id',
         events: {
           click: (e: Event) => {
             e.preventDefault();

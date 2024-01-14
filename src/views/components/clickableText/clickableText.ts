@@ -6,6 +6,7 @@ interface IClickableTextProps {
     [key: string]: string | undefined | {};
     clickableText: string;
     createChatsClass?: string;
+    clickableTextId?: string;
     events: {
         click: (e: Event) => void;
     }
