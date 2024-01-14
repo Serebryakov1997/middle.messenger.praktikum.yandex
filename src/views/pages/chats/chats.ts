@@ -1,10 +1,10 @@
 import './chats.css';
 import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
-import { mockChatsJSON } from './mockChats';
 import { ButtonBase, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
-import { ChatController } from '../../../controllers/chat-controller';
+import { mockcreationChatList } from '../../../utils/mockCreationChatList';
+import { mockChatsJSON } from './mockChats';
 
 
 export class Chats extends Block {
@@ -32,7 +32,10 @@ export class Chats extends Block {
   }
 
   protected init(): void {
-    const chatsList = creationChatList(mockChatsJSON);
+    const chatsList2 = creationChatList();
+    const chatsList = mockcreationChatList(mockChatsJSON);
+    console.log('chatsList: ', chatsList);
+    console.log('chatsList2: ', chatsList2);
     this.children = {
       createChatText: new ClickableText({
         clickableText: 'или Создайте чат',
@@ -42,7 +45,6 @@ export class Chats extends Block {
           click: (e: Event) => {
             e.preventDefault();
             (<Block>this.children.chatCreationWindow).show();
-            // ChatController.createChat()
           }
         }
       }),
@@ -55,7 +57,6 @@ export class Chats extends Block {
         underButtonText: 'В профиль',
         events: {
           click: () => {
-            // UserController.profileInfo()
             router.go(AddressPaths.Profile);
           }
         }

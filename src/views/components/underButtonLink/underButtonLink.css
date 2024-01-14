@@ -17,6 +17,10 @@
   color: #242cdd;
 }
 
+.back-to-chats {
+  left: 72%;
+}
+
 .change-passwd {
   top: 720px;
 }

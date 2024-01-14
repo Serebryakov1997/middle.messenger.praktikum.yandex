@@ -162,6 +162,17 @@ export class ProfileBase extends Block {
       readonly: 'readonly',
     });
 
+    this.children.backToChats = new UnderButtonLink({
+      styles: {
+        underButtonClass: 'change-data back-to-chats'
+      },
+      underButtonText: 'Назад к чатам',
+      events: {
+        click: () => {
+          router.go(AddressPaths.Chats);
+        }
+      }
+    });
     // changeDataLink
     this.children.changeDataLink = new UnderButtonLink({
       styles: {

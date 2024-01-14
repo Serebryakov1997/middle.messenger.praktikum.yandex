@@ -1,14 +1,16 @@
 import chatApi from '../api/chat-api';
-import { router } from '../core';
+import { store } from '../core';
 import { ICreateChat } from '../models/interfaces/chats';
 
 export class ChatController {
 
     static async getChats() {
         try {
-            await chatApi.getChats();
-
-            router.go('/chats');
+            const chats = await chatApi.getChats();
+            const parseChats = JSON.parse(String(chats));
+            store.set('chats', parseChats);
+            console.log('chats in store: ', store.getState());
+            return parseChats;
         } catch (err) {
             throw err;
         }
