@@ -1,3 +1,5 @@
+import { IChat } from './chats';
+
 export interface ISigninData {
     [key: string]: string;
 
@@ -30,8 +32,8 @@ export interface IUser {
 }
 
 export interface IState {
-    // [key: string]: IUser | undefined;
     user?: IUser;
+    chats?: IChat;
 }
 
 export interface IInput {

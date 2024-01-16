@@ -1,5 +1,7 @@
 import { ChatController } from '../controllers/chat-controller';
-import { Block, store } from '../core';
+import { Block } from '../core';
+import { withStore } from '../core/Store';
+import { IState } from '../models/interfaces/auth';
 import { Chat, ChatProps } from '../views/components/chat/chat';
 
 export function creationChatList(): Block[] {
@@ -10,67 +12,43 @@ export function creationChatList(): Block[] {
         mockImgClass: 'mock-img',
         chatNameClass: 'name',
         lastPartMsgClass: 'last-part-msg',
-        timeOfLastMsgClass: 'time-of-last-msg'
+        timeOfLastMsgClass: 'time-of-last-msg',
+
     };
 
-    // console.log('store.getState().chats: ', store.getState().chats);
+    ChatController.getChats();
 
-    ChatController.getChats()
-        .then((res: Record<string, unknown>[]) => {
-            console.log('res: ', res);
-            Object.keys(res).forEach((key) => {
-                // console.log('value: ', value);
-                const value = res[Number(key)];
-                const numberOfUnreadMsgs = value.unread_count;
-                if (numberOfUnreadMsgs !== 0) {
-                    styles.numberOfUnreadMsgsClass = 'number-of-unread-msgs';
-                } else {
-                    styles.numberOfUnreadMsgsClass = '';
+    const mapStateToProps = (state: IState) => ({
+        chatName: state.chats?.[Number(0)].title,
+        lastPartMsg: state.chats?.[Number(0)].last_message?.content,
+        numberOfUnreadMsgs: state.chats?.[Number(0)].unread_count,
+        timeOfLastMsg: state.chats?.[Number(0)].last_message?.time,
+        chatAreaId: state.chats?.[Number(0)].title,
+    });
+
+    const WrappedChat = withStore(mapStateToProps)(Chat);
+
+    return [new WrappedChat({
+        styles,
+        events: {
+            click: () => {
+                const selectChatLegentEl = document.getElementById('select-chat-legend-id');
+                if (selectChatLegentEl) {
+                    selectChatLegentEl.style.display = 'none';
                 }
 
-                const chatName = <string>value.title;
+                const chatArea = document.getElementById('chat-area-id');
+                chatArea!.style.display = 'block';
 
-                let lastPartMsg: string = '';
-                let timeOfLastMsg: string = '';
-                if (value.last_message) {
-                    lastPartMsg = (<Record<string, string>>value.last_message).content;
-                    timeOfLastMsg = (<Record<string, string>>value.last_message).time;
-                    if (lastPartMsg.length >= 30) {
-                        lastPartMsg = lastPartMsg.slice(0, 30);
-                    }
-                }
+                const createChatText = document.getElementById('create-chat-id');
+                createChatText!.style.display = 'none';
 
-                const chat = new Chat({
-                    styles,
-                    chatName,
-                    lastPartMsg,
-                    numberOfUnreadMsgs: String(numberOfUnreadMsgs),
-                    timeOfLastMsg,
-                    chatAreaId: chatName,
-                    events: {
-                        click: () => {
-                            const selectChatLegentEl = document.getElementById('select-chat-legend-id');
-                            if (selectChatLegentEl) {
-                                selectChatLegentEl.style.display = 'none';
-                            }
+                // const chatAreaName = document.getElementById('chat-area-name-id');
+                // chatAreaName!.textContent = chatName as string;
 
-                            const chatArea = document.getElementById('chat-area-id');
-                            chatArea!.style.display = 'block';
-
-                            const createChatText = document.getElementById('create-chat-id');
-                            createChatText!.style.display = 'none';
-
-                            const chatAreaName = document.getElementById('chat-area-name-id');
-                            chatAreaName!.textContent = chatName;
-
-                            const chatAreaLastTime = document.getElementById('chat-area-time-id');
-                            chatAreaLastTime!.textContent = timeOfLastMsg;
-                        }
-                    }
-                });
-                chatsList.push(chat);
-            });
-        });
-    // console.log('chatsList: ', chatsList);
-    return chatsList;
+                // const chatAreaLastTime = document.getElementById('chat-area-time-id');
+                // chatAreaLastTime!.textContent = chat.props.timeOfLastMsg as string;
+            }
+        }
+    })];
 }

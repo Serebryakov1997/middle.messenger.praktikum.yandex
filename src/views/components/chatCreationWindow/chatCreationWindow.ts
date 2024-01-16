@@ -22,7 +22,7 @@ export class ChatCreationWindow extends Block {
         this._formData = new FormData();
     }
 
-    protected init(): void {
+    protected init() {
         this.children = {
             chatCreationLabel: new Label({
                 styles: {

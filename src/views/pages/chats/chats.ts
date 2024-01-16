@@ -3,8 +3,6 @@ import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
 import { ButtonBase, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
-import { mockcreationChatList } from '../../../utils/mockCreationChatList';
-import { mockChatsJSON } from './mockChats';
 
 
 export class Chats extends Block {
@@ -31,11 +29,7 @@ export class Chats extends Block {
     });
   }
 
-  protected init(): void {
-    const chatsList2 = creationChatList();
-    const chatsList = mockcreationChatList(mockChatsJSON);
-    console.log('chatsList: ', chatsList);
-    console.log('chatsList2: ', chatsList2);
+  protected init() {
     this.children = {
       createChatText: new ClickableText({
         clickableText: 'или Создайте чат',
@@ -61,7 +55,7 @@ export class Chats extends Block {
           }
         }
       }),
-      chatsList,
+      chatsList: creationChatList(),
       chatInput: new InputBase({
         name: 'message',
         placeholder: 'Сообщение',
