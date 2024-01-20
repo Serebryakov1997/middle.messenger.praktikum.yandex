@@ -1,8 +1,8 @@
-import { ChatController } from '../controllers/chat-controller';
 import { Block } from '../core';
 import { withStore } from '../core/Store';
 import { IState } from '../models/interfaces/auth';
-import { Chat, ChatProps } from '../views/components/chat/chat';
+import { ChatProps, WrappedChat } from '../views/components/chat/chat';
+import { ChatList } from '../views/components/chatList/chatList';
 
 export function creationChatList(): Block[] {
     const chatsList: Block[] = [];
@@ -16,17 +16,6 @@ export function creationChatList(): Block[] {
 
     };
 
-    ChatController.getChats();
-
-    const mapStateToProps = (state: IState) => ({
-        chatName: state.chats?.[Number(0)].title,
-        lastPartMsg: state.chats?.[Number(0)].last_message?.content,
-        numberOfUnreadMsgs: state.chats?.[Number(0)].unread_count,
-        timeOfLastMsg: state.chats?.[Number(0)].last_message?.time,
-        chatAreaId: state.chats?.[Number(0)].title,
-    });
-
-    const WrappedChat = withStore(mapStateToProps)(Chat);
 
     return [new WrappedChat({
         styles,

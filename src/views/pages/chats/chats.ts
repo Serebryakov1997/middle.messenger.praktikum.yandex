@@ -1,8 +1,12 @@
 import './chats.css';
 import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
-import { ButtonBase, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
+import { ButtonBase, Chat, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
+import { ChatController } from '../../../controllers/chat-controller';
+import { ChatList } from '../../components/chatList/chatList';
+import { withStore } from '../../../core/Store';
+import { IState } from '../../../models/interfaces/auth';
 
 
 export class Chats extends Block {
@@ -27,6 +31,10 @@ export class Chats extends Block {
       chatCreationWindowClass: 'chat-creation-window',
       chatCreationWindowId: 'chat-creation-window-id'
     });
+  }
+
+  protected componentDidMount(oldProps: Record<string, unknown>): void {
+    ChatController.getChats();
   }
 
   protected init() {

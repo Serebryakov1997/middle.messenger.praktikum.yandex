@@ -2,6 +2,7 @@ import { IUser } from './auth';
 
 export interface IChat {
     [key: string]: {
+        numericChat: string;
         id: number;
         title: string;
         avatar: string;

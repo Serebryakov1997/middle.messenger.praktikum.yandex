@@ -7,10 +7,8 @@ export class ChatController {
     static async getChats() {
         try {
             const chats = await chatApi.getChats();
-            const parseChats = JSON.parse(String(chats));
+            let parseChats = JSON.parse(String(chats));
             store.set('chats', parseChats);
-            console.log('chats in store: ', store.getState());
-            return parseChats;
         } catch (err) {
             throw err;
         }

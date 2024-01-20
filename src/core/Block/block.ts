@@ -117,8 +117,6 @@ export class Block {
   compile(template: string, props: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
-    // this._createResources();
-
     let fragmentsArr: string = '';
     Object.entries(this.children).forEach(([name, component]) => {
       if (component instanceof Block) {
