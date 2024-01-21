@@ -34,6 +34,7 @@ export interface IUser {
 export interface IState {
     user?: IUser;
     chats?: IChat;
+    image?: string;
 }
 
 export interface IInput {

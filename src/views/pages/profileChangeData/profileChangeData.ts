@@ -18,9 +18,10 @@ import {
 
 import {
   AvatarLoader,
-  ButtonBase, ClickableText, InputBase, Label, ValidError,
+  ButtonBase, InputBase, Label, ValidError,
 } from '../../components';
 import { profileChangeDataTmpl } from './profileChangeData.tmpl';
+import { AvatarChanged } from '../../components/avatarImgChanged';
 
 
 export class ProfileChangeDataBase extends Block {
@@ -42,15 +43,7 @@ export class ProfileChangeDataBase extends Block {
 
   protected init(): void {
 
-    this.children.clickableText = new ClickableText({
-      clickableText: 'Загрузить файл',
-      events: {
-        click: () => {
-          (<Block>this.children.avatarLoader).show();
-        }
-      }
-    });
-
+    this.children.avatarImgChanged = new AvatarChanged({});
     this.children.avatarLoader = new AvatarLoader({
       events: {
         submit: (e: Event) => {

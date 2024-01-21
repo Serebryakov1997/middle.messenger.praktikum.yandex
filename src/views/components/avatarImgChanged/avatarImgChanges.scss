@@ -1,0 +1,5 @@
+@use '../../base_styles/profile/profile' as profile_base;
+
+.avatar {
+    @include profile_base.avatar;
+}

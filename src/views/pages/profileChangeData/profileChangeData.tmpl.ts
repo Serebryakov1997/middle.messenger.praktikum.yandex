@@ -1,9 +1,7 @@
 export const profileChangeDataTmpl = `
     <form>
         <div class="{{styles.containerClass}}">
-            <img src="{{imgRef}}" name="{{avatarName}}" class="{{styles.avatarNameClass}}">
-                {{{clickableText}}}
-            </img>
+            {{{avatarImgChanged}}}
             {{{avatarLoader}}}
 
             {{{labelEmail}}} 

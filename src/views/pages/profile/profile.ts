@@ -7,6 +7,7 @@ import { AddressPaths } from '../../../utils';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
 import { RecourcesController } from '../../../controllers/resources-controller';
+import { Avatar } from '../../components/avatarImg';
 
 
 export class ProfileBase extends Block {
@@ -32,7 +33,7 @@ export class ProfileBase extends Block {
 
 
   protected init(): void {
-    RecourcesController.getStaticFiles();
+    this.children.avatar = new Avatar({});
     // email
     const mapStateToPropsEmail = (state: IState) => ({
       inputValue: state.user?.email

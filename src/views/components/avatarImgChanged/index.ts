@@ -1,0 +1,1 @@
+export { AvatarChanged } from './avatarImgChanged';

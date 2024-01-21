@@ -1,6 +1,6 @@
 export const profileTmpl = `
     <form class="{{styles.containerClass}}">
-        <img src="{{imgRef}}" name={{name}} class={{name}}>
+        {{{avatar}}}
         <p name={{displayFieldName}} class="{{styles.displayNameClass}}">{{displayName}}</p>
         <p class="{{styles.statusClass}}">{{statusName}}</p>
         
