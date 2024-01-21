@@ -18,7 +18,10 @@ export class Chat extends Block {
   }
 
   render(): DocumentFragment {
-    let chatProps = JSON.parse(JSON.stringify(this.props)).chats;
+    console.log('this.props: ', this.props);
+    console.log('this.props chat: ', this.props.chats)
+    // let chatProps = JSON.parse(JSON.stringify(this.props)).chats;
+    let chatProps = this.props.chats;
     return this.compile(chatTmpl, { chatProps });
   }
 }

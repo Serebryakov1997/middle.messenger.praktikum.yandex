@@ -52,12 +52,16 @@ export class ProfileChangeDataBase extends Block {
     });
 
     this.children.avatarLoader = new AvatarLoader({
-      submit: (e: Event) => {
-        e.preventDefault();
-        const fileList = (e.target as HTMLInputElement).files;
-        console.log('avatar: ', fileList?.item(0));
-        UserController.changeUserAvatar(fileList?.item(0)!);
-        // console.log(e);
+      events: {
+        submit: (e: Event) => {
+          e.preventDefault();
+          const avatar = document.getElementById('avatar');
+          let file;
+          if (avatar) {
+            file = (<HTMLInputElement>avatar).files;
+            UserController.changeUserAvatar(file?.item(0)!);
+          }
+        }
       }
     })
     // email

@@ -4,7 +4,9 @@ import { avatarLoaderTmpl } from './avatarLoader.tmpl';
 
 interface AvatarLoaderProps {
   [key: string]: {};
-  submit: (e: Event) => void;
+  events: {
+    submit: (e: Event) => void;
+  }
 }
 
 export class AvatarLoader extends Block {

@@ -48,7 +48,7 @@ export class HTTPTransport {
     this.baseUrl = 'https://ya-praktikum.tech/api/v2' + mainPath;
   }
 
-  get<Response>(url: string, options?: Options): Promise<Response> {
+  get<Response>(url: string, options?: Options, path?: string): Promise<Response> {
     let handledUrl: string = url;
     const handledOptions: Options = options!;
     if (options && options.data) {
@@ -56,7 +56,7 @@ export class HTTPTransport {
       handledOptions.data = {};
     }
     return this.request<Response>(
-      this.baseUrl + handledUrl,
+      path ? this.baseUrl + handledUrl + path : this.baseUrl + handledUrl,
       this.TIMEOUT,
       { ...handledOptions, method: Method.GET },
     );

@@ -20,7 +20,8 @@ export class ChatController {
                 value.styles = styles;
 
                 value.events = {
-                    click: () => {
+                    click: (e: Event) => {
+                        console.log('e in chat click: ', e);
                         const selectChatLegentEl = document.getElementById('select-chat-legend-id');
                         if (selectChatLegentEl) {
                             selectChatLegentEl.style.display = 'none';
