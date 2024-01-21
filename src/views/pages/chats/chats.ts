@@ -7,6 +7,7 @@ import { ChatController } from '../../../controllers/chat-controller';
 import { ChatList } from '../../components/chatList/chatList';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
+import { WrappedChat } from '../../components/chat/chat';
 
 
 export class Chats extends Block {
@@ -20,6 +21,7 @@ export class Chats extends Block {
         chatAreaClass: 'chat-area',
         chatAreaNameClass: 'chat-area-name',
         chatLastTimeClass: 'chat-last-time',
+        chatsListClass: 'chat-list-class'
       },
       chatsForm: 'chats-form-id',
       chatsSearchBar: 'Поиск',
@@ -33,9 +35,9 @@ export class Chats extends Block {
     });
   }
 
-  protected componentDidMount(oldProps: Record<string, unknown>): void {
-    ChatController.getChats();
-  }
+  // protected componentDidMount(oldProps: Record<string, unknown>): void {
+  //   ChatController.getChats();
+  // }
 
   protected init() {
     this.children = {
@@ -63,7 +65,7 @@ export class Chats extends Block {
           }
         }
       }),
-      chatsList: creationChatList(),
+      chatsList: new WrappedChat({}),
       chatInput: new InputBase({
         name: 'message',
         placeholder: 'Сообщение',

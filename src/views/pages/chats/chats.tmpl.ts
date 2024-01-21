@@ -4,6 +4,7 @@ export const chatsTmpl = `
         
         <input class="{{styles.chatsSearchBarClass}}" placeholder="{{chatsSearchBar}}">
         <a id="{{selectChatLegendId}}" class="{{styles.selectChatLegendClass}}">{{selectChatLegend}}</a>
+        
         {{{chatsList}}}
  
         {{{createChatText}}}

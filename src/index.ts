@@ -1,4 +1,5 @@
 import { AuthController } from './controllers/auth-controller';
+import { ChatController } from './controllers/chat-controller';
 import { router } from './core';
 import { AddressPaths } from './utils';
 import {
@@ -16,8 +17,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     .use(new Login(), AddressPaths.SignIn)
     .use(new Chats(), AddressPaths.Chats)
     .use(new Register(), AddressPaths.SignUp)
-    .use(new Profile(), AddressPaths.Profile)
-    .use(new ProfileChangeData(), AddressPaths.ProfileChangeData)
+    .use(new Profile({}), AddressPaths.Profile)
+    .use(new ProfileChangeData({}), AddressPaths.ProfileChangeData)
     .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
 
   let isProtectedRoute = true;
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await AuthController.fetchUser();
+    await ChatController.getChats();
 
     router.start();
 

@@ -1,6 +1,11 @@
 @use '../../base_styles/main/colors/main_colors';
 @use './colors/chat';
 
+.chat-list-class {
+    position: absolute;
+    top: 16%;
+}
+
 .chat {
     display: block;
     position: relative;

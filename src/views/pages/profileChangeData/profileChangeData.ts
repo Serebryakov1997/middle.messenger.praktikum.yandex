@@ -56,7 +56,7 @@ export class ProfileChangeDataBase extends Block {
         e.preventDefault();
         const fileList = (e.target as HTMLInputElement).files;
         console.log('avatar: ', fileList?.item(0));
-        // UserController.changeUserAvatar(fileList?.item(0)!);
+        UserController.changeUserAvatar(fileList?.item(0)!);
         // console.log(e);
       }
     })

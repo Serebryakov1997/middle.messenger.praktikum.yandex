@@ -1,3 +1,8 @@
+.chat-list-class {
+  position: absolute;
+  top: 16%;
+}
+
 .chat {
   display: block;
   position: relative;
