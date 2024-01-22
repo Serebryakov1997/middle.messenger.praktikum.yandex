@@ -1,11 +1,23 @@
 import './chat.css';
 import { Block } from '../../../core';
 import { chatTmpl } from './chat.tmpl';
-import { IState } from '../../../models/interfaces/auth';
-import { withStore } from '../../../core/Store';
+
 
 export interface ChatProps {
   [key: string]: string | {} | undefined | number;
+  styles: {
+    chatClass: string;
+    mockImgClass: string;
+    chatNameClass: string;
+    lastPartMsgClass: string;
+    numberOfUnreadMsgsClass?: string;
+    timeOfLastMsgClass: string;
+  };
+  title: string;
+  avatar?: string;
+  content?: string;
+  unread_count?: string;
+  time: string;
   events: {
     click: (e: Event) => void;
   }
@@ -13,24 +25,11 @@ export interface ChatProps {
 
 export class Chat extends Block {
 
-  constructor() {
-    super({});
+  constructor(props: ChatProps) {
+    super(props);
   }
 
   render(): DocumentFragment {
-    console.log('this.props: ', this.props);
-    console.log('this.props chat: ', this.props.chats)
-    // let chatProps = JSON.parse(JSON.stringify(this.props)).chats;
-    let chatProps = this.props.chats;
-    return this.compile(chatTmpl, { chatProps });
+    return this.compile(chatTmpl, this.props);
   }
 }
-
-
-const mapStateToProps = (state: IState) => (
-  {
-    chats: state.chats
-  });
-
-export const WrappedChat = withStore(mapStateToProps)(Chat);
-

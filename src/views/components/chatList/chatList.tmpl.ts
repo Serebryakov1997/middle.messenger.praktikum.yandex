@@ -1,9 +1,12 @@
 export const chatListTmpl = `
-    {{#each chats}} 
-        <h1>{{this.title}}</h1>     
-    {{/each}}
+{{#each chats}} 
+    {{{this}}}
+{{/each}}
 `;
 
+// {{#each chats}} 
+//         {{this}}     
+//     {{/each}}
 
 // {{#each chats}}
 //         <div class="{{styles.chatClass}}">

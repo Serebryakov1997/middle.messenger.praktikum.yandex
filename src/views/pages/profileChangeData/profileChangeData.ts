@@ -18,10 +18,10 @@ import {
 
 import {
   AvatarLoader,
-  ButtonBase, InputBase, Label, ValidError,
+  ButtonBase, ClickableText, InputBase, Label, ValidError,
 } from '../../components';
 import { profileChangeDataTmpl } from './profileChangeData.tmpl';
-import { AvatarChanged } from '../../components/avatarImgChanged';
+import { Avatar } from '../../components/avatarImg/avatarImg';
 
 
 export class ProfileChangeDataBase extends Block {
@@ -43,7 +43,15 @@ export class ProfileChangeDataBase extends Block {
 
   protected init(): void {
 
-    this.children.avatarImgChanged = new AvatarChanged({});
+    this.children.avatarImg = new Avatar({});
+    this.children.changeAvatarText = new ClickableText({
+      clickableText: 'Загрузить файл',
+      events: {
+        click: () => {
+          (<Block>this.children.avatarLoader).show();
+        },
+      }
+    });
     this.children.avatarLoader = new AvatarLoader({
       events: {
         submit: (e: Event) => {
@@ -53,10 +61,11 @@ export class ProfileChangeDataBase extends Block {
           if (avatar) {
             file = (<HTMLInputElement>avatar).files;
             UserController.changeUserAvatar(file?.item(0)!);
+            (<Block>this.children.avatarLoader).hide();
           }
         }
       }
-    })
+    });
     // email
     const mapStateToPropsEmail = (state: IState) => ({
       inputValue: state.user?.email

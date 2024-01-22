@@ -4,13 +4,12 @@ import { chatsTmpl } from './chats.tmpl';
 import { ButtonBase, Chat, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
 import { ChatController } from '../../../controllers/chat-controller';
-import { ChatList } from '../../components/chatList/chatList';
+import { ChatList, ChatListBase } from '../../components/chatList/chatList';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
-import { WrappedChat } from '../../components/chat/chat';
 
 
-export class Chats extends Block {
+export class ChatsBase extends Block {
   constructor() {
     super({
       styles: {
@@ -35,11 +34,9 @@ export class Chats extends Block {
     });
   }
 
-  // protected componentDidMount(oldProps: Record<string, unknown>): void {
-  //   ChatController.getChats();
-  // }
 
   protected init() {
+    console.log('new ChatList({}): ', new ChatList({}));
     this.children = {
       createChatText: new ClickableText({
         clickableText: 'или Создайте чат',
@@ -65,7 +62,8 @@ export class Chats extends Block {
           }
         }
       }),
-      chatsList: new WrappedChat({}),
+
+      chatsList: new ChatList({}),
       chatInput: new InputBase({
         name: 'message',
         placeholder: 'Сообщение',
@@ -88,6 +86,16 @@ export class Chats extends Block {
   }
 
   render(): DocumentFragment {
-    return this.compile(chatsTmpl, this.props);
+    // const { chats } = this.props;
+    const { chats } = this.props;
+    console.log('this.props chats: ', this.props);
+    return this.compile(chatsTmpl, { ...this.props, chats });
   }
 }
+
+
+const mapStateToProps = (state: IState) => ({
+  chats: state.chats
+});
+
+export const Chats = withStore(mapStateToProps)(ChatsBase);

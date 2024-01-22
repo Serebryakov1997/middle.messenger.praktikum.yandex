@@ -49,8 +49,16 @@ export class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
+  _createResources() {
+    this._element = this._createDocumentElement();
+  }
+
+  _createDocumentElement() {
+    return document.createElement('div');
+  }
 
   _init() {
+    this._createResources();
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -140,11 +148,17 @@ export class Block {
     Object.entries(this.children).forEach(([_, component]) => {
       if (component instanceof Block) {
         const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-        if (!stub) {
-          return;
+        // if (!stub) {
+        //   return;
+        // }
+        if (stub !== null) {
+          if (component.getContent() !== null) {
+            component.getContent().append(...Array.from(stub.childNodes));
+            stub.replaceWith(component.getContent());
+          }
         }
-        component.getContent().append(...Array.from(stub.childNodes));
-        stub.replaceWith(component.getContent());
+        // component.getContent().append(...Array.from(stub.childNodes));
+        // stub.replaceWith(component.getContent());
       } else {
         Object.values(component).forEach((value) => {
           const stub = temp.content.querySelector(`[data-id="${value.id}"]`);

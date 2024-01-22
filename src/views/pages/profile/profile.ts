@@ -6,7 +6,6 @@ import { Block, router } from '../../../core';
 import { AddressPaths } from '../../../utils';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
-import { RecourcesController } from '../../../controllers/resources-controller';
 import { Avatar } from '../../components/avatarImg';
 
 

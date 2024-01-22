@@ -1,7 +1,8 @@
 export const profileChangeDataTmpl = `
     <form>
         <div class="{{styles.containerClass}}">
-            {{{avatarImgChanged}}}
+            {{{avatarImg}}}
+            {{{changeAvatarText}}}
             {{{avatarLoader}}}
 
             {{{labelEmail}}} 

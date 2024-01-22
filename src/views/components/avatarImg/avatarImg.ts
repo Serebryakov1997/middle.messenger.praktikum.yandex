@@ -1,5 +1,4 @@
 import './avatarImg.css';
-import { RecourcesController } from '../../../controllers/resources-controller';
 import { Block } from '../../../core';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
@@ -14,7 +13,6 @@ export class AvatarBase extends Block {
     }
 
     render(): DocumentFragment {
-        RecourcesController.getStaticFiles();
         return this.compile(avatarImgTmpl, this.props);
     }
 }
