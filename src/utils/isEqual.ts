@@ -6,7 +6,7 @@ export type Indexed<T = any> = {
     [key in string]: T;
 }
 
-function isArray(value: unknown): value is [] {
+export function isArray(value: unknown): value is [] {
     return Array.isArray(value);
 }
 

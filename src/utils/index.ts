@@ -8,6 +8,6 @@ export {
   validationError,
 } from './validation';
 export { Auth, Users, Chats } from './routes';
-export { isEqual } from './isEqual';
+export { isEqual, isArray } from './isEqual';
 export { AddressPaths } from './paths';
 export { cloneDeep } from './cloneDeep';

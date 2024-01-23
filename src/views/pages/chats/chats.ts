@@ -35,8 +35,61 @@ export class ChatsBase extends Block {
   }
 
 
-  protected init() {
-    console.log('new ChatList({}): ', new ChatList({}));
+  // protected init() {
+  //   console.log('new ChatList({}): ', new ChatList({}));
+  //   this.children = {
+  //     createChatText: new ClickableText({
+  //       clickableText: 'или Создайте чат',
+  //       createChatsClass: 'create-chat-text',
+  //       clickableTextId: 'create-chat-id',
+  //       events: {
+  //         click: (e: Event) => {
+  //           e.preventDefault();
+  //           (<Block>this.children.chatCreationWindow).show();
+  //         }
+  //       }
+  //     }),
+  //     chatCreationWindow: new ChatCreationWindow(),
+
+  //     linkToProfile: new UnderButtonLink({
+  //       styles: {
+  //         underButtonClass: 'profile-link',
+  //       },
+  //       underButtonText: 'В профиль',
+  //       events: {
+  //         click: () => {
+  //           router.go(AddressPaths.Profile);
+  //         }
+  //       }
+  //     }),
+
+  //     chatsList: new ChatList({}),
+  //     chatInput: new InputBase({
+  //       name: 'message',
+  //       placeholder: 'Сообщение',
+  //       inputType: 'text',
+  //       styles: {
+  //         inputClass: 'chat-input',
+  //       },
+  //     }),
+  //     chatButton: new ButtonBase({
+  //       styles: {
+  //         buttonClass: 'button-chat',
+  //       },
+  //       events: {
+  //         click: (e: Event) => {
+  //           e.preventDefault();
+  //         },
+  //       },
+  //     }),
+  //   };
+  // }
+
+  protected initAsync(): Promise<void> {
+    // console.log('new ChatList({}): ', new ChatList({}));
+    // console.log('props in initAsync Chats: ', this.props);
+    const { chats } = this.props;
+    // console.log('creationChatList in initAsync: ', creationChatList(<Record<string, unknown>[]>chats));
     this.children = {
       createChatText: new ClickableText({
         clickableText: 'или Создайте чат',
@@ -83,13 +136,11 @@ export class ChatsBase extends Block {
         },
       }),
     };
+    return new Promise(() => { });
   }
 
   render(): DocumentFragment {
-    // const { chats } = this.props;
-    const { chats } = this.props;
-    console.log('this.props chats: ', this.props);
-    return this.compile(chatsTmpl, { ...this.props, chats });
+    return this.compile(chatsTmpl, this.props);
   }
 }
 

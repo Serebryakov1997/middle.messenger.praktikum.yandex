@@ -12,7 +12,7 @@ export class ChatController {
 
             const chatsListOfComponents = creationChatList(parseChats);
             store.set('chats', chatsListOfComponents);
-            console.log('store get chats: ', store.getState().chats)
+            // console.log('store get chats: ', store.getState().chats)
         } catch (err) {
             throw err;
         }
