@@ -62,5 +62,6 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
         });
         chatsList.push(chat);
     });
+    console.log('chatsList: ', chatsList);
     return chatsList;
 }

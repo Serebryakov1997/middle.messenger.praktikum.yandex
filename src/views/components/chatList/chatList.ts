@@ -9,8 +9,9 @@ export class ChatListBase extends Block {
 
     render(): DocumentFragment {
         let chats;
-        if (this.props.chats)
-            chats = creationChatList(<Record<string, Block>[]>this.props.chats);
+        if (this.props.chats) {
+            this.children.chats = creationChatList(<Record<string, Block>[]>this.props.chats);
+        }
         return this.compile(chatListTmpl, { ...this.props, chats });
     }
 }

@@ -113,17 +113,12 @@ export class Block {
     const props: Record<string, unknown> = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
-      console.log('propsAndChildren key: ', key, ' value: ', value);
       if (value instanceof Block) {
-        console.log('value instanceof Block: ', value);
         children[key] = value;
       } else if (Array.isArray(value) && value.every(v => v instanceof Block)) {
-        console.log('Array.isArray(value) value: ', value);
         children[key] = value;
       } else {
-        console.log('props key: ', key, ' value: ', value);
         props[key] = value;
-        console.log('props[key] after set value: ', props[key]);
       }
     });
 
@@ -134,24 +129,17 @@ export class Block {
   compile(template: string, props: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
-    // console.log('propsAndStubs before заглушки: ', propsAndStubs)
-    console.log('this.chidlren before заглушки: ', this.children);
-
     Object.entries(this.children).forEach(([name, child]) => {
       if (Array.isArray(child)) {
-        console.log('child is array: ', child);
         propsAndStubs[name] = child.map(ch =>
-          Array.isArray(ch)
+          /*Array.isArray(ch)
             ? ch.map(ch2 => `<div data-id="${(ch2).id}"></div>`)
-            : `<div data-id="${(<Block>ch).id}"></div>`
+            : */`<div data-id="${(<Block>ch).id}"></div>`
         );
       } else {
-        // console.log('child not Array: ', child);
         propsAndStubs[name] = `<div data-id="${(<Block>child).id}"></div>`;
       }
     });
-
-    // console.log('propsAndStubs: ', propsAndStubs);
 
     const compiledHtml = Handlebars.compile(template)(propsAndStubs);
 

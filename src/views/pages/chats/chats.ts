@@ -84,12 +84,7 @@ export class ChatsBase extends Block {
   //     }),
   //   };
   // }
-
-  protected initAsync(): Promise<void> {
-    // console.log('new ChatList({}): ', new ChatList({}));
-    // console.log('props in initAsync Chats: ', this.props);
-    const { chats } = this.props;
-    // console.log('creationChatList in initAsync: ', creationChatList(<Record<string, unknown>[]>chats));
+  protected init(): void {
     this.children = {
       createChatText: new ClickableText({
         clickableText: 'или Создайте чат',
@@ -116,7 +111,6 @@ export class ChatsBase extends Block {
         }
       }),
 
-      chatsList: new ChatList({}),
       chatInput: new InputBase({
         name: 'message',
         placeholder: 'Сообщение',
@@ -136,10 +130,13 @@ export class ChatsBase extends Block {
         },
       }),
     };
-    return new Promise(() => { });
   }
 
+
   render(): DocumentFragment {
+    if (this.props.chats) {
+      this.children.chatsList = creationChatList(<Record<string, Block>[]>this.props.chats);
+    }
     return this.compile(chatsTmpl, this.props);
   }
 }
