@@ -1,5 +1,5 @@
 import { IChat } from '../models/interfaces';
-import { ICreateChat } from '../models/interfaces/chats';
+import { IAddUserToChat, ICreateChat, IDeleteChat } from '../models/interfaces/chats';
 import { API } from './api';
 
 class ChatAPI extends API {
@@ -13,6 +13,14 @@ class ChatAPI extends API {
 
     async createChat(data: ICreateChat) {
         return this.http.post('', { data });
+    }
+
+    async deleteChat(data: IDeleteChat) {
+        return this.http.delete('', { data });
+    }
+
+    async addUsersToChat(data: IAddUserToChat) {
+        return this.http.put('/users', { data });
     }
 }
 

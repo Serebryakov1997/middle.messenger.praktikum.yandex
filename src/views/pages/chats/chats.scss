@@ -7,6 +7,16 @@
     width: 500px;
     background-color: main_colors.$back-color;
 
+    .chat-list {
+        margin-top: 70px;
+        height: 82%;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
     .chats-search-bar {
         display: block;
         position: relative;
@@ -34,6 +44,31 @@
         font-size: 25px;
         font-weight: bold;
         color: chats_colors.$chats-legend-color;
+    }
+
+    .action-window-class {
+        display: block;
+        position: fixed;
+        top: 35%;
+        left: 30%;
+        height: 100%;
+    }
+
+    .delete-window-class {
+        display: block;
+        position: fixed;
+        top: 15%;
+        left: -5%;
+        height: 100%;
+        width: 28%;
+    }
+
+    .add-user-chat-window-class {
+        display: block;
+        position: fixed;
+        top: 25%;
+        left: 28%;
+        height: 100%;
     }
 
     .chat-area {

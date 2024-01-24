@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["chatCreationWindow.scss","colors/_colors.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBCVW;;ADYX;EACI;EACA;EACA","file":"chatCreationWindow.css"}
+{"version":3,"sourceRoot":"","sources":["chatCreationWindow.scss","colors/_colors.scss"],"names":[],"mappings":"AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBCVW;;ADYX;EACI;EACA;EACA;;AAGJ;EACI;EACA;EACA;;;AAIR;EACI","file":"chatCreationWindow.css"}

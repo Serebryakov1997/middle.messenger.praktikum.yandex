@@ -2,7 +2,7 @@ import { router, store } from '../core';
 import { IChangeProfileData } from '../models/interfaces';
 import { AddressPaths } from '../utils';
 import userApi from '../api/user-api';
-import { IChangeProfilePasswd } from '../models/interfaces/users';
+import { IChangeProfilePasswd, ISearchUserByLogin } from '../models/interfaces/users';
 
 
 export class UserController {
@@ -32,6 +32,15 @@ export class UserController {
             const newUser = await userApi.changeUserAvatar(data);
             const jsonUser = JSON.parse(String(newUser));
             store.set('user', jsonUser);
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    static async searchUserByLogin(data: ISearchUserByLogin) {
+        try {
+            const findUsers = await userApi.searchUserByLogin(data);
+            console.log('findUsers: ', findUsers);
         } catch (err) {
             throw err;
         }

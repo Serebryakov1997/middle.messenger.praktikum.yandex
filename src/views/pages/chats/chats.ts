@@ -1,12 +1,12 @@
 import './chats.css';
 import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
-import { ButtonBase, Chat, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
+import { ButtonBase, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
 import { Block, router } from '../../../core';
-import { ChatController } from '../../../controllers/chat-controller';
-import { ChatList, ChatListBase } from '../../components/chatList/chatList';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
+import { ChatController } from '../../../controllers/chat-controller';
+import { ChatDeleteWindow } from '../../components/chatDeleteWindow';
 
 
 export class ChatsBase extends Block {
@@ -20,7 +20,10 @@ export class ChatsBase extends Block {
         chatAreaClass: 'chat-area',
         chatAreaNameClass: 'chat-area-name',
         chatLastTimeClass: 'chat-last-time',
-        chatsListClass: 'chat-list-class'
+        actionWindowClass: 'action-window-class',
+        chatDeleteWindowClass: 'delete-window-class',
+        chatsListClass: 'chat-list',
+        addUserChatWindowClass: 'add-user-chat-window-class'
       },
       chatsForm: 'chats-form-id',
       chatsSearchBar: 'Поиск',
@@ -35,55 +38,6 @@ export class ChatsBase extends Block {
   }
 
 
-  // protected init() {
-  //   console.log('new ChatList({}): ', new ChatList({}));
-  //   this.children = {
-  //     createChatText: new ClickableText({
-  //       clickableText: 'или Создайте чат',
-  //       createChatsClass: 'create-chat-text',
-  //       clickableTextId: 'create-chat-id',
-  //       events: {
-  //         click: (e: Event) => {
-  //           e.preventDefault();
-  //           (<Block>this.children.chatCreationWindow).show();
-  //         }
-  //       }
-  //     }),
-  //     chatCreationWindow: new ChatCreationWindow(),
-
-  //     linkToProfile: new UnderButtonLink({
-  //       styles: {
-  //         underButtonClass: 'profile-link',
-  //       },
-  //       underButtonText: 'В профиль',
-  //       events: {
-  //         click: () => {
-  //           router.go(AddressPaths.Profile);
-  //         }
-  //       }
-  //     }),
-
-  //     chatsList: new ChatList({}),
-  //     chatInput: new InputBase({
-  //       name: 'message',
-  //       placeholder: 'Сообщение',
-  //       inputType: 'text',
-  //       styles: {
-  //         inputClass: 'chat-input',
-  //       },
-  //     }),
-  //     chatButton: new ButtonBase({
-  //       styles: {
-  //         buttonClass: 'button-chat',
-  //       },
-  //       events: {
-  //         click: (e: Event) => {
-  //           e.preventDefault();
-  //         },
-  //       },
-  //     }),
-  //   };
-  // }
   protected init(): void {
     this.children = {
       createChatText: new ClickableText({
@@ -97,7 +51,8 @@ export class ChatsBase extends Block {
           }
         }
       }),
-      chatCreationWindow: new ChatCreationWindow(),
+      chatCreationWindow: new ChatCreationWindow(
+        'Создать чат', 'Имя чата', 'Создать', 'chat-creation-text'),
 
       linkToProfile: new UnderButtonLink({
         styles: {
@@ -111,6 +66,39 @@ export class ChatsBase extends Block {
         }
       }),
 
+      chatDeleteWindow: new ChatDeleteWindow(),
+      addUserToChatWindow: new ChatCreationWindow(
+        'Добавить пользователя',
+        'Логин',
+        'Добавить',
+        'add-user-window-label',
+        ' add-user-window'
+      ),
+      addUserText: new ClickableText({
+        clickableText: 'Добавить пользователя',
+        createChatsClass: 'add-user-text',
+        events: {
+          click: (e: Event) => {
+            e.preventDefault();
+            (<Block>this.children.addUserToChatWindow).show();
+          }
+        }
+      }),
+      deleteChatText: new ClickableText({
+        clickableText: 'Удалить чат',
+        createChatsClass: 'delete-chat-text',
+        events: {
+          click: (e: Event) => {
+            e.preventDefault();
+            const needChat = document.getElementById('chat-area-name-id');
+            const chatName = needChat?.textContent;
+
+            const newProps = { chatTitle: chatName + '?' };
+            (<Block>this.children.chatDeleteWindow).setProps(newProps);
+            (<Block>this.children.chatDeleteWindow).show();
+          }
+        }
+      }),
       chatInput: new InputBase({
         name: 'message',
         placeholder: 'Сообщение',

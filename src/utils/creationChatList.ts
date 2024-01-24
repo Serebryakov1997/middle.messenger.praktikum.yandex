@@ -13,13 +13,17 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
         numberOfUnreadMsgsClass: ''
     };
 
+    console.log('chatResponse: ', chatsResponse);
+
     Object.values(chatsResponse).forEach((value) => {
-        let unread_count = '0';
+        let unread_count = '';
         if (value.unread_count) {
             unread_count = String(value.unread_count);
             styles.numberOfUnreadMsgsClass = 'number-of-unread-msgs'
         }
 
+        const chatId = String(value.id);
+        console.log('id of chat: ', chatId);
         const title = <string>value.title;
         const avatar = <string>value.avatar;
 
@@ -34,6 +38,7 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
 
         const chat = new Chat({
             styles,
+            chatId,
             title,
             avatar,
             content,
@@ -62,6 +67,5 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
         });
         chatsList.push(chat);
     });
-    console.log('chatsList: ', chatsList);
     return chatsList;
 }

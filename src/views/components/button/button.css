@@ -56,4 +56,34 @@ button {
   color: white;
 }
 
+.button-del-yes-chat {
+  top: 70%;
+  left: 5%;
+  height: 20%;
+  width: 30%;
+  background-color: gray;
+}
+.button-del-yes-chat .button-name {
+  top: 35%;
+  left: 40%;
+  font-size: large;
+  font-weight: 600;
+  color: white;
+}
+
+.button-del-no-chat {
+  top: 70%;
+  right: 15%;
+  height: 20%;
+  width: 30%;
+  background-color: gray;
+}
+.button-del-no-chat .button-name {
+  top: 35%;
+  left: 40%;
+  font-size: large;
+  font-weight: 600;
+  color: white;
+}
+
 /*# sourceMappingURL=button.css.map */

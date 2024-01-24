@@ -17,3 +17,8 @@ export interface IChangeProfilePasswd {
     oldPassword: string;
     newPassword: string;
 }
+
+export interface ISearchUserByLogin {
+    [key: string]: string;
+    login: string;
+}

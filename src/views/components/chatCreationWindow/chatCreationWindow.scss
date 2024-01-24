@@ -3,10 +3,10 @@
 .chat-creation-window {
     display: none;
     position: relative;
-    top: -55%;
+    top: 0%;
     left: 190%;
     height: 40%;
-    width: 130%;
+    width: 270%;
     border-radius: 5%;
     background-color: $window-color;
 
@@ -15,4 +15,16 @@
         left: 42%;
         font-size: large;
     }
+
+    .add-user-window-label {
+        top: 10%;
+        left: 34%;
+        font-size: large;
+    }
 }
+
+.add-user-window {
+    top:10%;
+}
+
+

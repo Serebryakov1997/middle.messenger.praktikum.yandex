@@ -1,5 +1,5 @@
 export const chatTmpl = `
-<div class="{{styles.chatClass}}">
+<div id="{{chatId}}" name="{{title}}" class="{{styles.chatClass}}">
     <div class="{{styles.mockImgClass}}"></div>
     <a class="{{styles.chatNameClass}}">{{title}}</a>
     <a class="{{styles.lastPartMsgClass}}">{{content}}</a>

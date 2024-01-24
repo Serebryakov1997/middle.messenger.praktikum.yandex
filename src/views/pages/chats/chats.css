@@ -3,6 +3,14 @@
   width: 500px;
   background-color: #d9d9d9;
 }
+.chats-form .chat-list {
+  margin-top: 70px;
+  height: 82%;
+  overflow-y: scroll;
+}
+.chats-form .chat-list::-webkit-scrollbar {
+  display: none;
+}
 .chats-form .chats-search-bar {
   display: block;
   position: relative;
@@ -27,6 +35,28 @@
   font-size: 25px;
   font-weight: bold;
   color: gray;
+}
+.chats-form .action-window-class {
+  display: block;
+  position: fixed;
+  top: 35%;
+  left: 30%;
+  height: 100%;
+}
+.chats-form .delete-window-class {
+  display: block;
+  position: fixed;
+  top: 15%;
+  left: -5%;
+  height: 100%;
+  width: 28%;
+}
+.chats-form .add-user-chat-window-class {
+  display: block;
+  position: fixed;
+  top: 25%;
+  left: 28%;
+  height: 100%;
 }
 .chats-form .chat-area {
   display: none;

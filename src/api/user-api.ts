@@ -1,6 +1,6 @@
 import { HTTPTransport } from '../core';
 import { IChangeProfileData, IUser } from '../models/interfaces';
-import { IChangeProfilePasswd } from '../models/interfaces/users';
+import { IChangeProfilePasswd, ISearchUserByLogin } from '../models/interfaces/users';
 
 class UserAPI {
 
@@ -23,6 +23,10 @@ class UserAPI {
         const data = new FormData();
         data.append('avatar', file);
         return this.http.put<IUser>('/profile/avatar', { data })
+    }
+
+    async searchUserByLogin(data: ISearchUserByLogin) {
+        return this.http.post<IUser>('/search', { data });
     }
 }
 

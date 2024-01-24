@@ -61,7 +61,6 @@ export class Block {
   _init() {
     this._createResources();
     this.init();
-    this.initAsync();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
@@ -69,8 +68,6 @@ export class Block {
   /* eslint class-methods-use-this: "off" */
   protected init() { }
 
-
-  protected async initAsync() { }
 
   _componentDidMount() {
     this.componentDidMount(this.props);
@@ -129,13 +126,13 @@ export class Block {
   compile(template: string, props: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
+    let fragmentsArr: string = '';
     Object.entries(this.children).forEach(([name, child]) => {
       if (Array.isArray(child)) {
-        propsAndStubs[name] = child.map(ch =>
-          /*Array.isArray(ch)
-            ? ch.map(ch2 => `<div data-id="${(ch2).id}"></div>`)
-            : */`<div data-id="${(<Block>ch).id}"></div>`
-        );
+        Object.values(child).forEach((value) => {
+          fragmentsArr += `<div data-id="${value.id}"></div>`
+        });
+        propsAndStubs[name] = fragmentsArr;
       } else {
         propsAndStubs[name] = `<div data-id="${(<Block>child).id}"></div>`;
       }

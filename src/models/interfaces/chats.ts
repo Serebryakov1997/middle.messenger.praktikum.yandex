@@ -20,3 +20,15 @@ export interface ICreateChat {
     [key: string]: string;
     title: string;
 }
+
+export interface IDeleteChat {
+    [key: string]: number;
+    chatId: number;
+}
+
+
+export interface IAddUserToChat {
+    [key: string]: number[] | number;
+    users: number[],
+    chatId: number;
+}
