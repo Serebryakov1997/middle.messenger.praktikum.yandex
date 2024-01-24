@@ -22,6 +22,10 @@ class ChatAPI extends API {
     async addUsersToChat(data: IAddUserToChat) {
         return this.http.put('/users', { data });
     }
+
+    async requestToConnectMsgServer(id: string) {
+        return this.http.post(`/token/${id}`);
+    }
 }
 
 export default new ChatAPI();

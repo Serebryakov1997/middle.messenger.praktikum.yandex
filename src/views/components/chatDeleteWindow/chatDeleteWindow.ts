@@ -3,6 +3,7 @@ import { Block } from '../../../core';
 import { chatDeleteWindowTmpl } from './chatDeleteWindow.tmpl';
 import { ButtonBase } from '../button';
 import { ChatController } from '../../../controllers/chat-controller';
+import { getChatId } from '../../../utils';
 
 export class ChatDeleteWindow extends Block {
     constructor() {
@@ -26,10 +27,7 @@ export class ChatDeleteWindow extends Block {
                 buttonName: 'Да',
                 events: {
                     click: () => {
-                        const needChat = document.getElementById('chat-area-name-id');
-                        const chatName = needChat?.textContent;
-                        const chatElement = document.getElementsByName(<string>chatName);
-                        const chatId = chatElement.item(0).getAttribute('id');
+                        const chatId = getChatId();
                         ChatController.deleteChat({ chatId: Number(chatId) })
                         const chatDelWindow = document.getElementById('chat-delete-window-id');
                         chatDelWindow!.style.display = 'none';

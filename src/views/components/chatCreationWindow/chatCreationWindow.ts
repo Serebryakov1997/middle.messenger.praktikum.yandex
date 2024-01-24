@@ -5,7 +5,7 @@ import { chatCreationWindowTmpl } from './chatCreationWindow.tmpl';
 import { InputBase } from '../input';
 import { ButtonBase } from '../button';
 import { ChatController } from '../../../controllers/chat-controller';
-import { clickValidation, inputValidation } from '../../../utils';
+import { clickValidation, getChatId, inputValidation } from '../../../utils';
 import { emptyValidator } from '../../../models/validators';
 import { ValidError } from '../validError';
 import { UserController } from '../../../controllers/user-controller';
@@ -103,7 +103,7 @@ export class ChatCreationWindow extends Block {
                         e.preventDefault();
                         this.buttonName === 'Создать'
                             ? this.createChat(e, this._formData)
-                            : this.addUser(this._formData);
+                            : this.addUser(e, this._formData);
                     }
                 }
             })
@@ -138,9 +138,35 @@ export class ChatCreationWindow extends Block {
         }
     }
 
-    addUser(formData: FormData) {
+    async addUser(event: Event, formData: FormData) {
         const login = formData.get('chat_title') as string;
-        UserController.searchUserByLogin({ login });
+        const isValid = clickValidation(
+            {
+                login
+            },
+            {
+                login: emptyValidator
+            },
+            {
+                login: {
+                    validError: <Block>this.children.validErrorChatName,
+                    input: <Block>this.children.chatCreationInput,
+                    button: <Block>this.children.chatCreationButton
+                },
+            },
+            event
+        );
+
+        if (isValid) {
+            const findUsers = await UserController.searchUserByLogin({ login });
+            const chatId = getChatId();
+            ChatController.addUsersToChat({
+                users: [findUsers[0].id],
+                chatId
+            });
+            const chatCreationWindow = document.getElementById('chat-creation-window-id');
+            chatCreationWindow!.style.display = 'none';
+        }
     }
 
     render(): DocumentFragment {

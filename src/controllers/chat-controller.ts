@@ -36,7 +36,15 @@ export class ChatController {
         try {
             await chatApi.addUsersToChat(data);
         } catch (err) {
+            throw err;
+        }
+    }
 
+    static async requestToConnectToMsgServer(id: string) {
+        try {
+            await chatApi.requestToConnectMsgServer(id);
+        } catch (err) {
+            throw err;
         }
     }
 }

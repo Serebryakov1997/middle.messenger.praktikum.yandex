@@ -40,7 +40,8 @@ export class UserController {
     static async searchUserByLogin(data: ISearchUserByLogin) {
         try {
             const findUsers = await userApi.searchUserByLogin(data);
-            console.log('findUsers: ', findUsers);
+            const parseUsers = JSON.parse(String(findUsers));
+            return parseUsers;
         } catch (err) {
             throw err;
         }
