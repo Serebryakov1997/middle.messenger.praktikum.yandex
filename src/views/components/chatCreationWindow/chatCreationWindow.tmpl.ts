@@ -3,6 +3,7 @@ export const chatCreationWindowTmpl = `
         <a class="{{styles.chatCreationTextClass}}">{{chatCreationText}}</a>
         {{{chatCreationLabel}}}
         {{{chatCreationInput}}}
+        {{{validErrorChatName}}}
         {{{chatCreationButton}}}
     </form>
 `;

@@ -51,8 +51,17 @@ export class ChatsBase extends Block {
           }
         }
       }),
-      chatCreationWindow: new ChatCreationWindow(
-        'Создать чат', 'Имя чата', 'Создать', 'chat-creation-text'),
+      //, 'chat-creation-text'
+      chatCreationWindow: new ChatCreationWindow({
+        windowTitle: 'Создать чат',
+        labelName: 'Имя чата',
+        buttonName: 'Создать',
+        buttonClass: 'button-creation-chat',
+        windowTitleClass: 'chat-creation-text',
+        addUserWindowClass: '',
+        chatCreationTextClass: 'chat-creation-text',
+        buttonNameClass: 'button-creation-name'
+      }),
 
       linkToProfile: new UnderButtonLink({
         styles: {
@@ -67,13 +76,17 @@ export class ChatsBase extends Block {
       }),
 
       chatDeleteWindow: new ChatDeleteWindow(),
-      addUserToChatWindow: new ChatCreationWindow(
-        'Добавить пользователя',
-        'Логин',
-        'Добавить',
-        'add-user-window-label',
-        ' add-user-window'
-      ),
+      addUserToChatWindow: new ChatCreationWindow({
+        windowTitle: 'Добавить пользователя',
+        labelName: 'Логин',
+        buttonName: 'Добавить',
+        buttonClass: 'button-creation-chat',
+        windowTitleClass: 'chat-creation-text',
+        addUserWindowClass: ' add-user-window',
+        chatCreationTextClass: 'add-user-window-label',
+        buttonNameClass: 'button-creation-name',
+        otherClass: 'other-class'
+      }),
       addUserText: new ClickableText({
         clickableText: 'Добавить пользователя',
         createChatsClass: 'add-user-text',

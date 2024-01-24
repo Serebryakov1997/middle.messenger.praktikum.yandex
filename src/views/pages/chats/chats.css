@@ -54,8 +54,8 @@
 .chats-form .add-user-chat-window-class {
   display: block;
   position: fixed;
-  top: 25%;
-  left: 28%;
+  top: 20%;
+  left: 27%;
   height: 100%;
 }
 .chats-form .chat-area {

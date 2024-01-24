@@ -1,6 +1,7 @@
 @use './colors/colors';
 
 .clickable-text {
+    position: absolute;
     font-size: 10px;
     top: 20px;
     left: 310px;

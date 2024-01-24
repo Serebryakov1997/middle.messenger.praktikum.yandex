@@ -48,12 +48,21 @@ button {
   width: 60%;
   background-color: gray;
 }
-.button-creation-chat .button-name {
+
+.button-creation-name {
   top: 34%;
-  left: 38%;
+  left: 35%;
   font-size: large;
   font-weight: 600;
   color: white;
+}
+
+.button-add-user-chat {
+  top: 70%;
+  left: 13%;
+  height: 20%;
+  width: 60%;
+  background-color: gray;
 }
 
 .button-del-yes-chat {

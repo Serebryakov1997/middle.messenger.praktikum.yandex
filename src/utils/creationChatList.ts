@@ -13,7 +13,6 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
         numberOfUnreadMsgsClass: ''
     };
 
-    console.log('chatResponse: ', chatsResponse);
 
     Object.values(chatsResponse).forEach((value) => {
         let unread_count = '';
@@ -23,7 +22,6 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
         }
 
         const chatId = String(value.id);
-        console.log('id of chat: ', chatId);
         const title = <string>value.title;
         const avatar = <string>value.avatar;
 

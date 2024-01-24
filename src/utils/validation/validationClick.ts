@@ -15,10 +15,11 @@ export function clickValidation(
 ): boolean {
   const isValidArr: { [key: string]: boolean } = {};
 
+  console.log('stateProps: ', stateProps);
   Object.entries(validators).forEach(([key, value]) => {
     const re = value.rule;
 
-    const isValid = stateProps ? re.test(stateProps[key] as string) : false;
+    const isValid = stateProps[key] ? re.test(stateProps[key] as string) : false;
     isValidArr[key] = isValid;
   });
 

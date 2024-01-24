@@ -78,3 +78,8 @@ export const phoneValidator = {
   errorMsg: 'Некорректный телефон. Допускается от 10 до'
     + '15 символов, состоит из цифр, может начинаться с плюса',
 };
+
+export const emptyValidator = {
+  rule: /^(?!\s*$).+/,
+  errorMsg: 'Поле не может быть пустым'
+};

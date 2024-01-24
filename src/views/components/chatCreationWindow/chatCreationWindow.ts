@@ -5,11 +5,23 @@ import { chatCreationWindowTmpl } from './chatCreationWindow.tmpl';
 import { InputBase } from '../input';
 import { ButtonBase } from '../button';
 import { ChatController } from '../../../controllers/chat-controller';
+import { clickValidation, inputValidation } from '../../../utils';
+import { emptyValidator } from '../../../models/validators';
+import { ValidError } from '../validError';
+import { UserController } from '../../../controllers/user-controller';
 
 
 export interface IChatCreationWindow {
-    [key: string]: string;
-    chatCreationText: string,
+    [key: string]: string | undefined;
+    windowTitle: string;
+    labelName: string;
+    buttonName: string;
+    buttonClass: string;
+    windowTitleClass: string;
+    addUserWindowClass: string;
+    chatCreationTextClass: string;
+    buttonNameClass?: string;
+    otherClass?: string;
 }
 
 export class ChatCreationWindow extends Block {
@@ -17,29 +29,33 @@ export class ChatCreationWindow extends Block {
     _formData: FormData;
     labelName: string;
     buttonName: string;
-    constructor(
-        windowTitle: string,
-        labelName: string,
-        buttonName: string,
-        windowTitleClass: string = '',
-        addUserWindowClass: string = '') {
+    buttonClass: string;
+    buttonNameClass: string;
+    constructor(props: IChatCreationWindow) {
         super({
             styles: {
-                chatCreationWindowClass: 'chat-creation-window' + addUserWindowClass,
-                chatCreationTextClass: windowTitleClass
+                chatCreationWindowClass: 'chat-creation-window' + props.addUserWindowClass,
+                chatCreationTextClass: props.chatCreationTextClass,
+                otherClass: props.otherClass
             },
             chatCreationWindowId: 'chat-creation-window-id',
-            chatCreationText: windowTitle
+            chatCreationText: props.windowTitle
         });
         this._formData = new FormData();
         (<Block>this.children.chatCreationLabel).setProps({
-            labelName: labelName
+            labelName: props.labelName
         });
         (<Block>this.children.chatCreationButton).setProps({
-            buttonName: buttonName
+            styles: {
+                buttonClass: props.buttonClass,
+                buttonNameClass: props.buttonNameClass
+            },
+            buttonName: props.buttonName
         });
-        this.labelName = labelName;
-        this.buttonName = buttonName;
+        this.labelName = props.labelName;
+        this.buttonName = props.buttonName;
+        this.buttonClass = props.buttonClass;
+        this.buttonNameClass = <string>props.buttonNameClass;
     }
 
     protected init() {
@@ -57,51 +73,74 @@ export class ChatCreationWindow extends Block {
                 },
                 events: {
                     blur: (e: Event) => {
-                        this._formData.set('chat_title', (<HTMLInputElement>e.target).value);
+                        const inputValue = (<HTMLInputElement>e.target).value;
+                        this._formData.set('chat_title', inputValue);
+
+                        inputValidation(e, emptyValidator,
+                            {
+                                validError: <Block>this.children.validErrorChatName,
+                                input: <Block>this.children.chatCreationInput,
+                                button: <Block>this.children.chatCreationButton
+                            });
                     }
                 }
             }),
+            validErrorChatName: new ValidError({
+                styles: {
+                    validErrClass: 'valid-err',
+                    validErrProfileClass: 'valid-err-chat-window'
+                },
+                validErrorId: 'error'
+            }),
             chatCreationButton: new ButtonBase({
                 styles: {
-                    buttonClass: 'button-creation-chat',
-                    buttonNameClass: 'button-name'
+                    buttonClass: this.buttonClass,
+                    buttonNameClass: this.buttonNameClass
                 },
                 buttonName: this.buttonName,
                 events: {
                     click: (e: Event) => {
                         e.preventDefault();
-                        console.log('buttonName in click chatCreationButton: ',
-                            this.buttonName);
                         this.buttonName === 'Создать'
-                            ? this.createChat(this._formData)
-                            : this.addUser();
-                        // const title = this._formData.get('chat_title') as string;
-                        // console.log('title: ', title);
-                        // ChatController.createChat(
-                        //     { title }
-                        // );
-                        // this.setProps({
-                        //     display: 'none'
-                        // });
+                            ? this.createChat(e, this._formData)
+                            : this.addUser(this._formData);
                     }
                 }
             })
         }
     }
 
-    createChat(formData: FormData) {
-        const title = formData.get('chat_title') as string;
-        console.log('title: ', title);
-        ChatController.createChat(
-            { title }
+    createChat(event: Event, formData: FormData) {
+        let chat_title = formData.get('chat_title') as string;
+        const isValid = clickValidation(
+            {
+                chat_title
+            },
+            {
+                chat_title: emptyValidator
+            },
+            {
+                chat_title: {
+                    validError: <Block>this.children.validErrorChatName,
+                    input: <Block>this.children.chatCreationInput,
+                    button: <Block>this.children.chatCreationButton
+                },
+            },
+            event
         );
-        this.setProps({
-            display: 'none'
-        });
+        if (isValid) {
+            ChatController.createChat(
+                { title: chat_title }
+            );
+            this.setProps({
+                display: 'none'
+            });
+        }
     }
 
-    addUser() {
-
+    addUser(formData: FormData) {
+        const login = formData.get('chat_title') as string;
+        UserController.searchUserByLogin({ login });
     }
 
     render(): DocumentFragment {
