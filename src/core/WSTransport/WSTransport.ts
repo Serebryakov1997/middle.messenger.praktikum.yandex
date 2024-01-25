@@ -45,13 +45,14 @@ export default class WSTransport extends EventBus {
     }
 
     setupPing() {
+        // @ts-ignore
         this.pingInterval = setInterval(() => {
             this.send({ type: 'ping' });
         }, 5000);
 
         this.on(WSTransportEvents.Close, () => {
-            clearInterval(this._pingInt);
-            this._pingInt = 0;
+            clearInterval(this.pingInterval);
+            this.pingInterval = 0;
         });
     }
 

@@ -28,8 +28,11 @@ export const chatsTmpl = `
             <a id="{{chatAreaLastTimeId}}" class="{{styles.chatLastTimeClass}}"></a>
             {{{addUserText}}}
             {{{deleteChatText}}}
+
+            {{{msgsList}}}
             
             {{{chatInput}}}
+            {{{validErrorMsg}}}
             {{{chatButton}}}
         </div>
     </form>

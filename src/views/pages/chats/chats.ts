@@ -1,15 +1,19 @@
 import './chats.css';
-import { AddressPaths, creationChatList } from '../../../utils';
+import { AddressPaths, clickValidation, creationChatList, getChatId, inputValidation } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
-import { ButtonBase, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink } from '../../components';
+import { ButtonBase, ChatCreationWindow, ClickableText, InputBase, UnderButtonLink, ValidError } from '../../components';
 import { Block, router } from '../../../core';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
 import { ChatController } from '../../../controllers/chat-controller';
 import { ChatDeleteWindow } from '../../components/chatDeleteWindow';
+import { emptyValidator } from '../../../models/validators';
+import msgsController from '../../../controllers/messages-controller';
+import { creationMsgsList } from '../../../utils/creationMsgsList';
 
 
 export class ChatsBase extends Block {
+  _formData: FormData;
   constructor() {
     super({
       styles: {
@@ -35,6 +39,7 @@ export class ChatsBase extends Block {
       chatCreationWindowClass: 'chat-creation-window',
       chatCreationWindowId: 'chat-creation-window-id'
     });
+    this._formData = new FormData();
   }
 
 
@@ -119,6 +124,25 @@ export class ChatsBase extends Block {
         styles: {
           inputClass: 'chat-input',
         },
+        events: {
+          blur: (e: Event) => {
+            const message = (<HTMLInputElement>e.target).value;
+            this._formData.set('message', message);
+
+            inputValidation(e, emptyValidator,
+              {
+                validError: <Block>this.children.validErrorMsg,
+                input: <Block>this.children.chatInput,
+                button: <Block>this.children.chatButton
+              });
+          }
+        }
+      }),
+      validErrorMsg: new ValidError({
+        styles: {
+          validErrClass: 'valid-err-message',
+        },
+        validErrorId: 'error'
       }),
       chatButton: new ButtonBase({
         styles: {
@@ -127,10 +151,31 @@ export class ChatsBase extends Block {
         events: {
           click: (e: Event) => {
             e.preventDefault();
+            this.sendMsg(e, this._formData);
           },
         },
       }),
     };
+  }
+
+  sendMsg(event: Event, formData: FormData) {
+    let message = <string>formData.get('message');
+    const isValid = clickValidation(
+      { message },
+      { message: emptyValidator },
+      {
+        message: {
+          validError: <Block>this.children.validErrorMsg,
+          input: <Block>this.children.chatInput,
+          button: <Block>this.children.chatButton
+        }
+      },
+      event
+    );
+    if (isValid) {
+      const chatId = getChatId();
+      msgsController.sendMsg(chatId, message);
+    }
   }
 
 
@@ -138,13 +183,19 @@ export class ChatsBase extends Block {
     if (this.props.chats) {
       this.children.chatsList = creationChatList(<Record<string, Block>[]>this.props.chats);
     }
+
+    console.log('this props messages in Chats page: ', this.props.messages);
+    if (this.props.messages) {
+      this.children.msgsList = creationMsgsList(<Record<string, Block>[]>this.props.messages);
+    }
     return this.compile(chatsTmpl, this.props);
   }
 }
 
 
 const mapStateToProps = (state: IState) => ({
-  chats: state.chats
+  chats: state.chats,
+  messages: state.messages
 });
 
 export const Chats = withStore(mapStateToProps)(ChatsBase);

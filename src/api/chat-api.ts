@@ -23,7 +23,7 @@ class ChatAPI extends API {
         return this.http.put('/users', { data });
     }
 
-    async requestToConnectMsgServer(id: string) {
+    async requestToConnectMsgServer(id: number) {
         return this.http.post(`/token/${id}`);
     }
 }

@@ -162,8 +162,8 @@ export class ChatCreationWindow extends Block {
             const chatId = getChatId();
             ChatController.addUsersToChat({
                 users: [findUsers[0].id],
-                chatId
-            });
+                chatId,
+            }, findUsers[0].first_name);
             const chatCreationWindow = document.getElementById('chat-creation-window-id');
             chatCreationWindow!.style.display = 'none';
         }

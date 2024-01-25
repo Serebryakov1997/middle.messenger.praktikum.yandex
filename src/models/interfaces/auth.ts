@@ -1,4 +1,5 @@
 import { IChat } from './chats';
+import { IMessage } from './messages';
 
 export interface ISigninData {
     [key: string]: string;
@@ -35,6 +36,7 @@ export interface IState {
     user?: IUser;
     chats?: IChat;
     image?: string;
+    messages?: Record<number, IMessage[]>;
 }
 
 export interface IInput {

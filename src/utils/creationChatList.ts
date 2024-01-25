@@ -1,3 +1,4 @@
+import { ChatController } from '../controllers/chat-controller';
 import { Block } from '../core';
 import { Chat, ChatProps } from '../views/components/chat/chat';
 
@@ -25,12 +26,15 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
         const title = <string>value.title;
         const avatar = <string>value.avatar;
 
+        ChatController.requestToConnectToMsgServer(Number(chatId));
+
         let last_message: Record<string, unknown> = {};
         let time = '';
         let content = '';
         if (value.last_message) {
             last_message = <Record<string, unknown>>value.last_message;
-            time = (<Record<string, string>>value.last_message).time;
+            time = (<Record<string, string>>value.last_message)
+                .time.substring(0, 19).replace('T', ' ');
             content = (<Record<string, string>>value.last_message).content;
         }
 

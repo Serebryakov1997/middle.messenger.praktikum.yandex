@@ -1,6 +1,7 @@
 import chatApi from '../api/chat-api';
 import { store } from '../core';
 import { IAddUserToChat, ICreateChat, IDeleteChat } from '../models/interfaces/chats';
+import msgsController from './messages-controller';
 
 export class ChatController {
 
@@ -32,17 +33,23 @@ export class ChatController {
         }
     }
 
-    static async addUsersToChat(data: IAddUserToChat) {
+    static async addUsersToChat(data: IAddUserToChat, addedUserName: string) {
         try {
-            await chatApi.addUsersToChat(data);
+            const isOk = await chatApi.addUsersToChat(data);
+            console.log('isOk addUsersToChat: ', isOk);
+            if (isOk) {
+                msgsController.sendMsg(data.chatId, `${addedUserName} присоединился к чату`);
+            }
         } catch (err) {
             throw err;
         }
     }
 
-    static async requestToConnectToMsgServer(id: string) {
+    static async requestToConnectToMsgServer(id: number) {
         try {
-            await chatApi.requestToConnectMsgServer(id);
+            const tokenObj = await chatApi.requestToConnectMsgServer(id);
+            const token = JSON.parse(String(tokenObj)).token;
+            await msgsController.connect(Number(id), token);
         } catch (err) {
             throw err;
         }
