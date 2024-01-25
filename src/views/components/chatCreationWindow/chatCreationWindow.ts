@@ -169,6 +169,33 @@ export class ChatCreationWindow extends Block {
         }
     }
 
+    async deleteUser(event: Event, formData: FormData) {
+        const login = <string>formData.get('chat_title');
+        const isValid = clickValidation(
+            { login },
+            { login: emptyValidator },
+            {
+                login: {
+                    validError: <Block>this.children.validErrorChatName,
+                    input: <Block>this.children.chatCreationInput,
+                    button: <Block>this.children.chatCreationButton
+                }
+            },
+            event
+        );
+
+        if (isValid) {
+            const findUsers = await UserController.searchUserByLogin({ login });
+            const chatId = getChatId();
+            ChatController.deleteUserFromChat({
+                users: [findUsers[0].id],
+                chatId
+            }, findUsers[0].first_name);
+            const chatCreationWindow = document.getElementById('chat-creation-window-id');
+            chatCreationWindow!.style
+        }
+    }
+
     render(): DocumentFragment {
         return this.compile(chatCreationWindowTmpl, this.props);
     }
