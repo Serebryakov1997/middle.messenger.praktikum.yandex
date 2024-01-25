@@ -17,6 +17,21 @@
         }
     }
 
+    .msgs-list {
+        position: relative;
+        top: 90%;
+    }
+
+    .chat-button {
+        left: 10%;
+    }
+
+    .valid-err-msg {
+        position: absolute;
+        top: 550%;
+        left: -3%;
+    }
+
     .chats-search-bar {
         display: block;
         position: relative;

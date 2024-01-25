@@ -5,6 +5,7 @@ import { Chat, ChatProps } from '../views/components/chat/chat';
 export function creationChatList(chatsResponse: Array<Record<string, unknown>>): Block[] {
     const chatsList: Block[] = [];
 
+
     const styles: ChatProps['styles'] = {
         chatClass: 'chat',
         mockImgClass: 'mock-img',
@@ -64,6 +65,16 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
 
                     const chatAreaLastTime = document.getElementById('chat-area-time-id');
                     chatAreaLastTime!.textContent = time;
+
+                    const messages = document.getElementsByClassName('msg-in-chat');
+                    Object.values(messages).forEach((value) => {
+                        const chatIdFromMsg = value.getAttribute('id');
+                        if (chatId !== chatIdFromMsg) {
+                            (<HTMLElement>value).style.display = 'none';
+                        } else {
+                            (<HTMLElement>value).style.display = 'block';
+                        }
+                    })
                 }
             }
         });

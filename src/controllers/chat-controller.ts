@@ -36,9 +36,19 @@ export class ChatController {
     static async addUsersToChat(data: IAddUserToChat, addedUserName: string) {
         try {
             const isOk = await chatApi.addUsersToChat(data);
-            console.log('isOk addUsersToChat: ', isOk);
             if (isOk) {
                 msgsController.sendMsg(data.chatId, `${addedUserName} присоединился к чату`);
+            }
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    static async deleteUserFromChat(data: IAddUserToChat, delUserName: string) {
+        try {
+            const isDelete = await chatApi.deleteUserFromChat(data);
+            if (isDelete) {
+                msgsController.sendMsg(data.chatId, `Пользователь ${delUserName} удалён из чата`);
             }
         } catch (err) {
             throw err;

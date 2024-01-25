@@ -9,6 +9,7 @@ interface ButtonProps {
     buttonClass: string;
     buttonNameClass?: string;
   },
+  buttonType?: string;
   events?: {
     click: (e: Event) => void;
   }

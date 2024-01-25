@@ -7,6 +7,7 @@ interface MessageProps {
   styles: {
     messageClass: string;
   },
+  chat_id: string;
   message: string;
 }
 

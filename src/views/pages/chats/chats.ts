@@ -27,7 +27,11 @@ export class ChatsBase extends Block {
         actionWindowClass: 'action-window-class',
         chatDeleteWindowClass: 'delete-window-class',
         chatsListClass: 'chat-list',
-        addUserChatWindowClass: 'add-user-chat-window-class'
+        addUserChatWindowClass: 'add-user-chat-window-class',
+        msgListClass: 'msgs-list',
+        valieErrMsgClass: 'valid-err-msg',
+        displayClass: 'display-area',
+        chatButtonClass: 'chat-button'
       },
       chatsForm: 'chats-form-id',
       chatsSearchBar: 'Поиск',
@@ -37,7 +41,8 @@ export class ChatsBase extends Block {
       chatAreaNameId: 'chat-area-name-id',
       chatAreaLastTimeId: 'chat-area-time-id',
       chatCreationWindowClass: 'chat-creation-window',
-      chatCreationWindowId: 'chat-creation-window-id'
+      chatCreationWindowId: 'chat-creation-window-id',
+      onsubmit: 'return false'
     });
     this._formData = new FormData();
   }
@@ -148,9 +153,12 @@ export class ChatsBase extends Block {
         styles: {
           buttonClass: 'button-chat',
         },
+        buttonType: 'submit',
         events: {
           click: (e: Event) => {
-            e.preventDefault();
+            // e.preventDefault();
+            const chatArea = document.getElementById('chat-area-id');
+            chatArea!.style.display = 'block';
             this.sendMsg(e, this._formData);
           },
         },
@@ -183,10 +191,9 @@ export class ChatsBase extends Block {
     if (this.props.chats) {
       this.children.chatsList = creationChatList(<Record<string, Block>[]>this.props.chats);
     }
-
-    console.log('this props messages in Chats page: ', this.props.messages);
     if (this.props.messages) {
-      this.children.msgsList = creationMsgsList(<Record<string, Block>[]>this.props.messages);
+      this.children.msgsList = creationMsgsList(<Record<string, Block>[]>this.props.messages,
+        Number(this.props.currentUserId));
     }
     return this.compile(chatsTmpl, this.props);
   }
@@ -194,6 +201,7 @@ export class ChatsBase extends Block {
 
 
 const mapStateToProps = (state: IState) => ({
+  currentUserId: state.user?.id,
   chats: state.chats,
   messages: state.messages
 });

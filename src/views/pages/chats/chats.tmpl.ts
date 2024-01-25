@@ -29,10 +29,15 @@ export const chatsTmpl = `
             {{{addUserText}}}
             {{{deleteChatText}}}
 
-            {{{msgsList}}}
+            <div class="{{styles.msgListClass}}">
+                {{{msgsList}}}
+            </div>
             
             {{{chatInput}}}
-            {{{validErrorMsg}}}
+
+            <div class="{{styles.valieErrMsgClass}}">
+                {{{validErrorMsg}}}
+            </div>
             {{{chatButton}}}
         </div>
     </form>

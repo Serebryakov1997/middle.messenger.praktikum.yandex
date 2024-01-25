@@ -23,6 +23,10 @@ class ChatAPI extends API {
         return this.http.put('/users', { data });
     }
 
+    async deleteUserFromChat(data: IAddUserToChat) {
+        return this.http.delete('/users', { data });
+    }
+
     async requestToConnectMsgServer(id: number) {
         return this.http.post(`/token/${id}`);
     }

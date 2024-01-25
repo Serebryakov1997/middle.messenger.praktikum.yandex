@@ -11,6 +11,18 @@
 .chats-form .chat-list::-webkit-scrollbar {
   display: none;
 }
+.chats-form .msgs-list {
+  position: relative;
+  top: 90%;
+}
+.chats-form .chat-button {
+  left: 10%;
+}
+.chats-form .valid-err-msg {
+  position: absolute;
+  top: 550%;
+  left: -3%;
+}
 .chats-form .chats-search-bar {
   display: block;
   position: relative;
