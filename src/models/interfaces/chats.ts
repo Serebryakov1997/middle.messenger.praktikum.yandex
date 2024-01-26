@@ -26,7 +26,6 @@ export interface IDeleteChat {
     chatId: number;
 }
 
-
 export interface IAddUserToChat {
     [key: string]: number[] | number;
     users: number[],

@@ -8,9 +8,7 @@ import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
 import { Avatar } from '../../components/avatarImg';
 
-
 export class ProfileBase extends Block {
-
   constructor() {
     super({
       styles: {
@@ -30,12 +28,11 @@ export class ProfileBase extends Block {
     });
   }
 
-
   protected init(): void {
     this.children.avatar = new Avatar({});
     // email
     const mapStateToPropsEmail = (state: IState) => ({
-      inputValue: state.user?.email
+      inputValue: state.user?.email,
     });
     const InputEmail = withStore(mapStateToPropsEmail)(InputBase);
     this.children.labelEmail = new Label({
@@ -54,10 +51,9 @@ export class ProfileBase extends Block {
       readonly: 'readonly',
     });
 
-
     // login
     const mapStateToPropsLogin = (state: IState) => ({
-      inputValue: state.user?.login
+      inputValue: state.user?.login,
     });
     const InputLogin = withStore(mapStateToPropsLogin)(InputBase);
     this.children.labelLogin = new Label({
@@ -76,10 +72,9 @@ export class ProfileBase extends Block {
       readonly: 'readonly',
     });
 
-
     // first_name
     const mapStateToPropsFirstName = (state: IState) => ({
-      inputValue: state.user?.first_name
+      inputValue: state.user?.first_name,
     });
     const InputFirstName = withStore(mapStateToPropsFirstName)(InputBase);
     this.children.labelFirstName = new Label({
@@ -98,10 +93,9 @@ export class ProfileBase extends Block {
       readonly: 'readonly',
     });
 
-
     // second_name
     const mapStateToPropsSecondName = (state: IState) => ({
-      inputValue: state.user?.second_name
+      inputValue: state.user?.second_name,
     });
     const InputSecondName = withStore(mapStateToPropsSecondName)(InputBase);
     this.children.labelSecondName = new Label({
@@ -120,10 +114,9 @@ export class ProfileBase extends Block {
       readonly: 'readonly',
     });
 
-
     // chat_name
     const mapStateToPropsChatName = (state: IState) => ({
-      inputValue: state.user?.first_name
+      inputValue: state.user?.first_name,
     });
     const InputChatName = withStore(mapStateToPropsChatName)(InputBase);
     this.children.labelChatName = new Label({
@@ -142,10 +135,9 @@ export class ProfileBase extends Block {
       readonly: 'readonly',
     });
 
-
     // phone
     const mapStateToPropsPhone = (state: IState) => ({
-      inputValue: state.user?.phone
+      inputValue: state.user?.phone,
     });
     const InputPhone = withStore(mapStateToPropsPhone)(InputBase);
     this.children.labelPhone = new Label({
@@ -166,51 +158,51 @@ export class ProfileBase extends Block {
 
     this.children.backToChats = new UnderButtonLink({
       styles: {
-        underButtonClass: 'change-data back-to-chats'
+        underButtonClass: 'change-data back-to-chats',
       },
       underButtonText: 'Назад к чатам',
       events: {
         click: () => {
           router.go(AddressPaths.Chats);
-        }
-      }
+        },
+      },
     });
     // changeDataLink
     this.children.changeDataLink = new UnderButtonLink({
       styles: {
-        underButtonClass: 'change-data'
+        underButtonClass: 'change-data',
       },
       underButtonText: 'Изменить данные',
       events: {
         click: () => {
-          router.go(AddressPaths.ProfileChangeData)
-        }
-      }
+          router.go(AddressPaths.ProfileChangeData);
+        },
+      },
     });
     // changePasswdLink
     this.children.changePasswdLink = new UnderButtonLink({
       styles: {
-        underButtonClass: 'change-data change-passwd'
+        underButtonClass: 'change-data change-passwd',
       },
       underButtonText: 'Изменить пароль',
       events: {
         click: () => {
           router.go(AddressPaths.ProfileChangePasswd);
-        }
-      }
+        },
+      },
     });
     // logoutLink
     this.children.logoutLink = new UnderButtonLink({
       styles: {
-        underButtonClass: 'change-data logout'
+        underButtonClass: 'change-data logout',
       },
       underButtonText: 'Выйти',
       events: {
         click: (e: Event) => {
           AuthController.logout();
           e.preventDefault();
-        }
-      }
+        },
+      },
     });
   }
 
@@ -219,10 +211,9 @@ export class ProfileBase extends Block {
   }
 }
 
-
 const mapStateToPropsProfile = (state: IState) => ({
   imgRef: state.user?.avatar,
-  displayName: state.user?.first_name
+  displayName: state.user?.first_name,
 });
 
 export const Profile = withStore(mapStateToPropsProfile)(ProfileBase);

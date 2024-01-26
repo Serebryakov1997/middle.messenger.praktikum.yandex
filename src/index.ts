@@ -11,18 +11,18 @@ import {
   ProfileChangePasswd,
 } from './views';
 
-
 document.addEventListener('DOMContentLoaded', async () => {
   router
     .use(new Login(), AddressPaths.SignIn)
-    .use(new Chats(), AddressPaths.Chats)
+    .use(new Chats({}), AddressPaths.Chats)
     .use(new Register(), AddressPaths.SignUp)
     .use(new Profile({}), AddressPaths.Profile)
     .use(new ProfileChangeData({}), AddressPaths.ProfileChangeData)
-    .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd)
+    .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd);
 
   let isProtectedRoute = true;
 
+  /* eslint default-case: "off" */
   switch (window.location.pathname) {
     case AddressPaths.SignIn:
     case AddressPaths.SignUp:

@@ -17,7 +17,6 @@ import {
 import { AuthController } from '../../../controllers/auth-controller';
 import { Block, router } from '../../../core';
 
-
 export class Register extends Block {
   _formData: FormData;
 
@@ -26,7 +25,7 @@ export class Register extends Block {
       styles: {
         registerContainerClass: 'register-container',
         registerHeaderClass: 'register-header',
-        registerPayloadClass: 'register-payload'
+        registerPayloadClass: 'register-payload',
       },
       registerHeaderName: 'Регистрация',
     });
@@ -48,12 +47,15 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('email', (<HTMLInputElement>e.target).value);
-            inputValidation(e, emailValidator,
+            inputValidation(
+              e,
+              emailValidator,
               {
                 validError: this.children.validErrorEmail as Block,
                 input: this.children.inputEmail as Block,
                 button: this.children.registerButton as Block,
-              });
+              },
+            );
           },
         },
       }),
@@ -77,12 +79,15 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('login', (<HTMLInputElement>e.target).value);
-            inputValidation(e, loginValidator,
+            inputValidation(
+              e,
+              loginValidator,
               {
                 validError: this.children.validErrorLogin as Block,
                 input: this.children.inputLogin as Block,
                 button: this.children.registerButton as Block,
-              });
+              },
+            );
           },
         },
       }),
@@ -108,12 +113,15 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('first_name', (<HTMLInputElement>e.target).value);
-            inputValidation(e, firstNameValidator,
+            inputValidation(
+              e,
+              firstNameValidator,
               {
-                validError: <Block>this.children.validErrorName,
-                input: <Block>this.children.inputName,
-                button: <Block>this.children.registerButton,
-              });
+                validError: <Block> this.children.validErrorName,
+                input: <Block> this.children.inputName,
+                button: <Block> this.children.registerButton,
+              },
+            );
           },
         },
       }),
@@ -139,12 +147,15 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('second_name', (<HTMLInputElement>e.target).value);
-            inputValidation(e, secondNameValidator,
+            inputValidation(
+              e,
+              secondNameValidator,
               {
-                validError: <Block>this.children.validErrorSurName,
-                input: <Block>this.children.inputSurName,
-                button: <Block>this.children.registerButton,
-              });
+                validError: <Block> this.children.validErrorSurName,
+                input: <Block> this.children.inputSurName,
+                button: <Block> this.children.registerButton,
+              },
+            );
           },
         },
       }),
@@ -170,12 +181,15 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('phone', (<HTMLInputElement>e.target).value);
-            inputValidation(e, phoneValidator,
+            inputValidation(
+              e,
+              phoneValidator,
               {
-                validError: <Block>this.children.validErrorPhone,
-                input: <Block>this.children.inputPhone,
-                button: <Block>this.children.registerButton,
-              });
+                validError: <Block> this.children.validErrorPhone,
+                input: <Block> this.children.inputPhone,
+                button: <Block> this.children.registerButton,
+              },
+            );
           },
         },
       }),
@@ -198,40 +212,49 @@ export class Register extends Block {
         events: {
           blur: (e: Event) => {
             this._formData.set('password', (<HTMLInputElement>e.target).value);
-            inputValidation(e, passwdValidator,
+            inputValidation(
+              e,
+              passwdValidator,
               {
-                validError: <Block>this.children.validErrorPasswd,
-                input: <Block>this.children.inputPasswd,
-                button: <Block>this.children.registerButton,
-              });
+                validError: <Block> this.children.validErrorPasswd,
+                input: <Block> this.children.inputPasswd,
+                button: <Block> this.children.registerButton,
+              },
+            );
 
             const repeatPasswd = this._formData.get('repeat_password');
             if (repeatPasswd) {
               const password = this._formData.get('password');
               if (password !== repeatPasswd) {
                 validationError({
-                  validError: <Block>this.children.validErrorRepeatPasswd,
-                  input: <Block>this.children.inputPasswd,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorRepeatPasswd,
+                  input: <Block> this.children.inputPasswd,
+                  button: <Block> this.children.registerButton,
                 }, '');
                 validationError({
-                  validError: <Block>this.children.validErrorRepeatPasswd,
-                  input: <Block>this.children.inputRepeatPasswd,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorRepeatPasswd,
+                  input: <Block> this.children.inputRepeatPasswd,
+                  button: <Block> this.children.registerButton,
                 }, 'Пароли не совпадают');
               } else {
-                inputValidation(e, passwdValidator,
+                inputValidation(
+                  e,
+                  passwdValidator,
                   {
-                    validError: <Block>this.children.validErrorRepeatPasswd,
-                    input: <Block>this.children.inputPasswd,
-                    button: <Block>this.children.registerButton,
-                  });
-                inputValidation(e, passwdValidator,
+                    validError: <Block> this.children.validErrorRepeatPasswd,
+                    input: <Block> this.children.inputPasswd,
+                    button: <Block> this.children.registerButton,
+                  },
+                );
+                inputValidation(
+                  e,
+                  passwdValidator,
                   {
-                    validError: <Block>this.children.validErrorRepeatPasswd,
-                    input: <Block>this.children.inputRepeatPasswd,
-                    button: <Block>this.children.registerButton,
-                  });
+                    validError: <Block> this.children.validErrorRepeatPasswd,
+                    input: <Block> this.children.inputRepeatPasswd,
+                    button: <Block> this.children.registerButton,
+                  },
+                );
               }
             }
           },
@@ -261,28 +284,34 @@ export class Register extends Block {
             const repeat_password = this._formData.get('repeat_password');
             if (passwd !== repeat_password) {
               validationError({
-                validError: <Block>this.children.validErrorRepeatPasswd,
-                input: <Block>this.children.inputPasswd,
-                button: <Block>this.children.registerButton,
+                validError: <Block> this.children.validErrorRepeatPasswd,
+                input: <Block> this.children.inputPasswd,
+                button: <Block> this.children.registerButton,
               }, '');
               validationError({
-                validError: <Block>this.children.validErrorRepeatPasswd,
-                input: <Block>this.children.inputRepeatPasswd,
-                button: <Block>this.children.registerButton,
+                validError: <Block> this.children.validErrorRepeatPasswd,
+                input: <Block> this.children.inputRepeatPasswd,
+                button: <Block> this.children.registerButton,
               }, 'Пароли не совпадают');
             } else {
-              inputValidation(e, passwdValidator,
+              inputValidation(
+                e,
+                passwdValidator,
                 {
-                  validError: <Block>this.children.validErrorRepeatPasswd,
-                  input: <Block>this.children.inputPasswd,
-                  button: <Block>this.children.registerButton,
-                });
-              inputValidation(e, passwdValidator,
+                  validError: <Block> this.children.validErrorRepeatPasswd,
+                  input: <Block> this.children.inputPasswd,
+                  button: <Block> this.children.registerButton,
+                },
+              );
+              inputValidation(
+                e,
+                passwdValidator,
                 {
-                  validError: <Block>this.children.validErrorRepeatPasswd,
-                  input: <Block>this.children.inputRepeatPasswd,
-                  button: <Block>this.children.registerButton,
-                });
+                  validError: <Block> this.children.validErrorRepeatPasswd,
+                  input: <Block> this.children.inputRepeatPasswd,
+                  button: <Block> this.children.registerButton,
+                },
+              );
             }
           },
         },
@@ -298,7 +327,7 @@ export class Register extends Block {
         buttonName: 'Зарегистрироваться',
         styles: {
           buttonClass: 'register-button',
-          buttonNameClass: 'auth-button-name register-button-name'
+          buttonNameClass: 'auth-button-name register-button-name',
         },
         events: {
           click: (e: Event) => {
@@ -318,7 +347,7 @@ export class Register extends Block {
                 second_name,
                 phone,
                 password,
-                repeat_password
+                repeat_password,
               },
               {
                 email: emailValidator,
@@ -331,39 +360,39 @@ export class Register extends Block {
               },
               {
                 email: {
-                  validError: <Block>this.children.validErrorEmail,
-                  input: <Block>this.children.inputEmail,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorEmail,
+                  input: <Block> this.children.inputEmail,
+                  button: <Block> this.children.registerButton,
                 },
                 login: {
-                  validError: <Block>this.children.validErrorLogin,
-                  input: <Block>this.children.inputLogin,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorLogin,
+                  input: <Block> this.children.inputLogin,
+                  button: <Block> this.children.registerButton,
                 },
                 first_name: {
-                  validError: <Block>this.children.validErrorName,
-                  input: <Block>this.children.inputName,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorName,
+                  input: <Block> this.children.inputName,
+                  button: <Block> this.children.registerButton,
                 },
                 second_name: {
-                  validError: <Block>this.children.validErrorSurName,
-                  input: <Block>this.children.inputSurName,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorSurName,
+                  input: <Block> this.children.inputSurName,
+                  button: <Block> this.children.registerButton,
                 },
                 phone: {
-                  validError: <Block>this.children.validErrorPhone,
-                  input: <Block>this.children.inputPhone,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorPhone,
+                  input: <Block> this.children.inputPhone,
+                  button: <Block> this.children.registerButton,
                 },
                 password: {
-                  validError: <Block>this.children.validErrorPasswd,
-                  input: <Block>this.children.inputPasswd,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorPasswd,
+                  input: <Block> this.children.inputPasswd,
+                  button: <Block> this.children.registerButton,
                 },
                 repeat_password: {
-                  validError: <Block>this.children.validErrorRepeatPasswd,
-                  input: <Block>this.children.inputRepeatPasswd,
-                  button: <Block>this.children.registerButton,
+                  validError: <Block> this.children.validErrorRepeatPasswd,
+                  input: <Block> this.children.inputRepeatPasswd,
+                  button: <Block> this.children.registerButton,
                 },
               },
               e,
@@ -380,7 +409,7 @@ export class Register extends Block {
                 login,
                 phone,
                 password,
-                repeat_password
+                repeat_password,
               });
               e.preventDefault();
             }
@@ -396,8 +425,8 @@ export class Register extends Block {
         events: {
           click: () => {
             router.go('/');
-          }
-        }
+          },
+        },
       }),
     };
   }

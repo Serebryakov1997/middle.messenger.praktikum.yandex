@@ -2,7 +2,6 @@ import './chat.css';
 import { Block } from '../../../core';
 import { chatTmpl } from './chat.tmpl';
 
-
 export interface ChatProps {
   [key: string]: string | {} | undefined | number;
   styles: {
@@ -24,7 +23,6 @@ export interface ChatProps {
 }
 
 export class Chat extends Block {
-
   constructor(props: ChatProps) {
     super(props);
   }

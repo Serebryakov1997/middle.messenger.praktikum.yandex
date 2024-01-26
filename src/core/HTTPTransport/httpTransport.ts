@@ -12,7 +12,7 @@ const MESSAGE = {
   300: 'Redirect failed',
   400: 'Access error',
   500: 'Internal server error',
-}
+};
 
 type Options = {
   data?: Record<string, unknown> | FormData,
@@ -45,7 +45,7 @@ export class HTTPTransport {
   readonly TIMEOUT = 5000;
 
   constructor(mainPath: string) {
-    this.baseUrl = 'https://ya-praktikum.tech/api/v2' + mainPath;
+    this.baseUrl = `https://ya-praktikum.tech/api/v2${mainPath}`;
   }
 
   get<Response>(url: string, options?: Options, path?: string): Promise<Response> {
@@ -60,7 +60,7 @@ export class HTTPTransport {
       this.TIMEOUT,
       { ...handledOptions, method: Method.GET },
     );
-  };
+  }
 
   put<Response>(url: string, options?: Options): Promise<Response> {
     return this.request<Response>(
@@ -86,6 +86,7 @@ export class HTTPTransport {
     );
   }
 
+  /* eslint class-methods-use-this: "off" */
   request<Response>(
     url: string,
     timeout: number,
@@ -95,7 +96,7 @@ export class HTTPTransport {
       data,
       headers,
       method,
-      withCredentials = true
+      withCredentials = true,
     } = options;
 
     return new Promise((resolve, reject) => {
@@ -131,5 +132,5 @@ export class HTTPTransport {
         xhr.send(JSON.stringify(data));
       }
     });
-  };
+  }
 }

@@ -68,7 +68,6 @@ export class Block {
   /* eslint class-methods-use-this: "off" */
   protected init() { }
 
-
   _componentDidMount() {
     this.componentDidMount(this.props);
   }
@@ -104,7 +103,6 @@ export class Block {
     Object.assign(this.props, nextProps);
   };
 
-
   _getChildren(propsAndChildren: Record<string, unknown>) {
     const children: Record<string, Block | Block[]> = {};
     const props: Record<string, unknown> = {};
@@ -112,7 +110,7 @@ export class Block {
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
-      } else if (Array.isArray(value) && value.every(v => v instanceof Block)) {
+      } else if (Array.isArray(value) && value.every((v) => v instanceof Block)) {
         children[key] = value;
       } else {
         props[key] = value;
@@ -122,7 +120,6 @@ export class Block {
     return { children, props };
   }
 
-
   compile(template: string, props: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
@@ -130,7 +127,7 @@ export class Block {
     Object.entries(this.children).forEach(([name, child]) => {
       if (Array.isArray(child)) {
         Object.values(child).forEach((value) => {
-          fragmentsArr += `<div data-id="${value.id}"></div>`
+          fragmentsArr += `<div data-id="${value.id}"></div>`;
         });
         propsAndStubs[name] = fragmentsArr;
       } else {
@@ -164,7 +161,7 @@ export class Block {
 
   _addEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>>this.props.events;
+      const events = <Record<string, (e: Event) => void>> this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {
@@ -176,7 +173,7 @@ export class Block {
 
   _removeEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>>this.props.events;
+      const events = <Record<string, (e: Event) => void>> this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {

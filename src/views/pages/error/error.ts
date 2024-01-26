@@ -20,14 +20,14 @@ export class PageError extends Block {
   protected init(): void {
     this.children.linkToChats = new UnderButtonLink({
       styles: {
-        underButtonClass: 'link-to-chats'
+        underButtonClass: 'link-to-chats',
       },
       underButtonText: 'Назад к чатам',
       events: {
         click: () => {
           router.go('/messenger');
-        }
-      }
+        },
+      },
     });
   }
 

@@ -1,9 +1,9 @@
 import { HTTPTransport } from '../core';
 
 export abstract class API {
-    http: HTTPTransport;
+  http: HTTPTransport;
 
-    constructor(path: string) {
-        this.http = new HTTPTransport(path);
-    }
+  constructor(path: string) {
+    this.http = new HTTPTransport(path);
+  }
 }

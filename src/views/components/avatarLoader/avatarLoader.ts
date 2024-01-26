@@ -15,7 +15,7 @@ export class AvatarLoader extends Block {
       styles: {
         avatarLoaderClass: 'avatar-loader',
         avatarInputClass: 'avatar-input-class',
-        inputSubmitClass: 'input-submit-class'
+        inputSubmitClass: 'input-submit-class',
       },
       avatarLoaderId: 'avatarLoaderId',
       avatarId: 'avatar',
@@ -23,7 +23,7 @@ export class AvatarLoader extends Block {
       avatarInputName: 'avatar',
       avatarInputAccept: 'image/*',
       inputSubmitType: 'submit',
-      ...props
+      ...props,
     });
   }
 

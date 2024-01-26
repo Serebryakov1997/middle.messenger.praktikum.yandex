@@ -13,7 +13,6 @@ interface IInputBaseProps {
 }
 
 export class InputBase extends Block {
-
   constructor(props: IInputBaseProps) {
     super(props);
   }

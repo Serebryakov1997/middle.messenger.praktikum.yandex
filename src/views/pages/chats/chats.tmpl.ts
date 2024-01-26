@@ -19,4 +19,3 @@ export const chatsTmpl = `
         {{{selectedChatArea}}}
     </form>
 `;
-

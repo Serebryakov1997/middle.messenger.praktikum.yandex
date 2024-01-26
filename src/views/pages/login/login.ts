@@ -84,7 +84,7 @@ export class Login extends Block {
         buttonName: 'Войти',
         styles: {
           buttonClass: 'login-button',
-          buttonNameClass: 'auth-button-name'
+          buttonNameClass: 'auth-button-name',
         },
         events: {
           click: (e: Event) => {
@@ -93,7 +93,7 @@ export class Login extends Block {
             const isValid = clickValidation(
               {
                 login,
-                password
+                password,
               },
               {
                 login: loginValidator,
@@ -101,14 +101,14 @@ export class Login extends Block {
               },
               {
                 login: {
-                  validError: <Block>this.children.validErrorLogin,
-                  input: <Block>this.children.inputLogin,
-                  button: <Block>this.children.loginButton,
+                  validError: <Block> this.children.validErrorLogin,
+                  input: <Block> this.children.inputLogin,
+                  button: <Block> this.children.loginButton,
                 },
                 password: {
-                  validError: <Block>this.children.validErrorPasswd,
-                  input: <Block>this.children.inputPasswd,
-                  button: <Block>this.children.loginButton,
+                  validError: <Block> this.children.validErrorPasswd,
+                  input: <Block> this.children.inputPasswd,
+                  button: <Block> this.children.loginButton,
                 },
               },
               e,
@@ -132,8 +132,8 @@ export class Login extends Block {
         events: {
           click: () => {
             router.go('/sign-up');
-          }
-        }
+          },
+        },
       }),
     };
   }

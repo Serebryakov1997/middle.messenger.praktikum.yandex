@@ -31,10 +31,9 @@ export function clickValidation(
     });
     event.preventDefault();
     return false;
-  } else {
-    Object.keys(isValidArr).forEach((key) => {
-      backUpForValid(children[key]);
-    });
-    return true;
   }
+  Object.keys(isValidArr).forEach((key) => {
+    backUpForValid(children[key]);
+  });
+  return true;
 }

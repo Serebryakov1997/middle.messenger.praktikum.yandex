@@ -13,16 +13,16 @@ interface IClickableTextProps {
 }
 
 export class ClickableText extends Block {
-    constructor(props: IClickableTextProps) {
-        super({
-            styles: {
-                clickableTextClass: 'clickable-text',
-            },
-            ...props
-        });
-    }
+  constructor(props: IClickableTextProps) {
+    super({
+      styles: {
+        clickableTextClass: 'clickable-text',
+      },
+      ...props,
+    });
+  }
 
-    render(): DocumentFragment {
-        return this.compile(clickableTextTmpl, this.props);
-    }
+  render(): DocumentFragment {
+    return this.compile(clickableTextTmpl, this.props);
+  }
 }

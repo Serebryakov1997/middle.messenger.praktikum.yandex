@@ -8,9 +8,9 @@ import { IState } from '../../../models/interfaces/auth';
 import { SelectedChatAreaBase } from '../../components/selectedChatArea/selectedChatArea';
 import { LegendText } from '../../components/legend';
 
-
 export class ChatsBase extends Block {
   _formData: FormData;
+
   constructor() {
     super({
       styles: {
@@ -22,7 +22,7 @@ export class ChatsBase extends Block {
         chatsListClass: 'chat-list',
         addUserChatWindowClass: 'add-user-chat-window-class',
         displayClass: 'display-area',
-        chatButtonClass: 'chat-button'
+        chatButtonClass: 'chat-button',
       },
       chatsForm: 'chats-form-id',
       chatsSearchBar: 'Поиск',
@@ -31,7 +31,6 @@ export class ChatsBase extends Block {
     });
     this._formData = new FormData();
   }
-
 
   protected init(): void {
     this.children = {
@@ -43,13 +42,13 @@ export class ChatsBase extends Block {
         events: {
           click: (e: Event) => {
             e.preventDefault();
-            (<Block>this.children.chatCreationWindow).show();
-          }
-        }
+            (<Block> this.children.chatCreationWindow).show();
+          },
+        },
       }),
       chatCreationWindow: new ChatCreationWindow({
         styles: {
-          chatCreationWindowClass: 'chat-creation-general'
+          chatCreationWindowClass: 'chat-creation-general',
         },
         windowTitle: 'Создать чат',
         labelName: 'Имя чата',
@@ -58,7 +57,7 @@ export class ChatsBase extends Block {
         windowTitleClass: 'chat-creation-text',
         addUserWindowClass: '',
         chatCreationTextClass: 'chat-creation-text',
-        buttonNameClass: 'button-creation-name'
+        buttonNameClass: 'button-creation-name',
       }),
 
       linkToProfile: new UnderButtonLink({
@@ -69,21 +68,20 @@ export class ChatsBase extends Block {
         events: {
           click: () => {
             router.go(AddressPaths.Profile);
-          }
-        }
+          },
+        },
       }),
     };
   }
 
-
   render(): DocumentFragment {
     if (this.props.chats) {
-      this.children.chatsList = creationChatList(<Record<string, Block>[]>this.props.chats);
+      this.children.chatsList = creationChatList(<Record<string, Block>[]> this.props.chats);
     }
 
     if (this.props.selectedChat) {
-      (<Block>this.children.selectChatLegendText).hide();
-      (<Block>this.children.createChatText).hide();
+      (<Block> this.children.selectChatLegendText).hide();
+      (<Block> this.children.createChatText).hide();
 
       const { messages, currentUserId, selectedChat } = this.props;
 
@@ -93,22 +91,21 @@ export class ChatsBase extends Block {
       if (messages && currentUserId) {
         const selectedChatArea = new SelectedChatAreaBase();
         (<Block>selectedChatArea).setProps({
-          messages, currentUserId, chatId, title, time
+          messages, currentUserId, chatId, title, time,
         });
         this.children.selectedChatArea = selectedChatArea;
-        (<Block>this.children.selectedChatArea).show();
+        (<Block> this.children.selectedChatArea).show();
       }
     }
     return this.compile(chatsTmpl, this.props);
   }
 }
 
-
 const mapStateToProps = (state: IState) => ({
   chats: state.chats,
   selectedChat: state.selectedChat,
   messages: state.messages,
-  currentUserId: state.user?.id
+  currentUserId: state.user?.id,
 });
 
 export const Chats = withStore(mapStateToProps)(ChatsBase);

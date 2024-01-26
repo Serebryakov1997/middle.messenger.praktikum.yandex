@@ -15,6 +15,7 @@
         "default-param-last": 0,
         "no-param-reassign": 0,
         "no-shadow": 0,
+        "prefer-promise-reject-errors": 0,
         "import/extensions": ["error", "ignorePackages", {
             "js": "never",
             "jsx": "never",
