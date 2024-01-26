@@ -44,11 +44,11 @@ export class SelectedChatAreaBase extends Block {
             }),
             deleteUserText: new ClickableText({
                 clickableText: 'Удалить пользователя',
-                createChatsClass: '',
+                createChatsClass: 'delete-user-text',
                 events: {
                     click: (e: Event) => {
                         e.preventDefault();
-                        // (<Block>this.children)
+                        (<Block>this.children.deleteUserFromChatWindow).show();
                     }
                 }
             }),
@@ -59,9 +59,6 @@ export class SelectedChatAreaBase extends Block {
                     click: (e: Event) => {
                         e.preventDefault();
                         const { title } = this.props;
-
-                        console.log('thic.props in deleteChatText: ', this.props);
-                        console.log('this.title: ', title);
 
                         if (title) {
                             const newProps = { chatTitle: title + '?' };
@@ -76,6 +73,17 @@ export class SelectedChatAreaBase extends Block {
                 windowTitle: 'Добавить пользователя',
                 labelName: 'Логин',
                 buttonName: 'Добавить',
+                buttonClass: 'button-creation-chat',
+                windowTitleClass: 'chat-creation-text',
+                addUserWindowClass: ' add-user-window',
+                chatCreationTextClass: 'add-user-window-label',
+                buttonNameClass: 'button-creation-name',
+                otherClass: 'other-class'
+            }),
+            deleteUserFromChatWindow: new ChatCreationWindow({
+                windowTitle: 'Удалить пользователя',
+                labelName: 'Логин',
+                buttonName: 'Удалить',
                 buttonClass: 'button-creation-chat',
                 windowTitleClass: 'chat-creation-text',
                 addUserWindowClass: ' add-user-window',

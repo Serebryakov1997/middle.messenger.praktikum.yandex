@@ -6,6 +6,7 @@ interface MessageProps {
   [key: string]: string | {};
   styles: {
     messageClass: string;
+    textPositionClass: string;
   },
   chat_id: string;
   message: string;

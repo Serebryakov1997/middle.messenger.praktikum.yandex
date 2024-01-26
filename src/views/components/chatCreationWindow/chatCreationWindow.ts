@@ -12,7 +12,11 @@ import { UserController } from '../../../controllers/user-controller';
 
 
 export interface IChatCreationWindow {
-    [key: string]: string | undefined;
+    [key: string]: string | undefined | {};
+    styles?: {
+        chatCreationWindowClass?: string;
+        generalClass?: string;
+    },
     windowTitle: string;
     labelName: string;
     buttonName: string;
@@ -34,7 +38,9 @@ export class ChatCreationWindow extends Block {
     constructor(props: IChatCreationWindow) {
         super({
             styles: {
-                chatCreationWindowClass: 'chat-creation-window' + props.addUserWindowClass,
+                chatCreationWindowClass: props.styles?.chatCreationWindowClass
+                    ? props.styles.chatCreationWindowClass
+                    : 'chat-creation-window' + props.addUserWindowClass,
                 chatCreationTextClass: props.chatCreationTextClass,
                 otherClass: props.otherClass
             },
@@ -115,9 +121,13 @@ export class ChatCreationWindow extends Block {
                 events: {
                     click: (e: Event) => {
                         e.preventDefault();
-                        this.buttonName === 'Создать'
-                            ? this.createChat(e, this._formData)
-                            : this.addUser(e, this._formData);
+                        if (this.buttonName === 'Удалить') {
+                            this.deleteUser(e, this._formData);
+                        } else {
+                            this.buttonName === 'Создать'
+                                ? this.createChat(e, this._formData)
+                                : this.addUser(e, this._formData);
+                        }
                     }
                 }
             })

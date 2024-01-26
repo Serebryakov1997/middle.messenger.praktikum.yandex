@@ -5,15 +5,11 @@ export const chatsTmpl = `
         <input class="{{styles.chatsSearchBarClass}}" placeholder="{{chatsSearchBar}}">
         
         {{{selectChatLegendText}}}
+        {{{createChatText}}}
+        {{{chatCreationWindow}}}
 
         <div class="{{styles.chatsListClass}}">
             {{{chatsList}}}
-        </div>
- 
-        {{{createChatText}}}
-
-        <div class="{{styles.actionWindowClass}}">
-            {{{chatCreationWindow}}}
         </div>
 
         <div class="{{styles.addUserChatWindowClass}}">
@@ -24,7 +20,3 @@ export const chatsTmpl = `
     </form>
 `;
 
-
-// <div class="{{styles.chatDeleteWindowClass}}">
-// {{{chatDeleteWindow}}}
-// </div>

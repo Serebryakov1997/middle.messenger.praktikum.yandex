@@ -5,7 +5,6 @@ import { ChatCreationWindow, ClickableText, UnderButtonLink } from '../../compon
 import { Block, router } from '../../../core';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
-import { ChatDeleteWindow } from '../../components/chatDeleteWindow';
 import { SelectedChatAreaBase } from '../../components/selectedChatArea/selectedChatArea';
 import { LegendText } from '../../components/legend';
 
@@ -49,6 +48,9 @@ export class ChatsBase extends Block {
         }
       }),
       chatCreationWindow: new ChatCreationWindow({
+        styles: {
+          chatCreationWindowClass: 'chat-creation-general'
+        },
         windowTitle: 'Создать чат',
         labelName: 'Имя чата',
         buttonName: 'Создать',

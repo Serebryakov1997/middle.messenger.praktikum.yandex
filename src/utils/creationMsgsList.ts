@@ -24,7 +24,8 @@ export function creationMsgsList(
 
                     const messageComponent = new Message({
                         styles: {
-                            messageClass: <string>messageClass
+                            messageClass: <string>messageClass,
+                            textPositionClass: 'text-in-block'
                         },
                         chat_id: <string>chat_id,
                         message: <string>content

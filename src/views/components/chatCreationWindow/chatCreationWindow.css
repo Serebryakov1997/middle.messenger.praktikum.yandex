@@ -1,3 +1,26 @@
+.chat-creation-general {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  height: 50%;
+  width: 40%;
+  border-radius: 5%;
+  background-color: #d9d9d9;
+  filter: brightness(0.9);
+  z-index: 3;
+}
+.chat-creation-general .chat-creation-text {
+  top: 10%;
+  left: 42%;
+  font-size: large;
+}
+.chat-creation-general .add-user-window-label {
+  top: 10%;
+  left: 32%;
+  font-size: large;
+}
+
 .chat-creation-window {
   display: none;
   position: relative;

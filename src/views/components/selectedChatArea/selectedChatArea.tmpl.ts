@@ -8,6 +8,7 @@ export const selectedChatAreaTmpl = `
 
     {{{chatDeleteWindow}}}
     {{{addUserToChatWindow}}}
+    {{{deleteUserFromChatWindow}}}
 
     <div class="{{styles.msgListClass}}">
         {{{msgsList}}}
