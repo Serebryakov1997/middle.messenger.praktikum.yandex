@@ -15,6 +15,7 @@
     .avatar-input-class {
         background-color: colors.$avatar-loader-back;
         border: none;
+
         @include main_base.block-center-position;
     }
 
