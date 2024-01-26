@@ -1,5 +1,6 @@
 @use '../../base_styles/auth/colors/auth_colors';
 @use '../../base_styles/auth/auth';
+@use '../underButtonLink/colors/under_link_colors' as colors;
 
 .profile-link {
     display: block;
@@ -8,6 +9,39 @@
     left: 20px;
     font-size: 15px;
     font-weight: bold;
+}
+
+.change-data {
+    display: block;
+    top: 680px;
+    left: 80px;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: left;
+    color: colors.$change-data-color;
+}
+
+.back-to-chats {
+    left: 72%;
+}
+
+.change-passwd {
+    top: 720px;
+}
+
+.logout {
+    top: 760px;
+    color: colors.$logout-color;
+}
+
+.link-to-chats {
+    display: block;
+    text-align: center;
+    left: 30px;
+    color: colors.$link-color;
+    font-size: 20px;
+    line-height: 11px;
+    text-decoration: none;
 }
 
 a {

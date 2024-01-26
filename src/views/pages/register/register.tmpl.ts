@@ -1,5 +1,5 @@
 export const registerTmpl = `
-    <form action="{{buttonLink}}">
+    <form>
         <div class="{{styles.registerContainerClass}}">
             <div class="{{styles.registerHeaderClass}}">{{registerHeaderName}}</div>
             <div class="{{styles.registerPayloadClass}}">

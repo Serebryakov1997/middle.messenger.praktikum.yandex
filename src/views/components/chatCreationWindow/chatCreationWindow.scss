@@ -1,0 +1,55 @@
+@import './colors/colors';
+
+.chat-creation-general {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    height: 50%;
+    width: 40%;
+    border-radius: 5%;
+    background-color: $window-color;
+    filter: brightness(0.9);
+    z-index: 3;
+
+    .chat-creation-text {
+        top: 10%;
+        left: 42%;
+        font-size: large;
+    }
+
+    .add-user-window-label {
+        top: 10%;
+        left: 32%;
+        font-size: large;
+    }
+}
+
+.chat-creation-window {
+    display: none;
+    position: relative;
+    margin-top: 20%;
+    left: 30%;
+    height: 250%;
+    width: 50%;
+    border-radius: 5%;
+    background-color: $window-color;
+    filter: brightness(0.9);
+    z-index: 3;
+
+    .chat-creation-text {
+        top: 10%;
+        left: 42%;
+        font-size: large;
+    }
+
+    .add-user-window-label {
+        top: 10%;
+        left: 32%;
+        font-size: large;
+    }
+}
+
+.add-user-window {
+    top:10%;
+}

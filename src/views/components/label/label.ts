@@ -1,5 +1,5 @@
+import { Block } from '../../../core';
 import './label.css';
-import { Block } from '../../../utils';
 import { labelTmpl } from './label.tmpl';
 
 interface LabelInterface {
@@ -13,7 +13,7 @@ interface LabelInterface {
 
 export class Label extends Block {
   constructor(props: LabelInterface) {
-    super('label', props);
+    super(props);
   }
 
   render(): DocumentFragment {

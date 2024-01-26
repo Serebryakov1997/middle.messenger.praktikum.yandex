@@ -1,0 +1,11 @@
+@use './colors/chats_colors';
+
+.select-chat-legend {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 1050px;
+    font-size: 25px;
+    font-weight: bold;
+    color: chats_colors.$chats-legend-color;
+}

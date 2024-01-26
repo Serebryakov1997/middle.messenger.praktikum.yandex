@@ -1,8 +1,10 @@
-export { Button } from './button';
-export { Input } from './input';
+export { ButtonBase } from './button';
+export { InputBase } from './input';
 export { Label } from './label';
 export { UnderButtonLink } from './underButtonLink';
 export { ValidError } from './validError';
 export { Chat } from './chat';
 export { Message } from './message';
 export { AvatarLoader } from './avatarLoader';
+export { ClickableText } from './clickableText';
+export { ChatCreationWindow } from './chatCreationWindow';
