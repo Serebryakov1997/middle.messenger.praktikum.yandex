@@ -1,5 +1,5 @@
 import { ChatController } from '../controllers/chat-controller';
-import { Block } from '../core';
+import { Block, store } from '../core';
 import { Chat, ChatProps } from '../views/components/chat/chat';
 
 export function creationChatList(chatsResponse: Array<Record<string, unknown>>): Block[] {
@@ -49,32 +49,12 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
             time,
             events: {
                 click: () => {
-                    const selectChatLegentEl = document.getElementById('select-chat-legend-id');
-                    if (selectChatLegentEl) {
-                        selectChatLegentEl.style.display = 'none';
+                    const chatData = {
+                        chatId,
+                        title,
+                        time
                     }
-
-                    const chatArea = document.getElementById('chat-area-id');
-                    chatArea!.style.display = 'block';
-
-                    const createChatText = document.getElementById('create-chat-id');
-                    createChatText!.style.display = 'none';
-
-                    const chatAreaName = document.getElementById('chat-area-name-id');
-                    chatAreaName!.textContent = title;
-
-                    const chatAreaLastTime = document.getElementById('chat-area-time-id');
-                    chatAreaLastTime!.textContent = time;
-
-                    const messages = document.getElementsByClassName('msg-in-chat');
-                    Object.values(messages).forEach((value) => {
-                        const chatIdFromMsg = value.getAttribute('id');
-                        if (chatId !== chatIdFromMsg) {
-                            (<HTMLElement>value).style.display = 'none';
-                        } else {
-                            (<HTMLElement>value).style.display = 'block';
-                        }
-                    })
+                    store.set('selectedChat', chatData);
                 }
             }
         });

@@ -91,6 +91,7 @@ button {
     height: 20%;
     width: 30%;
     background-color: button_colors.$button-action-chat-color;
+    cursor: pointer;
 
     .button-name {
         top: 35%;
@@ -98,5 +99,18 @@ button {
         font-size: large;
         font-weight: 600;
         color: button_colors.$button-action-text-color;
+    }
+}
+
+.close-button {
+    top: 2%;
+    left: 82%;
+    width: 8%;
+    background-color: button_colors.$window-color;
+
+    .button-name {
+        top: 20%;
+        left: 37%;
+        font-size: 30px;
     }
 }

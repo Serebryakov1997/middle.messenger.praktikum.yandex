@@ -1,7 +1,11 @@
 import { Block } from '../core';
 import { Message } from '../views/components';
 
-export function creationMsgsList(messagesProps: Array<Record<string, unknown>>, currentUserId: number): Block[] {
+export function creationMsgsList(
+    messagesProps: Array<Record<string, unknown>>,
+    currentUserId: number,
+    selectedChatId: number
+): Block[] {
     const msgsList: Block[] = [];
 
     Object.values(messagesProps).forEach((messages) => {
@@ -16,14 +20,17 @@ export function creationMsgsList(messagesProps: Array<Record<string, unknown>>, 
                 if (user_id !== currentUserId) {
                     messageClass += ' other-user-msg';
                 }
-                const messageComponent = new Message({
-                    styles: {
-                        messageClass: <string>messageClass
-                    },
-                    chat_id: <string>chat_id,
-                    message: <string>content
-                });
-                msgsList.push(messageComponent);
+                if (selectedChatId === Number(chat_id)) {
+
+                    const messageComponent = new Message({
+                        styles: {
+                            messageClass: <string>messageClass
+                        },
+                        chat_id: <string>chat_id,
+                        message: <string>content
+                    });
+                    msgsList.push(messageComponent);
+                }
             }
         })
     });

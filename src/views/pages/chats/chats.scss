@@ -17,20 +17,20 @@
         }
     }
 
-    .msgs-list {
-        position: relative;
-        top: 90%;
-    }
+    // .msgs-list {
+    //     position: relative;
+    //     top: 90%;
+    // }
 
-    .chat-button {
-        left: 10%;
-    }
+    // .chat-button {
+    //     left: 10%;
+    // }
 
-    .valid-err-msg {
-        position: absolute;
-        top: 550%;
-        left: -3%;
-    }
+    // .valid-err-msg {
+    //     position: absolute;
+    //     top: 550%;
+    //     left: -3%;
+    // }
 
     .chats-search-bar {
         display: block;
@@ -51,15 +51,15 @@
         }
     }
 
-    .select-chat-legend {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 1050px;
-        font-size: 25px;
-        font-weight: bold;
-        color: chats_colors.$chats-legend-color;
-    }
+    // .select-chat-legend {
+    //     display: block;
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 1050px;
+    //     font-size: 25px;
+    //     font-weight: bold;
+    //     color: chats_colors.$chats-legend-color;
+    // }
 
     .action-window-class {
         display: block;
@@ -86,33 +86,33 @@
         height: 100%;
     }
 
-    .chat-area {
-        display: none;
-        position: absolute;
-        top: 8px;
-        left: 508px;
-        height: 151px;
-        width: 1400px;
-        border: 1px solid chats_colors.$chats-border-color;
-        background-color: main_colors.$back-color;
+    // .chat-area {
+    //     display: none;
+    //     position: absolute;
+    //     top: 8px;
+    //     left: 508px;
+    //     height: 151px;
+    //     width: 1400px;
+    //     border: 1px solid chats_colors.$chats-border-color;
+    //     background-color: main_colors.$back-color;
 
-        .chat-area-name {
-            display: block;
-            position: relative;
-            top: 55px;
-            left: 30px;
-            text-align: left;
-            font-size: 23px;
-            font-weight: bold;
-        }
+    //     .chat-area-name {
+    //         display: block;
+    //         position: relative;
+    //         top: 55px;
+    //         left: 30px;
+    //         text-align: left;
+    //         font-size: 23px;
+    //         font-weight: bold;
+    //     }
 
-        .chat-last-time {
-            display: block;
-            position: relative;
-            top: 65px;
-            left: 30px;
-            text-align: left;
-            font-size: 20px;
-        }
-    }
+    //     .chat-last-time {
+    //         display: block;
+    //         position: relative;
+    //         top: 65px;
+    //         left: 30px;
+    //         text-align: left;
+    //         font-size: 20px;
+    //     }
+    // }
 }

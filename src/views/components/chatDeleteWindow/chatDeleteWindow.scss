@@ -2,13 +2,15 @@
 
 .chat-delete-window {
     display: none;
-    position: relative;
-    top: 20%;
-    left: 190%;
-    height: 40%;
-    width: 130%;
+    position: absolute;
+    top: 220%;
+    left: 30%;
+    height: 250%;
+    width: 50%;
     border-radius: 5%;
     background-color: $window-color;
+    z-index: 3;
+    filter: brightness(0.9);
 
     .delete-text {
         top: 30%;

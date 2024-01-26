@@ -26,11 +26,11 @@ export class ChatDeleteWindow extends Block {
                 },
                 buttonName: 'Да',
                 events: {
-                    click: () => {
+                    click: (e: Event) => {
+                        e.preventDefault();
                         const chatId = getChatId();
                         ChatController.deleteChat({ chatId: Number(chatId) })
-                        const chatDelWindow = document.getElementById('chat-delete-window-id');
-                        chatDelWindow!.style.display = 'none';
+                        this.hide();
                     }
                 }
             }),
@@ -40,10 +40,11 @@ export class ChatDeleteWindow extends Block {
                     buttonNameClass: 'button-name'
                 },
                 buttonName: 'Нет',
+                buttonType: 'submit',
                 events: {
-                    click: () => {
-                        const chatDelWindow = document.getElementById('chat-delete-window-id');
-                        chatDelWindow!.style.display = 'none';
+                    click: (e: Event) => {
+                        e.preventDefault();
+                        this.hide();
                     }
                 }
             })

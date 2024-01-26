@@ -37,6 +37,11 @@ export interface IState {
     chats?: IChat;
     image?: string;
     messages?: Record<number, IMessage[]>;
+    selectedChat?: {
+        chatId: number,
+        title: string,
+        time: string
+    };
 }
 
 export interface IInput {

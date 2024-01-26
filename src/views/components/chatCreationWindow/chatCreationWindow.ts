@@ -60,6 +60,19 @@ export class ChatCreationWindow extends Block {
 
     protected init() {
         this.children = {
+            closeButton: new ButtonBase({
+                styles: {
+                    buttonClass: 'close-button',
+                    buttonNameClass: 'button-name'
+                },
+                buttonName: 'x',
+                events: {
+                    click: (e: Event) => {
+                        e.preventDefault();
+                        this.hide();
+                    }
+                }
+            }),
             chatCreationLabel: new Label({
                 styles: {
                     labelClass: 'chat-creation-label'
@@ -71,6 +84,7 @@ export class ChatCreationWindow extends Block {
                 styles: {
                     inputClass: 'chat-creation-input'
                 },
+                inputType: 'text',
                 events: {
                     blur: (e: Event) => {
                         const inputValue = (<HTMLInputElement>e.target).value;

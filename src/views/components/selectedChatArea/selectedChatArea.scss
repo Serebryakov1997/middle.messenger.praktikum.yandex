@@ -1,0 +1,55 @@
+@use '../../base_styles/main/colors/main_colors';
+@use './colors/chats_colors';
+
+.chat-area {
+    display: none;
+    position: absolute;
+    top: 8px;
+    left: 508px;
+    height: 151px;
+    width: 1400px;
+    border: 1px solid chats_colors.$chats-border-color;
+    background-color: main_colors.$back-color;
+
+    .chat-area-name {
+        display: block;
+        position: relative;
+        top: 55px;
+        left: 30px;
+        text-align: left;
+        font-size: 23px;
+        font-weight: bold;
+    }
+
+    .chat-last-time {
+        display: block;
+        position: relative;
+        top: 65px;
+        left: 30px;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    .msgs-list {
+        position: absolute;
+        top: 110%;
+        left: 0%;
+        height: 470%;
+        width: 100%;
+        overflow: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .chat-button {
+        left: 10%;
+    }
+
+    .valid-err-msg {
+        position: absolute;
+        top: 550%;
+        left: -3%;
+    }
+}

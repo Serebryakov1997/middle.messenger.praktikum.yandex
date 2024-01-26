@@ -3,7 +3,8 @@ export const chatsTmpl = `
         {{{linkToProfile}}}
         
         <input class="{{styles.chatsSearchBarClass}}" placeholder="{{chatsSearchBar}}">
-        <a id="{{selectChatLegendId}}" class="{{styles.selectChatLegendClass}}">{{selectChatLegend}}</a>
+        
+        {{{selectChatLegendText}}}
 
         <div class="{{styles.chatsListClass}}">
             {{{chatsList}}}
@@ -15,30 +16,15 @@ export const chatsTmpl = `
             {{{chatCreationWindow}}}
         </div>
 
-        <div class="{{styles.chatDeleteWindowClass}}">
-            {{{chatDeleteWindow}}}
-        </div>
-
         <div class="{{styles.addUserChatWindowClass}}">
             {{{addUserToChatWindow}}}
         </div>
 
-        <div id="{{chatAreaId}}" class="{{styles.chatAreaClass}}">
-            <a id="{{chatAreaNameId}}" class="{{styles.chatAreaNameClass}}"></a>
-            <a id="{{chatAreaLastTimeId}}" class="{{styles.chatLastTimeClass}}"></a>
-            {{{addUserText}}}
-            {{{deleteChatText}}}
-
-            <div class="{{styles.msgListClass}}">
-                {{{msgsList}}}
-            </div>
-            
-            {{{chatInput}}}
-
-            <div class="{{styles.valieErrMsgClass}}">
-                {{{validErrorMsg}}}
-            </div>
-            {{{chatButton}}}
-        </div>
+        {{{selectedChatArea}}}
     </form>
 `;
+
+
+// <div class="{{styles.chatDeleteWindowClass}}">
+// {{{chatDeleteWindow}}}
+// </div>
