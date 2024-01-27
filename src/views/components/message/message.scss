@@ -1,13 +1,27 @@
 @use './colors/msg_colors';
 
+.text-in-block {
+    margin-top: 3%;
+}
+
 .msg-in-chat {
-    display: block;
-    position: absolute;
-    top: 300px;
-    left: 500px;
-    height: 20px;
-    width: 70px;
+    // display: block;
+    position: relative;
+    top: 90%;
+    left: 65%;
+    min-height: 10%;
+    max-height: max-content;
+    min-width: 20%;
+    max-width: max-content;
+    margin-top: 0.5%;
     border-radius: 20px;
     font-size: 20px;
+    vertical-align: middle;
+    text-align: center;
     background-color: msg_colors.$msg-color;
+    overflow: hidden;
+}
+
+.other-user-msg {
+    left: 3%;
 }

@@ -1,21 +1,23 @@
 import './button.css';
-import { Block } from '../../../utils';
+import { Block } from '../../../core';
 import { buttonTmpl } from './button.tmpl';
 
 interface ButtonProps {
   [key: string]: ({ [name: string]: string } | string | {}) | undefined
   buttonName?: string,
-  styles: {
+  styles?: {
     buttonClass: string;
+    buttonNameClass?: string;
   },
+  buttonType?: string;
   events?: {
     click: (e: Event) => void;
   }
 }
 
-export class Button extends Block {
+export class ButtonBase extends Block {
   constructor(props: ButtonProps) {
-    super('button', props);
+    super(props);
   }
 
   render(): DocumentFragment {

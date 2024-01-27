@@ -1,13 +1,13 @@
-import { Block } from '../block';
+import { Block } from '../../core/Block/block';
 import { backUpForValid } from './backupForValid';
 import { validationError } from './validationError';
 
 export function inputValidation(
   e: Event,
   validator: {
-        rule: RegExp;
-        errorMsg: string;
-    },
+    rule: RegExp;
+    errorMsg: string;
+  },
   children: { [key: string]: Block },
 ) {
   const re = validator.rule;

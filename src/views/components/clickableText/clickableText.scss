@@ -1,0 +1,34 @@
+@use './colors/colors';
+
+.clickable-text {
+    position: absolute;
+    font-size: 10px;
+    top: 20px;
+    left: 310px;
+    cursor: pointer;
+}
+
+.create-chat-text {
+    font-size: 20px;
+    top: 55%;
+    left: 63%;
+}
+
+.delete-chat-text {
+    font-size: 20px;
+    top: 55%;
+    left: 90%;
+    color: colors.$delete-color;
+}
+
+.add-user-text {
+    font-size: 20px;
+    top: 20%;
+    left: 83%;
+}
+
+.delete-user-text {
+    font-size: 20px;
+    top: 37%;
+    left: 84%;
+}

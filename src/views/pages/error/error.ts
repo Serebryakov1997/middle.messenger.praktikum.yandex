@@ -1,21 +1,33 @@
 import './error.css';
-import { Block, DEV_LINK_ADDRESS } from '../../../utils';
 import { errorTmpl } from './error.tmpl';
+import { UnderButtonLink } from '../../components';
+import { Block, router } from '../../../core';
 
 export class PageError extends Block {
   constructor(codeError: string, codeErrorText: string) {
-    super('form', {
+    super({
       styles: {
         errorFormClass: 'page-error',
         payloadClass: 'error-payload',
         codeErrorClass: 'code-error',
         codeErrorTextClass: 'code-error-text',
-        linkToChatsClass: 'link-to-chats',
       },
       codeError,
       codeErrorText,
-      linkToChats: `${DEV_LINK_ADDRESS}chats`,
-      linkToChatsName: 'Назад к чатам',
+    });
+  }
+
+  protected init(): void {
+    this.children.linkToChats = new UnderButtonLink({
+      styles: {
+        underButtonClass: 'link-to-chats',
+      },
+      underButtonText: 'Назад к чатам',
+      events: {
+        click: () => {
+          router.go('/messenger');
+        },
+      },
     });
   }
 

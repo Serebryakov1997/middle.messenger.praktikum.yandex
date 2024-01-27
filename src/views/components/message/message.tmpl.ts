@@ -1,3 +1,5 @@
 export const messageTmpl = `
-    <p class="{{styles.messageClass}}">{{message}}</p>
+    <div id="{{chat_id}}" class="{{styles.messageClass}}">
+        <div class="{{styles.textPositionClass}}">{{message}}</div>
+    </div>
 `;

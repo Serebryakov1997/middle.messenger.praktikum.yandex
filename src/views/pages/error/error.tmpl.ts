@@ -3,7 +3,7 @@ export const errorTmpl = `
         <div class="{{styles.payloadClass}}">
             <p class="{{styles.codeErrorClass}}">{{codeError}}</p>
             <p class="{{styles.codeErrorTextClass}}">{{codeErrorText}}</p>
-            <a class="{{styles.linkToChatsClass}}" href="{{linkToChats}}">{{linkToChatsName}}</a>
+            {{{linkToChats}}}
         </div>
     </form>
 `;

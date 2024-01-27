@@ -1,9 +1,9 @@
 import './chat.css';
-import { Block } from '../../../utils';
+import { Block } from '../../../core';
 import { chatTmpl } from './chat.tmpl';
 
 export interface ChatProps {
-  [key: string]: string | {} | undefined;
+  [key: string]: string | {} | undefined | number;
   styles: {
     chatClass: string;
     mockImgClass: string;
@@ -12,11 +12,11 @@ export interface ChatProps {
     numberOfUnreadMsgsClass?: string;
     timeOfLastMsgClass: string;
   };
-  chatName: string;
-  lastPartMsg: string;
-  numberOfUnreadMsgs?: string;
-  timeOfLastMsg: string;
-
+  title: string;
+  avatar?: string;
+  content?: string;
+  unread_count?: string;
+  time: string;
   events: {
     click: (e: Event) => void;
   }
@@ -24,7 +24,7 @@ export interface ChatProps {
 
 export class Chat extends Block {
   constructor(props: ChatProps) {
-    super('div', props);
+    super(props);
   }
 
   render(): DocumentFragment {

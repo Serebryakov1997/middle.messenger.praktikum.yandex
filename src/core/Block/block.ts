@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import { v4 as makeUUID } from 'uuid';
-import { EventBus } from './event-bus';
+import { EventBus } from '../EventBus/event-bus';
+import { isArray } from '../../utils';
 
 export class Block {
   static EVENTS = {
@@ -10,16 +11,14 @@ export class Block {
     FLOW_RENDER: 'flow:render',
   };
 
-  _element: HTMLElement | null = null;
+  _element: HTMLElement;
 
   props: Record<string, unknown>;
 
   eventBus: (() => EventBus);
 
-  tagName: string;
-
   /* eslint no-use-before-define: "off" */
-  children: Record<string, Block | Block[]>;
+  children: Record<string, Block | Block[] | typeof Block>;
 
   id: string;
 
@@ -29,8 +28,7 @@ export class Block {
        *
        * @returns {void}
        */
-  constructor(tagName: string, propsAndChildren: Record<string, unknown>) {
-    this.tagName = tagName;
+  constructor(propsAndChildren: Record<string, unknown>) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildren(propsAndChildren);
@@ -53,10 +51,15 @@ export class Block {
   }
 
   _createResources() {
-    this._element = Block._createDocumentElement(this.tagName);
+    this._element = this._createDocumentElement();
+  }
+
+  _createDocumentElement() {
+    return document.createElement('div');
   }
 
   _init() {
+    this._createResources();
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -96,6 +99,7 @@ export class Block {
     if (!nextProps) {
       return;
     }
+
     Object.assign(this.props, nextProps);
   };
 
@@ -106,7 +110,7 @@ export class Block {
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
-      } else if (value instanceof Array) {
+      } else if (Array.isArray(value) && value.every((v) => v instanceof Block)) {
         children[key] = value;
       } else {
         props[key] = value;
@@ -119,17 +123,15 @@ export class Block {
   compile(template: string, props: Record<string, unknown>) {
     const propsAndStubs = { ...props };
 
-    this._createResources();
-
     let fragmentsArr: string = '';
-    Object.entries(this.children).forEach(([name, component]) => {
-      if (component instanceof Block) {
-        propsAndStubs[name] = `<div data-id="${component.id}"></div>`;
-      } else {
-        Object.values(component).forEach((value) => {
+    Object.entries(this.children).forEach(([name, child]) => {
+      if (Array.isArray(child)) {
+        Object.values(child).forEach((value) => {
           fragmentsArr += `<div data-id="${value.id}"></div>`;
         });
         propsAndStubs[name] = fragmentsArr;
+      } else {
+        propsAndStubs[name] = `<div data-id="${(<Block>child).id}"></div>`;
       }
     });
 
@@ -139,25 +141,18 @@ export class Block {
 
     temp.innerHTML = compiledHtml;
 
+    const replaceStub = (component: Block) => {
+      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      stub?.replaceWith(component.getContent());
+    };
+
     /* eslint no-unused-vars: "off" */
     /* eslint @typescript-eslint/no-unused-vars: "off" */
-    Object.entries(this.children).forEach(([_, component]) => {
-      if (component instanceof Block) {
-        const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-        if (!stub) {
-          return;
-        }
-        component.getContent().append(...Array.from(stub.childNodes));
-        stub.replaceWith(component.getContent());
+    Object.entries(this.children).forEach(([_, child]) => {
+      if (Array.isArray(child)) {
+        child.forEach(replaceStub);
       } else {
-        Object.values(component).forEach((value) => {
-          const stub = temp.content.querySelector(`[data-id="${value.id}"]`);
-          if (!stub) {
-            return;
-          }
-          value.getContent().append(...Array.from(stub.childNodes));
-          stub.replaceWith(value.getContent());
-        });
+        replaceStub(<Block>child);
       }
     });
 

@@ -1,0 +1,21 @@
+@import './colors/colors';
+
+.chat-delete-window {
+    display: none;
+    position: absolute;
+    top: 220%;
+    left: 30%;
+    height: 250%;
+    width: 50%;
+    border-radius: 5%;
+    background-color: $window-color;
+    z-index: 3;
+    filter: brightness(0.9);
+
+    .delete-text {
+        top: 30%;
+        left: 7%;
+        font-size: 30px;
+        font-weight: bold;
+    }
+}

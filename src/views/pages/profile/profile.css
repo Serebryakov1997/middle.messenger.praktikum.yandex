@@ -44,24 +44,5 @@
   margin-top: -20px;
   font-size: 20px;
 }
-.profile-container .change-data {
-  display: block;
-  top: 680px;
-  left: 80px;
-  font-size: 20px;
-  text-decoration: none;
-  text-align: left;
-  color: #242cdd;
-}
-.profile-container .change-passwd {
-  display: block;
-  top: 720px;
-  color: #242cdd;
-}
-.profile-container .logout {
-  display: block;
-  top: 760px;
-  color: red;
-}
 
 /*# sourceMappingURL=profile.css.map */

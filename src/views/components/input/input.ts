@@ -1,26 +1,21 @@
 import './input.css';
-import { Block } from '../../../utils';
+import { Block } from '../../../core';
 import { inputTmpl } from './input.tmpl';
 
-interface InputProps {
-  [key: string]: string | {} | undefined;
-  name: string;
-  placeholder?: string;
+interface IInputBaseProps {
+  [key: string]: string | undefined | {};
   styles?: {
     inputClass: string;
-  };
-  validErrorId?: string;
-  inputValue?: string;
-  inputType: string;
-  readonly?: string;
+  },
   events?: {
     blur: (e: Event) => void;
+    keypress?: (e: KeyboardEvent) => void;
   }
 }
 
-export class Input extends Block {
-  constructor(props: InputProps) {
-    super('input', props);
+export class InputBase extends Block {
+  constructor(props: IInputBaseProps) {
+    super(props);
   }
 
   render(): DocumentFragment {

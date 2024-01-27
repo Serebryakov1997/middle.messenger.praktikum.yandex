@@ -1,5 +1,5 @@
+import { Block } from '../../../core';
 import './underButtonLink.css';
-import { Block } from '../../../utils';
 import { underButtonLinkTmpl } from './underButtonLink.tmpl';
 
 interface UnderButtonLinkProps {
@@ -7,13 +7,15 @@ interface UnderButtonLinkProps {
   styles: {
     underButtonClass: string;
   };
-  link: string;
   underButtonText: string;
+  events: {
+    click: (e: Event) => void;
+  }
 }
 
 export class UnderButtonLink extends Block {
-  constructor(tagName: string, props: UnderButtonLinkProps) {
-    super(tagName, props);
+  constructor(props: UnderButtonLinkProps) {
+    super(props);
   }
 
   render(): DocumentFragment {

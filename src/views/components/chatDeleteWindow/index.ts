@@ -1,0 +1,1 @@
+export { ChatDeleteWindow } from './chatDeleteWindow';

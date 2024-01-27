@@ -7,6 +7,39 @@
   font-weight: bold;
 }
 
+.change-data {
+  display: block;
+  top: 680px;
+  left: 80px;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: left;
+  color: #242cdd;
+}
+
+.back-to-chats {
+  left: 72%;
+}
+
+.change-passwd {
+  top: 720px;
+}
+
+.logout {
+  top: 760px;
+  color: red;
+}
+
+.link-to-chats {
+  display: block;
+  text-align: center;
+  left: 30px;
+  color: #3369f3;
+  font-size: 20px;
+  line-height: 11px;
+  text-decoration: none;
+}
+
 a {
   display: block;
   position: absolute;

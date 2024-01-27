@@ -1,29 +1,27 @@
 import './login.css';
 import {
-  Block,
-  DEV_LINK_ADDRESS,
   clickValidation,
   inputValidation,
 } from '../../../utils';
 import {
-  Button, Input, Label, UnderButtonLink, ValidError,
+  ButtonBase, InputBase, Label, UnderButtonLink, ValidError,
 } from '../../components';
 import { loginTmpl } from './login.tmpl';
 import { loginValidator, passwdValidator } from '../../../models/validators';
+import { AuthController } from '../../../controllers/auth-controller';
+import { Block, router } from '../../../core';
 
 export class Login extends Block {
   _formData: FormData;
 
   constructor() {
-    super('form', {
+    super({
       styles: {
         containerClass: 'login-container',
         headerClass: 'login-header',
         underButtonClass: 'login-button__under-text',
       },
       headerName: 'Вход',
-      buttonLink: `${DEV_LINK_ADDRESS}chats`,
-      registerLink: `${DEV_LINK_ADDRESS}register`,
       underButtonText: 'Нет аккаунта?',
     });
     this._formData = new FormData();
@@ -35,7 +33,7 @@ export class Login extends Block {
         name: 'login',
         labelName: 'Логин',
       }),
-      inputLogin: new Input({
+      inputLogin: new InputBase({
         name: 'login',
         placeholder: 'ivanivanov',
         validErrorId: 'error',
@@ -51,7 +49,7 @@ export class Login extends Block {
           },
         },
       }),
-      validErrorLogin: new ValidError('div', {
+      validErrorLogin: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
@@ -61,7 +59,7 @@ export class Login extends Block {
         name: 'password',
         labelName: 'Пароль',
       }),
-      inputPasswd: new Input({
+      inputPasswd: new InputBase({
         name: 'password',
         validErrorId: 'error',
         inputType: 'password',
@@ -76,21 +74,27 @@ export class Login extends Block {
           },
         },
       }),
-      validErrorPasswd: new ValidError('div', {
+      validErrorPasswd: new ValidError({
         styles: {
           validErrClass: 'valid-err',
         },
         validErrorId: 'error',
       }),
-      loginButton: new Button({
+      loginButton: new ButtonBase({
         buttonName: 'Войти',
         styles: {
           buttonClass: 'login-button',
+          buttonNameClass: 'auth-button-name',
         },
         events: {
           click: (e: Event) => {
-            clickValidation(
-              this._formData,
+            const login = this._formData.get('login') as string;
+            const password = this._formData.get('password') as string;
+            const isValid = clickValidation(
+              {
+                login,
+                password,
+              },
               {
                 login: loginValidator,
                 password: passwdValidator,
@@ -112,15 +116,24 @@ export class Login extends Block {
             this._formData.forEach((value, key) => {
               console.log(`${key}: ${value}`);
             });
+
+            if (isValid) {
+              AuthController.signIn({ login, password });
+              e.preventDefault();
+            }
           },
         },
       }),
-      underButtonLink: new UnderButtonLink('under-text', {
+      underButtonLink: new UnderButtonLink({
         styles: {
           underButtonClass: 'under-text',
         },
-        link: `${DEV_LINK_ADDRESS}register`,
         underButtonText: 'Нет аккаунта?',
+        events: {
+          click: () => {
+            router.go('/sign-up');
+          },
+        },
       }),
     };
   }

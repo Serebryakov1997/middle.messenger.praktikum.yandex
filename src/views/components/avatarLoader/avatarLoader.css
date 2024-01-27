@@ -5,11 +5,27 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
   display: none;
-  width: 423px;
-  height: 348px;
+  width: 323px;
+  height: 248px;
   border-radius: 20px;
   background: #fff;
   z-index: 4;
+}
+.avatar-loader .avatar-input-class {
+  background-color: #fff;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.avatar-loader .input-submit-class {
+  top: 150px;
+  left: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
 }
 .avatar-loader .dash-border {
   position: absolute;
@@ -23,7 +39,6 @@
   border-radius: 20px;
 }
 .avatar-loader .text-class {
-  display: block;
   top: 70px;
   left: 50px;
   font-size: 24px;
@@ -32,7 +47,6 @@
   color: rgba(0, 0, 0, 0.39);
 }
 .avatar-loader .text-or-class {
-  display: block;
   top: 140px;
   left: 170px;
 }

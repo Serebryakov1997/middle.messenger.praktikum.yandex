@@ -1,4 +1,4 @@
-import { Block } from '../block';
+import { Block } from '../../core/Block/block';
 
 export function validationError(targetChildrens: { [key: string]: Block }, msg: string) {
   const valErrorBlock = targetChildrens.validError;

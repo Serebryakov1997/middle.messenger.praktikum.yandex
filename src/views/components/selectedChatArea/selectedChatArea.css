@@ -1,0 +1,48 @@
+.chat-area {
+  display: none;
+  position: absolute;
+  top: 8px;
+  left: 508px;
+  height: 151px;
+  width: 1400px;
+  border: 1px solid gray;
+  background-color: #d9d9d9;
+}
+.chat-area .chat-area-name {
+  display: block;
+  position: relative;
+  top: 55px;
+  left: 30px;
+  text-align: left;
+  font-size: 23px;
+  font-weight: bold;
+}
+.chat-area .chat-last-time {
+  display: block;
+  position: relative;
+  top: 65px;
+  left: 30px;
+  text-align: left;
+  font-size: 20px;
+}
+.chat-area .msgs-list {
+  position: absolute;
+  top: 110%;
+  left: 0%;
+  height: 470%;
+  width: 100%;
+  overflow: scroll;
+}
+.chat-area .msgs-list::-webkit-scrollbar {
+  display: none;
+}
+.chat-area .chat-button {
+  left: 10%;
+}
+.chat-area .valid-err-msg {
+  position: absolute;
+  top: 550%;
+  left: -3%;
+}
+
+/*# sourceMappingURL=selectedChatArea.css.map */

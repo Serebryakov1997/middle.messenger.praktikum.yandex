@@ -1,25 +1,24 @@
-import { Block } from '../block';
+import { Block } from '../../core/Block/block';
 import { backUpForValid } from './backupForValid';
 import { validationError } from './validationError';
 
 export function clickValidation(
-  formData: FormData,
+  stateProps: Record<string, unknown>,
   validators: {
-        [key: string]: {
-            rule: RegExp;
-            errorMsg: string;
-        }
-    },
+    [key: string]: {
+      rule: RegExp;
+      errorMsg: string;
+    }
+  },
   children: { [key: string]: { [key: string]: Block } },
   event: Event,
-) {
+): boolean {
   const isValidArr: { [key: string]: boolean } = {};
 
   Object.entries(validators).forEach(([key, value]) => {
-    const formValue = formData.get(key);
     const re = value.rule;
 
-    const isValid = formValue ? re.test(formValue as string) : false;
+    const isValid = stateProps[key] ? re.test(stateProps[key] as string) : false;
     isValidArr[key] = isValid;
   });
 
@@ -31,9 +30,10 @@ export function clickValidation(
       }
     });
     event.preventDefault();
-  } else {
-    Object.keys(isValidArr).forEach((key) => {
-      backUpForValid(children[key]);
-    });
+    return false;
   }
+  Object.keys(isValidArr).forEach((key) => {
+    backUpForValid(children[key]);
+  });
+  return true;
 }

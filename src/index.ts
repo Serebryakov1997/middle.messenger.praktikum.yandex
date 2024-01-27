@@ -1,7 +1,9 @@
-import { Block, renderDOM } from './utils';
+import { AuthController } from './controllers/auth-controller';
+import { ChatController } from './controllers/chat-controller';
+import { router } from './core';
+import { AddressPaths } from './utils';
 import {
   Login,
-  PageError,
   Chats,
   Register,
   Profile,
@@ -9,27 +11,40 @@ import {
   ProfileChangePasswd,
 } from './views';
 
-const page500 = new PageError('500', 'Мы уже фиксим');
+document.addEventListener('DOMContentLoaded', async () => {
+  router
+    .use(new Login(), AddressPaths.SignIn)
+    .use(new Chats({}), AddressPaths.Chats)
+    .use(new Register(), AddressPaths.SignUp)
+    .use(new Profile({}), AddressPaths.Profile)
+    .use(new ProfileChangeData({}), AddressPaths.ProfileChangeData)
+    .use(new ProfileChangePasswd(), AddressPaths.ProfileChangePasswd);
 
-document.addEventListener('DOMContentLoaded', () => {
-  function getPage(): Block {
-    switch (window.location.pathname) {
-      case '/':
-        return new Login() || page500;
-      case '/chats':
-        return new Chats() || page500;
-      case '/register':
-        return new Register() || page500;
-      case '/profile':
-        return new Profile() || page500;
-      case '/profile_change_data':
-        return new ProfileChangeData() || page500;
-      case '/profile_change_passwd':
-        return new ProfileChangePasswd() || page500;
-      default:
-        return new PageError('404', 'Не туда попали') || page500;
-    }
+  let isProtectedRoute = true;
+
+  /* eslint default-case: "off" */
+  switch (window.location.pathname) {
+    case AddressPaths.SignIn:
+    case AddressPaths.SignUp:
+      isProtectedRoute = false;
+      break;
   }
 
-  renderDOM('#app', getPage());
+  try {
+    await AuthController.fetchUser();
+    await ChatController.getChats();
+
+    router.start();
+
+    if (!isProtectedRoute) {
+      router.go(AddressPaths.Profile);
+    }
+  } catch (e) {
+    console.log(e, 'Here');
+    router.start();
+
+    if (isProtectedRoute) {
+      router.go(AddressPaths.SignIn);
+    }
+  }
 });

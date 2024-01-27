@@ -1,0 +1,10 @@
+.avatar {
+  margin-top: 50px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #cec48d;
+  z-index: 1;
+}
+
+/*# sourceMappingURL=avatarImg.css.map */

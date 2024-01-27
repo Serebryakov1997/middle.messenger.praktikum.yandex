@@ -1,57 +1,73 @@
 import './chats.css';
-import { Block, DEV_LINK_ADDRESS, creationChatList } from '../../../utils';
+import { AddressPaths, creationChatList } from '../../../utils';
 import { chatsTmpl } from './chats.tmpl';
-import { mockChatsJSON } from './mockChats';
-import { Button, Input, UnderButtonLink } from '../../components';
+import { ChatCreationWindow, ClickableText, UnderButtonLink } from '../../components';
+import { Block, router } from '../../../core';
+import { withStore } from '../../../core/Store';
+import { IState } from '../../../models/interfaces/auth';
+import { SelectedChatAreaBase } from '../../components/selectedChatArea/selectedChatArea';
+import { LegendText } from '../../components/legend';
 
-export class Chats extends Block {
+export class ChatsBase extends Block {
+  _formData: FormData;
+
   constructor() {
-    super('form', {
+    super({
       styles: {
         chatsFormClass: 'chats-form',
         chatsSearchBarClass: 'chats-search-bar',
-        selectChatLegendClass: 'select-chat-legend',
         messageClass: 'msg-in-chat',
-        chatAreaClass: 'chat-area',
-        chatAreaNameClass: 'chat-area-name',
-        chatLastTimeClass: 'chat-last-time',
+        actionWindowClass: 'action-window-class',
+        chatDeleteWindowClass: 'delete-window-class',
+        chatsListClass: 'chat-list',
+        addUserChatWindowClass: 'add-user-chat-window-class',
+        displayClass: 'display-area',
+        chatButtonClass: 'chat-button',
       },
       chatsForm: 'chats-form-id',
       chatsSearchBar: 'Поиск',
-      selectChatLegend: 'Выберите чат, чтобы отправить сообщение',
-      selectChatLegendId: 'select-chat-legend-id',
-      chatAreaId: 'chat-area-id',
-      chatAreaNameId: 'chat-area-name-id',
-      chatAreaLastTimeId: 'chat-area-time-id',
+      chatCreationWindowClass: 'chat-creation-window',
+      chatCreationWindowId: 'chat-creation-window-id',
     });
+    this._formData = new FormData();
   }
 
   protected init(): void {
-    const chatsList = creationChatList(mockChatsJSON, this);
     this.children = {
-      linkToProfile: new UnderButtonLink('a', {
-        styles: {
-          underButtonClass: 'profile-link',
-        },
-        link: `${DEV_LINK_ADDRESS}profile`,
-        underButtonText: 'В профиль',
-      }),
-      chatsList,
-      chatInput: new Input({
-        name: 'message',
-        placeholder: 'Сообщение',
-        inputType: 'text',
-        styles: {
-          inputClass: 'chat-input',
-        },
-      }),
-      chatButton: new Button({
-        styles: {
-          buttonClass: 'button-chat',
-        },
+      selectChatLegendText: new LegendText(),
+      createChatText: new ClickableText({
+        clickableText: 'или Создайте чат',
+        createChatsClass: 'create-chat-text',
+        clickableTextId: 'create-chat-id',
         events: {
           click: (e: Event) => {
             e.preventDefault();
+            (<Block> this.children.chatCreationWindow).show();
+          },
+        },
+      }),
+      chatCreationWindow: new ChatCreationWindow({
+        styles: {
+          chatCreationWindowClass: 'chat-creation-general',
+        },
+        windowTitle: 'Создать чат',
+        labelName: 'Имя чата',
+        buttonName: 'Создать',
+        buttonClass: 'button-creation-chat',
+        windowTitleClass: 'chat-creation-text',
+        addUserWindowClass: '',
+        chatCreationTextClass: 'chat-creation-text',
+        buttonNameClass: 'button-creation-name',
+      }),
+
+      linkToProfile: new UnderButtonLink({
+        styles: {
+          underButtonClass: 'profile-link',
+        },
+        underButtonText: 'В профиль',
+        events: {
+          click: () => {
+            router.go(AddressPaths.Profile);
           },
         },
       }),
@@ -59,6 +75,37 @@ export class Chats extends Block {
   }
 
   render(): DocumentFragment {
+    if (this.props.chats) {
+      this.children.chatsList = creationChatList(<Record<string, Block>[]> this.props.chats);
+    }
+
+    if (this.props.selectedChat) {
+      (<Block> this.children.selectChatLegendText).hide();
+      (<Block> this.children.createChatText).hide();
+
+      const { messages, currentUserId, selectedChat } = this.props;
+
+      const selChat = JSON.parse(JSON.stringify(selectedChat));
+      const { chatId, title, time } = selChat;
+
+      if (messages && currentUserId) {
+        const selectedChatArea = new SelectedChatAreaBase();
+        (<Block>selectedChatArea).setProps({
+          messages, currentUserId, chatId, title, time,
+        });
+        this.children.selectedChatArea = selectedChatArea;
+        (<Block> this.children.selectedChatArea).show();
+      }
+    }
     return this.compile(chatsTmpl, this.props);
   }
 }
+
+const mapStateToProps = (state: IState) => ({
+  chats: state.chats,
+  selectedChat: state.selectedChat,
+  messages: state.messages,
+  currentUserId: state.user?.id,
+});
+
+export const Chats = withStore(mapStateToProps)(ChatsBase);

@@ -3,6 +3,14 @@
   width: 500px;
   background-color: #d9d9d9;
 }
+.chats-form .chat-list {
+  margin-top: 70px;
+  height: 82%;
+  overflow-y: scroll;
+}
+.chats-form .chat-list::-webkit-scrollbar {
+  display: none;
+}
 .chats-form .chats-search-bar {
   display: block;
   position: relative;
@@ -19,41 +27,27 @@
   text-align: left;
   font-size: 20px;
 }
-.chats-form .select-chat-legend {
+.chats-form .action-window-class {
   display: block;
-  position: absolute;
-  top: 50%;
-  left: 1050px;
-  font-size: 25px;
-  font-weight: bold;
-  color: gray;
+  position: fixed;
+  top: 35%;
+  left: 30%;
+  height: 100%;
 }
-.chats-form .chat-area {
-  display: none;
-  position: absolute;
-  top: 8px;
-  left: 508px;
-  height: 151px;
-  width: 1400px;
-  border: 1px solid gray;
-  background-color: #d9d9d9;
-}
-.chats-form .chat-area .chat-area-name {
+.chats-form .delete-window-class {
   display: block;
-  position: relative;
-  top: 55px;
-  left: 30px;
-  text-align: left;
-  font-size: 23px;
-  font-weight: bold;
+  position: fixed;
+  top: 15%;
+  left: -5%;
+  height: 100%;
+  width: 28%;
 }
-.chats-form .chat-area .chat-last-time {
+.chats-form .add-user-chat-window-class {
   display: block;
-  position: relative;
-  top: 65px;
-  left: 30px;
-  text-align: left;
-  font-size: 20px;
+  position: fixed;
+  top: 20%;
+  left: 27%;
+  height: 100%;
 }
 
 /*# sourceMappingURL=chats.css.map */
