@@ -10,7 +10,7 @@ export class ChatController {
       const parseChats: Array<Record<string, unknown>> = JSON.parse(String(chats));
       store.set('chats', parseChats);
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 
@@ -19,7 +19,7 @@ export class ChatController {
       await chatApi.createChat(data);
       this.getChats();
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 
@@ -39,7 +39,7 @@ export class ChatController {
         msgsController.sendMsg(data.chatId, `${addedUserName} присоединился к чату`);
       }
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 
@@ -50,7 +50,7 @@ export class ChatController {
         msgsController.sendMsg(data.chatId, `Пользователь ${delUserName} удалён из чата`);
       }
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 
@@ -60,7 +60,7 @@ export class ChatController {
       const { token } = JSON.parse(String(tokenObj));
       await msgsController.connect(Number(id), token);
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 }

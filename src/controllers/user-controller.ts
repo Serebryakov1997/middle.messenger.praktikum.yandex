@@ -12,7 +12,7 @@ export class UserController {
       store.set('user', jsonUser);
       router.go(AddressPaths.Profile);
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 
@@ -21,7 +21,7 @@ export class UserController {
       await userApi.changeUserPasswd(data);
       router.go(AddressPaths.Profile);
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 
@@ -31,7 +31,7 @@ export class UserController {
       const jsonUser = JSON.parse(String(newUser));
       store.set('user', jsonUser);
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 
@@ -41,7 +41,7 @@ export class UserController {
       const parseUsers = JSON.parse(String(findUsers));
       return parseUsers;
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 }

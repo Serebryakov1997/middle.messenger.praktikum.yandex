@@ -12,7 +12,7 @@ export class AuthController {
 
       router.go(AddressPaths.Chats);
     } catch (err) {
-      console.log(err, 'signup error');
+      console.error(err);
     }
   }
 
@@ -21,7 +21,7 @@ export class AuthController {
       await authApi.signIn(data);
       router.go(AddressPaths.Chats);
     } catch (err) {
-      console.log(err, 'signin error');
+      console.error(err);
     }
   }
 
@@ -39,7 +39,7 @@ export class AuthController {
       const jsonUser = JSON.parse(String(user));
       store.set('user', jsonUser);
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }
 
@@ -49,7 +49,7 @@ export class AuthController {
       store.set('user', undefined);
       router.go(AddressPaths.SignIn);
     } catch (err) {
-      console.log(err, 'logout err');
+      console.log(err);
     }
   }
 }
