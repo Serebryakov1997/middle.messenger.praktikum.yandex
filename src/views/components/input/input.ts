@@ -9,6 +9,7 @@ interface IInputBaseProps {
   },
   events?: {
     blur: (e: Event) => void;
+    keypress?: (e: KeyboardEvent) => void;
   }
 }
 

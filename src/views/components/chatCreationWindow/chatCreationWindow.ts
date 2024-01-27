@@ -51,10 +51,10 @@ export class ChatCreationWindow extends Block {
       chatCreationText: props.windowTitle,
     });
     this._formData = new FormData();
-    (<Block> this.children.chatCreationLabel).setProps({
+    (<Block>this.children.chatCreationLabel).setProps({
       labelName: props.labelName,
     });
-    (<Block> this.children.chatCreationButton).setProps({
+    (<Block>this.children.chatCreationButton).setProps({
       styles: {
         buttonClass: props.buttonClass,
         buttonNameClass: props.buttonNameClass,
@@ -103,12 +103,19 @@ export class ChatCreationWindow extends Block {
               e,
               emptyValidator,
               {
-                validError: <Block> this.children.validErrorChatName,
-                input: <Block> this.children.chatCreationInput,
-                button: <Block> this.children.chatCreationButton,
+                validError: <Block>this.children.validErrorChatName,
+                input: <Block>this.children.chatCreationInput,
+                button: <Block>this.children.chatCreationButton,
               },
             );
           },
+          keypress: (e: KeyboardEvent) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              const btn = document.getElementsByClassName(this.buttonClass).item(0);
+              (<HTMLElement>btn).click();
+            }
+          }
         },
       }),
       validErrorChatName: new ValidError({
@@ -151,9 +158,9 @@ export class ChatCreationWindow extends Block {
       },
       {
         chat_title: {
-          validError: <Block> this.children.validErrorChatName,
-          input: <Block> this.children.chatCreationInput,
-          button: <Block> this.children.chatCreationButton,
+          validError: <Block>this.children.validErrorChatName,
+          input: <Block>this.children.chatCreationInput,
+          button: <Block>this.children.chatCreationButton,
         },
       },
       event,
@@ -179,9 +186,9 @@ export class ChatCreationWindow extends Block {
       },
       {
         login: {
-          validError: <Block> this.children.validErrorChatName,
-          input: <Block> this.children.chatCreationInput,
-          button: <Block> this.children.chatCreationButton,
+          validError: <Block>this.children.validErrorChatName,
+          input: <Block>this.children.chatCreationInput,
+          button: <Block>this.children.chatCreationButton,
         },
       },
       event,
@@ -206,9 +213,9 @@ export class ChatCreationWindow extends Block {
       { login: emptyValidator },
       {
         login: {
-          validError: <Block> this.children.validErrorChatName,
-          input: <Block> this.children.chatCreationInput,
-          button: <Block> this.children.chatCreationButton,
+          validError: <Block>this.children.validErrorChatName,
+          input: <Block>this.children.chatCreationInput,
+          button: <Block>this.children.chatCreationButton,
         },
       },
       event,
