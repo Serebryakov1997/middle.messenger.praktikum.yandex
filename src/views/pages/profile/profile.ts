@@ -114,20 +114,20 @@ export class ProfileBase extends Block {
       readonly: 'readonly',
     });
 
-    // chat_name
-    const mapStateToPropsChatName = (state: IState) => ({
-      inputValue: state.user?.first_name,
+    // display_name
+    const mapStateToPropsDisplayName = (state: IState) => ({
+      inputValue: state.user?.display_name,
     });
-    const InputChatName = withStore(mapStateToPropsChatName)(InputBase);
+    const InputDisplayName = withStore(mapStateToPropsDisplayName)(InputBase);
     this.children.labelChatName = new Label({
-      name: 'chat_name',
+      name: 'display_name',
       labelName: 'Имя в чате',
       styles: {
         labelClass: 'profile-label',
       },
     });
-    this.children.inputChatName = new InputChatName({
-      name: 'chat_name',
+    this.children.inputChatName = new InputDisplayName({
+      name: 'display_name',
       styles: {
         inputClass: 'profile-input',
       },
@@ -213,7 +213,7 @@ export class ProfileBase extends Block {
 
 const mapStateToPropsProfile = (state: IState) => ({
   imgRef: state.user?.avatar,
-  displayName: state.user?.first_name,
+  displayName: state.user?.display_name,
 });
 
 export const Profile = withStore(mapStateToPropsProfile)(ProfileBase);

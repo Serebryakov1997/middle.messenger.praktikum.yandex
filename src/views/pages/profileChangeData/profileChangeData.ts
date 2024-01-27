@@ -5,6 +5,7 @@ import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
 import {
   emailValidator,
+  emptyValidator,
   firstNameValidator,
   loginValidator,
   phoneValidator,
@@ -45,7 +46,7 @@ export class ProfileChangeDataBase extends Block {
       clickableText: 'Загрузить файл',
       events: {
         click: () => {
-          (<Block> this.children.avatarLoader).show();
+          (<Block>this.children.avatarLoader).show();
         },
       },
     });
@@ -58,7 +59,7 @@ export class ProfileChangeDataBase extends Block {
           if (avatar) {
             file = (<HTMLInputElement>avatar).files;
             UserController.changeUserAvatar(file?.item(0)!);
-            (<Block> this.children.avatarLoader).hide();
+            (<Block>this.children.avatarLoader).hide();
           }
         },
       },
@@ -87,9 +88,9 @@ export class ProfileChangeDataBase extends Block {
         blur: (e: Event) => {
           this._formData.set('email', (<HTMLInputElement>e.target).value);
           inputValidation(e, emailValidator, {
-            validError: <Block> this.children.validErrorEmail,
-            input: <Block> this.children.inputEmail,
-            button: <Block> this.children.buttonSave,
+            validError: <Block>this.children.validErrorEmail,
+            input: <Block>this.children.inputEmail,
+            button: <Block>this.children.buttonSave,
           });
         },
       },
@@ -125,9 +126,9 @@ export class ProfileChangeDataBase extends Block {
         blur: (e: Event) => {
           this._formData.set('login', (<HTMLInputElement>e.target).value);
           inputValidation(e, loginValidator, {
-            validError: <Block> this.children.validErrorLogin,
-            input: <Block> this.children.inputLogin,
-            button: <Block> this.children.buttonSave,
+            validError: <Block>this.children.validErrorLogin,
+            input: <Block>this.children.inputLogin,
+            button: <Block>this.children.buttonSave,
           });
         },
       },
@@ -162,9 +163,9 @@ export class ProfileChangeDataBase extends Block {
         blur: (e: Event) => {
           this._formData.set('first_name', (<HTMLInputElement>e.target).value);
           inputValidation(e, firstNameValidator, {
-            validError: <Block> this.children.validErrorFirstName,
-            input: <Block> this.children.inputFirstName,
-            button: <Block> this.children.buttonSave,
+            validError: <Block>this.children.validErrorFirstName,
+            input: <Block>this.children.inputFirstName,
+            button: <Block>this.children.buttonSave,
           });
         },
       },
@@ -199,9 +200,9 @@ export class ProfileChangeDataBase extends Block {
         blur: (e: Event) => {
           this._formData.set('second_name', (<HTMLInputElement>e.target).value);
           inputValidation(e, secondNameValidator, {
-            validError: <Block> this.children.validErrorSecondName,
-            input: <Block> this.children.inputSecondName,
-            button: <Block> this.children.buttonSave,
+            validError: <Block>this.children.validErrorSecondName,
+            input: <Block>this.children.inputSecondName,
+            button: <Block>this.children.buttonSave,
           });
         },
       },
@@ -215,18 +216,18 @@ export class ProfileChangeDataBase extends Block {
 
     // chat_name
     const mapStateToPropsChatName = (state: IState) => ({
-      inputValue: state.user?.first_name,
+      inputValue: state.user?.display_name,
     });
     const InputChatName = withStore(mapStateToPropsChatName)(InputBase);
     this.children.labelChatName = new Label({
-      name: 'chat_name',
+      name: 'display_name',
       labelName: 'Имя в чате',
       styles: {
         labelClass: 'profile-label',
       },
     });
     this.children.inputChatName = new InputChatName({
-      name: 'chat_name',
+      name: 'display_name',
       validErrorId: 'error',
       inputType: 'text',
       styles: {
@@ -234,11 +235,11 @@ export class ProfileChangeDataBase extends Block {
       },
       events: {
         blur: (e: Event) => {
-          this._formData.set('chat_name', (<HTMLInputElement>e.target).value);
-          inputValidation(e, firstNameValidator, {
-            validError: <Block> this.children.validErrorChatName,
-            input: <Block> this.children.inputChatName,
-            button: <Block> this.children.buttonSave,
+          this._formData.set('display_name', (<HTMLInputElement>e.target).value);
+          inputValidation(e, emptyValidator, {
+            validError: <Block>this.children.validErrorChatName,
+            input: <Block>this.children.inputChatName,
+            button: <Block>this.children.buttonSave,
           });
         },
       },
@@ -274,9 +275,9 @@ export class ProfileChangeDataBase extends Block {
         blur: (e: Event) => {
           this._formData.set('phone', (<HTMLInputElement>e.target).value);
           inputValidation(e, phoneValidator, {
-            validError: <Block> this.children.validErrorPhone,
-            input: <Block> this.children.inputPhone,
-            button: <Block> this.children.buttonSave,
+            validError: <Block>this.children.validErrorPhone,
+            input: <Block>this.children.inputPhone,
+            button: <Block>this.children.buttonSave,
           });
         },
       },
@@ -315,9 +316,8 @@ export class ProfileChangeDataBase extends Block {
     const secondNameForm = this._formData.get('second_name') as string;
     const second_name = secondNameForm || JSON.parse(JSON.stringify(this.children.inputSecondName)).props.inputValue;
 
-    const chatNameForm = this._formData.get('chat_name') as string;
-    const chat_name = chatNameForm || JSON.parse(JSON.stringify(this.children.inputChatName)).props.inputValue;
-    const display_name = chat_name;
+    const displayNameForm = this._formData.get('display_name') as string;
+    const display_name = displayNameForm || JSON.parse(JSON.stringify(this.children.inputChatName)).props.inputValue;
 
     const phoneForm = this._formData.get('phone') as string;
     const phone = phoneForm || JSON.parse(JSON.stringify(this.children.inputPhone)).props.inputValue;
@@ -327,7 +327,7 @@ export class ProfileChangeDataBase extends Block {
         login,
         first_name,
         second_name,
-        chat_name,
+        display_name,
         phone,
       },
       {
@@ -335,39 +335,39 @@ export class ProfileChangeDataBase extends Block {
         login: loginValidator,
         first_name: firstNameValidator,
         second_name: secondNameValidator,
-        chat_name: firstNameValidator,
+        display_name: emptyValidator,
         phone: phoneValidator,
       },
       {
         email: {
-          validError: <Block> this.children.validErrorEmail,
-          input: <Block> this.children.inputEmail,
-          button: <Block> this.children.buttonSave,
+          validError: <Block>this.children.validErrorEmail,
+          input: <Block>this.children.inputEmail,
+          button: <Block>this.children.buttonSave,
         },
         login: {
-          validError: <Block> this.children.validErrorLogin,
-          input: <Block> this.children.inputLogin,
-          button: <Block> this.children.buttonSave,
+          validError: <Block>this.children.validErrorLogin,
+          input: <Block>this.children.inputLogin,
+          button: <Block>this.children.buttonSave,
         },
         first_name: {
-          validError: <Block> this.children.validErrorFirstName,
-          input: <Block> this.children.inputFirstName,
-          button: <Block> this.children.buttonSave,
+          validError: <Block>this.children.validErrorFirstName,
+          input: <Block>this.children.inputFirstName,
+          button: <Block>this.children.buttonSave,
         },
         second_name: {
-          validError: <Block> this.children.validErrorSecondName,
-          input: <Block> this.children.inputSecondName,
-          button: <Block> this.children.buttonSave,
+          validError: <Block>this.children.validErrorSecondName,
+          input: <Block>this.children.inputSecondName,
+          button: <Block>this.children.buttonSave,
         },
-        chat_name: {
-          validError: <Block> this.children.validErrorPhone,
-          input: <Block> this.children.inputChatName,
-          button: <Block> this.children.buttonSave,
+        display_name: {
+          validError: <Block>this.children.validErrorPhone,
+          input: <Block>this.children.inputChatName,
+          button: <Block>this.children.buttonSave,
         },
         phone: {
-          validError: <Block> this.children.validErrorPhone,
-          input: <Block> this.children.inputPhone,
-          button: <Block> this.children.buttonSave,
+          validError: <Block>this.children.validErrorPhone,
+          input: <Block>this.children.inputPhone,
+          button: <Block>this.children.buttonSave,
         },
       },
       e,
