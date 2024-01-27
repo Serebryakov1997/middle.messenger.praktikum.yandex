@@ -1,10 +1,10 @@
 import { EventBus } from '../EventBus';
 
 export enum WSTransportEvents {
-    Connected = 'connected',
-    Error = 'error',
-    Message = 'message',
-    Close = 'close'
+  Connected = 'connected',
+  Error = 'error',
+  Message = 'message',
+  Close = 'close'
 }
 
 export default class WSTransport extends EventBus {
@@ -70,13 +70,18 @@ export default class WSTransport extends EventBus {
     });
 
     socket.addEventListener('message', (message) => {
-      const data = JSON.parse(message.data);
 
-      if (data.type && data.type === 'pong') {
-        return;
+      try {
+        const data = JSON.parse(message.data);
+
+        if (data.type && data.type === 'pong') {
+          return;
+        }
+
+        this.emit(WSTransportEvents.Message, data);
+      } catch (err) {
+        console.error(err);
       }
-
-      this.emit(WSTransportEvents.Message, data);
     });
   }
 }
