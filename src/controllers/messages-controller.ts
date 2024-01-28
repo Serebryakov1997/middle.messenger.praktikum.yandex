@@ -1,6 +1,7 @@
 import { store } from '../core';
 import WSTransport, { WSTransportEvents } from '../core/WSTransport/WSTransport';
 import { IMessage } from '../models/interfaces/messages';
+import { ChatController } from './chat-controller';
 
 class MessagesController {
   sockets: Map<number, WSTransport> = new Map();
@@ -33,7 +34,10 @@ class MessagesController {
       type: 'message',
       content: message,
     });
+    ChatController.getChats();
+    return (store.getState().messages || {})[id] || [];
   }
+
 
   getOldMsgs(id: number) {
     const socket = this.sockets.get(id);

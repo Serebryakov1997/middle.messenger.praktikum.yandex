@@ -25,7 +25,7 @@ export function creationChatList(chatsResponse: Array<Record<string, unknown>>):
     const title = <string>value.title;
     const avatar = <string>value.avatar;
 
-    ChatController.requestToConnectToMsgServer(Number(chatId));
+    // ChatController.requestToConnectToMsgServer(Number(chatId));
 
     let time = '';
     let content = '';

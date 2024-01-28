@@ -8,6 +8,9 @@ export class ChatController {
     try {
       const chats = await chatApi.getChats();
       const parseChats: Array<Record<string, unknown>> = JSON.parse(String(chats));
+      parseChats.map(async (chat) => {
+        await this.requestToConnectToMsgServer(Number(<Record<string, number>>chat.id));
+      })
       store.set('chats', parseChats);
     } catch (err) {
       console.error(err);

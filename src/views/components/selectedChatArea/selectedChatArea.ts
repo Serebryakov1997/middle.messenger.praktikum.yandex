@@ -11,6 +11,9 @@ import { ValidError } from '../validError';
 import { selectedChatAreaTmpl } from './selectedChatArea.tmpl';
 import { ChatDeleteWindow } from '../chatDeleteWindow';
 import { ChatCreationWindow } from '../chatCreationWindow';
+import { IState } from '../../../models/interfaces/auth';
+import { withStore } from '../../../core/Store';
+
 
 export class SelectedChatAreaBase extends Block {
   _formData: FormData;
@@ -31,15 +34,40 @@ export class SelectedChatAreaBase extends Block {
     this._formData = new FormData();
   }
 
+  protected componentDidUpdate(oldProps: unknown, newProps: Record<string, unknown>): boolean {
+    const { selectedChat } = newProps;
+    if (selectedChat) {
+      this.setProps({ ...selectedChat });
+
+      const currentUserId = <number>newProps.currentUserId;
+      const messages = newProps.messages as Record<string, unknown>[];
+      this._formData.set('messages', JSON.stringify(messages));
+      console.log('oldProps in componentDidUpdate: ', oldProps);
+      console.log('messages render componentDidUpdate: ', messages);
+      const chatId = Number((<Record<string, number>>selectedChat).chatId);
+      this.children.msgsList = creationMsgsList(messages, currentUserId, chatId);
+
+      return true;
+    }
+    return true;
+  }
+
+
   protected init(): void {
+
+    const { messages, currentUserId, selectedChat } = this.props;
     this.children = {
+      msgsList: selectedChat ? creationMsgsList(
+        <Record<string, unknown>[]>messages,
+        Number(currentUserId),
+        Number((<Record<string, number>>selectedChat).chatId)) : [],
       addUserText: new ClickableText({
         clickableText: 'Добавить пользователя',
         createChatsClass: 'add-user-text',
         events: {
           click: (e: Event) => {
             e.preventDefault();
-            (<Block> this.children.addUserToChatWindow).show();
+            (<Block>this.children.addUserToChatWindow).show();
           },
         },
       }),
@@ -49,7 +77,7 @@ export class SelectedChatAreaBase extends Block {
         events: {
           click: (e: Event) => {
             e.preventDefault();
-            (<Block> this.children.deleteUserFromChatWindow).show();
+            (<Block>this.children.deleteUserFromChatWindow).show();
           },
         },
       }),
@@ -63,8 +91,8 @@ export class SelectedChatAreaBase extends Block {
 
             if (title) {
               const newProps = { chatTitle: `${title}?` };
-              (<Block> this.children.chatDeleteWindow).setProps(newProps);
-              (<Block> this.children.chatDeleteWindow).show();
+              (<Block>this.children.chatDeleteWindow).setProps(newProps);
+              (<Block>this.children.chatDeleteWindow).show();
             }
           },
         },
@@ -108,9 +136,9 @@ export class SelectedChatAreaBase extends Block {
               e,
               emptyValidator,
               {
-                validError: <Block> this.children.validErrorMsg,
-                input: <Block> this.children.chatInput,
-                button: <Block> this.children.chatButton,
+                validError: <Block>this.children.validErrorMsg,
+                input: <Block>this.children.chatInput,
+                button: <Block>this.children.chatButton,
               },
             );
           },
@@ -130,12 +158,14 @@ export class SelectedChatAreaBase extends Block {
         events: {
           click: (e: Event) => {
             e.preventDefault();
-            this.sendMsg(e, this._formData);
+            const msgsList = this.sendMsg(e, this._formData);
+            this.children.msgsList = msgsList;
           },
         },
       }),
     };
   }
+
 
   sendMsg(event: Event, formData: FormData) {
     const message = <string>formData.get('message');
@@ -144,28 +174,45 @@ export class SelectedChatAreaBase extends Block {
       { message: emptyValidator },
       {
         message: {
-          validError: <Block> this.children.validErrorMsg,
-          input: <Block> this.children.chatInput,
-          button: <Block> this.children.chatButton,
+          validError: <Block>this.children.validErrorMsg,
+          input: <Block>this.children.chatInput,
+          button: <Block>this.children.chatButton,
         },
       },
       event,
     );
+    let msgsList;
     if (isValid) {
       const { chatId } = this.props;
-      msgsController.sendMsg(Number(chatId), message);
+      const msgs = msgsController.sendMsg(Number(chatId), message);
+      msgsList = creationMsgsList(
+        msgs, Number(this.props.currentUserId), Number((<Record<string, string>>this.props.selectedChat).chatId));
     }
+    return msgsList || [];
   }
 
+
   render(): DocumentFragment {
-    if (this.props.messages) {
-      const { chatId } = this.props;
-      this.children.msgsList = creationMsgsList(
-<Record<string, Block>[]> this.props.messages,
-Number(this.props.currentUserId),
-Number(chatId),
-      );
+    const { selectedChat } = this.props;
+    if (selectedChat) {
+      this.setProps({ ...selectedChat });
+
+      const currentUserId = <number>this.props.currentUserId;
+      const messages = this.props.messages as Record<string, unknown>[];
+      this._formData.set('messages', JSON.stringify(messages));
+      // console.log('messages render: ', messages);
+      const chatId = Number((<Record<string, number>>selectedChat).chatId);
+      this.children.msgsList = creationMsgsList(messages, currentUserId, chatId);
     }
     return this.compile(selectedChatAreaTmpl, this.props);
   }
 }
+
+
+const mapStateToProps = (state: IState) => ({
+  messages: state.messages && state.selectedChat ? state.messages[state.selectedChat!.chatId] : [],
+  currentUserId: state.user?.id,
+  selectedChat: state.selectedChat
+});
+
+export const SelectedChatArea = withStore(mapStateToProps)(SelectedChatAreaBase);

@@ -78,20 +78,34 @@ export class Block {
 
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+
+    Object.values(this.children).forEach(child => {
+      if (Array.isArray(child)) {
+        child.forEach(ch => ch.dispatchComponentDidMount());
+      } else {
+        (<Block>child).dispatchComponentDidMount();
+      }
+    })
   }
 
-  _componentDidUpdate(args: unknown) {
-    const response = this.componentDidUpdate(this.props, <Record<string, unknown>>args);
+  _componentDidUpdate(oldProps: unknown, newProps?: unknown) {
+    // if (this.componentDidUpdate(oldProps, newProps)) {
+    //   this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    // }
+    // console.log('args in _componentDidUpdate: ', args);
+    const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
     }
     this._render();
   }
 
-  componentDidUpdate(
-    oldProps: Record<string, unknown>,
-    newProps: Record<string, unknown>,
+  protected componentDidUpdate(
+    oldProps: unknown,
+    newProps: unknown,
   ) {
+    // console.log('oldProps in componentDidUpdate: ', oldProps);
+    // console.log('newProps in componentDidUpdate: ', newProps)
     return true;
   }
 
@@ -143,6 +157,12 @@ export class Block {
 
     const replaceStub = (component: Block) => {
       const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+
+      if (!stub) {
+        return;
+      }
+
+      component.getContent()?.append(...Array.from(stub!.childNodes));
       stub?.replaceWith(component.getContent());
     };
 
@@ -161,7 +181,7 @@ export class Block {
 
   _addEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>> this.props.events;
+      const events = <Record<string, (e: Event) => void>>this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {
@@ -173,7 +193,7 @@ export class Block {
 
   _removeEvents() {
     if (this.props.events) {
-      const events = <Record<string, (e: Event) => void>> this.props.events;
+      const events = <Record<string, (e: Event) => void>>this.props.events;
 
       Object.keys(events).forEach((eventName) => {
         if (this._element) {
@@ -192,8 +212,8 @@ export class Block {
 
     const newEl = fragment.firstElementChild as HTMLElement;
 
-    if (this._element) {
-      this._removeEvents();
+    if (this._element && newEl) {
+      // this._removeEvents();
       this._element?.replaceWith(newEl);
     }
     this._element = newEl;
@@ -219,9 +239,10 @@ export class Block {
       },
       set(target, prop: string, value) {
         if (target[prop] !== value || typeof value === 'object') {
+          const oldTarget = { ...target };
           /* eslint no-param-reassign: "off" */
           target[prop] = value;
-          self.eventBus().emit(Block.EVENTS.FLOW_CDU);
+          self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         }
         return true;
       },

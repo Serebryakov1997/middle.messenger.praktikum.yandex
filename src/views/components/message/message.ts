@@ -8,7 +8,7 @@ interface MessageProps {
     messageClass: string;
     textPositionClass: string;
   },
-  chat_id: string;
+  msgId: string;
   message: string;
 }
 

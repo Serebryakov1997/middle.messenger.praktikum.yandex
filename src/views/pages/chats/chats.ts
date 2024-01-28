@@ -5,8 +5,9 @@ import { ChatCreationWindow, ClickableText, UnderButtonLink } from '../../compon
 import { Block, router } from '../../../core';
 import { withStore } from '../../../core/Store';
 import { IState } from '../../../models/interfaces/auth';
-import { SelectedChatAreaBase } from '../../components/selectedChatArea/selectedChatArea';
+import { SelectedChatArea, SelectedChatAreaBase } from '../../components/selectedChatArea/selectedChatArea';
 import { LegendText } from '../../components/legend';
+import { creationMsgsList } from '../../../utils/creationMsgsList';
 
 export class ChatsBase extends Block {
   _formData: FormData;
@@ -32,8 +33,22 @@ export class ChatsBase extends Block {
     this._formData = new FormData();
   }
 
+  // protected componentDidUpdate(oldProps: unknown, newProps: unknown): boolean {
+  //   const props = <Record<string, unknown>>newProps;
+  //   if (props.selectedChat) {
+  //     (<Block>this.children.selectedChatArea).children.msgsList = creationMsgsList(
+  //       <Record<string, unknown>[]>props.messages,
+  //       Number(props.currentUserId),
+  //       (<Record<string, number>>props.selectedChat).chatId
+  //     );
+  //   }
+  //   return true;
+  // }
+
+
   protected init(): void {
     this.children = {
+      selectedChatArea: new SelectedChatArea({}),
       selectChatLegendText: new LegendText(),
       createChatText: new ClickableText({
         clickableText: 'или Создайте чат',
@@ -42,7 +57,7 @@ export class ChatsBase extends Block {
         events: {
           click: (e: Event) => {
             e.preventDefault();
-            (<Block> this.children.chatCreationWindow).show();
+            (<Block>this.children.chatCreationWindow).show();
           },
         },
       }),
@@ -76,27 +91,15 @@ export class ChatsBase extends Block {
 
   render(): DocumentFragment {
     if (this.props.chats) {
-      this.children.chatsList = creationChatList(<Record<string, Block>[]> this.props.chats);
+      this.children.chatsList = creationChatList(<Record<string, Block>[]>this.props.chats);
     }
 
     if (this.props.selectedChat) {
-      (<Block> this.children.selectChatLegendText).hide();
-      (<Block> this.children.createChatText).hide();
-
-      const { messages, currentUserId, selectedChat } = this.props;
-
-      const selChat = JSON.parse(JSON.stringify(selectedChat));
-      const { chatId, title, time } = selChat;
-
-      if (messages && currentUserId) {
-        const selectedChatArea = new SelectedChatAreaBase();
-        (<Block>selectedChatArea).setProps({
-          messages, currentUserId, chatId, title, time,
-        });
-        this.children.selectedChatArea = selectedChatArea;
-        (<Block> this.children.selectedChatArea).show();
-      }
+      (<Block>this.children.selectedChatArea).show();
+      (<Block>this.children.createChatText).hide();
+      (<Block>this.children.selectChatLegendText).hide();
     }
+
     return this.compile(chatsTmpl, this.props);
   }
 }
@@ -104,8 +107,8 @@ export class ChatsBase extends Block {
 const mapStateToProps = (state: IState) => ({
   chats: state.chats,
   selectedChat: state.selectedChat,
-  messages: state.messages,
-  currentUserId: state.user?.id,
+  messages: state.messages && state.selectedChat ? state.messages[state.selectedChat!.chatId] : [],
+  currentUserId: state.user?.id
 });
 
 export const Chats = withStore(mapStateToProps)(ChatsBase);

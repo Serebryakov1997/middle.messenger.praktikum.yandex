@@ -10,7 +10,7 @@ export class EventBus {
       this.listeners[event] = [];
     }
 
-    (<Array<CallableFunction>> this.listeners[event]).push(callback);
+    (<Array<CallableFunction>>this.listeners[event]).push(callback);
   }
 
   off(event: string, callback: (args: unknown) => void) {
@@ -18,7 +18,7 @@ export class EventBus {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event] = (<Record<string, CallableFunction>> this.listeners[event]).filter(
+    this.listeners[event] = (<Record<string, CallableFunction>>this.listeners[event]).filter(
       (listener: () => Record<string, unknown>) => listener !== callback,
     );
   }
@@ -28,7 +28,7 @@ export class EventBus {
       throw new Error(`Нет события: ${event}`);
     }
 
-    (<Array<CallableFunction>> this.listeners[event]).forEach((listener: any) => {
+    (<Array<CallableFunction>>this.listeners[event]).forEach((listener: any) => {
       listener(...args);
     });
   }
